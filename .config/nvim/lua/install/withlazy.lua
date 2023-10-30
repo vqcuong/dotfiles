@@ -55,22 +55,6 @@ require("lazy").setup({
   },
   { "windwp/nvim-autopairs", event = "InsertEnter" },
   "norcalli/nvim-colorizer.lua",
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   version = "*",
-  --   lazy = false,
-  -- },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
@@ -91,4 +75,16 @@ require("lazy").setup({
     end,
   },
   "folke/zen-mode.nvim",
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    -- dependencies = {
+    --   "nvim-tree/nvim-web-devicons",
+    -- },
+    -- config = function()
+    --   require("nvim-tree").setup {}
+    -- end,
+  },
+
 })
