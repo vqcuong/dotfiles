@@ -1,0 +1,19 @@
+alias c='clear'
+alias f='fuck'
+alias stn='function _stn(){ sport=$2; lport=$(if [ ! -z "$3" ]; then echo $3; else echo $2; fi); ssh -tL ${lport}:localhost:${sport} $1; }; _stn $@'
+alias copy='function _copy(){ pbcopy < $1; }; _copy $@'
+# alias ls='colorls'
+alias ls='exa --icons --color=always --group --time-style=long-iso'
+alias l='ls -laH'
+alias la='ls -a'
+alias ll='ls -l'
+
+# alias vim='nvim'
+alias glo='forgit::log'
+alias gd='forgit::diff'
+alias ga='forgit::add'
+
+# docker-compose
+alias dc='docker-compose'
+alias dcu='docker-compose up -d'
+alias dcd='docker-compose down'
