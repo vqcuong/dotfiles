@@ -99,7 +99,7 @@ plugins=(
 	sudo
 	terraform
 	fast-syntax-highlighting	
-	zsh-autocomplete
+	#zsh-autocomplete
 	zsh-autosuggestions
 )
 
