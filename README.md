@@ -10,15 +10,28 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 
 ### Tools and frameworks
 
-- [Vim](https://www.vim.org/): <code>9.0</code>
-- [NeoVim](https://neovim.io/): <code>0.9.4</code>
-- [Alacritty](https://alacritty.org/): <code>0.12.3</code>
-- [Hyper](https://hyper.is/): <code>3.4.1</code>
-- [Tmux](https://github.com/tmux/tmux): <code>3.3a_a</code>
-- [Ohmyzsh](https://ohmyz.sh/): <code>master (cb86d37)</code>
-- [Ohmytmux](https://github.com/gpakosz/.tmux): <code>master (fd1bbb5)</code>
-- [Exa](https://the.exa.website/): <code>v0.10.1</code>
+- [vim](https://www.vim.org/): <code>9.0</code>
+- [neoVim](https://neovim.io/): <code>0.9.4</code>
+- [alacritty](https://alacritty.org/): <code>0.12.3</code>
+- [hyper](https://hyper.is/): <code>3.4.1</code>
+- [tmux](https://github.com/tmux/tmux): <code>3.3a_a</code>
+- [ohmyzsh](https://ohmyz.sh/): <code>master (cb86d37)</code>
+- [ohmytmux](https://github.com/gpakosz/.tmux): <code>master (fd1bbb5)</code>
+- [exa](https://the.exa.website/): <code>v0.10.1</code>
 - [thefuck](https://github.com/nvbn/thefuck): <code>3.32</code>
+- [trash-cli](https://github.com/andreafrancia/trash-cli): <code>0.23.9.23</code>
+
+### Introduction
+- [vim](https://www.vim.org/) is a high-configurable lightweight terminal-based text editor
+- [neoVim](https://neovim.io/) is a hyperextensible Vim-based text editor which have many adorable features and a growing supportive community.
+- [alacritty](https://alacritty.org/) is a fast, cross-platform, OpenGL terminal emulator which has the outstanding speed and is optimized for working on macOS
+- [hyper](https://hyper.is/) is an Electron-based terminal which allows you to install and manage themes and plugins easily
+- [tmux](https://github.com/tmux/tmux) is a terminal multiplexer letting you switch easily between several programs in one terminal, detach and reattach them to a different terminal.
+- [ohmyzsh](https://ohmyz.sh/) is a delightful, open source, community-driven framework for managing your Zsh configuration
+- [ohmytmux](https://github.com/gpakosz/.tmux) is a self-contained, pretty and versatile .tmux.conf configuration file
+- [exa](https://the.exa.website/) is a modern replacement for the venerable file-listing command-line program ls
+- [thefuck](https://github.com/nvbn/thefuck) is a magnificent app that corrects errors in previous console commands. 
+- [trash-cli](https://github.com/andreafrancia/trash-cli) is a command-line interface of Desktop Trash that avoids deleting files and folders accidentally
 
 ### Install and setup
 
@@ -81,6 +94,11 @@ brew install exa
 # can install from homebrew
 brew install thefuck
 eval $(thefuck --alias)
+```
+
+#### trash-cli
+```
+brew install trash-cli
 ```
 
 #### My customization
