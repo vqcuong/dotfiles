@@ -1,6 +1,6 @@
 # Local configuration for awnsome shell-based apps and plugins
 
-This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some other awnsome tools to boost working productivity on shell environment
+This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some other awesome tools to boost working productivity on shell environment
 
 ### Environment
 
