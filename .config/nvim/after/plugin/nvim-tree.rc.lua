@@ -91,6 +91,24 @@ tree.setup({
 				enable = true,
 				-- picker = window_picker,
 				chars = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890",
+        exclude = {
+          filetype = {
+            "notify",
+            "NvimTree",
+            "neo-tree",
+            "neo-tree-popup",
+            "packer",
+            "qf",
+            "diff",
+            "fugitive",
+            "fugitiveblame",
+          },
+          buftype = {
+            "nofile",
+            "terminal",
+            "help"
+          }
+        }
 			},
 		},
 	},
