@@ -100,6 +100,7 @@ local function opts(desc)
   return { desc = "Nvim-tree: " .. desc, noremap = true, silent = true, nowait = true }
 end
 
+vim.keymap.set('n', 'G', '<CMD>lua require("nvim-tree.api").git.reload()<CR>', opts("Git Reload"))
 vim.keymap.set('n', 'zz', '<CMD>NvimTreeFocus<CR>', opts("Focus"))
 vim.keymap.set('n', 'tt', '<CMD>NvimTreeToggle<CR>', opts("Toggle"))
 vim.keymap.set('n', 'bb', '<CMD>NvimTreeClipboard<CR>', opts("Show Clipboard"))
