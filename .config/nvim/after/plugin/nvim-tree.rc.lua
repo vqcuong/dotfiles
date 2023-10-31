@@ -38,7 +38,7 @@ local function my_on_attach(bufnr)
 	local api = require("nvim-tree.api")
 
 	local function opts(desc)
-		return { desc = "Nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+		return { desc = "NvimTree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 	end
 
 	-- default mappings
@@ -97,7 +97,7 @@ tree.setup({
 })
 
 local function opts(desc)
-	return { desc = "Nvim-tree: " .. desc, noremap = true, silent = true, nowait = true }
+	return { desc = "NvimTree: " .. desc, noremap = true, silent = true, nowait = true }
 end
 
 vim.keymap.set("n", "G", '<CMD>lua require("nvim-tree.api").git.reload()<CR>', opts("Git Reload"))
@@ -105,5 +105,4 @@ vim.keymap.set("n", "zz", "<CMD>NvimTreeFocus<CR>", opts("Focus"))
 vim.keymap.set("n", "tt", "<CMD>NvimTreeToggle<CR>", opts("Toggle"))
 vim.keymap.set("n", "bb", "<CMD>NvimTreeClipboard<CR>", opts("Show Clipboard"))
 vim.keymap.set("n", "bc", '<CMD>lua require("nvim-tree.api").fs.clear_clipboard()<CR>', opts("Clear Clipboard"))
-vim.keymap.set("n", "ww", '<CMD>lua require("window-picker").pick_window({hint = "floating-big-letter"})<CR>')
 
