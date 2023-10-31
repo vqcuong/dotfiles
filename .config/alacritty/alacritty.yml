@@ -35,16 +35,16 @@ draw_bold_text_with_bright_colors: false
 colors:
   primary:
     background: '#000000'
-    foreground: '#fefefe'
-    dim_foreground: '#fafafa'
-    bright_foreground: '#ffffff'
+    foreground: '#00ff8c'
+    dim_foreground: '#00d455'
+    bright_foreground: '#73ff8a'
   search:
     matches:
-      foreground: '#000000'
-      background: '#ffffff'
+      foreground: '#fefefe'
+      background: '#945f7d'
     focused_match:
-      foreground: '#ffffff'
-      background: '#000000'
+      foreground: '#945f7d'
+      background: '#fefefe'
   line_indicator:
     foreground: None
     background: None
@@ -56,22 +56,22 @@ colors:
     background: CellForeground
   normal:
     black:   '#1d1f21'
-    red:     '#cc6666'
-    green:   '#b5bd68'
-    yellow:  '#f0c674'
+    red:     '#ff003c'
+    green:   '#dbc325'
+    yellow:  '#00ff73'
     blue:    '#81a2be'
     magenta: '#b294bb'
-    cyan:    '#8abeb7'
-    white:   '#c5c8c6'
+    cyan:    '#00ffe1'
+    white:   '#fdfdfd'
   bright:
     black:   '#666666'
     red:     '#d54e53'
     green:   '#b9ca4a'
-    yellow:  '#e7c547'
+    yellow:  '#ffee59'
     blue:    '#7aa6da'
-    magenta: '#c397d8'
-    cyan:    '#70c0b1'
-    white:   '#eaeaea'
+    magenta: '#e3469a'
+    cyan:    '#73f6ff'
+    white:   '#ffffff'
   dim:
     black:   '#131415'
     red:     '#864343'
@@ -79,13 +79,13 @@ colors:
     yellow:  '#9e824c'
     blue:    '#556a7d'
     magenta: '#75617b'
-    cyan:    '#5b7d78'
-    white:   '#828482'
+    cyan:    '#02666e'
+    white:   '#b3b3b3'
   transparent_background_colors: false
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
-  save_to_clipboard: false
+  save_to_clipboard: true 
 
 cursor:
   style:
