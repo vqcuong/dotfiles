@@ -19,20 +19,20 @@ wp.setup({
 	},
 })
 
-local function window_picker()
-	local status, wp = pcall(require, "window-picker")
-	if not status then
-		print("You'll need to install window-picker before use this command")
-		return "default"
-	else
-		local picked_window_id = wp.pick_window({ hint = "floating-big-letter" })
-		if picked_window_id then
-			vim.api.nvim_set_current_win(picked_window_id)
-			return picked_window_id
-		end
-		return "default"
-	end
-end
+-- local function window_picker()
+-- 	local status, wp = pcall(require, "window-picker")
+-- 	if not status then
+-- 		print("You'll need to install window-picker before use this command")
+-- 		return "default"
+-- 	else
+-- 		local picked_window_id = require("window-picker").pick_window({ hint = "floating-big-letter" })
+-- 		if picked_window_id then
+-- 			vim.api.nvim_set_current_win(picked_window_id)
+-- 			return picked_window_id
+-- 		end
+-- 		return "default"
+-- 	end
+-- end
 
 local function my_on_attach(bufnr)
 	local api = require("nvim-tree.api")
@@ -106,3 +106,4 @@ vim.keymap.set("n", "tt", "<CMD>NvimTreeToggle<CR>", opts("Toggle"))
 vim.keymap.set("n", "bb", "<CMD>NvimTreeClipboard<CR>", opts("Show Clipboard"))
 vim.keymap.set("n", "bc", '<CMD>lua require("nvim-tree.api").fs.clear_clipboard()<CR>', opts("Clear Clipboard"))
 vim.keymap.set("n", "ww", '<CMD>lua require("window-picker").pick_window({hint = "floating-big-letter"})<CR>')
+

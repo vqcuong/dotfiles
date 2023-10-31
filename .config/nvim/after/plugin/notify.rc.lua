@@ -9,4 +9,4 @@ notify.setup({
 
 vim.keymap.set("n", "nc", function()
 	notify.dismiss({ pending = true, silent = true })
-end)
+end, {desc = "Clear Notifications"})
