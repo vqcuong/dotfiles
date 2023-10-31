@@ -79,12 +79,11 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
-    -- dependencies = {
-    --   "nvim-tree/nvim-web-devicons",
-    -- },
-    -- config = function()
-    --   require("nvim-tree").setup {}
-    -- end,
   },
-
+  {
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    event = "VeryLazy",
+    version = "2.*",
+  }
 })
