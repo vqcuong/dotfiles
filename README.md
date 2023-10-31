@@ -4,7 +4,7 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 
 ### Environment
 
-- OS: <code>macOS sonoma<code>
+- OS: <code>macOS sonoma</code>
 - Model: <code>Macbook Air M2</code>
 - Shell: <code>zsh</code>
 
