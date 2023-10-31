@@ -1,8 +1,12 @@
 local status, notify = pcall(require, "notify")
-if not status then return end
+if not status then
+	return
+end
 
 notify.setup({
-  background_colour = "#000000"
+	background_colour = "#000000",
 })
 
-vim.keymap.set('n', 'nc', function() notify.dismiss({ pending = true, silent = true }) end)
+vim.keymap.set("n", "nc", function()
+	notify.dismiss({ pending = true, silent = true })
+end)

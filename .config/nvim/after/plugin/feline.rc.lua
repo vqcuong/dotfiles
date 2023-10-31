@@ -1,6 +1,6 @@
 local status, feline = pcall(require, "feline")
 if not status then
-  return
+	return
 end
 
 feline.setup({})
