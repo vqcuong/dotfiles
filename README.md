@@ -114,4 +114,5 @@ ln -sf $HOME/.config/.my-dotenv/.config/tmux/tmux.conf.local $HOME/.config/tmux/
 ln -sf $HOME/.config/.my-dotenv/.config/zsh/.zshrc.omz ${ZDOTDIR:-$HOME}/.zshrc
 ln -sf $HOME/.config/.my-dotenv/.config/zsh/.alias ${ZDOTDIR:-$HOME} 
 ln -sf $HOME/.config/.my-dotenv/.vimrc $HOME
+ln -sf $HOME/.config/.my-dotenv/.hyper.js $HOME
 ```

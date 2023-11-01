@@ -159,3 +159,5 @@ unset __conda_setup
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 pfetch
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
