@@ -75,8 +75,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #### Ohmytmux
 
 ```
-git clone https://github.com/gpakosz/.tmux.git ~/.tmux
-ln -sf ~/.tmux/.tmux.conf ~/
+git clone https://github.com/gpakosz/.tmux.git $HOME/.config/tmux/.tmux
+ln -sf $HOME/.config/tmux/.tmux/.tmux.conf $HOME/.config/tmux/tmux.conf 
 # or follow the github page for more details
 ```
 
@@ -105,14 +105,13 @@ brew install trash-cli
 
 ```
 # install
-git clone git@github.com:vqcuong/.my-dotenv.git ~/.my-dotenv
+git clone git@github.com:vqcuong/.my-dotenv.git $HOME/.config/.my-dotenv
 
-# link shortcut to home
-ln -sf ~/.my-dotenv/.config/nvim ~/.config/
-ln -sf ~/.my-dotenv/.config/alacritty ~/.config/
-ln -sf ~/.my-dotenv/.vimrc ~/
-ln -sf ~/.my-dotenv/.tmux.conf.local ~/
-ln -sf ~/.my-dotenv/.zshrc.omz ~/.zshrc
-ln -sf ~/.my-dotenv/.alias ~/
-ln -sf ~/.tmux/.tmux.conf ~/
+# setup
+ln -sf $HOME/.config/.my-dotenv/.config/nvim $HOME/.config/
+ln -sf $HOME/.config/.my-dotenv/.config/alacritty $HOME/.config/
+ln -sf $HOME/.config/.my-dotenv/.zshrc.omz ${ZDOTDIR:-$HOME}/.zshrc
+ln -sf $HOME/.config/.my-dotenv/.config/tmux/tmux.conf.local $HOME/.config/tmux/tmux.conf.local
+ln -sf $HOME/.config/.my-dotenv/.alias ${ZDOTDIR:-$HOME} 
+ln -sf $HOME/.config/.my-dotenv/.vimrc $HOME
 ```
