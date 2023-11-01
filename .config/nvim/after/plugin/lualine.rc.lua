@@ -26,12 +26,12 @@ lualine.setup({
 				end,
 			},
 		},
-		lualine_b = { "branch", "diff" },
-		lualine_c = { {
+		lualine_b = { {
 			"filename",
 			file_status = true,
 			path = 0,
-		} },
+		}, "branch" },
+		lualine_c = { "diff" },
 		lualine_x = {
 			{
 				"diagnostics",
