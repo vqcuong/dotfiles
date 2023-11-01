@@ -397,10 +397,14 @@ unbind '%'
 
 bind C-a new-window -n "~/.config/alacritty/alacritty.yml" sh -c '${EDITOR:-vim} ~/.config/alacritty/alacritty.yml && tmux display "Updated alacritty config"'
 # swap j and k in selecting pane 
-bind -r j select-pane -U    # move up
-bind -r k select-pane -D    # move down
-bind -r J resize-pane -U 2  # move up
-bind -r K resize-pane -D 2  # move down
+bind -r j select-pane -U    # select the pane above
+bind -r k select-pane -D    # select the pane below 
+
+bind -r H resize-pane -L 1  # expand pane to the left
+bind -r J resize-pane -U 1  # expand pane upwards
+bind -r K resize-pane -D 1  # expand pane downwards 
+bind -r L resize-pane -R 1  # expand pane to the right 
+
 set -g display-panes-time 2000
 #end_mycustom
 
