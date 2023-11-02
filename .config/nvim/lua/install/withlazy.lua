@@ -45,10 +45,10 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
-  "nvimtools/none-ls.nvim", -- a replacement for null-ls which was archived on github
+	"nvimtools/none-ls.nvim", -- a replacement for null-ls which was archived on github
 	-- "jose-elias-alvarez/null-ls.nvim",
 	"jay-babu/mason-null-ls.nvim",
-  "stevearc/conform.nvim",
+	"stevearc/conform.nvim",
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -90,4 +90,5 @@ require("lazy").setup({
 		event = "VeryLazy",
 		version = "2.*",
 	},
+	"goolord/alpha-nvim",
 })
