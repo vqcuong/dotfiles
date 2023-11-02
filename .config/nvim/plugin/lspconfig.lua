@@ -8,16 +8,16 @@ end
 local protocol = require("vim.lsp.protocol")
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
-local enable_format_on_save = function(_, bufnr)
-	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		group = augroup_format,
-		buffer = bufnr,
-		callback = function()
-			vim.lsp.buf.format({ bufnr = bufnr })
-		end,
-	})
-end
+-- local enable_format_on_save = function(_, bufnr)
+-- 	vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+-- 		group = augroup_format,
+-- 		buffer = bufnr,
+-- 		callback = function()
+-- 			vim.lsp.buf.format({ bufnr = bufnr })
+-- 		end,
+-- 	})
+-- end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -71,27 +71,82 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-nvim_lsp.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		on_attach(client, bufnr)
-		-- enable_format_on_save(client, bufnr)
-	end,
-	settings = {
-		Lua = {
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { "vim" },
-			},
+local status2, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not status2 then
+	return
+end
 
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = vim.api.nvim_get_runtime_file("", true),
-				checkThirdParty = false,
+local handlers = {
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+	end,
+	["lua_ls"] = function()
+		local lspconfig = require("lspconfig")
+		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				-- enable_format_on_save(client, bufnr)
+			end,
+			settings = {
+				Lua = {
+					diagnostics = {
+						-- Get the language server to recognize the `vim` global
+						globals = { "vim" },
+					},
+
+					workspace = {
+						-- Make the server aware of Neovim runtime files
+						library = vim.api.nvim_get_runtime_file("", true),
+						checkThirdParty = false,
+					},
+				},
 			},
-		},
+		})
+	end,
+}
+
+mason_lspconfig.setup({
+	ensure_installed = {
+		"ansiblels",
+		"bashls",
+		"dockerls",
+		"docker_compose_language_service",
+		"jsonls",
+		"lua_ls",
+		"marksman",
+		"pyright",
+		"vimls",
+		"yamlls",
 	},
+	automatic_installation = true,
+	handlers = handlers,
 })
+
+-- nvim_lsp.lua_ls.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = function(client, bufnr)
+-- 		on_attach(client, bufnr)
+-- 		-- enable_format_on_save(client, bufnr)
+-- 	end,
+-- 	settings = {
+-- 		Lua = {
+-- 			diagnostics = {
+-- 				-- Get the language server to recognize the `vim` global
+-- 				globals = { "vim" },
+-- 			},
+--
+-- 			workspace = {
+-- 				-- Make the server aware of Neovim runtime files
+-- 				library = vim.api.nvim_get_runtime_file("", true),
+-- 				checkThirdParty = false,
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	underline = true,

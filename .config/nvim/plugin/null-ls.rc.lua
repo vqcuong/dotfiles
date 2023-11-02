@@ -3,7 +3,33 @@ if not status then
 	return
 end
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local status2, mason_nullls = pcall(require, "mason-null-ls")
+if not status2 then
+	return
+end
+
+mason_nullls.setup({
+	ensure_installed = {
+		"ansible-lint",
+		"jsonlint",
+		"luacheck",
+		"markdownlint",
+		"ruff",
+		"shellcheck",
+		"yamllint",
+		"hadolint",
+
+		"beautysh",
+		"black",
+		"prettier",
+		"stylua",
+		"xmlformatter",
+		"yamlfmt",
+	},
+	automatic_installation = true,
+})
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
