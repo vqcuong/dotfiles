@@ -1,0 +1,89 @@
+format = """
+[░▒▓](bg:#000000 fg:#ffffff)\
+[  ](bg:#ffffff fg:#000000)\
+[](bg:#548eff fg:#ffffff)\
+$directory\
+[](bg:#3a568c fg:#548eff)\
+$git_branch\
+$git_status\
+[](bg:#151f30 fg:#3a568c)\
+$rust\
+$julia\
+$golang\
+$python\
+$java\
+$scala\
+[ ](fg:#151f30)\
+"""
+
+right_format = """
+[](fg:#151f30)\
+$docker_context\
+[](fg:#3a568c bg:#151f30)\
+$kubernetes\
+[](fg:#548eff bg:#3a568c)\
+$conda\
+[](fg:#ffffff bg:#548eff)\
+$time\
+[░▒▓](fg:#000000 bg:#ffffff)\
+"""
+
+[directory]
+style = "bg:#548eff fg:#ffffff"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#3a568c"
+format = '[[ $symbol $branch ](fg:#ffffff bg:#3a568c)]($style)'
+
+[git_status]
+style = "bg:#3a568c"
+format = '[[($all_status$ahead_behind )](fg:#ffffff bg:#3a568c)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#151f30"
+format = "[[ $symbol ($version) ](fg:#ffffff bg:#151f30)]($style)"
+
+[golang]
+symbol = ""
+style = "bg:#151f30"
+format = "[[ $symbol ($version) ](fg:#ffffff bg:#151f30)]($style)"
+
+[python]
+symbol = ""
+style = "bg:#151f30 fg:#ffffff"
+format = "[[ $symbol ($version) ](fg:#ffffff bg:#151f30)]($style)"
+disabled = false
+
+[docker_context]
+format = '[[ $symbol $context ](bg:#151f30 fg:#ffffff)]($style)'
+style = "bg:#151f30"
+symbol = "🐋"
+
+[kubernetes]
+format = "[[ $symbol $context ](bg:#3a568c fg:#ffffff)]($style)"
+style = "bg:#3a568c"
+symbol = "⎈"
+detect_folders = ["k8s", "kubernetes", "kustomizations", "helms"]
+disabled = false
+
+[conda]
+format = "[[ $symbol $environment ](bg:#548eff fg:#ffffff)]($style)"
+style = "bg:#548eff"
+symbol = ""
+
+[time]
+format = "[[  $time ](fg:#000000 bg:#ffffff)]($style)"
+style = "bg:#ffffff"
+time_format = "%R"
+disabled = false
