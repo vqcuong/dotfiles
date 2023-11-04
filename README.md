@@ -21,6 +21,7 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [thefuck](https://github.com/nvbn/thefuck) (`3.32`) is a magnificent app that corrects errors in previous console commands
 - [trash-cli](https://github.com/andreafrancia/trash-cli) (`0.23.9.23`) is a command-line interface of Desktop Trash that avoids deleting files and folders accidentally
 - [starship](https://starship.rs/) (`1.16.0`) is the minimal, blazing-fast, and infinitely customizable prompt for any shell
+- [ohmyposh](https://ohmyposh.dev/) (`18.19.0`) is a prompt theme engine for any shell
 
 ## Zsh themes
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) is a theme for zsh which emphasizes speed, flexibility and out-of-the-box experience
