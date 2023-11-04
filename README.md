@@ -2,106 +2,43 @@
 
 This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some other awesome tools to boost working productivity on shell environment
 
-### Environment
+## Environment
 
-- OS: <code>macOS sonoma</code>
-- Model: <code>Macbook Air M2</code>
-- Shell: <code>zsh</code>
+- OS: `macOS sonoma`
+- Model: `Macbook Air M2`
+- Shell: `zsh`
 
-### Tools and frameworks
+## Tools and frameworks
 
-- [vim](https://www.vim.org/): <code>9.0</code>
-- [neoVim](https://neovim.io/): <code>0.9.4</code>
-- [alacritty](https://alacritty.org/): <code>0.12.3</code>
-- [hyper](https://hyper.is/): <code>3.4.1</code>
-- [tmux](https://github.com/tmux/tmux): <code>3.3a_a</code>
-- [ohmyzsh](https://ohmyz.sh/): <code>master (cb86d37)</code>
-- [ohmytmux](https://github.com/gpakosz/.tmux): <code>master (fd1bbb5)</code>
-- [exa](https://the.exa.website/): <code>v0.10.1</code>
-- [thefuck](https://github.com/nvbn/thefuck): <code>3.32</code>
-- [trash-cli](https://github.com/andreafrancia/trash-cli): <code>0.23.9.23</code>
+- [vim](https://www.vim.org/) (`9.0`) is a high-configurable lightweight terminal-based text editor
+- [neovim](https://neovim.io/) (`0.9.4`) is a hyperextensible Vim-based text editor which have many adorable features and a growing supportive community
+- [alacritty](https://alacritty.org/) (`0.12.3`) is a fast, cross-platform, OpenGL terminal emulator which has the outstanding speed and is optimized for working on macOS
+- [hyper](https://hyper.is/) (`3.4.1`) is an Electron-based terminal which allows you to install and manage themes and plugins easily
+- [tmux](https://github.com/tmux/tmux) (`3.3a_a`) is a terminal multiplexer letting you switch easily between several programs in one terminal, detach and reattach them to a different terminal
+- [ohmyzsh](https://ohmyz.sh/) (master `cb86d37`)is a delightful, open source, community-driven framework for managing your Zsh configuration
+- [ohmytmux](https://github.com/gpakosz/.tmux) (master `fd1bbb5`) is a self-contained, pretty and versatile .tmux.conf configuration file
+- [exa](https://the.exa.website/) (`0.10.1`) is a modern replacement for the venerable file-listing command-line program ls
+- [thefuck](https://github.com/nvbn/thefuck) (`3.32`) is a magnificent app that corrects errors in previous console commands
+- [trash-cli](https://github.com/andreafrancia/trash-cli) (`0.23.9.23`) is a command-line interface of Desktop Trash that avoids deleting files and folders accidentally
+- [starship](https://starship.rs/) (`1.16.0`) is the minimal, blazing-fast, and infinitely customizable prompt for any shell
 
-### Introduction
-- [vim](https://www.vim.org/) is a high-configurable lightweight terminal-based text editor
-- [neoVim](https://neovim.io/) is a hyperextensible Vim-based text editor which have many adorable features and a growing supportive community.
-- [alacritty](https://alacritty.org/) is a fast, cross-platform, OpenGL terminal emulator which has the outstanding speed and is optimized for working on macOS
-- [hyper](https://hyper.is/) is an Electron-based terminal which allows you to install and manage themes and plugins easily
-- [tmux](https://github.com/tmux/tmux) is a terminal multiplexer letting you switch easily between several programs in one terminal, detach and reattach them to a different terminal.
-- [ohmyzsh](https://ohmyz.sh/) is a delightful, open source, community-driven framework for managing your Zsh configuration
-- [ohmytmux](https://github.com/gpakosz/.tmux) is a self-contained, pretty and versatile .tmux.conf configuration file
-- [exa](https://the.exa.website/) is a modern replacement for the venerable file-listing command-line program ls
-- [thefuck](https://github.com/nvbn/thefuck) is a magnificent app that corrects errors in previous console commands. 
-- [trash-cli](https://github.com/andreafrancia/trash-cli) is a command-line interface of Desktop Trash that avoids deleting files and folders accidentally
+## Zsh themes
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k) is a theme for zsh which emphasizes speed, flexibility and out-of-the-box experience
 
-### Install and setup
+## Zsh plugins
+- [auto-ls](https://github.com/vqcuong/auto-ls)
+- [conda-zsh-completion](https://github.com/conda-incubator/conda-zsh-completion)
+- [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+- [forgit](https://github.com/wfxr/forgit)
+- [fzf-tab](https://github.com/Aloxaf/fzf-tab)
+- [oh-my-matrix](https://github.com/amstrad/oh-my-matrix)
+- [ssh-connect](https://github.com/gko/ssh-connect)
+- [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
-#### Vim
-
-- Use default vim app on macOS
-
-#### NeoVim
-
-```
-# can download directly from neovim.io
-# or use homebrew:
-brew install neovim
-```
-
-#### Alacritty
-
-```
-# can download directly from https://alacritty.org/
-# or download file .dmg from https://github.com/alacritty/alacritty/releases page
-# or install from homebrew:
-brew install --cask alacritty
-```
-
-#### Hyper
-
-```
-# can download directly from https://hyper.is/
-# or install from homebrew
-brew update
-brew install --cask hyper
-```
-
-#### Ohmyzsh
-
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# or follow the site: https://ohmyz.sh/#install or github page for more details
-```
-
-#### Ohmytmux
-
-```
-git clone https://github.com/gpakosz/.tmux.git $HOME/.config/tmux/.tmux
-ln -sf $HOME/.config/tmux/.tmux/.tmux.conf $HOME/.config/tmux/tmux.conf 
-# or follow the github page for more details
-```
-
-#### Exa
-
-```
-# can download directly from https://the.exa.website
-# or install from homebrew
-brew install exa
-```
-
-#### thefuck
-
-```
-# can install from homebrew
-brew install thefuck
-eval $(thefuck --alias)
-```
-
-#### trash-cli
-```
-brew install trash-cli
-```
-
-#### My customization
+## Install and setup
+- Follow the document from homesite to setup tools, frameworks, themes and plugins
+## My customization
 
 ```
 # install
