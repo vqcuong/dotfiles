@@ -35,9 +35,9 @@ draw_bold_text_with_bright_colors: false
 colors:
   primary:
     background: '#000000'
-    foreground: '#00ff8c'
+    foreground: '#9cff59'
     dim_foreground: '#00d455'
-    bright_foreground: '#73ff8a'
+    bright_foreground: '#59ff40'
   search:
     matches:
       foreground: '#fefefe'
@@ -57,20 +57,20 @@ colors:
   normal:
     black:   '#1d1f21'
     red:     '#ff003c'
-    green:   '#dbc325'
+    green:   '#ffbb00'
     yellow:  '#00ff73'
-    blue:    '#81a2be'
+    blue:    '#58acf5'
     magenta: '#b294bb'
-    cyan:    '#00ffe1'
+    cyan:    '#eb66ff'
     white:   '#fdfdfd'
   bright:
     black:   '#666666'
     red:     '#d54e53'
     green:   '#b9ca4a'
-    yellow:  '#ffee59'
-    blue:    '#7aa6da'
+    yellow:  '#ffbc40'
+    blue:    '#05bcff'
     magenta: '#e3469a'
-    cyan:    '#73f6ff'
+    cyan:    '#4affe4'
     white:   '#ffffff'
   dim:
     black:   '#131415'
