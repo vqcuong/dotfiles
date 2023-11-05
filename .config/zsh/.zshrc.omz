@@ -16,12 +16,12 @@ plugins=(
   copybuffer
   docker
   docker-compose
+  exa-zsh-completion
   forgit
   fzf-tab
   git
   history
   kubectl
-  oh-my-matrix
   python
   sudo
   terraform
@@ -40,8 +40,8 @@ typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='k|kubectl|helm|kubens|kubec
 # User configuration
 eval $(/opt/homebrew/bin/brew shellenv)
 eval $(thefuck --alias)
-if [ -f ${ZDOTDIR:-$HOME}/.alias ]; then
-    source ${ZDOTDIR:-$HOME}/.alias
+if [ -f ${ZDOTDIR:-$HOME}/.aliases ]; then
+    source ${ZDOTDIR:-$HOME}/.aliases
 fi
 source <(k3d completion zsh)
 
