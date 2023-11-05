@@ -54,9 +54,9 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
 # fzf-tab
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*:git-checkout:*' sort false
+# zstyle ':completion:*:descriptions' format '[%d]'
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 # zstyle ':fzf-tab:*' disabled-on any
@@ -65,17 +65,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-# () {
-#   local -a prefix=( '\e'{\[,O} )
-#   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
-#   local key=
-#   for key in $up[@]; do
-#     bindkey "$key" up-line-or-history
-#   done
-#   for key in $down[@]; do
-#     bindkey "$key" down-line-or-history
-#   done
-# }
 # bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
