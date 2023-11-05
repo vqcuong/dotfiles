@@ -19,7 +19,7 @@ plugins=(
     docker-compose
     fd
     forgit
-    # fzf-tab
+    fzf-tab
     git
     history
     kubectl
@@ -45,32 +45,31 @@ eval $(thefuck --alias)
 export FORGIT_NO_ALIASES=true
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
 source ${ZDOTDIR:-$HOME}/.alias
 source <(k3d completion zsh)
 
-# # fzf-tab configuration
-# # disable sort when completing `git checkout`
-# zstyle ':completion:*:git-checkout:*' sort false
-# # set descriptions format to enable group support
-# zstyle ':completion:*:descriptions' format '[%d]'
-# # set list-colors to enable filename colorizing
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# # preview directory's content with exa when completing cd
-# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# # switch group using `,` and `.`
-# zstyle ':fzf-tab:*' switch-group ',' '.'
+# zsh-autosuggestions configuration
 
 # zsh-autocomplete configuration
-bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-# bindkey -M menuselect '\r' .accept-line
-# all Tab widgets
-zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
-# all history widgets
+zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
-# ^S
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+# bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+# bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
+# bindkey -M menuselect '\r' .accept-line
+
+
+# fzf-tab configuration
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# zstyle ':fzf-tab:*' disabled-on any
+# zstyle ':fzf-tab:complete:cd:*' disabled-on none 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
