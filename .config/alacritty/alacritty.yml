@@ -329,8 +329,8 @@ mouse_bindings:
 # in the order they were defined in.
 key_bindings:
   - { key: E,         mods: Control, chars: "\x01e"  } # modify tmux configuration
-  - { key: X,         mods: Control, chars: "\x01\x2d"  } # split pane vertically
-  - { key: Q,         mods: Control, chars: "\x01\x5f"  } # split pane horizontally
+  - { key: X,         mods: Control, chars: "\x01-"  } # split pane vertically
+  - { key: Q,         mods: Control, chars: "\x01_"  } # split pane horizontally
   - { key: H,         mods: Control, chars: "\x01h"  } # switch to left pane
   - { key: L,         mods: Control, chars: "\x01l"  } # switch to right pane
   - { key: J,         mods: Control, chars: "\x01j"  } # switch to pane above
@@ -340,16 +340,16 @@ key_bindings:
   - { key: Up,        mods: Control, chars: "\x01J"  } # expand pane to the upper side
   - { key: Down,      mods: Control, chars: "\x01K"  } # expand pane to the beneath side
   - { key: W,         mods: Control, chars: "\x01c"  } # new window
-  - { key: Y,         mods: Control, chars: "\x01\x08"  } # goto previous window 
-  - { key: U,         mods: Control, chars: "\x01\x0c"  } # goto next window
+  - { key: Y,         mods: Control, chars: "\x01="  } # goto previous window 
+  - { key: U,         mods: Control, chars: "\x01+"  } # goto next window
   - { key: S,         mods: Control, chars: "\x01\x03"  } # new session
-  - { key: V,         mods: Control, chars: "\x01\x28"  } # goto previous session
-  - { key: N,         mods: Control, chars: "\x01\x29"  } # goto next session
+  - { key: V,         mods: Control, chars: "\x01("  } # goto previous session
+  - { key: N,         mods: Control, chars: "\x01)"  } # goto next session
   - { key: Z,         mods: Control, chars: "\x01z"  } # zoom pane (maximize pane)
   - { key: T,         mods: Control, chars: "\x01t"  } # show time
   - { key: M,         mods: Control, chars: "\x01m"  } # toggle mouse mode
   - { key: P,         mods: Control, chars: "\x01p"  } # display pane number for choosing 
-  - { key: Space,     mods: Control, chars: "\x01\x24"  } # rename session 
+  - { key: Space,     mods: Control, chars: "\x01$"  } # rename session 
   - { key: B,         mods: Control, chars: "\x01w"  } # show session menu
   
   - { key: Paste,                                       action: Paste          }

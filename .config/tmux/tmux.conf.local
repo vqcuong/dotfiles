@@ -386,6 +386,9 @@ bind C-a send-prefix
 
 unbind '"'
 unbind '%'
+unbind '+'
+unbind C-h
+unbind C-l
 #unbind Up
 #unbind Down
 #unbind Left
@@ -404,6 +407,9 @@ bind -r H resize-pane -L 1  # expand pane to the left
 bind -r J resize-pane -U 1  # expand pane upwards
 bind -r K resize-pane -D 1  # expand pane downwards 
 bind -r L resize-pane -R 1  # expand pane to the right 
+
+bind -r = previous-window # select previous window
+bind -r + next-window     # select next window
 
 set -g display-panes-time 2000
 #end_mycustom
