@@ -2,6 +2,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+eval $(/opt/homebrew/bin/brew shellenv)
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH="$ZDOTDIR/ohmyzsh"
@@ -10,14 +11,12 @@ export ZLE_RPROMPT_INDENT=0
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-    aliases
     auto-ls
     aws
     conda-zsh-completion
     copybuffer
     docker
     docker-compose
-    fd
     forgit
     fzf-tab
     git
@@ -40,19 +39,20 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='k|kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern|kubeseal|skaffold|kubent|kubecolor|cmctl|sparkctl'
 
 # User configuration
-eval $(/opt/homebrew/bin/brew shellenv)
 eval $(thefuck --alias)
+source ${ZDOTDIR:-$HOME}/.alias
+source <(k3d completion zsh)
+
+
+# ohmyzsh plugins customization
+# forgit
 export FORGIT_NO_ALIASES=true
+# zsh-autosuggestions
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
-source ${ZDOTDIR:-$HOME}/.alias
-source <(k3d completion zsh)
-
-# zsh-autosuggestions configuration
-
-# zsh-autocomplete configuration
+# zsh-autocomplete
 zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
@@ -60,9 +60,7 @@ zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
 # bindkey -M menuselect '\r' .accept-line
-
-
-# fzf-tab configuration
+# fzf-tab
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -86,7 +84,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-pfetch
-
+# enable fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pfetch
+
+# export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
+# eval "$(oh-my-posh completion zsh)"
+# eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/marcduiker.omp.json)"
 # eval "$(starship init zsh)"

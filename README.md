@@ -29,11 +29,11 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 ## Zsh plugins
 - [auto-ls](https://github.com/vqcuong/auto-ls)
 - [conda-zsh-completion](https://github.com/conda-incubator/conda-zsh-completion)
-- [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
 - [forgit](https://github.com/wfxr/forgit)
 - [fzf-tab](https://github.com/Aloxaf/fzf-tab)
 - [oh-my-matrix](https://github.com/amstrad/oh-my-matrix)
 - [ssh-connect](https://github.com/gko/ssh-connect)
+- [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
 - [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
