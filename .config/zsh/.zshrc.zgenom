@@ -7,41 +7,58 @@ _setup_powerlevel10k "${ZDOTDIR:-$HOME}/.powerlevel10k"
 
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
-export ZSH="$ZDOTDIR/ohmyzsh"
 export ZLE_RPROMPT_INDENT=0
 
-plugins=(
-  auto-ls
-  aws
-  conda-zsh-completion
-  copybuffer
-  docker
-  docker-compose
-  exa-zsh-completion
-  forgit
-  fzf-tab
-  git
-  history
-  kubectl
-  python
-  sudo
-  terraform
-  fast-syntax-highlighting
-  zsh-autosuggestions
-  # zsh-autocomplete
-)
+function _setup_zgenom() {
+  [[ -r $1/zgenom.zsh ]] ||
+    git clone https://github.com/jandamm/zgenom.git $1
+  source $1/zgenom.zsh
+}
+_setup_zgenom ${ZDOTDIR:-HOME}/.zgenom 
 
-source $ZSH/oh-my-zsh.sh
+zgenom autoupdate
 
-# ohmyzsh plugins customization
-# forgit
+if ! zgenom saved; then
+  echo "Creating a zgenom save"
+  zgenom ohmyzsh
+
+  # plugins
+  zgenom ohmyzsh plugins/aws
+  zgenom ohmyzsh plugins/copybuffer
+  # zgenom ohmyzsh plugins/docker
+  # zgenom ohmyzsh plugins/docker-compose
+  zgenom ohmyzsh plugins/git
+  zgenom ohmyzsh plugins/history
+  zgenom ohmyzsh plugins/kubectl
+  zgenom ohmyzsh plugins/python
+  zgenom ohmyzsh plugins/sudo
+  zgenom ohmyzsh plugins/terraform
+  zgenom ohmyzsh plugins/colorize
+
+  # just load the completions
+  zgenom ohmyzsh --completion plugins/docker
+  zgenom ohmyzsh --completion plugins/docker-compose
+
+  zgenom load vqcuong/auto-ls
+  zgenom load vqcuong/exa-zsh-completion
+  zgenom load conda-incubator/conda-zsh-completion
+
+  zgenom load wfxr/forgit
+  zgenom load Aloxaf/fzf-tab
+  zgenom load zdharma-continuum/fast-syntax-highlighting
+  zgenom load zsh-users/zsh-autosuggestions
+  # zgenom load marlonrichert/zsh-autocomplete
+  # zgenom load zsh-users/zsh-completions
+
+  zgenom save
+  zgenom compile ${ZDOTDIR:-$HOME}/.zshrc
+  zgenom compile $ZDOTDIR
+fi
+
+ZSH_COLORIZE_TOOL=chroma
+
 export FORGIT_NO_ALIASES=true
-# zsh-autosuggestions
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-unset ZSH_AUTOSUGGEST_USE_ASYNC
-# fzf-tab
+
 # zstyle ':completion:*:git-checkout:*' sort false
 # zstyle ':completion:*:descriptions' format '[%d]'
 # zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -49,7 +66,12 @@ zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 # zstyle ':fzf-tab:*' disabled-on any
 # zstyle ':fzf-tab:complete:cd:*' disabled-on none
-# zsh-autocomplete
+
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+unset ZSH_AUTOSUGGEST_USE_ASYNC
+
 # zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
 # zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
@@ -58,7 +80,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 #   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
 #   local key=
 #   for key in $up[@]; do
-#     bindkey "$key" .autosuggest-orig-1-up-line-or-search 
+#     bindkey "$key" up-history 
 #   done
 #   for key in $down[@]; do
 #     bindkey "$key" down-history
@@ -94,13 +116,6 @@ unset __conda_setup
 
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
-
-# pfetch
-
-# export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
-# eval "$(oh-my-posh completion zsh)"
-# eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/marcduiker.omp.json)"
-# eval "$(starship init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

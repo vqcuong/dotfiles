@@ -1,3 +1,18 @@
+function _setup_zi() {
+	if [[ ! -f $1/bin/zi.zsh ]]; then
+		print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+		command mkdir -p $1 && command chmod go-rwX $1
+		command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi $1/bin && \
+			print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+			print -P "%F{160}▓▒░ The clone has failed.%f%b"
+	fi
+	source $1/bin/zi.zsh
+	autoload -Uz _zi
+	(( ${+_comps} )) && _comps[zi]=_zi
+	zicompinit
+}
+_setup_zi ${ZDOTDIR:-$HOME}/.zi
+
 function _setup_powerlevel10k() {
   () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
   [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
@@ -7,67 +22,52 @@ _setup_powerlevel10k "${ZDOTDIR:-$HOME}/.powerlevel10k"
 
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
-export ZSH="$ZDOTDIR/ohmyzsh"
 export ZLE_RPROMPT_INDENT=0
 
-plugins=(
-  auto-ls
-  aws
-  conda-zsh-completion
-  copybuffer
-  docker
-  docker-compose
-  exa-zsh-completion
-  forgit
-  fzf-tab
-  git
-  history
-  kubectl
-  python
-  sudo
-  terraform
-  fast-syntax-highlighting
-  zsh-autosuggestions
-  # zsh-autocomplete
-)
+zi snippet OMZP::aws
+zi snippet OMZP::copybuffer
+# zi snippet OMZP::docker
+zi snippet OMZP::docker-compose
+zi snippet OMZP::git
+zi snippet OMZP::history
+zi snippet OMZP::kubectl
+zi snippet OMZP::python
+zi snippet OMZP::sudo
+zi snippet OMZP::terraform
 
-source $ZSH/oh-my-zsh.sh
+zi light vqcuong/auto-ls
+zi light vqcuong/exa-zsh-completion
 
-# ohmyzsh plugins customization
-# forgit
+zi light wfxr/forgit
+zi light Aloxaf/fzf-tab
+zi light zdharma-continuum/fast-syntax-highlighting
+zi light zsh-users/zsh-autosuggestions
+zi light marlonrichert/zsh-autocomplete
+
 export FORGIT_NO_ALIASES=true
-# zsh-autosuggestions
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
-# fzf-tab
-# zstyle ':completion:*:git-checkout:*' sort false
-# zstyle ':completion:*:descriptions' format '[%d]'
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-# zstyle ':fzf-tab:*' disabled-on any
-# zstyle ':fzf-tab:complete:cd:*' disabled-on none
-# zsh-autocomplete
-# zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
-# zstyle ':autocomplete:*history*:*' insert-unambiguous yes
-# zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-# () {
-#   local -a prefix=( '\e'{\[,O} )
-#   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
-#   local key=
-#   for key in $up[@]; do
-#     bindkey "$key" .autosuggest-orig-1-up-line-or-search 
-#   done
-#   for key in $down[@]; do
-#     bindkey "$key" down-history
-#   done
-# }
-# bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-# bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
-# bindkey -M menuselect '\r' .accept-line
+zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+() {
+  local -a prefix=( '\e'{\[,O} )
+  local -a up=( ${^prefix}A ) down=( ${^prefix}B )
+  local key=
+  for key in $up[@]; do
+    bindkey "$key" .autosuggest-orig-1-up-line-or-search 
+  done
+  for key in $down[@]; do
+    bindkey "$key" down-history
+  done
+}
 
 # User configuration
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -94,13 +94,6 @@ unset __conda_setup
 
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
-
-# pfetch
-
-# export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
-# eval "$(oh-my-posh completion zsh)"
-# eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/marcduiker.omp.json)"
-# eval "$(starship init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
