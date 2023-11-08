@@ -21,6 +21,7 @@ plugins=(
   forgit
   fzf-tab
   git
+  git-open
   history
   kubectl
   python
