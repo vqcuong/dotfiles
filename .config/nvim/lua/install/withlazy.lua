@@ -48,7 +48,7 @@ require("lazy").setup({
 	"nvimtools/none-ls.nvim", -- a replacement for null-ls which was archived on github
 	-- "jose-elias-alvarez/null-ls.nvim",
 	"jay-babu/mason-null-ls.nvim",
-	"stevearc/conform.nvim",
+	-- "stevearc/conform.nvim",
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -91,4 +91,7 @@ require("lazy").setup({
 		version = "2.*",
 	},
 	"goolord/alpha-nvim",
+  "smjonas/inc-rename.nvim",
+  "roobert/search-replace.nvim",
+  -- "ibhagwan/fzf-lua",
 })

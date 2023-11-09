@@ -25,7 +25,7 @@ picker.setup({
 			buftype = {
 				"nofile",
 				"terminal",
-				"help",
+				-- "help",
 			},
 		},
 	},

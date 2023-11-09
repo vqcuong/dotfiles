@@ -1,6 +1,7 @@
 vim.cmd("autocmd!")
 
 vim.opt.mouse = ""
+vim.opt.guicursor = "i-ci:block-blinkwait300-blinkon200-blinkoff150"
 -- for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
