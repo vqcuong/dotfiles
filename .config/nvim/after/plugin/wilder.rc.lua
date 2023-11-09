@@ -74,17 +74,17 @@ wilder.set_option(
 	-- 		gradient = gradient,
 	-- 	},
 	-- 	border = "rounded",
-	--    max_height = "65%",
-	--    min_height = "20%",
-	--    max_width = "50%",
-	--    min_width = "20%",
-	--    prompt_position = 'top',
+	-- 	max_height = "65%",
+	-- 	min_height = "20%",
+	-- 	max_width = "50%",
+	-- 	min_width = "20%",
+	-- 	prompt_position = "top",
 	-- 	highlighter = wilder.highlighter_with_gradient({
 	-- 		wilder.basic_highlighter(),
 	-- 	}),
 	-- 	left = { " ", wilder.popupmenu_devicons() },
 	-- 	pumblend = 10,
-	-- })),
+	-- }))
 	wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
 		highlights = {
 			gradient = gradient,
