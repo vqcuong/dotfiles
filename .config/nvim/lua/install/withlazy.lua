@@ -94,4 +94,5 @@ require("lazy").setup({
   "smjonas/inc-rename.nvim",
   "roobert/search-replace.nvim",
   -- "ibhagwan/fzf-lua",
+  "gelguy/wilder.nvim"
 })
