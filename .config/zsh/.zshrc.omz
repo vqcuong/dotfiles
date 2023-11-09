@@ -1,10 +1,3 @@
-function _setup_powerlevel10k() {
-  () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
-  [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
-  source $1/powerlevel10k.zsh-theme
-}
-_setup_powerlevel10k "${ZDOTDIR:-$HOME}/.powerlevel10k" 
-
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH="$ZDOTDIR/ohmyzsh"
@@ -43,13 +36,11 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
 # fzf-tab
-# zstyle ':completion:*:git-checkout:*' sort false
-# zstyle ':completion:*:descriptions' format '[%d]'
-# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-# zstyle ':fzf-tab:*' disabled-on any
-# zstyle ':fzf-tab:complete:cd:*' disabled-on none
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' popup-min-size 60 8 
+zstyle ':fzf-tab:*' popup-pad 1 1 
 # zsh-autocomplete
 # zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
@@ -59,7 +50,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 #   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
 #   local key=
 #   for key in $up[@]; do
-#     bindkey "$key" .autosuggest-orig-1-up-line-or-search 
+#     bindkey "$key" .autosuggest-orig-1-up-line-or-search
 #   done
 #   for key in $down[@]; do
 #     bindkey "$key" down-history
@@ -73,25 +64,50 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 # User configuration
 eval $(/opt/homebrew/bin/brew shellenv)
 eval $(thefuck --alias)
-if [ -f ${ZDOTDIR:-$HOME}/.aliases ]; then
-    source ${ZDOTDIR:-$HOME}/.aliases
-fi
+() { [[ -f $1 ]] && source $1 } ${ZDOTDIR-$HOME}/.aliases
 source <(k3d completion zsh)
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/cuongok/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/Users/cuongok/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/cuongok/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/cuongok/miniforge3/bin:$PATH"
-    fi
+  if [ -f "/Users/cuongok/miniforge3/etc/profile.d/conda.sh" ]; then
+    . "/Users/cuongok/miniforge3/etc/profile.d/conda.sh"
+  else
+    export PATH="/Users/cuongok/miniforge3/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+function _setup_pyenv() {
+  export PYENV_ROOT="$HOME/.apps/pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  if ! command -v pyenv &>/dev/null; then
+    mkdir -p $(dirname $PYENV_ROOT)
+    curl https://pyenv.run | bash
+    # git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT
+  fi
+  eval "$(pyenv init -)"
+}
+_setup_pyenv
+
+function _setup_goenv(){
+  export GOENV_ROOT="$HOME/.apps/goenv"
+  export GOENV_GOPATH_PREFIX="$HOME/.apps/go"
+  export GOENV_GOMOD_VERSION_ENABLE=1
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  if ! command -v goenv &>/dev/null; then
+    mkdir -p $(dirname $GOENV_ROOT)
+    git clone https://github.com/go-nv/goenv.git $GOENV_ROOT
+  fi
+  eval "$(goenv init -)"
+  export PATH="$GOENV_ROOT/shims:$PATH"
+}
+_setup_goenv
+
 
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
@@ -102,6 +118,12 @@ unset __conda_setup
 # eval "$(oh-my-posh completion zsh)"
 # eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/marcduiker.omp.json)"
 # eval "$(starship init zsh)"
+function _setup_powerlevel10k() {
+  () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
+  source $1/powerlevel10k.zsh-theme
+}
+_setup_powerlevel10k "${ZDOTDIR:-$HOME}/.powerlevel10k"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

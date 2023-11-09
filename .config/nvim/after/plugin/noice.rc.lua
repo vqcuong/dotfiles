@@ -11,6 +11,9 @@ noice.setup({
 			["cmp.entry.get_documentation"] = true,
 		},
 	},
+  messages = {
+    enabled = false,
+  },
 	presets = {
 		bottom_search = true, -- use a classic bottom cmdline for search
 		command_palette = false, -- position the cmdline and popupmenu together

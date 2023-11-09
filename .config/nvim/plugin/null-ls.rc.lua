@@ -52,7 +52,9 @@ null_ls.setup({
 		-- null_ls.builtins.diagnostics.yamllint,
 		-- null_ls.builtins.diagnostics.hadolint,
 
-		null_ls.builtins.formatting.beautysh,
+		null_ls.builtins.formatting.beautysh.with({
+      extra_args = {"--indent-size", "2"}
+    }),
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.stylua,
