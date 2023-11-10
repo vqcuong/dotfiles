@@ -5,6 +5,12 @@ vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5
 vim.opt.background = "dark"
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+	command = [[
+    highlight CursorLine guibg=#43595e cterm=underline
+  ]],
+})
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
   augroup highlight_yank
