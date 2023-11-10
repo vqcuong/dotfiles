@@ -1,73 +1,78 @@
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZLE_RPROMPT_INDENT=0
+
+export ZSH="$ZDOTDIR/ohmyzsh"
+
+plugins=(
+  auto-ls
+  aws
+  conda-zsh-completion
+  copybuffer
+  docker
+  docker-compose
+  exa-zsh-completion
+  forgit
+  fzf-tab
+  git
+  git-open
+  history
+  kubectl
+  python
+  sudo
+  terraform
+  fast-syntax-highlighting
+  zsh-autosuggestions
+  # zsh-autocomplete
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# ohmyzsh plugins customization
+# forgit
+export FORGIT_NO_ALIASES=true
+# zsh-autosuggestions
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+unset ZSH_AUTOSUGGEST_USE_ASYNC
+# fzf-tab
+zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' popup-min-size 60 8
+zstyle ':fzf-tab:*' popup-pad 1 1
+# zsh-autocomplete
+# zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
+# zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+# zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+# () {
+#   local -a prefix=( '\e'{\[,O} )
+#   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
+#   local key=
+#   for key in $up[@]; do
+#     bindkey "$key" .autosuggest-orig-1-up-line-or-search
+#   done
+#   for key in $down[@]; do
+#     bindkey "$key" down-history
+#   done
+# }
+# bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+# bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
+# bindkey -M menuselect '\r' .accept-line
+
+# User configuration
 eval $(/opt/homebrew/bin/brew shellenv)
 eval $(thefuck --alias)
 source <(k3d completion zsh)
+# enable fzf
+[ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
+# additional shell
+[[ -d $HOME/.config/shell ]] && for f in $HOME/.config/shell/*; do
+  source $f
+done
 
-function _enable_ohmyzsh(){
-  export ZSH="$ZDOTDIR/ohmyzsh"
-
-  plugins=(
-    auto-ls
-    aws
-    conda-zsh-completion
-    copybuffer
-    docker
-    docker-compose
-    exa-zsh-completion
-    forgit
-    fzf-tab
-    git
-    git-open
-    history
-    kubectl
-    python
-    sudo
-    terraform
-    fast-syntax-highlighting
-    zsh-autosuggestions
-    # zsh-autocomplete
-  )
-
-  source $ZSH/oh-my-zsh.sh
-
-  # ohmyzsh plugins customization
-  # forgit
-  export FORGIT_NO_ALIASES=true
-  # zsh-autosuggestions
-  export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-  export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
-  export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-  unset ZSH_AUTOSUGGEST_USE_ASYNC
-  # fzf-tab
-  zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
-  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-  zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-  zstyle ':fzf-tab:*' popup-min-size 60 8
-  zstyle ':fzf-tab:*' popup-pad 1 1
-  # zsh-autocomplete
-  # zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
-  # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
-  # zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-  # () {
-  #   local -a prefix=( '\e'{\[,O} )
-  #   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
-  #   local key=
-  #   for key in $up[@]; do
-  #     bindkey "$key" .autosuggest-orig-1-up-line-or-search
-  #   done
-  #   for key in $down[@]; do
-  #     bindkey "$key" down-history
-  #   done
-  # }
-  # bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-  # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-  # bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
-  # bindkey -M menuselect '\r' .accept-line
-}
-
-_enable_ohmyzsh
 
 function _setup_conda(){
   conda_prefix=${1-$HOME/.apps/mambaforge}
@@ -135,21 +140,12 @@ function _setup_goenv(){
 }
 _setup_goenv
 
-
-# enable fzf
-[ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
-
 # pfetch
-
-# additional shell
-[[ -d $HOME/.config/shell ]] && for f in $HOME/.config/shell/*; do
-  source $f
-done
-
 # export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
 # eval "$(oh-my-posh completion zsh)"
 # eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/marcduiker.omp.json)"
 # eval "$(starship init zsh)"
+
 function _setup_powerlevel10k() {
   () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
@@ -164,3 +160,4 @@ function _enable_powerlevel10k(){
   [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 }
 _enable_powerlevel10k
+
