@@ -55,7 +55,7 @@ local function my_on_attach(bufnr)
 	add_key("n", "q", api.tree.close, "Close Tree")
 	add_key("n", "R", api.tree.reload, "Refresh Tree")
 	add_key("n", "S", api.tree.search_node, "Search")
-	add_key("n", "D", api.tree.toggle_hidden_filter, "Filter Dotfiles")
+	add_key("n", "H", api.tree.toggle_hidden_filter, "Filter Dotfiles")
 	add_key("n", "B", api.tree.toggle_no_buffer_filter, "Filter No Buffer")
 	add_key("n", "U", api.tree.toggle_custom_filter, "Filter Hidden")
 
@@ -104,7 +104,29 @@ end
 
 tree.setup({
 	on_attach = my_on_attach,
+	view = {
+		width = {
+			min = 20,
+			max = 30,
+			padding = 0,
+		},
+	},
+	renderer = {
+		full_name = true,
+		root_folder_label = "::s?$?",
+		highlight_opened_files = "icon",
+		highlight_modified = "name",
+	},
+	update_focused_file = {
+		enable = true,
+	},
+	system_open = {
+		cmd = "code",
+	},
 	actions = {
+		expand_all = {
+			exclude = { ".git", ".vscode", ".idea" },
+		},
 		open_file = {
 			window_picker = {
 				enable = true,
