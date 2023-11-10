@@ -39,8 +39,8 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:*' popup-min-size 60 8 
-zstyle ':fzf-tab:*' popup-pad 1 1 
+zstyle ':fzf-tab:*' popup-min-size 60 8
+zstyle ':fzf-tab:*' popup-pad 1 1
 # zsh-autocomplete
 # zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
@@ -67,20 +67,45 @@ eval $(thefuck --alias)
 () { [[ -f $1 ]] && source $1 } ${ZDOTDIR-$HOME}/.aliases
 source <(k3d completion zsh)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/cuongok/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "/Users/cuongok/miniforge3/etc/profile.d/conda.sh" ]; then
-    . "/Users/cuongok/miniforge3/etc/profile.d/conda.sh"
-  else
-    export PATH="/Users/cuongok/miniforge3/bin:$PATH"
+function _setup_conda(){
+  conda_prefix=${1-$HOME/.apps/mambaforge}
+  if [[ -d $conda_prefix ]]; then
+    _eval_conda $conda_prefix
   fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+  if ! command -v conda &>/dev/null; then
+    rm -rf $conda_prefix
+    os_name=$(uname -s)
+    os_arch=$(uname -m)
+    tag_name=$(http https://api.github.com/repos/conda-forge/miniforge/releases/latest | jq -r '.tag_name')
+    http -d https://github.com/conda-forge/miniforge/releases/download/${tag_name}/Mambaforge-${os_name}-${os_arch}.sh -o /tmp/mambaforge.sh
+    bash /tmp/mambaforge.sh -b -p $conda_prefix
+    _eval_conda $conda_prefix
+  fi
+}
+
+function _eval_conda(){
+  conda_prefix=$1
+  # >>> conda initialize >>>
+  # !! Contents within this block are managed by 'conda init' !!
+  __conda_setup="$("${conda_prefix}/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+  else
+    if [ -f "${conda_prefix}/etc/profile.d/conda.sh" ]; then
+      . "${conda_prefix}/etc/profile.d/conda.sh"
+    else
+      export PATH="${conda_prefix}/bin:$PATH"
+    fi
+  fi
+  unset __conda_setup
+  if [ -f "${conda_prefix}/etc/profile.d/mamba.sh" ]; then
+    . "${conda_prefix}/etc/profile.d/mamba.sh"
+  fi
+  # <<< conda initialize <<<
+}
+
+_setup_conda
+
 
 function _setup_pyenv() {
   export PYENV_ROOT="$HOME/.apps/pyenv"
@@ -111,6 +136,11 @@ _setup_goenv
 
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
+
+# customize commands
+[[ -d $HOME/.config/shell ]] && for f in $HOME/.config/shell/*; do
+  source $f
+done
 
 # pfetch
 
