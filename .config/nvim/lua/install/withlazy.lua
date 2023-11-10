@@ -91,8 +91,13 @@ require("lazy").setup({
 		version = "2.*",
 	},
 	"goolord/alpha-nvim",
-  "smjonas/inc-rename.nvim",
-  "roobert/search-replace.nvim",
-  -- "ibhagwan/fzf-lua",
-  "gelguy/wilder.nvim"
+	-- {
+	-- 	"nvimdev/dashboard-nvim",
+	-- 	event = "VimEnter",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- },
+	"smjonas/inc-rename.nvim",
+	"roobert/search-replace.nvim",
+	-- "ibhagwan/fzf-lua",
+	"gelguy/wilder.nvim",
 })
