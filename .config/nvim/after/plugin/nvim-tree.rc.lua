@@ -113,7 +113,7 @@ tree.setup({
 	},
 	renderer = {
 		full_name = true,
-		root_folder_label = "::s?$?",
+		root_folder_label = ":~:s?$?",
 		highlight_opened_files = "icon",
 		highlight_modified = "name",
 	},
