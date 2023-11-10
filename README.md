@@ -61,12 +61,11 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 git clone git@github.com:vqcuong/.my-dotenv.git $HOME/.config/.my-dotenv
 
 # setup
-ln -sf $HOME/.config/.my-dotenv/.config/shell $HOME/.config/
+ln -sf $HOME/.config/.my-dotenv/.hyper.js $HOME
+ln -sf $HOME/.config/.my-dotenv/.vimrc $HOME
 ln -sf $HOME/.config/.my-dotenv/.config/nvim $HOME/.config/
+ln -sf $HOME/.config/.my-dotenv/.config/shell $HOME/.config/
 ln -sf $HOME/.config/.my-dotenv/.config/alacritty $HOME/.config/
 ln -sf $HOME/.config/.my-dotenv/.config/tmux/tmux.conf.local $HOME/.config/tmux/tmux.conf.local
 ln -sf $HOME/.config/.my-dotenv/.config/zsh/.zshrc.omz ${ZDOTDIR:-$HOME}/.zshrc
-ln -sf $HOME/.config/.my-dotenv/.config/zsh/.aliases ${ZDOTDIR:-$HOME} 
-ln -sf $HOME/.config/.my-dotenv/.vimrc $HOME
-ln -sf $HOME/.config/.my-dotenv/.hyper.js $HOME
 ```
