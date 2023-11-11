@@ -46,9 +46,9 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
+	"jay-babu/mason-null-ls.nvim",
 	"nvimtools/none-ls.nvim", -- a replacement for null-ls which was archived on github
 	-- "jose-elias-alvarez/null-ls.nvim",
-	"jay-babu/mason-null-ls.nvim",
 	-- "stevearc/conform.nvim",
 	{
 		"folke/noice.nvim",
@@ -97,7 +97,9 @@ require("lazy").setup({
 	"gelguy/wilder.nvim",
 	"RRethy/vim-illuminate",
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
-  "levouh/tint.nvim",
+	"levouh/tint.nvim",
+	-- "terrortylor/nvim-comment",
+	-- "rktjmp/lush.nvim",
 	-- "ibhagwan/fzf-lua",
 	-- {
 	-- 	"nvimdev/dashboard-nvim",
