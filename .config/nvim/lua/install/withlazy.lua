@@ -101,14 +101,14 @@ require("lazy").setup({
 				end,
 				desc = "Flash Treesitter",
 			},
-      {
-        "R",
-        mode = {"x", "o"},
-        function ()
-          require("flash").treesitter_search()
-        end,
-        desc = "Flash Treesitter Search"
-      }
+			{
+				"R",
+				mode = { "x", "o" },
+				function()
+					require("flash").treesitter_search()
+				end,
+				desc = "Flash Treesitter Search",
+			},
 		},
 	},
 	{
@@ -129,6 +129,7 @@ require("lazy").setup({
 	{ "echasnovski/mini.splitjoin", version = "*" },
 	-- { "echasnovski/mini.indentscope", version = "*" },
 
+	-- "ggandor/leap.nvim"
 	-- "RRethy/vim-illuminate",
 	-- "folke/todo-comments.nvim",
 	-- "folke/trouble.nvim",
