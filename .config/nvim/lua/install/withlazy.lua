@@ -98,6 +98,29 @@ require("lazy").setup({
 	"RRethy/vim-illuminate",
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
 	"levouh/tint.nvim",
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+		},
+	},
 	-- "terrortylor/nvim-comment",
 	-- "rktjmp/lush.nvim",
 	-- "ibhagwan/fzf-lua",
