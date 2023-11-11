@@ -78,7 +78,7 @@ local function my_on_attach(bufnr)
 	add_key("n", "J", api.node.navigate.sibling.last, "Last Sibling")
 	add_key("n", "P", api.node.navigate.parent, "Parent Directory")
 	add_key("n", "<BS>", api.node.navigate.parent_close, "Close Directory")
-	add_key("n", "s", api.node.run.system, "Run System")
+	add_key("n", "vv", api.node.run.system, "Open In Vscode")
 	add_key("n", ".", api.node.run.cmd, "Run Command")
 
 	add_key("n", "nn", api.fs.create, "New")
