@@ -81,7 +81,36 @@ require("lazy").setup({
 	{ "s1n7ax/nvim-window-picker", name = "window-picker", event = "VeryLazy", version = "2.*" },
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
 	{ "phaazon/hop.nvim", event = "VeryLazy" },
-	{ "folke/flash.nvim", event = "VeryLazy", key = {} },
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		key = {
+			{
+				"f",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash Jump",
+			},
+			{
+				"F",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+      {
+        "R",
+        mode = {"x", "o"},
+        function ()
+          require("flash").treesitter_search()
+        end,
+        desc = "Flash Treesitter Search"
+      }
+		},
+	},
 	{
 		"NeogitOrg/neogit",
 		dependencies = {
