@@ -36,7 +36,7 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 local function opts(desc)
-	return { desc = desc, noremap = true, silent = true }
+  return { desc = desc, noremap = true, silent = true }
 end
 keymap.set("n", "<Tab>", ">>", opts("Indent Line"))
 keymap.set("n", "<S-Tab>", "<<", opts("De-indent Line"))
