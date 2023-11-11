@@ -9,7 +9,7 @@ window:
   title: Alacritty
   dynamic_title: true
   resize_increments: false
-  option_as_alt: None
+  option_as_alt: OnlyLeft 
 
 scrolling:
   history: 10000
@@ -328,29 +328,29 @@ mouse_bindings:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: E,         mods: Control, chars: "\x01e"  } # modify tmux configuration
-  - { key: X,         mods: Control, chars: "\x01-"  } # split pane vertically
-  - { key: Q,         mods: Control, chars: "\x01_"  } # split pane horizontally
-  - { key: H,         mods: Control, chars: "\x01h"  } # switch to left pane
-  - { key: L,         mods: Control, chars: "\x01l"  } # switch to right pane
-  - { key: J,         mods: Control, chars: "\x01j"  } # switch to pane above
-  - { key: K,         mods: Control, chars: "\x01k"  } # switch to pane below
-  - { key: Left,      mods: Control, chars: "\x01H"  } # expand pane to the left side
-  - { key: Right,     mods: Control, chars: "\x01L"  } # expand pane to the right side
-  - { key: Up,        mods: Control, chars: "\x01J"  } # expand pane to the upper side
-  - { key: Down,      mods: Control, chars: "\x01K"  } # expand pane to the beneath side
-  - { key: W,         mods: Control, chars: "\x01c"  } # new window
-  - { key: Y,         mods: Control, chars: "\x01="  } # goto previous window 
-  - { key: U,         mods: Control, chars: "\x01+"  } # goto next window
-  - { key: S,         mods: Control, chars: "\x01\x03"  } # new session
-  - { key: V,         mods: Control, chars: "\x01("  } # goto previous session
-  - { key: N,         mods: Control, chars: "\x01)"  } # goto next session
-  - { key: Z,         mods: Control, chars: "\x01z"  } # zoom pane (maximize pane)
-  - { key: T,         mods: Control, chars: "\x01t"  } # show time
-  - { key: M,         mods: Control, chars: "\x01m"  } # toggle mouse mode
-  - { key: P,         mods: Control, chars: "\x01p"  } # display pane number for choosing 
-  - { key: Space,     mods: Control, chars: "\x01$"  } # rename session 
-  - { key: B,         mods: Control, chars: "\x01w"  } # show session menu
+  - { key: E,         mods: Option, chars: "\x01e"      } # modify tmux configuration
+  - { key: X,         mods: Option, chars: "\x01-"      } # split pane vertically
+  - { key: Q,         mods: Option, chars: "\x01_"      } # split pane horizontally
+  - { key: H,         mods: Option, chars: "\x01h"      } # switch to left pane
+  - { key: L,         mods: Option, chars: "\x01l"      } # switch to right pane
+  - { key: J,         mods: Option, chars: "\x01j"      } # switch to pane above
+  - { key: K,         mods: Option, chars: "\x01k"      } # switch to pane below
+  - { key: Left,      mods: Option, chars: "\x01H"      } # expand pane to the left side
+  - { key: Right,     mods: Option, chars: "\x01L"      } # expand pane to the right side
+  - { key: Up,        mods: Option, chars: "\x01J"      } # expand pane to the upper side
+  - { key: Down,      mods: Option, chars: "\x01K"      } # expand pane to the beneath side
+  - { key: W,         mods: Option, chars: "\x01c"      } # new window
+  - { key: Y,         mods: Option, chars: "\x01="      } # goto previous window 
+  - { key: U,         mods: Option, chars: "\x01+"      } # goto next window
+  - { key: S,         mods: Option, chars: "\x01\x03"   } # new session
+  - { key: V,         mods: Option, chars: "\x01("      } # goto previous session
+  - { key: N,         mods: Option, chars: "\x01)"      } # goto next session
+  - { key: Z,         mods: Option, chars: "\x01z"      } # zoom pane (maximize pane)
+  - { key: T,         mods: Option, chars: "\x01t"      } # show time
+  - { key: M,         mods: Option, chars: "\x01m"      } # toggle mouse mode
+  - { key: P,         mods: Option, chars: "\x01q"      } # display pane number for choosing 
+  - { key: R,         mods: Option, chars: "\x01$"      } # rename session 
+  - { key: B,         mods: Option, chars: "\x01w"      } # show session menu
   
   - { key: Paste,                                       action: Paste          }
   - { key: Copy,                                        action: Copy           }
