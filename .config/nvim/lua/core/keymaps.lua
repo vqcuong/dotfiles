@@ -22,12 +22,13 @@ keymap.set("n", "s<Left>", ":vsplit<Return>")
 keymap.set("n", "s<Right>", ":vsplit<Return><C-w>w")
 keymap.set("n", "s<Up>", ":split<Return>")
 keymap.set("n", "s<Down>", ":split<Return><C-w>w")
+
 -- Move window
 keymap.set("n", "<Space>", "<C-w>w")
-keymap.set("", "hh", "<C-w>h")
-keymap.set("", "kk", "<C-w>k")
-keymap.set("", "jj", "<C-w>j")
-keymap.set("", "ll", "<C-w>l")
+keymap.set("", "g<Left>", "<C-w>h")
+keymap.set("", "g<Right>", "<C-w>l")
+keymap.set("", "g<Up>", "<C-w>j")
+keymap.set("", "g<Down>", "<C-w>k")
 
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")

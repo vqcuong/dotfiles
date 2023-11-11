@@ -10,3 +10,13 @@ flash.setup({
 		prefix = { { "Teleport ⚡", "FlashPromptIcon" } },
 	},
 })
+
+vim.keymap.set({ "n", "x", "o" }, "f", function()
+	flash.jump()
+end, { desc = "Flash Jump" })
+vim.keymap.set({ "n", "x", "o" }, "F", function()
+	flash.treesitter()
+end, { desc = "Flash Treesitter" })
+vim.keymap.set({ "x", "o" }, "R", function()
+	flash.treesitter_search()
+end, { desc = "Flash Treesitter Search" })

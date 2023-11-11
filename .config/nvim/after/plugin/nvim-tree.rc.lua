@@ -98,8 +98,8 @@ local function my_on_attach(bufnr)
 	add_key("n", "mv", api.marks.bulk.move, "Move Bookmarked")
 	add_key("n", "mm", api.marks.toggle, "Toggle Bookmark")
 
-	add_key("n", "F", api.live_filter.clear, "Clean Filter")
-	add_key("n", "f", api.live_filter.start, "Filter")
+	-- add_key("n", "F", api.live_filter.clear, "Clean Filter")
+	-- add_key("n", "f", api.live_filter.start, "Filter")
 end
 
 tree.setup({

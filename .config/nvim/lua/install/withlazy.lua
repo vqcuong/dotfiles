@@ -23,9 +23,7 @@ require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-path",
 	"hrsh7th/nvim-cmp",
-	{ "numToStr/Comment.nvim", lazy = false },
 	"nvim-lualine/lualine.nvim",
-	-- "feline-nvim/feline.nvim",
 	"numToStr/FTerm.nvim",
 	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
@@ -47,80 +45,68 @@ require("lazy").setup({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"jay-babu/mason-null-ls.nvim",
-	"nvimtools/none-ls.nvim", -- a replacement for null-ls which was archived on github
-	-- "jose-elias-alvarez/null-ls.nvim",
-	-- "stevearc/conform.nvim",
+	"nvimtools/none-ls.nvim", -- a replacement for jose-elias-alvarez/null-ls.nvim which was archived on github
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
+		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 	{ "windwp/nvim-autopairs", event = "InsertEnter" },
 	"norcalli/nvim-colorizer.lua",
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"windwp/nvim-ts-autotag",
-			"JoosepAlviste/nvim-ts-context-commentstring",
-		},
+		dependencies = { "windwp/nvim-ts-autotag" },
 	},
 	"nvim-treesitter/nvim-treesitter-context",
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
 	"nvim-telescope/telescope-file-browser.nvim",
+	{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
+			vim.opt.timeout = true
+			vim.opt.timeoutlen = 300
 		end,
 	},
 	"folke/zen-mode.nvim",
-	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		lazy = false,
-	},
-	{
-		"s1n7ax/nvim-window-picker",
-		name = "window-picker",
-		event = "VeryLazy",
-		version = "2.*",
-	},
 	"goolord/alpha-nvim",
 	"smjonas/inc-rename.nvim",
 	"roobert/search-replace.nvim",
 	"gelguy/wilder.nvim",
-	"RRethy/vim-illuminate",
-	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
+	"HiPhish/rainbow-delimiters.nvim",
+	"sindrets/diffview.nvim",
 	"levouh/tint.nvim",
+	{ "nvim-tree/nvim-tree.lua", version = "*", lazy = false },
+	{ "s1n7ax/nvim-window-picker", name = "window-picker", event = "VeryLazy", version = "2.*" },
+	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
+	{ "phaazon/hop.nvim", event = "VeryLazy" },
+	{ "folke/flash.nvim", event = "VeryLazy", key = {} },
 	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = {},
-		keys = {
-			{
-				"s",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").jump()
-				end,
-				desc = "Flash",
-			},
-			{
-				"S",
-				mode = { "n", "x", "o" },
-				function()
-					require("flash").treesitter()
-				end,
-				desc = "Flash Treesitter",
-			},
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
+			-- "ibhagwan/fzf-lua", -- optional
 		},
+		config = true,
 	},
+	{ "echasnovski/mini.animate", version = "*" },
+	{ "echasnovski/mini.bracketed", version = "*" },
+	{ "echasnovski/mini.comment", version = "*" },
+	{ "echasnovski/mini.cursorword", version = "*" },
+	{ "echasnovski/mini.move", version = "*" },
+	{ "echasnovski/mini.splitjoin", version = "*" },
+	-- { "echasnovski/mini.indentscope", version = "*" },
+
+	-- "RRethy/vim-illuminate",
+	-- "folke/todo-comments.nvim",
+	-- "folke/trouble.nvim",
+	-- "feline-nvim/feline.nvim",
+	-- "stevearc/conform.nvim",
+	-- "simrat39/symbols-outline.nvim"
+	-- "stevearc/aerial.nvim"
 	-- "terrortylor/nvim-comment",
 	-- "rktjmp/lush.nvim",
 	-- "ibhagwan/fzf-lua",
@@ -129,5 +115,9 @@ require("lazy").setup({
 	-- 	event = "VimEnter",
 	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- },
-	-- "folke/trouble.nvim",
+	-- {
+	-- 	"numToStr/Comment.nvim",
+	-- 	lazy = false,
+	-- 	dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+	-- },
 })
