@@ -1,4 +1,9 @@
-require("tint").setup({
+local status, tint = pcall(require, "tint")
+if not status then
+  return
+end
+
+tint.setup({
 	tint = -80,
 	saturation = 0.5,
 	transforms = require("tint").transforms.SATURATE_TINT,
