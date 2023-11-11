@@ -7,6 +7,6 @@ notify.setup({
 	background_colour = "#000000",
 })
 
-vim.keymap.set("n", "nc", function()
+vim.keymap.set("n", "nx", function()
 	notify.dismiss({ pending = true, silent = true })
 end, {desc = "Clear Notifications"})
