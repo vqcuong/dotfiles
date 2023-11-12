@@ -84,9 +84,10 @@ require("lazy").setup({
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		key = {
+		opts = {},
+		keys = {
 			{
-				"f",
+				"s",
 				mode = { "n", "x", "o" },
 				function()
 					require("flash").jump()
@@ -94,22 +95,23 @@ require("lazy").setup({
 				desc = "Flash Jump",
 			},
 			{
-				"F",
+				"S",
 				mode = { "n", "x", "o" },
 				function()
 					require("flash").treesitter()
 				end,
 				desc = "Flash Treesitter",
 			},
-			{
-				"R",
-				mode = { "x", "o" },
-				function()
-					require("flash").treesitter_search()
-				end,
-				desc = "Flash Treesitter Search",
-			},
 		},
+		config = function()
+			require("flash").setup({
+				modes = {
+					char = {
+						keys = { "s", "S" },
+					},
+				},
+			})
+		end,
 	},
 	{
 		"NeogitOrg/neogit",

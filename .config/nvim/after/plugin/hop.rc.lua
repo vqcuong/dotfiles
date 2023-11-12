@@ -10,10 +10,10 @@ hop.setup({
 	hint_position = positions.END,
 })
 
-vim.keymap.set("", "s", function()
+vim.keymap.set("", "f", function()
 	hop.hint_char1()
 end, { remap = true })
-vim.keymap.set("", "S", function()
+vim.keymap.set("", "F", function()
 	hop.hint_char2()
 end, { remap = true })
 vim.keymap.set("", "t", function()
