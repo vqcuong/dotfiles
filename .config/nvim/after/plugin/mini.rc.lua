@@ -1,5 +1,20 @@
 require("mini.animate").setup()
-require("mini.bracketed").setup()
+require("mini.bracketed").setup({
+	buffer = { suffix = "b", options = {} },
+	comment = { suffix = "", options = {} },
+	conflict = { suffix = "", options = {} },
+	diagnostic = { suffix = "d", options = {} },
+	file = { suffix = "f", options = {} },
+	indent = { suffix = "", options = {} },
+	jump = { suffix = "", options = {} },
+	location = { suffix = "", options = {} },
+	oldfile = { suffix = "o", options = {} },
+	quickfix = { suffix = "", options = {} },
+	treesitter = { suffix = "t", options = {} },
+	undo = { suffix = "u", options = {} },
+	window = { suffix = "w", options = {} },
+	yank = { suffix = "", options = {} },
+})
 require("mini.comment").setup()
 require("mini.cursorword").setup()
 -- require("mini.indentscope").setup({
