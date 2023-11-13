@@ -17,12 +17,19 @@ require("lazy").setup({
 	"folke/neodev.nvim",
 	"nvim-lua/plenary.nvim",
 	"nvim-tree/nvim-web-devicons",
+	"norcalli/nvim-colorizer.lua",
 	{ "akinsho/bufferline.nvim", version = "*" },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-path",
-	"hrsh7th/nvim-cmp",
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
+		},
+	},
 	"nvim-lualine/lualine.nvim",
 	"numToStr/FTerm.nvim",
 	"lewis6991/gitsigns.nvim",
@@ -42,25 +49,35 @@ require("lazy").setup({
 		end,
 	},
 	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"jay-babu/mason-null-ls.nvim",
 	"nvimtools/none-ls.nvim", -- a replacement for jose-elias-alvarez/null-ls.nvim which was archived on github
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"jay-babu/mason-null-ls.nvim",
+		},
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 	{ "windwp/nvim-autopairs", event = "InsertEnter" },
-	"norcalli/nvim-colorizer.lua",
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = { "windwp/nvim-ts-autotag" },
+		dependencies = {
+			"windwp/nvim-ts-autotag",
+			"nvim-treesitter/nvim-treesitter-context",
+		},
 	},
-	"nvim-treesitter/nvim-treesitter-context",
-	"nvim-telescope/telescope-file-browser.nvim",
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.4",
+		dependencies = {
+			"nvim-telescope/telescope-file-browser.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+	},
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -81,16 +98,6 @@ require("lazy").setup({
 	{ "s1n7ax/nvim-window-picker", name = "window-picker", event = "VeryLazy", version = "2.*" },
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
 	{ "phaazon/hop.nvim", event = "VeryLazy" },
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-		init = function()
-			vim.opt.foldcolumn = "1"
-			vim.opt.foldlevel = 99
-			vim.opt.foldlevelstart = 99
-			vim.opt.foldenable = true
-		end,
-	},
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -121,6 +128,16 @@ require("lazy").setup({
 					},
 				},
 			})
+		end,
+	},
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		init = function()
+			vim.opt.foldcolumn = "1"
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+			vim.opt.foldenable = true
 		end,
 	},
 	{
