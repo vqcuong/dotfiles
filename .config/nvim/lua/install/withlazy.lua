@@ -27,6 +27,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind.nvim",
 		},
 	},
 	"nvim-lualine/lualine.nvim",
@@ -38,7 +39,12 @@ require("lazy").setup({
 	"kdheepak/lazygit.nvim",
 	"onsails/lspkind.nvim",
 	"nvimdev/lspsaga.nvim",
-	{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "v2.*",
+		build = "make install_jsregexp",
+	},
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
