@@ -57,10 +57,10 @@ colors:
   normal:
     black:   '#1d1f21'
     red:     '#ff003c'
-    green:   '#ffbb00'
-    yellow:  '#00ff73'
+    green:   '#00d9ff'
+    yellow:  '#ffb98a'
     blue:    '#58acf5'
-    magenta: '#b294bb'
+    magenta: '#a2ff00'
     cyan:    '#eb66ff'
     white:   '#fdfdfd'
   bright:
