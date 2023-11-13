@@ -12,11 +12,11 @@ catppuccin.setup({
 	transparent_background = true,
 	show_end_of_buffer = false,
 	term_colors = false,
-	dim_inactive = {
-		enabled = false,
-		shade = "dark",
-		percentage = 0.15,
-	},
+	-- dim_inactive = {
+	-- 	enabled = false,
+	-- 	shade = "dark",
+	-- 	percentage = 0.15,
+	-- },
 	no_italic = false,
 	no_bold = false,
 	no_underline = false,
