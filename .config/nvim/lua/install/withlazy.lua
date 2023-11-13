@@ -82,6 +82,16 @@ require("lazy").setup({
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
 	{ "phaazon/hop.nvim", event = "VeryLazy" },
 	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		init = function()
+			vim.opt.foldcolumn = "1"
+			vim.opt.foldlevel = 99
+			vim.opt.foldlevelstart = 99
+			vim.opt.foldenable = true
+		end,
+	},
+	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
 		opts = {},
