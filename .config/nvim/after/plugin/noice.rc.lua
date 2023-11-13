@@ -4,9 +4,9 @@ if not status then
 end
 
 noice.setup({
-  cmdline = {
-    enabled = false
-  },
+	cmdline = {
+		enabled = false,
+	},
 	lsp = {
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -14,9 +14,9 @@ noice.setup({
 			["cmp.entry.get_documentation"] = true,
 		},
 	},
-  messages = {
-    enabled = false,
-  },
+	messages = {
+		enabled = false,
+	},
 	presets = {
 		bottom_search = true, -- use a classic bottom cmdline for search
 		command_palette = false, -- position the cmdline and popupmenu together

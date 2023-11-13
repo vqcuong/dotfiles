@@ -18,7 +18,6 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"nvim-tree/nvim-web-devicons",
 	"norcalli/nvim-colorizer.lua",
-	{ "akinsho/bufferline.nvim", version = "*" },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{
 		"hrsh7th/nvim-cmp",
@@ -90,7 +89,6 @@ require("lazy").setup({
 	"goolord/alpha-nvim",
 	"smjonas/inc-rename.nvim",
 	"roobert/search-replace.nvim",
-	"gelguy/wilder.nvim",
 	"HiPhish/rainbow-delimiters.nvim",
 	"sindrets/diffview.nvim",
 	"levouh/tint.nvim",
@@ -151,6 +149,7 @@ require("lazy").setup({
 		},
 		config = true,
 	},
+	{ "stevearc/overseer.nvim", opts = {} },
 	{ "echasnovski/mini.animate", version = "*" },
 	{ "echasnovski/mini.bracketed", version = "*" },
 	{ "echasnovski/mini.comment", version = "*" },
@@ -159,6 +158,10 @@ require("lazy").setup({
 	-- { "echasnovski/mini.splitjoin", version = "*" },
 	-- { "echasnovski/mini.indentscope", version = "*" },
 
+	-- { "akinsho/bufferline.nvim", version = "*" },
+	-- { "airblade/vim-gitgutter", opts = {} },
+	-- "j-hui/fidget.nvim",
+	-- "gelguy/wilder.nvim",
 	-- "ggandor/leap.nvim"
 	-- "RRethy/vim-illuminate",
 	-- "folke/todo-comments.nvim",

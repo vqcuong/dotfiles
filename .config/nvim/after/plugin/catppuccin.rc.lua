@@ -50,14 +50,17 @@ catppuccin.setup({
 	custom_highlights = {},
 	integrations = {
 		cmp = true,
+		flash = true,
 		gitsigns = true,
+		hop = true,
+    lsp_saga = true,
+		mason = true,
+		noice = true,
+		notify = true,
 		nvimtree = true,
+		overseer = true,
 		treesitter = true,
-		notify = false,
-		mini = {
-			enabled = true,
-			indentscope_color = "",
-		},
+		treesitter_context = true,
 	},
 })
 
