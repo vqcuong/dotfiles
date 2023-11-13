@@ -97,6 +97,7 @@ require("lazy").setup({
 	{ "nvim-tree/nvim-tree.lua", version = "*", lazy = false },
 	{ "s1n7ax/nvim-window-picker", name = "window-picker", event = "VeryLazy", version = "2.*" },
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
+	{ "Wansmer/treesj", dependencies = { "nvim-treesitter/nvim-treesitter" } },
 	{ "phaazon/hop.nvim", event = "VeryLazy" },
 	{
 		"folke/flash.nvim",
@@ -155,7 +156,7 @@ require("lazy").setup({
 	{ "echasnovski/mini.comment", version = "*" },
 	{ "echasnovski/mini.cursorword", version = "*" },
 	{ "echasnovski/mini.move", version = "*" },
-	{ "echasnovski/mini.splitjoin", version = "*" },
+	-- { "echasnovski/mini.splitjoin", version = "*" },
 	-- { "echasnovski/mini.indentscope", version = "*" },
 
 	-- "ggandor/leap.nvim"

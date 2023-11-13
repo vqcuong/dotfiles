@@ -35,4 +35,3 @@ require("mini.move").setup({
 		line_up = "<C-k>",
 	},
 })
-require("mini.splitjoin").setup()
