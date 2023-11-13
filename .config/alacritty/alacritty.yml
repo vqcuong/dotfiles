@@ -81,7 +81,7 @@ colors:
     magenta: '#75617b'
     cyan:    '#02666e'
     white:   '#b3b3b3'
-  transparent_background_colors: false
+  transparent_background_colors: true 
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
