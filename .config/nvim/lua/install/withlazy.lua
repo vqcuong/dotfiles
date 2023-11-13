@@ -158,6 +158,7 @@ require("lazy").setup({
 	-- { "echasnovski/mini.splitjoin", version = "*" },
 	-- { "echasnovski/mini.indentscope", version = "*" },
 
+	-- { "neoclide/coc.nvim", build = "npm ci" },
 	-- { "akinsho/bufferline.nvim", version = "*" },
 	-- { "airblade/vim-gitgutter", opts = {} },
 	-- "j-hui/fidget.nvim",
