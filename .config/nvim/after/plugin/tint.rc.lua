@@ -4,8 +4,8 @@ if not status then
 end
 
 tint.setup({
-	tint = -80,
-	saturation = 0.5,
+	tint = -55,
+	saturation = 0.60,
 	transforms = require("tint").transforms.SATURATE_TINT,
 	tint_background_colors = true,
 	highlight_ignore_patterns = { "WinSeparator", "Status.*" },

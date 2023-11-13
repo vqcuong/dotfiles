@@ -18,3 +18,11 @@ vim.cmd([[
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
   augroup END
 ]])
+
+vim.cmd([[
+  augroup cursorline
+  autocmd!
+  autocmd WinEnter,BufEnter * setlocal cursorline cursorcolumn
+  autocmd WinLeave,BufLeave * setlocal nocursorline nocursorcolumn
+  augroup END
+]])

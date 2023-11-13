@@ -15,7 +15,7 @@ catppuccin.setup({
 	dim_inactive = {
 		enabled = false,
 		shade = "dark",
-		percentage = 0.15,
+		percentage = 0.4,
 	},
 	no_italic = false,
 	no_bold = false,
