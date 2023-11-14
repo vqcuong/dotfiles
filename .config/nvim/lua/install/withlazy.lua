@@ -164,10 +164,25 @@ require("lazy").setup({
 	-- { "echasnovski/mini.splitjoin", version = "*" },
 	-- { "echasnovski/mini.indentscope", version = "*" },
 
+	-- {
+	-- 	"j-hui/fidget.nvim",
+	-- 	event = "LspAttach",
+	-- 	tag = "legacy",
+	-- 	config = function()
+	-- 		require("fidget").setup({
+	-- 			text = {
+	-- 				spinner = "meter",
+	-- 			},
+	-- 			window = {
+	-- 				blend = 0, -- set 0 if using transparent background, otherwise set 100
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 	-- { "neoclide/coc.nvim", build = "npm ci" },
 	-- { "akinsho/bufferline.nvim", version = "*" },
 	-- { "airblade/vim-gitgutter", opts = {} },
-	-- "j-hui/fidget.nvim",
+	-- "stevearc/oil.nvim"
 	-- "gelguy/wilder.nvim",
 	-- "ggandor/leap.nvim"
 	-- "RRethy/vim-illuminate",
