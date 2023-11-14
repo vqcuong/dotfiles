@@ -100,7 +100,6 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
-			"smjonas/inc-rename.nvim",
 		},
 		config = function()
 			local noice = require("noice")
@@ -127,6 +126,10 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
 	},
 	{
 		"HiPhish/rainbow-delimiters.nvim",

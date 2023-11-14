@@ -104,8 +104,8 @@ return {
 				hl_group = "Substitute",
 				preview_empty_name = false,
 				show_message = false,
-				input_buffer_type = nil,
 				post_hook = nil,
+				input_buffer_type = "dressing",
 			})
 			-- vim.keymap.set("n", "<leader>e", ":IncRename ", {desc = "Rename"})
 			vim.keymap.set("n", "<leader>e", function()
