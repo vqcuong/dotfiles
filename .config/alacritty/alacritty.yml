@@ -15,29 +15,34 @@ scrolling:
   history: 10000
   multiplier: 3
 
+# Suggestion Nerd Fonts:
+# - BlexMono Nerd Font Propo 
+# - CaskaydiaCove Nerd Font Mono
+# - CodeNewRoman Nerd Font
+# - ComicShannsMono Nerd Font Propo
+# - FantasqueSansMono Nerd Font
+# - Firamono Nerd Font Propo
+# - iMWritingMono Nerd Font Propo
+# - Inconsolata LGC Nerd Font Propo
+# - IntoneMono Nerd Font Propo 
+# - Lekton Nerd Font Propo
+# - Monofur Nerd Font Propo
+# - Mononoki Nerd Font Propo 
+# - Terminess Nerd Font Propo 
 font:
   normal:
-    #family: CodeNewRoman Nerd Font
-    #family: ComicShannsMono Nerd Font Propo
-    #family: FantasqueSansMono Nerd Font
-    #family: Inconsolata LGC Nerd Font Propo
-    family: Monofur Nerd Font Propo
-    #family: ComicShannsMono Nerd Font Propo
-    #family: iMWritingMono Nerd Font Propo
-    #family: IntoneMono Nerd Font Propo 
-    #family: Terminess Nerd Font Propo 
-    #family: Mononoki Nerd Font Propo 
+    family: Monofur Nerd Font Propo 
     style: Regular
   bold:
-    family: Monofur Nerd Font Propo
+    family: Monofur Nerd Font Propo 
     style: Bold
   italic:
-    family: Monofur Nerd Font Propo
+    family: Monofur Nerd Font Propo 
     style: Italic
   bold_italic:
     family: Monofur Nerd Font Propo
     style: Bold Italic
-  size: 21
+  size: 20
 
 draw_bold_text_with_bright_colors: false
 
