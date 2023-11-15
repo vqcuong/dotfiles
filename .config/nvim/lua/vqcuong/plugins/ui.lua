@@ -139,8 +139,8 @@ return {
     config = function()
       local tint = require("tint")
       tint.setup({
-        tint = -55,
-        saturation = 0.60,
+        tint = -60,
+        saturation = 1.0,
         transforms = tint.transforms.SATURATE_TINT,
         tint_background_colors = true,
         highlight_ignore_patterns = { "WinSeparator", "Status.*" },

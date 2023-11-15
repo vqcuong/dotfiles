@@ -38,18 +38,24 @@ return {
         color_overrides = {
           mocha = {
             base = "#000000",
-            -- text = "#fcf99f",
             text = "#fcba03",
             lavender = "#c546db",
-            blue = "#88db14",
+            blue = "#26d187",
             rosewater = "#e0417c",
             red = "#d63e4d",
-            peach = "#42baff",
-            mauve = "#5cffb3",
-            green = "#ff8f85",
+            peach = "#51ace0",
+            mauve = "#db638f",
+            green = "#fcf99f",
           },
         },
         custom_highlights = {},
+        highlight_overrides = {
+          mocha = function(_)
+            return {
+              Comment = { fg = "#7a94bf" },
+            }
+          end,
+        },
         integrations = {
           cmp = true,
           flash = true,
