@@ -24,3 +24,10 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 		vim.diagnostic.show(nil, 0)
 	end,
 })
+
+-- disable paste when leaving insert mode
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  command = "set nopaste"
+})
+

@@ -17,18 +17,22 @@ scrolling:
 
 font:
   normal:
-    family: Hack Nerd Font
+    family: DaddyTimeMono Nerd Font
+    #family: ComicShannsMono Nerd Font 
     style: Regular
   bold:
-    family: Hack Nerd Font
+    family: DaddyTimeMono Nerd Font
+    #family: ComicShannsMono Nerd Font 
     style: Bold
   italic:
-    family: Hack Nerd Font
+    family: DaddyTimeMono Nerd Font
+    #family: ComicShannsMono Nerd Font 
     style: Italic
   bold_italic:
-    family: Hack Nerd Font
+    family: DaddyTimeMono Nerd Font
+    #family: ComicShannsMono Nerd Font 
     style: Bold Italic
-  size: 18.5 
+  size: 18 
 
 draw_bold_text_with_bright_colors: false
 
