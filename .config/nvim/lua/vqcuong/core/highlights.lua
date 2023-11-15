@@ -7,7 +7,7 @@ vim.opt.background = "dark"
 
 vim.api.nvim_create_autocmd("ColorScheme", {
 	command = [[
-    highlight CursorLine guibg=#43595e cterm=underline
+    highlight CursorLine guibg=#202e30 cterm=underline
   ]],
 })
 
