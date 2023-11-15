@@ -57,6 +57,10 @@ return {
           hop = true,
           lsp_saga = true,
           mason = true,
+          mini = {
+            enabled = true,
+            indentscope_color = "peach",
+          },
           noice = true,
           notify = true,
           nvimtree = true,

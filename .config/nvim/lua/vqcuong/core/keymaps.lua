@@ -7,6 +7,9 @@ end
 -- keymap.set("n", "+", "<C-a>", opts("Increase"))
 -- keymap.set("n", "-", "<C-x>", opts("Decrease"))
 
+-- Avoid x copy the deleted char to clipboard
+keymap.set("n", "x", '"_x')
+
 -- Delete a word backwards
 keymap.set("n", "dp", 'vb"_d', opts("Previous Word"))
 

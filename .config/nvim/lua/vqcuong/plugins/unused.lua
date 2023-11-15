@@ -1,6 +1,5 @@
 return {
 	-- { "echasnovski/mini.splitjoin", version = "*" },
-	-- { "echasnovski/mini.indentscope", version = "*" },
 
 	-- {
 	-- 	"j-hui/fidget.nvim",
