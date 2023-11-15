@@ -15,6 +15,22 @@ return {
     end,
   },
   {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    keys = {
+      { "<Tab>", "<CMD>BufferLineCycleNext<CR>", desc = "Next tab" },
+      { "<S-Tab>", "<CMD>BufferLineCyclePrev<CR>", desc = "Next tab" },
+    },
+    opts = {
+      options = {
+        mode = "tabs",
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+      },
+    },
+  },
+
+  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -325,17 +341,6 @@ return {
     end,
   },
 
-  -- {
-  -- 	"folke/lsp-colors.nvim",
-  -- 	config = function()
-  -- 		require("lsp-colors").setup({
-  -- 			Error = "#db4b4b",
-  -- 			Warning = "#e0af68",
-  -- 			Information = "#0db9d7",
-  -- 			Hint = "#10B981",
-  -- 		})
-  -- 	end,
-  -- },
   -- {
   -- 	"feline-nvim/feline.nvim",
   -- 	config = function()

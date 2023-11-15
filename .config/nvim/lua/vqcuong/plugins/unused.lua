@@ -16,7 +16,6 @@ return {
   -- 	end,
   -- },
   -- { "neoclide/coc.nvim", build = "npm ci" },
-  -- { "akinsho/bufferline.nvim", version = "*" },
   -- { "airblade/vim-gitgutter", opts = {} },
   -- "stevearc/oil.nvim"
   -- "gelguy/wilder.nvim",

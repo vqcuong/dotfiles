@@ -17,7 +17,7 @@ keymap.set("n", "dp", 'vb"_d', opts("Previous Word"))
 keymap.set("n", "aa", "gg<S-v>G", opts("Select all"))
 
 -- New tab
-keymap.set("n", "te", ":tabedit", opts("New tab"))
+keymap.set("n", "te", ":tabedit<Return>", opts("New tab"))
 keymap.set("n", "tn", ":tabnext<Return>", opts("Next tab"))
 keymap.set("n", "tp", ":tabprevious<Return>", opts("Previous tab"))
 
