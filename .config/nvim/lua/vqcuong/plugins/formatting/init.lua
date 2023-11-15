@@ -51,13 +51,13 @@ return {
 
       null_ls.setup({
         sources = {
-          null_ls.builtins.diagnostics.ansiblelint,
-          null_ls.builtins.diagnostics.jsonlint,
-          null_ls.builtins.diagnostics.markdownlint,
-          null_ls.builtins.diagnostics.ruff,
-          null_ls.builtins.diagnostics.shellcheck,
-          null_ls.builtins.diagnostics.yamllint,
-          null_ls.builtins.diagnostics.hadolint,
+          -- null_ls.builtins.diagnostics.ansiblelint,
+          -- null_ls.builtins.diagnostics.jsonlint,
+          -- null_ls.builtins.diagnostics.markdownlint,
+          -- null_ls.builtins.diagnostics.ruff,
+          -- null_ls.builtins.diagnostics.shellcheck,
+          -- null_ls.builtins.diagnostics.yamllint,
+          -- null_ls.builtins.diagnostics.hadolint,
 
           null_ls.builtins.formatting.beautysh.with({
             extra_args = { "--indent-size", "2" },
