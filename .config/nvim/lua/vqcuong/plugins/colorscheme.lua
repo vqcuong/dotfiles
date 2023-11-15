@@ -45,7 +45,7 @@ return {
             rosewater = "#e0417c",
             red = "#d63e4d",
             peach = "#42baff",
-            mauve = "#aa80ff",
+            mauve = "#5cffb3",
             green = "#ff8f85",
           },
         },
