@@ -255,7 +255,7 @@ return {
           initial_mode = "insert"
         })))
 			end, opts("AutoCommands"))
-			vim.keymap.set("n", "\\D", function()
+			vim.keymap.set("n", "\\d", function()
 				builtin.diagnostics(themes.get_dropdown(popupmenu_dropdown_opts()))
 			end, opts("Diagnostics"))
 

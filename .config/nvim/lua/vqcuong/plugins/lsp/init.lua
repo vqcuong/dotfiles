@@ -266,7 +266,7 @@ return {
 						vsplit = "v",
 						split = "h",
 						tabe = "t",
-						tabnew = "r",
+						tabnew = "n",
 						quit = "q",
 						close = "q",
 					},
@@ -274,7 +274,7 @@ return {
 				outline = {
 					close_after_jump = true,
 					keys = {
-						jump = "j",
+						jump = "e",
 					},
 				},
 				rename = {
