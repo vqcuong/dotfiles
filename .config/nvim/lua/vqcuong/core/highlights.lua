@@ -6,7 +6,7 @@ vim.opt.pumblend = 5
 vim.opt.background = "dark"
 
 vim.api.nvim_create_autocmd("ColorScheme", {
-	command = [[
+  command = [[
     highlight CursorLine guibg=#202e30 cterm=underline
   ]],
 })
@@ -19,10 +19,12 @@ vim.cmd([[
   augroup END
 ]])
 
+-- disable highlight on inactive windows and buffers
 vim.cmd([[
   augroup cursorline
   autocmd!
   autocmd WinEnter,BufEnter * setlocal cursorline cursorcolumn
+  autocmd WinEnter,BufEnter * if &ft == "NvimTree" | setlocal cursorline nocursorcolumn
   autocmd WinLeave,BufLeave * setlocal nocursorline nocursorcolumn
   augroup END
 ]])
