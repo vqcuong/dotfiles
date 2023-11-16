@@ -16,37 +16,24 @@ return {
     version = "*",
     config = function()
       require("mini.animate").setup()
-      require("mini.bracketed").setup({
-        buffer = { suffix = "b", options = {} },
-        comment = { suffix = "", options = {} },
-        conflict = { suffix = "", options = {} },
-        diagnostic = { suffix = "d", options = {} },
-        file = { suffix = "f", options = {} },
-        indent = { suffix = "", options = {} },
-        jump = { suffix = "", options = {} },
-        location = { suffix = "", options = {} },
-        oldfile = { suffix = "o", options = {} },
-        quickfix = { suffix = "", options = {} },
-        treesitter = { suffix = "t", options = {} },
-        undo = { suffix = "u", options = {} },
-        window = { suffix = "w", options = {} },
-        yank = { suffix = "", options = {} },
-      })
+      -- require("mini.bracketed").setup({
+      --   buffer = { suffix = "b", options = {} },
+      --   comment = { suffix = "", options = {} },
+      --   conflict = { suffix = "", options = {} },
+      --   diagnostic = { suffix = "d", options = {} },
+      --   file = { suffix = "f", options = {} },
+      --   indent = { suffix = "", options = {} },
+      --   jump = { suffix = "", options = {} },
+      --   location = { suffix = "", options = {} },
+      --   oldfile = { suffix = "o", options = {} },
+      --   quickfix = { suffix = "", options = {} },
+      --   treesitter = { suffix = "t", options = {} },
+      --   undo = { suffix = "u", options = {} },
+      --   window = { suffix = "w", options = {} },
+      --   yank = { suffix = "", options = {} },
+      -- })
       require("mini.comment").setup()
       require("mini.cursorword").setup()
-      require("mini.move").setup({
-        mappings = {
-          left = "<C-h>",
-          right = "<C-l>",
-          -- down = "<C-j>",
-          -- up = "<C-k>",
-
-          line_left = "<C-h>",
-          line_right = "<C-l>",
-          -- line_down = "<C-j>",
-          -- line_up = "<C-k>",
-        },
-      })
       -- require("mini.indentscope").setup({
       --   symbol = "▏",
       -- })
@@ -147,6 +134,16 @@ return {
     name = "window-picker",
     event = "VeryLazy",
     version = "2.*",
+    keys = {
+      {
+        "<leader>wp",
+        function()
+          local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
+          vim.api.nvim_set_current_win(picked_window_id)
+        end,
+        desc = "pick a window",
+      },
+    },
     config = function()
       local picker = require("window-picker")
       picker.setup({
@@ -176,10 +173,6 @@ return {
           },
         },
       })
-      vim.keymap.set("n", "\\w", function()
-        local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
-        vim.api.nvim_set_current_win(picked_window_id)
-      end, { desc = "Pick a window" })
     end,
   },
   {
