@@ -1,2 +1,2 @@
 require("vqcuong.core")
-require("vqcuong.install.withlazy")
+require("vqcuong.lazy")

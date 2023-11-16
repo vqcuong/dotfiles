@@ -1,4 +1,4 @@
-local default_config_dir = vim.fn.stdpath("config") .. "/lua/vqcuong/plugins/formatting/conf/"
+local default_config_dir = vim.fn.stdpath("config")
 
 return {
   {
@@ -80,7 +80,7 @@ return {
             filetypes = { "lua" },
             extra_args = {
               "--config-path",
-              default_config_dir .. "stylua.toml",
+              default_config_dir .. "/stylua.toml",
             },
           }),
           null_ls.builtins.formatting.xmlformat,
