@@ -243,7 +243,7 @@ return {
     event = "VeryLazy",
     opts = {
       cmdline = {
-        enabled = false,
+        enabled = true,
         view = "cmdline",
       },
       lsp = {
@@ -253,8 +253,8 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
       },
-      messages = { enabled = false },
-      popupmenu = { enabled = false },
+      -- messages = { enabled = false },
+      -- popupmenu = { enabled = true },
       presets = {
         bottom_search = true,
         command_palette = true,
@@ -345,7 +345,6 @@ return {
             { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "n" },
             { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "r" },
             { action = "Telescope live_grep",                                      desc = " Find text",       icon = " ", key = "g" },
-            { action = [[lua require("lazyvim.util").telescope.config_files()()]], desc = " Config",          icon = " ", key = "c" },
             { action = 'lua require("persistence").load()',                        desc = " Restore Session", icon = " ", key = "s" },
             { action = "LazyExtras",                                               desc = " Lazy Extras",     icon = " ", key = "x" },
             { action = "Lazy",                                                     desc = " Lazy",            icon = "󰒲 ", key = "l" },
