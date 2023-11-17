@@ -99,7 +99,7 @@ return {
             -- })
           end
           local bufopts = { desc = "Format document", noremap = true, silent = true, buffer = bufnr }
-          vim.keymap.set("n", "<leader>f", lsp_formatting, bufopts)
+          vim.keymap.set("n", "<leader>F", lsp_formatting, bufopts)
         end,
       })
 

@@ -119,12 +119,12 @@ keymap.set("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 -- lazy
 -- keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
--- new file
+-- trouble 
 -- keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 -- keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 -- keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
-keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
+-- keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+-- keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
 -- diagnostic
 local goto_diagnostic = function(next, severity)

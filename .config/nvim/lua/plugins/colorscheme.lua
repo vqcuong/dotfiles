@@ -65,7 +65,7 @@ return {
           mason = true,
           mini = {
             enabled = true,
-            indentscope_color = "peach",
+            indentscope_color = "blue",
           },
           noice = true,
           notify = true,

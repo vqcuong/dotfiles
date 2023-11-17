@@ -22,7 +22,6 @@ return {
   -- "ggandor/leap.nvim"
   -- "RRethy/vim-illuminate",
   -- "folke/todo-comments.nvim",
-  -- "folke/trouble.nvim",
   -- "feline-nvim/feline.nvim",
   -- "stevearc/conform.nvim",
   -- "simrat39/symbols-outline.nvim"

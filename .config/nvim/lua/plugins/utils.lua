@@ -12,34 +12,66 @@ return {
     end,
   },
   {
-    "echasnovski/mini.nvim",
+    "echasnovski/mini.animate",
     version = "*",
-    config = function()
-      require("mini.animate").setup()
-      -- require("mini.bracketed").setup({
-      --   buffer = { suffix = "b", options = {} },
-      --   comment = { suffix = "", options = {} },
-      --   conflict = { suffix = "", options = {} },
-      --   diagnostic = { suffix = "d", options = {} },
-      --   file = { suffix = "f", options = {} },
-      --   indent = { suffix = "", options = {} },
-      --   jump = { suffix = "", options = {} },
-      --   location = { suffix = "", options = {} },
-      --   oldfile = { suffix = "o", options = {} },
-      --   quickfix = { suffix = "", options = {} },
-      --   treesitter = { suffix = "t", options = {} },
-      --   undo = { suffix = "u", options = {} },
-      --   window = { suffix = "w", options = {} },
-      --   yank = { suffix = "", options = {} },
-      -- })
-      require("mini.comment").setup()
-      require("mini.cursorword").setup()
-      -- require("mini.indentscope").setup({
-      --   symbol = "▏",
-      -- })
-    end,
+    opts = {},
   },
-
+  {
+    "echasnovski/mini.bufremove",
+    version = "*",
+    keys = {
+      {
+        "<leader>bd",
+        function()
+          local bd = require("mini.bufremove").delete
+          if vim.bo.modified then
+            local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+            if choice == 1 then -- Yes
+              vim.cmd.write()
+              bd(0)
+            elseif choice == 2 then -- No
+              bd(0, true)
+            end
+          else
+            bd(0)
+          end
+        end,
+        desc = "Delete Buffer",
+      },
+      -- stylua: ignore
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete buffer (force)" },
+    },
+  },
+  {
+    "echasnovski/mini.comment",
+    version = "*",
+    opts = {},
+  },
+  -- {
+  --   "echasnovski/mini.cursorword",
+  --   version = "*",
+  --   opts = {},
+  -- },
+  -- {
+  --   "echasnovski/mini.bracketed",
+  --   version = "*",
+  --   opts = {
+  --     buffer = { suffix = "b", options = {} },
+  --     comment = { suffix = "", options = {} },
+  --     conflict = { suffix = "", options = {} },
+  --     diagnostic = { suffix = "d", options = {} },
+  --     file = { suffix = "f", options = {} },
+  --     indent = { suffix = "", options = {} },
+  --     jump = { suffix = "", options = {} },
+  --     location = { suffix = "", options = {} },
+  --     oldfile = { suffix = "o", options = {} },
+  --     quickfix = { suffix = "", options = {} },
+  --     treesitter = { suffix = "t", options = {} },
+  --     undo = { suffix = "u", options = {} },
+  --     window = { suffix = "w", options = {} },
+  --     yank = { suffix = "", options = {} },
+  --   },
+  -- },
   {
     "numToStr/FTerm.nvim",
     config = function()
@@ -125,8 +157,38 @@ return {
       vim.opt.timeout = true
       vim.opt.timeoutlen = 300
     end,
-    config = function()
-      require("which-key").setup({})
+    opts = function()
+      local o = {
+        plugins = { spelling = true },
+        defaults = {
+          mode = { "n", "v" },
+          ["g"] = { name = "+goto" },
+          ["gs"] = { name = "+surround" },
+          ["]"] = { name = "+next" },
+          ["["] = { name = "+prev" },
+          ["<leader><tab>"] = { name = "+tabs" },
+          ["<leader>b"] = { name = "+buffer" },
+          ["<leader>c"] = { name = "+code" },
+          ["<leader>f"] = { name = "+file/find" },
+          ["<leader>g"] = { name = "+git" },
+          ["<leader>gh"] = { name = "+hunks" },
+          ["<leader>l"] = { name = "+lsp" },
+          ["<leader>q"] = { name = "+quit/session" },
+          ["<leader>s"] = { name = "+search" },
+          ["<leader>u"] = { name = "+ui" },
+          ["<leader>w"] = { name = "+windows" },
+          -- ["<leader>x"] = { name = "+diagnostics/quickfix" },
+        },
+      }
+      if require("vqcuong.utils").has("noice.nvim") then
+        o.defaults["<leader>n"] = { name = "+noice" }
+      end
+      return o
+    end,
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+      wk.register(opts.defaults)
     end,
   },
   {
@@ -180,67 +242,6 @@ return {
     config = function()
       require("zen-mode").setup({})
       vim.keymap.set("n", "mz", "<CMD>ZenMode<CR>", { silent = true })
-    end,
-  },
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    config = function()
-      local rd = require("rainbow-delimiters")
-      require("rainbow-delimiters.setup").setup({
-        strategy = {
-          [""] = rd.strategy["global"],
-          vim = rd.strategy["local"],
-        },
-        query = {
-          [""] = "rainbow-delimiters",
-          lua = "rainbow-blocks",
-        },
-        highlight = {
-          "rainbowdelimiterred",
-          "rainbowdelimiteryellow",
-          "rainbowdelimiterblue",
-          "rainbowdelimiterorange",
-          "rainbowdelimitergreen",
-          "rainbowdelimiterviolet",
-          "RainbowDelimiterCyan",
-        },
-      })
-    end,
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    config = function()
-      local ibl = require("ibl")
-      local highlight = {
-        "RainbowRed",
-        "RainbowYellow",
-        "RainbowBlue",
-        "RainbowOrange",
-        "RainbowGreen",
-        "RainbowViolet",
-        "RainbowCyan",
-      }
-      local hooks = require("ibl.hooks")
-      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#6b484a" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#80673b" })
-        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#1f5b61" })
-        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#1c5909" })
-        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#0e103b" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#3b0e3a" })
-        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#0e4d54" })
-      end)
-
-      ibl.setup({
-        indent = { char = "▏", highlight = highlight },
-        whitespace = {
-          highlight = highlight,
-          remove_blankline_trail = false,
-        },
-        scope = { highlight = highlight },
-      })
-      hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end,
   },
 
