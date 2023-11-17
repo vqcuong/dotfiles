@@ -1,2 +1,2 @@
-require("vqcuong.core")
-require("vqcuong.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
