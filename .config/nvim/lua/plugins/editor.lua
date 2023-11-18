@@ -163,8 +163,9 @@ return {
         return { desc = "NvimTree: " .. desc, noremap = true, silent = true, nowait = true }
       end
 
-      vim.keymap.set("n", "mg", "<CMD>lua require('nvim-tree.api').git.reload()<CR>", opts("Git Reload"))
       vim.keymap.set("n", "mm", "<CMD>NvimTreeFocus<CR>", opts("Focus Tree"))
+      vim.keymap.set("n", "<esc><esc>", "<CMD>NvimTreeFocus<CR>", opts("Focus Tree"))
+      vim.keymap.set("n", "mg", "<CMD>lua require('nvim-tree.api').git.reload()<CR>", opts("Git Reload"))
       vim.keymap.set("n", "mn", "<CMD>NvimTreeToggle<CR>", opts("Toggle Tree"))
       vim.keymap.set("n", "mb", "<CMD>NvimTreeClipboard<CR>", opts("Show Clipboard"))
       vim.keymap.set("n", "mx", "<CMD>lua require('nvim-tree.api').fs.clear_clipboard()<CR>", opts("Clear Clipboard"))

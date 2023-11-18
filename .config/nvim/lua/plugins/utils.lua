@@ -24,7 +24,7 @@ return {
     "smjonas/inc-rename.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>e", function () return ":IncRename " .. vim.fn.expand("<cword>") end, desc = "Rename" },
+      { "<localleader>e", function () return ":IncRename " .. vim.fn.expand("<cword>") end, desc = "Rename" },
       -- { "<leader>e", function () return ":IncRename " end, desc = "Rename" },
     },
     opts = {

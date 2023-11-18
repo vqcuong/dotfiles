@@ -30,3 +30,22 @@ vim.opt.breakindent = true
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ "*/node_modules/*" })
+
+vim.opt.winblend = 0
+vim.opt.wildoptions = "pum"
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  command = [[
+    highlight CursorLine guibg=#202e30 cterm=underline
+  ]],
+})
+
+-- disable highlight on inactive windows and buffers
+vim.cmd([[
+  augroup cursorline
+  autocmd!
+  autocmd WinEnter,BufEnter * setlocal cursorline cursorcolumn
+  autocmd WinEnter,BufEnter * if &ft == "NvimTree" | setlocal cursorline nocursorcolumn
+  autocmd WinLeave,BufLeave * setlocal nocursorline nocursorcolumn
+  augroup END
+]])
