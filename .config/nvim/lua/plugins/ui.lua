@@ -114,13 +114,13 @@ return {
       }
       local hooks = require("ibl.hooks")
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#6b484a" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#80673b" })
-        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#1f5b61" })
-        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#1c5909" })
-        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#0e103b" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#3b0e3a" })
-        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#0e4d54" })
+        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#e35b91" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#face7f" })
+        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#2eb2ff" })
+        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#f09886" })
+        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#12e04c" })
+        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#b65fe8" })
+        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#21e9ff" })
       end)
       vim.g.rainbow_delimiters = { highlight = highlight }
       ibl.setup(opts)
@@ -175,6 +175,34 @@ return {
           return buftype == "terminal" or floating
         end,
       })
+    end,
+  },
+  {
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      opts.defaults["<leader>n"] = { name = "+noice" }
+      opts.defaults["<leader>sn"] = nil
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        enabled = true,
+        view = "cmdline",
+      },
+      presets = {
+        command_palette = false,
+      },
+    },
+    keys = function()
+      -- stylua: ignore
+      return {
+        { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+        { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
+        { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
+        { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+      }
     end,
   },
 }

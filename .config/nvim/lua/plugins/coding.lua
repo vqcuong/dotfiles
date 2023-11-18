@@ -37,6 +37,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    lazy = false,
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -262,7 +263,7 @@ return {
       })
 
       vim.cmd([[
-        set completeopt=menuone,noinsert,noselect
+        " set completeopt=menuone,noinsert,noselect
         highlight! default link CmpItemKind CmpItemMenuDefault
       ]])
     end,
