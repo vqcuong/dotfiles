@@ -5,7 +5,7 @@ return {
     "numToStr/FTerm.nvim",
     -- stylua: ignore
     keys = {
-      { "<leader>t", function() require("FTerm").toggle() end, desc = "Terminal toggle", mode = { "n", "t" } },
+      { "<localleader>t", function() require("FTerm").toggle() end, desc = "Terminal toggle", mode = { "n", "t" } },
     },
     opts = {
       border = "single",
@@ -79,7 +79,7 @@ return {
     version = "2.*",
     keys = {
       {
-        "<leader>wp",
+        "<localleader>w",
         function()
           local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
           vim.api.nvim_set_current_win(picked_window_id)

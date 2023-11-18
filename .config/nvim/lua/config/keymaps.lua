@@ -103,3 +103,6 @@ keymap.del("t", "<c-_>", {})
 keymap.set("n", "a", "<nop>")
 -- keymap.set("n", "gI", "<nop>")
 keymap.set("n", "gi", "<nop>")
+
+-- hide termimal quickly with <esc>
+keymap.set("t", "<esc><esc>", "<cmd>lua require('FTerm').toggle()<cr>", { silent = true })
