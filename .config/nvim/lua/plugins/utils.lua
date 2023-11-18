@@ -5,7 +5,8 @@ return {
     "numToStr/FTerm.nvim",
     -- stylua: ignore
     keys = {
-      { "<localleader>t", function() require("FTerm").toggle() end, desc = "Terminal toggle", mode = { "n", "t" } },
+      { "<localleader>t", function() require("FTerm").toggle() end, desc = "Float terminal toggle", mode = { "n", "t", "v" } },
+      { "<esc><esc>", function () require("FTerm").toggle()  end, silent = true, mode = {"t"} }
     },
     opts = {
       border = "single",
@@ -21,11 +22,52 @@ return {
   },
 
   {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    keys = function()
+      local dir = vim.fn.getcwd()
+      local toggleterm = require("toggleterm")
+      return {
+        {
+          "<localleader><localleader>",
+          function()
+            toggleterm.toggle(1, 10, dir, "horizontal", "helloworld")
+          end,
+          desc = "Terminal toggle",
+          mode = { "n", "v", "t" },
+        },
+        {
+          "<c-t>",
+          function()
+            toggleterm.toggle(1, 10, dir, "horizontal", "helloworld")
+          end,
+          desc = "Terminal toggle",
+          mode = { "n", "v", "t" },
+        },
+      }
+    end,
+    opts = {
+      close_on_exit = true,
+    },
+  },
+
+  {
     "smjonas/inc-rename.nvim",
-    -- stylua: ignore
     keys = {
-      { "<localleader>e", function () return ":IncRename " .. vim.fn.expand("<cword>") end, desc = "Rename" },
-      -- { "<leader>e", function () return ":IncRename " end, desc = "Rename" },
+      {
+        "<localleader>e",
+        function()
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end,
+        desc = "Rename",
+      },
+      -- {
+      --   "<leader>e",
+      --   function()
+      --     return ":IncRename "
+      --   end,
+      --   desc = "Rename",
+      -- },
     },
     opts = {
       cmd_name = "IncRename",

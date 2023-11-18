@@ -8,6 +8,39 @@ local function opts(desc)
   return { desc = desc, noremap = true, silent = true }
 end
 
+-- disable lazyvim default
+-- windows
+keymap.del("n", "<c-left>", {})
+keymap.del("n", "<c-right>", {})
+keymap.del("n", "<c-h>", {})
+keymap.del("n", "<c-j>", {})
+keymap.del("n", "<c-k>", {})
+keymap.del("n", "<c-l>", {})
+keymap.del("n", "<c-up>", {})
+keymap.del("n", "<c-down>", {})
+-- move lines
+keymap.del({ "n", "v", "i" }, "<a-j>", {})
+keymap.del({ "n", "v", "i" }, "<a-k>", {})
+-- buffers
+keymap.del("n", "<S-h>", {})
+keymap.del("n", "<S-l>", {})
+-- keywordprg
+keymap.del("n", "<leader>K", {})
+-- formatting
+keymap.del({ "n", "v" }, "<leader>cf", {})
+-- floating terminal
+keymap.del("n", "<leader>ft", {})
+keymap.del("n", "<leader>fT", {})
+keymap.del("n", "<c-/>", {})
+keymap.del("n", "<c-_>", {})
+keymap.del("t", "<esc><esc>", {})
+keymap.del("t", "<c-h>", {})
+keymap.del("t", "<c-j>", {})
+keymap.del("t", "<c-k>", {})
+keymap.del("t", "<c-l>", {})
+keymap.del("t", "<c-/>", {})
+keymap.del("t", "<c-_>", {})
+
 -- avoid x copy the deleted char to clipboard
 keymap.set("n", "x", '"_x')
 
@@ -17,6 +50,7 @@ keymap.set("n", "dp", 'vb"_d', opts("Delete previous word"))
 -- select all
 keymap.set("n", "aa", "ggVG", opts("Select all"))
 
+-- disable windows default <c-left,right> in lazyvim
 -- quickly goto the start and end of line
 keymap.set({ "n", "v" }, "<c-left>", "^", opts("Start of line"))
 keymap.set("i", "<c-left>", "<esc>^i", opts("Start of line"))
@@ -30,15 +64,6 @@ keymap.set("n", "<leader><tab>p", "<cmd>tabprevious<return>", opts("Previous tab
 keymap.set("n", "]<tab>", "<cmd>tabnext<return>", opts("Next tab"))
 keymap.set("n", "[<tab>", "<cmd>tabprevious<return>", opts("Previous tab"))
 
--- disable some window default in lazyvim
-keymap.del("n", "<c-h>", {})
-keymap.del("n", "<c-j>", {})
-keymap.del("n", "<c-k>", {})
-keymap.del("n", "<c-l>", {})
-keymap.del("n", "<c-up>", {})
-keymap.del("n", "<c-down>", {})
-keymap.del("n", "<c-left>", {})
-keymap.del("n", "<c-right>", {})
 -- windows
 keymap.set("n", "<leader>wH", ":vsplit<return>", opts("Split window left"))
 keymap.set("n", "<leader>wL", ":vsplit<return><c-w>w", opts("Split window right"))
@@ -57,9 +82,6 @@ keymap.set("n", "<leader>w<down>", "<c-w>-", opts("Resize window below"))
 -- keymap.set("n", "<leader>w<left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 -- keymap.set("n", "<leader>w<right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
--- disable move lines default in lazyvim
-keymap.del({ "n", "v", "i" }, "<a-j>", {})
-keymap.del({ "n", "v", "i" }, "<a-k>", {})
 -- move lines up/down and indent lines
 keymap.set("n", "<c-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 keymap.set("n", "<c-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
@@ -73,36 +95,12 @@ keymap.set("i", "<c-h>", "<c-d>", opts("De-indent line"))
 keymap.set("v", "<c-l>", ">gv", opts("Indent lines"))
 keymap.set("v", "<c-h>", "<gv", opts("De-indent lines"))
 
--- disable some buffers default in lazyvim
-keymap.del("n", "<S-h>", {})
-keymap.del("n", "<S-l>", {})
-
--- disable keywordprg in lazyvim
-keymap.del("n", "<leader>K", {})
-
 -- replace formatting default in lazyvim
-keymap.del({ "n", "v" }, "<leader>cf", {})
 keymap.set({ "n", "v" }, "<localleader>f", function()
   Util.format({ force = true })
 end, { desc = "Format" })
-
--- disable floating terminal in lazyvim
-keymap.del("n", "<leader>ft", {})
-keymap.del("n", "<leader>fT", {})
-keymap.del("n", "<c-/>", {})
-keymap.del("n", "<c-_>", {})
-keymap.del("t", "<esc><esc>", {})
-keymap.del("t", "<c-h>", {})
-keymap.del("t", "<c-j>", {})
-keymap.del("t", "<c-k>", {})
-keymap.del("t", "<c-l>", {})
-keymap.del("t", "<c-/>", {})
-keymap.del("t", "<c-_>", {})
 
 -- disable vim builtin inserting keys
 keymap.set("n", "a", "<nop>")
 -- keymap.set("n", "gI", "<nop>")
 keymap.set("n", "gi", "<nop>")
-
--- hide termimal quickly with <esc>
-keymap.set("t", "<esc><esc>", "<cmd>lua require('FTerm').toggle()<cr>", { silent = true })

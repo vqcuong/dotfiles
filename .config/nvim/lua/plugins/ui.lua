@@ -37,6 +37,10 @@ return {
       return {
         options = {
           globalstatus = false,
+          disabled_filetypes = {
+            "NvimTree",
+            "toggleterm",
+          },
         },
         sections = {
           lualine_a = {

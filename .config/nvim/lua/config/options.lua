@@ -12,6 +12,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
+vim.opt.formatoptions = "jcroqlnt" -- tcqj
 
 vim.wo.number = true
 vim.opt.relativenumber = false
