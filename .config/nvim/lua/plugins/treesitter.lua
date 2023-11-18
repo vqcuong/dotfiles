@@ -9,6 +9,7 @@ return {
         enable_autocmd = false,
       },
       ensure_installed = {
+        "dockerfile",
         "go",
         "gomod",
         "gosum",
