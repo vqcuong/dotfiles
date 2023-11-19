@@ -115,10 +115,10 @@ return {
   },
 
   {
-    "s1n7ax/nvim-window-picker",
+    "vqcuong/window-picker.nvim",
     name = "window-picker",
     event = "VeryLazy",
-    version = "2.*",
+    version = false,
     keys = {
       {
         "<localleader>w",
@@ -134,68 +134,11 @@ return {
       local picker = require("window-picker")
       picker.setup({
         hint = "floating-big-letter",
-        selection_chars = "QWERASDFZXCVTYUIOPGHJKLBNM1234567890",
+        selection_chars = "QWEASDZXCRTYFGHVBN123456",
         show_prompt = false,
-        filter_func = function(winids, _)
-          local never_pick_filetypes = {
-            "neo-tree-popup",
-            "notify",
-            "packer",
-            "qf",
-            "diff",
-            "fugitive",
-            "fugitiveblame",
-            "noice",
-          }
-          local buf_win_map = {}
-          local terminal_bufids = {}
-          local file_bufids = {}
-          local menu_bufids = {}
-          -- stylua: ignore
-          local function contains(l, e) for _, v in pairs(l) do if v == e then return true end end return false end
-
-          for winid in pairs(winids) do
-            if vim.api.nvim_win_get_config(winid).focusable == true then
-              local bufid = vim.api.nvim_win_get_buf(winid)
-              local buf = vim.bo[bufid]
-              if contains({ "NvimTree", "neo-tree" }, buf.filetype) then
-                table.insert(menu_bufids, bufid)
-              elseif not contains(never_pick_filetypes, buf.filetype) then
-                if buf.buftype ~= "nofile" then
-                  table.insert(file_bufids, bufid)
-                end
-              elseif buf.filetype == "toggleterm" then
-                table.insert(terminal_bufids, bufid)
-              end
-              buf_win_map[bufid] = winid
-            end
-          end
-
-          local pickable_winids = {}
-          local curr_bufid = vim.api.nvim_get_current_buf()
-          local function fact(list)
-            for bufid in pairs(list) do
-              if bufid ~= curr_bufid then
-                table.insert(pickable_winids, buf_win_map[bufid])
-              end
-            end
-          end
-
-          if next(file_bufids) == nil then
-            fact(menu_bufids)
-            fact(terminal_bufids)
-          else
-            fact(file_bufids)
-          end
-          return pickable_winids
-        end,
-        filter_rules = {
-          autoselect_one = true,
-          include_current_win = true,
-          bo = {
-            filetype = {
-              "NvimTree",
-              "neo-tree",
+        filter = {
+          filter_func = function(winids)
+            local never_pick_filetypes = {
               "neo-tree-popup",
               "notify",
               "packer",
@@ -203,17 +146,112 @@ return {
               "diff",
               "fugitive",
               "fugitiveblame",
-            },
-            buftype = {
-              "nofile",
-              -- "terminal",
-              -- "help",
-            },
-          },
+              "noice",
+            }
+            local buf_win_map = {}
+            local terminal_bufids = {}
+            local file_bufids = {}
+            local menu_bufids = {}
+
+            for _, winid in pairs(winids) do
+              if vim.api.nvim_win_get_config(winid).focusable then
+                local bufid = vim.api.nvim_win_get_buf(winid)
+                local buf = vim.bo[bufid]
+                if vim.tbl_contains({ "NvimTree", "neo-tree" }, buf.ft) then
+                  table.insert(menu_bufids, bufid)
+                elseif not vim.tbl_contains(never_pick_filetypes, buf.ft) then
+                  if buf.bt ~= "nofile" then
+                    table.insert(file_bufids, bufid)
+                  elseif buf.ft == "toggleterm" then
+                    table.insert(terminal_bufids, bufid)
+                  end
+                end
+                buf_win_map[bufid] = winid
+              end
+            end
+
+            local pickable_winids = {}
+            local function fact(list)
+              local rs = {}
+              for _, bufid in pairs(list) do
+                if bufid ~= vim.api.nvim_get_current_buf() then
+                  table.insert(rs, buf_win_map[bufid])
+                end
+              end
+              return rs
+            end
+
+            local file_winids = fact(file_bufids)
+            local menu_winids = fact(menu_bufids)
+            local terminal_winids = fact(terminal_bufids)
+            if #file_winids > 0 then
+              pickable_winids = file_winids
+            else
+              -- stylua: ignore
+              for _, v in pairs(menu_winids) do table.insert(pickable_winids, v) end
+              for _, v in pairs(terminal_winids) do
+                table.insert(pickable_winids, v)
+              end
+            end
+
+            if #pickable_winids == 0 then
+              return { vim.api.nvim_get_current_win() }
+            end
+            return pickable_winids
+          end,
         },
       })
     end,
   },
+
+  -- {
+  --   "s1n7ax/nvim-window-picker",
+  --   name = "window-picker",
+  --   event = "VeryLazy",
+  --   version = "2.*",
+  --   keys = {
+  --     {
+  --       "<localleader>w",
+  --       function()
+  --         local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
+  --         vim.api.nvim_set_current_win(picked_window_id)
+  --       end,
+  --       desc = "pick a window",
+  --       mode = { "n", "v", "t" },
+  --     },
+  --   },
+  --   config = function()
+  --     local picker = require("window-picker")
+  --     picker.setup({
+  --       hint = "floating-big-letter",
+  --       selection_chars = "QWERASDFZXCVTYUIOPGHJKLBNM1234567890",
+  --       show_prompt = false,
+  --       filter_rules = {
+  --         autoselect_one = true,
+  --         include_current_win = true,
+  --         bo = {
+  --           filetype = {
+  --             "NvimTree",
+  --             "neo-tree",
+  --             "neo-tree-popup",
+  --             "notify",
+  --             "packer",
+  --             "qf",
+  --             "diff",
+  --             "fugitive",
+  --             "fugitiveblame",
+  --           },
+  --           buftype = {
+  --             "nofile",
+  --             -- "terminal",
+  --             -- "help",
+  --           },
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
+
   {
     "folke/zen-mode.nvim",
     keys = {
