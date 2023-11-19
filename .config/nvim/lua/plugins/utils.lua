@@ -159,12 +159,10 @@ return {
                 local buf = vim.bo[bufid]
                 if vim.tbl_contains({ "NvimTree", "neo-tree" }, buf.ft) then
                   table.insert(menu_bufids, bufid)
-                elseif not vim.tbl_contains(never_pick_filetypes, buf.ft) then
-                  if buf.bt ~= "nofile" then
-                    table.insert(file_bufids, bufid)
-                  elseif buf.ft == "toggleterm" then
-                    table.insert(terminal_bufids, bufid)
-                  end
+                elseif buf.ft == "toggleterm" then
+                  table.insert(terminal_bufids, bufid)
+                elseif not vim.tbl_contains(never_pick_filetypes, buf.ft) and buf.bt ~= "nofile" then
+                  table.insert(file_bufids, bufid)
                 end
                 buf_win_map[bufid] = winid
               end
@@ -218,54 +216,6 @@ return {
           --     },
           --   },
           -- },
-        },
-      })
-    end,
-  },
-
-  {
-    "s1n7ax/nvim-window-picker",
-    name = "window-picker",
-    event = "VeryLazy",
-    version = "2.*",
-    keys = {
-      {
-        "<localleader>w",
-        function()
-          local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
-          vim.api.nvim_set_current_win(picked_window_id)
-        end,
-        desc = "pick a window",
-        mode = { "n", "v", "t" },
-      },
-    },
-    config = function()
-      local picker = require("window-picker")
-      picker.setup({
-        hint = "floating-big-letter",
-        selection_chars = "QWERASDFZXCVTYUIOPGHJKLBNM1234567890",
-        show_prompt = false,
-        filter_rules = {
-          autoselect_one = true,
-          include_current_win = true,
-          bo = {
-            filetype = {
-              "NvimTree",
-              "neo-tree",
-              "neo-tree-popup",
-              "notify",
-              "packer",
-              "qf",
-              "diff",
-              "fugitive",
-              "fugitiveblame",
-            },
-            buftype = {
-              "nofile",
-              -- "terminal",
-              -- "help",
-            },
-          },
         },
       })
     end,
