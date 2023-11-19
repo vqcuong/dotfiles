@@ -189,9 +189,8 @@ return {
             else
               -- stylua: ignore
               for _, v in pairs(menu_winids) do table.insert(pickable_winids, v) end
-              for _, v in pairs(terminal_winids) do
-                table.insert(pickable_winids, v)
-              end
+              -- stylua: ignore
+              for _, v in pairs(terminal_winids) do table.insert(pickable_winids, v) end
             end
 
             if #pickable_winids == 0 then
@@ -199,58 +198,78 @@ return {
             end
             return pickable_winids
           end,
+          -- excluded = {
+          --   buffer_opts = {
+          --     filetype = {
+          --       "NvimTree",
+          --       "neo-tree",
+          --       "neo-tree-popup",
+          --       "notify",
+          --       "packer",
+          --       "qf",
+          --       "diff",
+          --       "fugitive",
+          --       "fugitiveblame",
+          --     },
+          --     buftype = {
+          --       "nofile",
+          --       -- "terminal",
+          --       -- "help",
+          --     },
+          --   },
+          -- },
         },
       })
     end,
   },
 
-  -- {
-  --   "s1n7ax/nvim-window-picker",
-  --   name = "window-picker",
-  --   event = "VeryLazy",
-  --   version = "2.*",
-  --   keys = {
-  --     {
-  --       "<localleader>w",
-  --       function()
-  --         local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
-  --         vim.api.nvim_set_current_win(picked_window_id)
-  --       end,
-  --       desc = "pick a window",
-  --       mode = { "n", "v", "t" },
-  --     },
-  --   },
-  --   config = function()
-  --     local picker = require("window-picker")
-  --     picker.setup({
-  --       hint = "floating-big-letter",
-  --       selection_chars = "QWERASDFZXCVTYUIOPGHJKLBNM1234567890",
-  --       show_prompt = false,
-  --       filter_rules = {
-  --         autoselect_one = true,
-  --         include_current_win = true,
-  --         bo = {
-  --           filetype = {
-  --             "NvimTree",
-  --             "neo-tree",
-  --             "neo-tree-popup",
-  --             "notify",
-  --             "packer",
-  --             "qf",
-  --             "diff",
-  --             "fugitive",
-  --             "fugitiveblame",
-  --           },
-  --           buftype = {
-  --             "nofile",
-  --             -- "terminal",
-  --             -- "help",
-  --           },
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
+  {
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    event = "VeryLazy",
+    version = "2.*",
+    keys = {
+      {
+        "<localleader>w",
+        function()
+          local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
+          vim.api.nvim_set_current_win(picked_window_id)
+        end,
+        desc = "pick a window",
+        mode = { "n", "v", "t" },
+      },
+    },
+    config = function()
+      local picker = require("window-picker")
+      picker.setup({
+        hint = "floating-big-letter",
+        selection_chars = "QWERASDFZXCVTYUIOPGHJKLBNM1234567890",
+        show_prompt = false,
+        filter_rules = {
+          autoselect_one = true,
+          include_current_win = true,
+          bo = {
+            filetype = {
+              "NvimTree",
+              "neo-tree",
+              "neo-tree-popup",
+              "notify",
+              "packer",
+              "qf",
+              "diff",
+              "fugitive",
+              "fugitiveblame",
+            },
+            buftype = {
+              "nofile",
+              -- "terminal",
+              -- "help",
+            },
+          },
+        },
+      })
+    end,
+  },
 
   {
     "folke/zen-mode.nvim",
