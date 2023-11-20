@@ -166,7 +166,7 @@ return {
     end,
     keys = {
       { "<leader>ef", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
-      { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cmd>", desc = "Git reload" },
+      { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cr>", desc = "Git reload" },
       { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
       { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
       { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
