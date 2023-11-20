@@ -9,6 +9,9 @@ vim.opt.guicursor = "i-ci:block-blinkwait300-blinkon200-blinkoff150"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- disable deprecated ts-context-commentstring module
+vim.g.skip_ts_context_commentstring_module = true
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
