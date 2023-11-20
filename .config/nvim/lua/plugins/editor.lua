@@ -29,7 +29,7 @@ return {
         local api = require("nvim-tree.api")
 
         local function opts(desc)
-          return { desc = "NvimTree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          return { desc = desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
 
         -- default mappings
@@ -159,16 +159,22 @@ return {
           },
         },
       })
-      local function opts(desc)
-        return { desc = "NvimTree: " .. desc, noremap = true, silent = true, nowait = true }
-      end
+    end,
+    keys = {
+      { "<leader>ef", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
+      { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cmd>", desc = "Git reload" },
+      { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
+      { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
+      { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
+      { "<localleader>e", "<leader>ef", desc = "Explorer focus", remap = true },
+      { "<localleader>/", "<leader>ee", desc = "Explorer toggle", remap = true },
+    },
+  },
 
-      vim.keymap.set("n", "mm", "<CMD>NvimTreeFocus<CR>", opts("Focus Tree"))
-      vim.keymap.set("n", "<esc><esc>", "<CMD>NvimTreeFocus<CR>", opts("Focus Tree"))
-      vim.keymap.set("n", "mg", "<CMD>lua require('nvim-tree.api').git.reload()<CR>", opts("Git Reload"))
-      vim.keymap.set("n", "mn", "<CMD>NvimTreeToggle<CR>", opts("Toggle Tree"))
-      vim.keymap.set("n", "mb", "<CMD>NvimTreeClipboard<CR>", opts("Show Clipboard"))
-      vim.keymap.set("n", "mx", "<CMD>lua require('nvim-tree.api').fs.clear_clipboard()<CR>", opts("Clear Clipboard"))
+  {
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      opts.defaults["<leader>e"] = { name = "+explorer" }
     end,
   },
 

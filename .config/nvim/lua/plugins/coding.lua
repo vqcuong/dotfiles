@@ -50,6 +50,9 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
     },
+    init = function()
+      vim.opt.pumheight = 20
+    end,
     -- stylua: ignore
     opts = function() return {} end,
     config = function()

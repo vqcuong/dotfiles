@@ -5,24 +5,19 @@
 vim.opt.mouse = ""
 vim.opt.guicursor = "i-ci:block-blinkwait300-blinkon200-blinkoff150"
 
--- for nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- disable deprecated ts-context-commentstring module
 vim.g.skip_ts_context_commentstring_module = true
 
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-
 vim.wo.number = true
 vim.opt.relativenumber = false
-
 vim.opt.title = true
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+
+-- Finding files - Search down into subfolders
+vim.opt.path:append({ "**" })
 
 vim.opt.winblend = 25
 vim.opt.undofile = false
-vim.opt.pumheight = 20
