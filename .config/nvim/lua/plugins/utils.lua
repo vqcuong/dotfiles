@@ -1,25 +1,25 @@
 return {
   { "stevearc/overseer.nvim", opts = {} },
 
-  {
-    "numToStr/FTerm.nvim",
-    -- stylua: ignore
-    keys = {
-      { "<localleader>t", function() require("FTerm").toggle() end, desc = "Float terminal toggle", mode = { "n", "t", "v" } },
-      { "<esc><esc>", function () require("FTerm").toggle()  end, silent = true, mode = {"t"} }
-    },
-    opts = {
-      border = "single",
-      auto_close = true,
-      blend = 0,
-      dimensions = {
-        height = 0.6,
-        width = 0.6,
-        x = 0.5,
-        y = 0.5,
-      },
-    },
-  },
+  -- {
+  --   "numToStr/FTerm.nvim",
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<localleader>T", function() require("FTerm").toggle() end, desc = "Float terminal toggle", mode = { "n", "t", "v" } },
+  --     { "<esc><esc>", function () require("FTerm").toggle()  end, silent = true, mode = {"t"} }
+  --   },
+  --   opts = {
+  --     border = "single",
+  --     auto_close = true,
+  --     blend = 0,
+  --     dimensions = {
+  --       height = 0.6,
+  --       width = 0.6,
+  --       x = 0.5,
+  --       y = 0.5,
+  --     },
+  --   },
+  -- },
 
   {
     "akinsho/toggleterm.nvim",
@@ -51,33 +51,6 @@ return {
     },
   },
 
-  {
-    "smjonas/inc-rename.nvim",
-    keys = {
-      {
-        "<localleader>e",
-        function()
-          return ":IncRename " .. vim.fn.expand("<cword>")
-        end,
-        desc = "Rename",
-      },
-      -- {
-      --   "<leader>e",
-      --   function()
-      --     return ":IncRename "
-      --   end,
-      --   desc = "Rename",
-      -- },
-    },
-    opts = {
-      cmd_name = "IncRename",
-      hl_group = "Substitute",
-      preview_empty_name = false,
-      show_message = false,
-      post_hook = nil,
-      input_buffer_type = "dressing",
-    },
-  },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
