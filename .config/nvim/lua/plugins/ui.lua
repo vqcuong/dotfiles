@@ -43,8 +43,8 @@ return {
           },
         },
         sections = {
-          lualine_a = {
-            os_icon,
+          lualine_a = { os_icon },
+          lualine_b = {
             {
               "mode",
               fmt = function(str)
@@ -52,7 +52,9 @@ return {
               end,
             },
           },
-          lualine_b = {
+          lualine_c = {
+
+            "diff",
             {
               "filename",
               file_status = true,
@@ -60,7 +62,6 @@ return {
             },
             "branch",
           },
-          lualine_c = { "diff" },
           lualine_x = {
             {
               "diagnostics",
@@ -74,8 +75,9 @@ return {
             },
             "encoding",
             "filetype",
+            "progress",
           },
-          lualine_y = { "progress" },
+          lualine_y = {},
           lualine_z = { "location" },
         },
         inactive_sections = {

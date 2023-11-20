@@ -64,3 +64,21 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "q", "<cmd>DiffviewClose<cr>", { buffer = event.buf, silent = true })
   end,
 })
+
+-- customize highlight cursorline
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = augroup("highlight_cursorline"),
+  command = [[
+    highlight CursorLine guibg=#202e30 cterm=underline
+  ]],
+})
+
+-- disable highlight on inactive windows and buffers
+vim.cmd([[
+  augroup cursorline
+  autocmd!
+  autocmd WinEnter,BufEnter * setlocal cursorline cursorcolumn
+  autocmd WinEnter,BufEnter * if &ft == "NvimTree" | setlocal cursorline nocursorcolumn
+  autocmd WinLeave,BufLeave * setlocal nocursorline nocursorcolumn
+  augroup END
+]])

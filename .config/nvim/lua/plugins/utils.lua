@@ -197,7 +197,7 @@ return {
   {
     "folke/zen-mode.nvim",
     keys = {
-      { "<leader>zm", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+      { "<localleader>z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
     },
   },
 }
