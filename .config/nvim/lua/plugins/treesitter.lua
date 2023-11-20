@@ -2,18 +2,12 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    version = false,
     opts = {
-      autotag = { enable = true },
+      -- autotag = { enable = true },
       context_commentstring = {
         enable = true,
         enable_autocmd = false,
-      },
-      ensure_installed = {
-        "dockerfile",
-        "go",
-        "gomod",
-        "gosum",
-        "sql",
       },
     },
   },
