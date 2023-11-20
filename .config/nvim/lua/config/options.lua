@@ -25,3 +25,4 @@ vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 
 vim.opt.winblend = 25
 vim.opt.undofile = false
+vim.opt.pumheight = 20
