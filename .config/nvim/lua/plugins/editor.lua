@@ -112,6 +112,9 @@ return {
             max = 30,
             padding = 0,
           },
+          float = {
+            enable = false,
+          },
         },
         renderer = {
           full_name = true,
