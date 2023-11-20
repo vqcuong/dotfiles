@@ -73,12 +73,13 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   ]],
 })
 
--- disable highlight on inactive windows and buffers
+-- disable special lines on certain windows
 vim.cmd([[
   augroup cursorline
   autocmd!
   autocmd WinEnter,BufEnter * setlocal cursorline cursorcolumn
   autocmd WinEnter,BufEnter * if &ft == "NvimTree" | setlocal cursorline nocursorcolumn
   autocmd WinLeave,BufLeave * setlocal nocursorline nocursorcolumn
+  autocmd TermOpen * setlocal signcolumn=no nocursorcolumn nonumber norelativenumber
   augroup END
 ]])

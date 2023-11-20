@@ -107,6 +107,7 @@ return {
       tree.setup({
         on_attach = my_on_attach,
         view = {
+          signcolumn = "no",
           width = {
             min = 20,
             max = 30,
