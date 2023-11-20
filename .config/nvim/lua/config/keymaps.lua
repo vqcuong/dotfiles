@@ -2,7 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local Util = require("lazyvim.util")
 local keymap = vim.keymap
 local function opts(desc)
   return { desc = desc, noremap = true, silent = true }
@@ -26,8 +25,6 @@ keymap.del("n", "<S-h>", {})
 keymap.del("n", "<S-l>", {})
 -- keywordprg
 keymap.del("n", "<leader>K", {})
--- formatting
-keymap.del({ "n", "v" }, "<leader>cf", {})
 -- floating terminal
 keymap.del("n", "<leader>ft", {})
 keymap.del("n", "<leader>fT", {})
@@ -94,9 +91,8 @@ keymap.set("v", "<c-l>", ">gv", opts("Indent lines"))
 keymap.set("v", "<c-h>", "<gv", opts("De-indent lines"))
 
 -- replace formatting default in lazyvim
-keymap.set({ "n", "v" }, "<localleader>f", function()
-  Util.format({ force = true })
-end, { desc = "Format" })
+keymap.set({ "n", "v" }, "<localleader>f", "<leader>cf", { desc = "Format document", remap = true })
+keymap.del({ "n", "v" }, "<leader>cf", {})
 
 -- disable vim builtin inserting keys
 keymap.set("n", "a", "<nop>")
