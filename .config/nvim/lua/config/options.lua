@@ -19,5 +19,6 @@ vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 -- Finding files - Search down into subfolders
 vim.opt.path:append({ "**" })
 
-vim.opt.winblend = 25
 vim.opt.undofile = false
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
