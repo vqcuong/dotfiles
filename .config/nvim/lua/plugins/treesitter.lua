@@ -43,11 +43,8 @@ return {
 
   {
     "nvimdev/lspsaga.nvim",
-    -- dependencies = { "catppuccin/nvim" },
+    lazy = false,
     opts = {
-      ui = {
-        -- kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-      },
       symbol_in_winbar = {
         enable = true,
         folder_level = 3,
