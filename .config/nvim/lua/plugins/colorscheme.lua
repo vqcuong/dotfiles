@@ -2,7 +2,23 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000,
+    opts = function(_, opts)
+      if not opts.integrations then
+        opts.integrations = {}
+      end
+      opts.integrations.hop = true
+      opts.integrations.lsp_saga = true
+      opts.integrations.nvimtree = true
+      opts.integrations.overseer = true
+      opts.integrations.mini = {
+        enabled = true,
+        indentscope_color = "blue",
+      }
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
     opts = {
       flavour = "mocha",
       background = {
@@ -31,24 +47,6 @@ return {
             Comment = { fg = "#7a94bf" },
           }
         end,
-      },
-      integrations = {
-        cmp = true,
-        flash = true,
-        gitsigns = true,
-        hop = true,
-        lsp_saga = true,
-        mason = true,
-        mini = {
-          enabled = true,
-          indentscope_color = "blue",
-        },
-        noice = true,
-        notify = true,
-        nvimtree = true,
-        overseer = true,
-        treesitter = true,
-        treesitter_context = true,
       },
     },
   },

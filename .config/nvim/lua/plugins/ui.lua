@@ -40,6 +40,7 @@ return {
           disabled_filetypes = {
             "NvimTree",
             "toggleterm",
+            "OverseerList",
           },
         },
         sections = {
