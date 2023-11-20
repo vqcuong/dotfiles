@@ -31,16 +31,16 @@ scrolling:
 # - Terminess Nerd Font Propo
 font:
   normal:
-    family: FantasqueSansMono Nerd Font 
+    family: Monofur Nerd Font Propo 
     style: Regular
   bold:
-    family: FantasqueSansMono Nerd Font 
+    family: Monofur Nerd Font Propo 
     style: Bold
   italic:
-    family: FantasqueSansMono Nerd Font 
+    family: Monofur Nerd Font Propo 
     style: Italic
   bold_italic:
-    family: FantasqueSansMono Nerd Font 
+    family: Monofur Nerd Font Propo 
     style: Bold Italic
   size: 19.5
 
