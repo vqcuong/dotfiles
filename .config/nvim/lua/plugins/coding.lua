@@ -190,7 +190,8 @@ return {
             maxwidth = 50,
             before = function(_, vim_item)
               if vim_item.kind == "Text" then
-                vim_item.kind = ""
+                -- vim_item.kind = ""
+                vim_item.kind = "🔍"
                 return vim_item
               end
               vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
