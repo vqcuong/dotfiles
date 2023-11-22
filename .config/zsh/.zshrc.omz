@@ -68,6 +68,10 @@ eval $(thefuck --alias)
 source <(k3d completion zsh)
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
+export FZF_DEFAULT_OPTS=" \
+  --color=spinner:#f5e0dc,hl:#ff69a5 \
+  --color=fg:#def58c,header:#ff69a5,info:#b638ff,pointer:#f5e0dc \
+  --color=marker:#f5e0dc,fg+:#00ff91,prompt:#b638ff,hl+:#ff69a5"
 # additional shell
 [[ -d $HOME/.config/shell ]] && for f in $HOME/.config/shell/*; do
   source $f
