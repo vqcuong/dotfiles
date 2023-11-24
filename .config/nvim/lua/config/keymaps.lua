@@ -92,7 +92,6 @@ keymap.set("v", "<c-h>", "<gv", opts("De-indent lines"))
 
 -- replace formatting default in lazyvim
 keymap.set({ "n", "v" }, "<localleader>f", "<leader>cf", { desc = "Format document", remap = true })
-keymap.del({ "n", "v" }, "<leader>cf", {})
 
 -- disable vim builtin inserting keys
 keymap.set("n", "a", "<nop>")
