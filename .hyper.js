@@ -3,8 +3,7 @@ module.exports = {
   config: {
     updateChannel: "stable",
     fontSize: 20,
-    fontFamily:
-      '"Monofur Nerd Font Propo", monospace',
+    fontFamily: '"Monofur Nerd Font Propo", monospace',
     fontWeight: "normal",
     fontWeightBold: "bold",
     lineHeight: 1,
@@ -61,7 +60,7 @@ module.exports = {
       borderWidth: "10px",
     },
     // opacity: 0.30,
-   },
+  },
   plugins: [
     "hyperpower",
     "hyper-letters",
