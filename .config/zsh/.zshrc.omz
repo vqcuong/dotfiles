@@ -2,6 +2,11 @@ export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZLE_RPROMPT_INDENT=0
 
+# enable autocomplete for homebrew and its apps
+# remember to add this before sourcing oh-my-zsh
+eval $(/opt/homebrew/bin/brew shellenv)
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 export ZSH="$ZDOTDIR/ohmyzsh"
 
 plugins=(
@@ -11,11 +16,11 @@ plugins=(
   copybuffer
   docker
   docker-compose
-  exa-zsh-completion
   forgit
   fzf-tab
   git
   git-open
+  hacker-quotes
   history
   kubectl
   python
@@ -63,9 +68,7 @@ zstyle ':fzf-tab:*' popup-pad 1 1
 # bindkey -M menuselect '\r' .accept-line
 
 # User configuration
-eval $(/opt/homebrew/bin/brew shellenv)
 eval $(thefuck --alias)
-source <(k3d completion zsh)
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS=" \
