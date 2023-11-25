@@ -28,6 +28,7 @@ plugins=(
   fast-syntax-highlighting
   zsh-autosuggestions
   # zsh-autocomplete
+  zsh-ssh
 )
 
 source $ZSH/oh-my-zsh.sh
