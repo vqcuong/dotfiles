@@ -14,7 +14,6 @@ plugins=(
   aws
   conda-zsh-completion
   copybuffer
-  docker
   docker-compose
   forgit
   fzf-tab

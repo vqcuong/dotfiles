@@ -9,6 +9,7 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - Shell: `zsh`
 
 ## Tools and frameworks
+
 - [vim](https://www.vim.org/) (`9.0`) is a high-configurable lightweight terminal-based text editor
 - [neovim](https://neovim.io/) (`0.9.4`) is a hyperextensible Vim-based text editor which have many adorable features and a growing supportive community
 - [alacritty](https://alacritty.org/) (`0.12.3`) is a fast, cross-platform, OpenGL terminal emulator which has the outstanding speed and is optimized for working on macOS
@@ -21,11 +22,12 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [ohmyposh](https://ohmyposh.dev/) (`18.19.0`) is a prompt theme engine for any shell
 
 ## Zsh themes
+
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k) is a theme for zsh which emphasizes speed, flexibility and out-of-the-box experience
 
 ## Zsh plugins
+
 - [auto-ls](https://github.com/vqcuong/auto-ls) is a lightweight zsh plugin automatically doing ls after cd into a folder
-- [exa-zsh-completion](https://github.com/vqcuong/exa-zsh-completion) is a zsh completion for [exa](https://the.exa.website/)
 - [conda-zsh-completion](https://github.com/conda-incubator/conda-zsh-completion) is a zsh completion for [conda](https://docs.conda.io/en/latest/)
 - [forgit](https://github.com/wfxr/forgit) is an effective zsh plugin for git
 - [fzf-tab](https://github.com/Aloxaf/fzf-tab) is an alternative for zsh's default completion selection menu with fzf
@@ -36,6 +38,8 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) is a fish-like fast and unobtrusive autosuggestions for zsh
 
 ## Powerful cli tools
+
+- [docker-completion](https://formulae.brew.sh/formula/docker-completion) is a completion for docker
 - [fzf](https://github.com/junegunn/fzf) is a general-purpose command-line fuzzy finder
 - [exa](https://the.exa.website/) (`0.10.1`) is a modern replacement for the venerable file-listing command-line program ls
 - [thefuck](https://github.com/nvbn/thefuck) (`3.32`) is a magnificent app that corrects errors in previous console commands
@@ -45,14 +49,15 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [fd](https://github.com/sharkdp/fd) is a program to find entries in your filesystem
 - [ripgrep](https://github.com/BurntSushi/ripgrep) is a line-oriented search tool that recursively searches the current directory for a regex pattern
 - [httpie](https://httpie.io/) is a command-line HTTP client
-- [conda](https://docs.conda.io/en/latest/) is an open source package management system and environment management system for Python 
+- [conda](https://docs.conda.io/en/latest/) is an open source package management system and environment management system for Python
 - [pyenv](https://github.com/pyenv/pyenv/) is a tool letting you easily switch between multiple versions of Python
-- [goenv](https://github.com/go-nv/goenv/) is a tool letting you easily switch between multiple versions of Golang 
+- [goenv](https://github.com/go-nv/goenv/) is a tool letting you easily switch between multiple versions of Golang
 - [k3s](https://k3s.io/) is a lightweight kubernetes distribution running on docker powered by [Rancher](https://www.rancher.com/)
 - [k3d](https://github.com/k3d-io/k3d) is a tool for creating and manataining [k3s](https://k3s.io/) clusters.
 - [pfetch](https://github.com/dylanaraps/pfetch) is a simple system information tool for sh
 
 ## Install and setup
+
 - Follow the documentation from website for setting up all stuffs you like
 - Install dotfiles
 
