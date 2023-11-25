@@ -69,6 +69,7 @@ zstyle ':fzf-tab:*' popup-pad 1 1
 
 # User configuration
 eval $(thefuck --alias)
+eval "$(zoxide init zsh)"
 # enable fzf
 [ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
 export FZF_DEFAULT_OPTS=" \

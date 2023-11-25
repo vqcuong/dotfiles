@@ -7,6 +7,8 @@ alias stn='function _stn(){ sport=$2; lport=$(if [ ! -z "$3" ]; then echo $3; el
 
 # alias copy='function _copy(){ pbcopy < $1; }; _copy $@'
 alias copy='clipcopy'
+
+# alias for exa
 alias ls='exa --icons --color=always --group --time-style=long-iso'
 alias l='ls -laH'
 alias la='ls -a'
