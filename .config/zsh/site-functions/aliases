@@ -37,7 +37,7 @@ alias 'n.'='nvim .'
 
 # lolcat wrapping
 catlol() { "$@" | lolcat }
-cmds=(brew cat conda du head more man rg fd tail)
+cmds=(brew cat conda du fd head more man pip rg tail)
 for cmd in "${cmds[@]}"; do
   if command -v $cmd &>/dev/null; then
     alias "${cmd}"="catlol ${cmd}"
