@@ -81,6 +81,7 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [bottom](https://github.com/ClementTsang/bottom.git) is a customizable cross-platform graphical process/system monitor for the terminal
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy.git) is a tool to make git diffs more human-readable
 - [delta](https://github.com/dandavison/delta.git) is a easier-to-read syntax-highlighting pager for git, diff
+- [lolcat](https://github.com/busyloop/lolcat.git) is a tool for making your command output more colorful
 
 ## Install and setup
 
