@@ -50,8 +50,19 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 
 ## Cli tools
 
+- [dry](https://github.com/moncho/dry.git) is a terminal application to manage Docker and Docker Swarm
+- [lazydocker](https://github.com/jesseduffield/lazydocker.git) is a simple terminal UI for both docker and docker-compose, written in Go
+- [dive](https://github.com/wagoodman/dive.git) is a tool for exploring a docker image, layer contents, and discovering ways to shrink the size of your Docker/OCI image
+- [ctop](https://github.com/bcicen/ctop.git) is a top-like interface for container metrics
 - [docker-completion](https://formulae.brew.sh/formula/docker-completion) is a completion for docker
-- [zoxide](https://github.com/ajeetdsouza/zoxide) is a smarter cd command, inspired by z and autojump.
+- [composerize](https://github.com/composerize/composerize.git) is a tool to convert docker command to docker-compose file
+- [kompose](https://github.com/kubernetes/kompose.git) is a tool to convert docker-compose file to k8s manifests
+- [kustomize](https://kustomize.io/) is a kubernetes native configuration management
+- [k9s](https://github.com/derailed/k9s.git) is a tool for managing kubernetes cluster in style
+- [k3s](https://k3s.io/) is a lightweight kubernetes distribution running on docker powered by [Rancher](https://www.rancher.com/)
+- [k3d](https://github.com/k3d-io/k3d) is a tool for creating and manataining [k3s](https://k3s.io/) clusters
+- [zoxide](https://github.com/ajeetdsouza/zoxide) is a smarter cd command, inspired by z and autojump
+- [howdoi](https://github.com/gleitz/howdoi.git) is a tool for instant coding answers via the command line
 - [fzf](https://github.com/junegunn/fzf) is a general-purpose command-line fuzzy finder
 - [exa](https://the.exa.website/) (`0.10.1`) is a modern replacement for the venerable file-listing command-line program ls
 - [thefuck](https://github.com/nvbn/thefuck) (`3.32`) is a magnificent app that corrects errors in previous console commands
@@ -64,9 +75,12 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [conda](https://docs.conda.io/en/latest/) is an open source package management system and environment management system for Python
 - [pyenv](https://github.com/pyenv/pyenv/) is a tool letting you easily switch between multiple versions of Python
 - [goenv](https://github.com/go-nv/goenv/) is a tool letting you easily switch between multiple versions of Golang
-- [k3s](https://k3s.io/) is a lightweight kubernetes distribution running on docker powered by [Rancher](https://www.rancher.com/)
-- [k3d](https://github.com/k3d-io/k3d) is a tool for creating and manataining [k3s](https://k3s.io/) clusters.
 - [pfetch](https://github.com/dylanaraps/pfetch) is a simple system information tool for sh
+- [btop](https://github.com/aristocratos/btop.git) is a terminal-based system resource monitor
+- [gtop](https://github.com/aksakalli/gtop.git) is a simple system monitoring dashboard on terminal
+- [bottom](https://github.com/ClementTsang/bottom.git) is a customizable cross-platform graphical process/system monitor for the terminal
+- [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy.git) is a tool to make git diffs more human-readable
+- [delta](https://github.com/dandavison/delta.git) is a easier-to-read syntax-highlighting pager for git, diff
 
 ## Install and setup
 
