@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 alias c='clear'
 alias f='fuck'
 alias omp='oh-my-posh'
@@ -33,3 +35,11 @@ alias nv='nvim'
 alias n='nvim'
 alias 'n.'='nvim .'
 
+# lolcat wrapping
+catlol() { "$@" | lolcat }
+cmds=(brew cat conda du head more man rg fd tail)
+for cmd in "${cmds[@]}"; do
+  if command -v $cmd &>/dev/null; then
+    alias "${cmd}"="catlol ${cmd}"
+  fi
+done

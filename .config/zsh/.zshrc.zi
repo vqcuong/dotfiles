@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 function _setup_zi() {
 	if [[ ! -f $1/bin/zi.zsh ]]; then
 		print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"

@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZLE_RPROMPT_INDENT=0
@@ -19,7 +21,7 @@ plugins=(
   fzf-tab
   git
   git-open
-  hacker-quotes
+  # hacker-quotes
   history
   kubectl
   python
@@ -67,21 +69,6 @@ zstyle ':fzf-tab:*' popup-pad 1 1
 # bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
 # bindkey -M menuselect '\r' .accept-line
 
-# User configuration
-eval $(thefuck --alias)
-eval "$(zoxide init zsh)"
-# enable fzf
-[ -f ${ZDOTDIR:-$HOME}/.fzf.zsh ] && source ${ZDOTDIR:-$HOME}/.fzf.zsh
-export FZF_DEFAULT_OPTS=" \
-  --color=spinner:#f5e0dc,hl:#ff69a5 \
-  --color=fg:#def58c,header:#ff69a5,info:#b638ff,pointer:#f5e0dc \
-  --color=marker:#f5e0dc,fg+:#00ff91,prompt:#b638ff,hl+:#ff69a5"
-# additional shell
-[[ -d $HOME/.config/shell ]] && for f in $HOME/.config/shell/*; do
-  source $f
-done
-
-
 function _setup_conda(){
   conda_prefix=${1-$HOME/.apps/mambaforge}
   if [[ -d $conda_prefix ]]; then
@@ -118,9 +105,7 @@ function _eval_conda(){
   fi
   # <<< conda initialize <<<
 }
-
 _setup_conda
-
 
 function _setup_pyenv() {
   export PYENV_ROOT="$HOME/.apps/pyenv"
@@ -148,6 +133,23 @@ function _setup_goenv(){
 }
 _setup_goenv
 
+# User configuration
+eval $(thefuck --alias)
+eval "$(zoxide init zsh)"
+# enable fzf
+[ -f ${ZDOTDIR-$HOME}/.fzf.zsh ] && source ${ZDOTDIR-$HOME}/.fzf.zsh
+export FZF_DEFAULT_OPTS=" \
+  --color=spinner:#f5e0dc,hl:#ff69a5 \
+  --color=fg:#def58c,header:#ff69a5,info:#b638ff,pointer:#f5e0dc \
+  --color=marker:#f5e0dc,fg+:#00ff91,prompt:#b638ff,hl+:#ff69a5"
+# additional shell
+[[ -d ${ZDOTDIR-$HOME}/.site-functions ]] && for f in ${ZDOTDIR-$HOME}/.site-functions/*; do
+  source $f
+done
+
+# print chill quote on startup
+fortune|cowsay|lolcat
+
 # pfetch
 # export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
 # eval "$(oh-my-posh completion zsh)"
@@ -155,17 +157,17 @@ _setup_goenv
 # eval "$(starship init zsh)"
 
 function _setup_powerlevel10k() {
-  () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
   source $1/powerlevel10k.zsh-theme
 }
-_setup_powerlevel10k "${ZDOTDIR:-$HOME}/.powerlevel10k"
+_setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"
 
 function _enable_powerlevel10k(){
   # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+  [[ ! -f ${ZDOTDIR-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR-$HOME}/.p10k.zsh
   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='k|kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern|kubeseal|skaffold|kubent|kubecolor|cmctl|sparkctl'
-  [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 }
 _enable_powerlevel10k
 

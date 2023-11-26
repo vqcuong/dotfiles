@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 function _setup_powerlevel10k() {
   () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
   [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
