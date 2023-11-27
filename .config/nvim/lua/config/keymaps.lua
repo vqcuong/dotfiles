@@ -97,3 +97,5 @@ keymap.set({ "n", "v" }, "<localleader>f", "<leader>cf", { desc = "Format docume
 keymap.set("n", "a", "<nop>")
 -- keymap.set("n", "gI", "<nop>")
 keymap.set("n", "gi", "<nop>")
+
+keymap.set({ "n", "v" }, "<localleader>b", "<cmd>| !open %<cr>", { desc = "Open with browser" })
