@@ -98,4 +98,5 @@ keymap.set("n", "a", "<nop>")
 -- keymap.set("n", "gI", "<nop>")
 keymap.set("n", "gi", "<nop>")
 
+-- open file with default browser
 keymap.set({ "n", "v" }, "<localleader>b", "<cmd>| !open %<cr>", { desc = "Open with browser" })
