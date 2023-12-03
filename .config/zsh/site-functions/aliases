@@ -36,10 +36,10 @@ alias n='nvim'
 alias 'n.'='nvim .'
 
 # lolcat wrapping
-catlol() { "$@" | lolcat }
-cmds=(brew cat conda du fd head more man pip rg tail)
-for cmd in "${cmds[@]}"; do
+lolcat_cmds=(brew cat conda docker docker-compose du fd head more man pip rg tail)
+local args='$@'
+for cmd in "${lolcat_cmds[@]}"; do
   if command -v $cmd &>/dev/null; then
-    alias "${cmd}"="catlol ${cmd}"
+    eval "${cmd}() { command ${cmd} $args | lolcat }"
   fi
 done
