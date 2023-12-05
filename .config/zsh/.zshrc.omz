@@ -7,6 +7,9 @@ export ZLE_RPROMPT_INDENT=0
 # enable autocomplete for homebrew and its apps
 # remember to add this before sourcing oh-my-zsh
 eval $(/opt/homebrew/bin/brew shellenv)
+# Git installed through homebrew also installed the completion, which is a simple port of its bash completion,
+# which then overrides zsh's own much more sophisticated git completion
+# rm -f $HOMEBREW_PREFIX/share/zsh/site-functions/_git
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 export ZSH="$ZDOTDIR/ohmyzsh"
@@ -44,6 +47,8 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
 # fzf-tab
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
