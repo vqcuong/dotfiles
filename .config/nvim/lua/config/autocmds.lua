@@ -6,6 +6,18 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("my_augroup_" .. name, { clear = true })
 end
 
+-- automatically active winbar whenever entering buffer
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = augroup("open_winbar"),
+  pattern = "*",
+  callback = function()
+    local winbar = require("lspsaga.symbol.winbar")
+    if not winbar.get_bar() then
+      winbar.init_winbar(vim.api.nvim_get_current_buf())
+    end
+  end,
+})
+
 -- disable auto comment when insert new line after comment
 vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("format_options"),
