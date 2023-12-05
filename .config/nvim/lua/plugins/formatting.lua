@@ -4,6 +4,7 @@ return {
     opts = function(_, opts)
       table.insert(opts.ensure_installed, "isort")
       table.insert(opts.ensure_installed, "autopep8")
+      table.insert(opts.ensure_installed, "beautysh")
     end,
   },
   {
@@ -14,6 +15,7 @@ return {
       opts.sources = opts.sources or {}
       table.insert(opts.sources, nls.builtins.formatting.isort)
       table.insert(opts.sources, nls.builtins.formatting.autopep8)
+      table.insert(opts.sources, nls.builtins.formatting.beautysh)
     end,
   },
   {
@@ -21,7 +23,11 @@ return {
     optional = true,
     opts = function(_, opts)
       opts.formatters_by_ft["python"] = { "isort", "autopep8" }
+      opts.formatters_by_ft["zsh"] = { "beautysh" }
       opts.formatters.autopep8 = {
+        prepend_args = { "--indent-size", "2" },
+      }
+      opts.formatters.beautysh = {
         prepend_args = { "--indent-size", "2" },
       }
     end,
