@@ -47,7 +47,8 @@ return {
     opts = {
       symbol_in_winbar = {
         enable = true,
-        folder_level = 3,
+        folder_level = 2,
+        color_mode = false,
       },
       code_action = {
         enable = true,
