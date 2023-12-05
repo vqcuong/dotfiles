@@ -74,6 +74,22 @@ zstyle ':fzf-tab:*' popup-pad 1 1
 # bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
 # bindkey -M menuselect '\r' .accept-line
 
+# customize completion result for vim and nvim
+# autoload +X -Uz  _files
+# functions[_files_orig]=$functions[_files]
+#
+# _files() {
+#   if zstyle -t ":completion:$curcontext" use-fd; then
+#     local files=($(fd --hidden --follow --type=f -d=1))
+#     compadd -a -f files
+#   else
+#     _files_orig
+#   fi
+# }
+#
+# zstyle ':completion:*:vim:*' use-fd true
+# zstyle ':completion:*:nvim:*' use-fd true
+
 function _setup_conda(){
   conda_prefix=${1-$HOME/.apps/mambaforge}
   if [[ -d $conda_prefix ]]; then
