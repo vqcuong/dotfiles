@@ -40,9 +40,19 @@ return {
         options = {
           globalstatus = false,
           disabled_filetypes = {
+            "notify",
             "NvimTree",
             "toggleterm",
             "OverseerList",
+            "sagaoutline",
+            "NeogitStatus",
+            "DiffviewFiles",
+            "neo-tree",
+            "neo-tree-popup",
+            "diff",
+            "git",
+            "fugitive",
+            "fugitiveblame",
           },
         },
         sections = {
@@ -100,7 +110,7 @@ return {
           lualine_z = {},
         },
         tabline = {},
-        extensions = { "fugitive", "neo-tree", "lazy" },
+        extensions = { "nvim-tree", "fugitive", "neo-tree", "lazy" },
       }
     end,
   },
