@@ -34,6 +34,8 @@ return {
     opts = function()
       -- stylua: ignore
       local function os_icon() return "" end
+      -- stylua: ignore
+      local function vim_icon() return " " end
       return {
         options = {
           globalstatus = false,
@@ -44,14 +46,14 @@ return {
           },
         },
         sections = {
-          lualine_a = { os_icon },
+          lualine_a = { vim_icon, "mode" },
           lualine_b = {
-            {
-              "mode",
-              fmt = function(str)
-                return " " .. str
-              end,
-            },
+            -- {
+            --   "mode",
+            --   fmt = function(str)
+            --     return " " .. str
+            --   end,
+            -- },
           },
           lualine_c = {
 
@@ -79,7 +81,9 @@ return {
             "progress",
           },
           lualine_y = {},
-          lualine_z = { "location" },
+          lualine_z = {
+            -- "location",
+          },
         },
         inactive_sections = {
           lualine_a = {},

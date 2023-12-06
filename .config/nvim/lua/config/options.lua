@@ -20,5 +20,5 @@ vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.path:append({ "**" })
 
 vim.opt.undofile = false
-vim.opt.winblend = 0
+vim.opt.winblend = 30
 vim.opt.pumblend = 0
