@@ -220,10 +220,10 @@ return {
     -- },
     config = function()
       require("Navigator").setup({})
-      vim.keymap.set({ "n", "t" }, "<m-left>", "<CMD>NavigatorLeft<CR>")
-      vim.keymap.set({ "n", "t" }, "<m-right>", "<CMD>NavigatorRight<CR>")
-      vim.keymap.set({ "n", "t" }, "<m-up>", "<CMD>NavigatorUp<CR>")
-      vim.keymap.set({ "n", "t" }, "<m-down>", "<CMD>NavigatorDown<CR>")
+      -- vim.keymap.set({ "n", "t" }, "<M-left>", "<CMD>NavigatorLeft<CR>")
+      -- vim.keymap.set({ "n", "t" }, "<M-right>", "<CMD>NavigatorRight<CR>")
+      -- vim.keymap.set({ "n", "t" }, "<M-up>", "<CMD>NavigatorUp<CR>")
+      -- vim.keymap.set({ "n", "t" }, "<M-down>", "<CMD>NavigatorDown<CR>")
     end,
 
     -- keys = {
