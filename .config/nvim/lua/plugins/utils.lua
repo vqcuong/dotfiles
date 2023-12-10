@@ -29,7 +29,7 @@ return {
       local toggleterm = require("toggleterm")
       return {
         {
-          "<localleader><localleader>",
+          "<localleader>/",
           function()
             toggleterm.toggle(1, 10, dir, "horizontal", "helloworld")
           end,

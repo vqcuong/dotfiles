@@ -171,7 +171,7 @@ return {
       { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
       { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
       { "<localleader>e", "<leader>ef", desc = "Explorer focus", remap = true },
-      { "<localleader>/", "<leader>ee", desc = "Explorer toggle", remap = true },
+      { "<localleader><localleader>", "<leader>ee", desc = "Explorer toggle", remap = true },
     },
   },
 
