@@ -376,7 +376,7 @@ tmux_conf_copy_to_os_clipboard=false
 # move status line to top
 #set -g status-position top
 
-#mycustom
+# mycustom
 # replace C-b by C-a instead of using both prefixes
 set -gu prefix2
 unbind C-a
@@ -412,7 +412,7 @@ bind -r = previous-window # select previous window
 bind -r + next-window     # select next window
 
 set -g display-panes-time 2000
-#end_mycustom
+# end_mycustom
 
 
 # -- tpm -----------------------------------------------------------------------

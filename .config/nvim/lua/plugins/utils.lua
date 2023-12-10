@@ -210,4 +210,27 @@ return {
       },
     },
   },
+
+  {
+    "numToStr/Navigator.nvim",
+    -- opts = {
+    --   auto_save = nil,
+    --   disable_on_zoom = false,
+    --   mux = "auto",
+    -- },
+    config = function()
+      require("Navigator").setup({})
+      vim.keymap.set({ "n", "t" }, "<m-left>", "<CMD>NavigatorLeft<CR>")
+      vim.keymap.set({ "n", "t" }, "<m-right>", "<CMD>NavigatorRight<CR>")
+      vim.keymap.set({ "n", "t" }, "<m-up>", "<CMD>NavigatorUp<CR>")
+      vim.keymap.set({ "n", "t" }, "<m-down>", "<CMD>NavigatorDown<CR>")
+    end,
+
+    -- keys = {
+    --   { "<T-h>", "<cmd>NavigatorLeft<cr>", desc = "Move left", mode = { "n", "t" } },
+    --   { "<T-l>", "<cmd>NavigatorRight<cr>", desc = "Move right", mode = { "n", "t" } },
+    --   { "<T-j>", "<cmd>NavigatorUp<cr>", desc = "Move up", mode = { "n", "t" } },
+    --   { "<T-k>", "<cmd>NavigatorDown<cr>", desc = "Move down", mode = { "n", "t" } },
+    -- },
+  },
 }
