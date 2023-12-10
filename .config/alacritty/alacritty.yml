@@ -136,10 +136,10 @@ key_bindings:
   - { key: E, mods: Option, chars: "\x01e" } # modify tmux configuration
   - { key: X, mods: Option, chars: "\x01-" } # split pane vertically
   - { key: Q, mods: Option, chars: "\x01_" } # split pane horizontally
-  - { key: Left, mods: Option, chars: "\x01h" } # switch to left pane
-  - { key: Right, mods: Option, chars: "\x01l" } # switch to right pane
-  - { key: Up, mods: Option, chars: "\x01j" } # switch to pane above
-  - { key: Down, mods: Option, chars: "\x01k" } # switch to pane below
+  # - { key: Left, mods: Option, chars: "\x01h" } # switch to left pane
+  # - { key: Right, mods: Option, chars: "\x01l" } # switch to right pane
+  # - { key: Up, mods: Option, chars: "\x01j" } # switch to pane above
+  # - { key: Down, mods: Option, chars: "\x01k" } # switch to pane below
   - { key: H, mods: Option, chars: "\x01H" } # expand pane to the left side
   - { key: L, mods: Option, chars: "\x01L" } # expand pane to the right side
   - { key: J, mods: Option, chars: "\x01J" } # expand pane to the upper side

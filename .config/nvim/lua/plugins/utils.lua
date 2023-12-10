@@ -213,24 +213,13 @@ return {
 
   {
     "numToStr/Navigator.nvim",
-    -- opts = {
-    --   auto_save = nil,
-    --   disable_on_zoom = false,
-    --   mux = "auto",
-    -- },
-    config = function()
-      require("Navigator").setup({})
-      -- vim.keymap.set({ "n", "t" }, "<M-left>", "<CMD>NavigatorLeft<CR>")
-      -- vim.keymap.set({ "n", "t" }, "<M-right>", "<CMD>NavigatorRight<CR>")
-      -- vim.keymap.set({ "n", "t" }, "<M-up>", "<CMD>NavigatorUp<CR>")
-      -- vim.keymap.set({ "n", "t" }, "<M-down>", "<CMD>NavigatorDown<CR>")
-    end,
-
-    -- keys = {
-    --   { "<T-h>", "<cmd>NavigatorLeft<cr>", desc = "Move left", mode = { "n", "t" } },
-    --   { "<T-l>", "<cmd>NavigatorRight<cr>", desc = "Move right", mode = { "n", "t" } },
-    --   { "<T-j>", "<cmd>NavigatorUp<cr>", desc = "Move up", mode = { "n", "t" } },
-    --   { "<T-k>", "<cmd>NavigatorDown<cr>", desc = "Move down", mode = { "n", "t" } },
-    -- },
+    config = true,
+    keys = {
+      { "<m-left>", "<cmd>NavigatorLeft<cr>", desc = "Go left", mode = { "n", "t" } },
+      { "<m-right>", "<cmd>NavigatorRight<cr>", desc = "Go right", mode = { "n", "t" } },
+      { "<m-up>", "<cmd>NavigatorUp<cr>", desc = "Go up", mode = { "n", "t" } },
+      { "<m-down>", "<cmd>NavigatorDown<cr>", desc = "Go down", mode = { "n", "t" } },
+      { "<m-.>", "<cmd>NavigatorPrevious<cr>", desc = "Go previous", mode = { "n", "t" } },
+    },
   },
 }

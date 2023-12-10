@@ -412,6 +412,15 @@ bind -r = previous-window # select previous window
 bind -r + next-window     # select next window
 
 set -g display-panes-time 2000
+
+# vim tmux navigator integration
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind -n 'm-left' if-shell "$is_vim" 'send-keys m-left' 'select-pane -L'
+bind -n 'm-right' if-shell "$is_vim" 'send-keys m-right' 'select-pane -R'
+bind -n 'm-up' if-shell "$is_vim" 'send-keys m-up' 'select-pane -U'
+bind -n 'm-down' if-shell "$is_vim" 'send-keys m-down' 'select-pane -D'
+bind -n 'm-.' if-shell "$is_vim" 'send-keys m-.' 'select-pane -l'
 # end_mycustom
 
 
