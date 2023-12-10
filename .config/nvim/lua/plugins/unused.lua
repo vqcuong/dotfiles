@@ -30,12 +30,6 @@ return {
   "rktjmp/lush.nvim",
   "ibhagwan/fzf-lua",
   {
-    "folke/zen-mode.nvim",
-    keys = {
-      { "<localleader>z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
-    },
-  },
-  {
     "aserowy/tmux.nvim",
     opts = {
       copy_sync = {

@@ -195,6 +195,13 @@ return {
   },
 
   {
+    "folke/zen-mode.nvim",
+    keys = {
+      { "<localleader>m", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+    },
+  },
+
+  {
     "declancm/maximize.nvim",
     opts = {
       default_keymaps = false,
