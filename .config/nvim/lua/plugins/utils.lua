@@ -196,9 +196,23 @@ return {
 
   {
     "folke/zen-mode.nvim",
-    keys = {
-      { "<localleader>m", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+    opts = {
+      window = {
+        backdrop = 1,
+      },
+      plugins = {
+        twilight = { enabled = false },
+        gitsigns = { enabled = true },
+        tmux = { enabled = true },
+        kitty = { enabled = false, font = "+4" },
+        alacritty = { enabled = true, font = "+4" },
+        wezterm = { enabled = false, font = "+4" },
+      },
     },
+    keys = {
+      { "<localleader>Z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+    },
+    config = true,
   },
 
   {
