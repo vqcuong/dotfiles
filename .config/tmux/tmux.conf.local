@@ -414,13 +414,27 @@ bind -r + next-window     # select next window
 set -g display-panes-time 2000
 
 # vim tmux navigator integration
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
 bind -n 'm-left' if-shell "$is_vim" 'send-keys m-left' 'select-pane -L'
 bind -n 'm-right' if-shell "$is_vim" 'send-keys m-right' 'select-pane -R'
 bind -n 'm-up' if-shell "$is_vim" 'send-keys m-up' 'select-pane -U'
 bind -n 'm-down' if-shell "$is_vim" 'send-keys m-down' 'select-pane -D'
 bind -n 'm-.' if-shell "$is_vim" 'send-keys m-.' 'select-pane -l'
+bind -T copy-mode-vi 'm-left' select-pane -L
+bind -T copy-mode-vi 'm-right' select-pane -D
+bind -T copy-mode-vi 'm-up' select-pane -U
+bind -T copy-mode-vi 'm-down' select-pane -R
+bind -T copy-mode-vi 'm-.' select-pane -l
+
+# bind -n 'm-h' if-shell "$is_vim" 'send-keys m-h' 'resize-pane -L 1'
+# bind -n 'm-l' if-shell "$is_vim" 'send-keys m-l' 'resize-pane -R 1'
+# bind -n 'm-j' if-shell "$is_vim" 'send-keys m-j' 'resize-pane -U 1'
+# bind -n 'm-k' if-shell "$is_vim" 'send-keys m-k' 'resize-pane -D 1'
+# bind -T copy-mode-vi 'm-h' resize-pane -L 1
+# bind -T copy-mode-vi 'm-l' resize-pane -R 1
+# bind -T copy-mode-vi 'm-j' resize-pane -U 1
+# bind -T copy-mode-vi 'm-k' resize-pane -D 1
 # end_mycustom
 
 
