@@ -29,4 +29,10 @@ return {
   "terrortylor/nvim-comment",
   "rktjmp/lush.nvim",
   "ibhagwan/fzf-lua",
+  {
+    "folke/zen-mode.nvim",
+    keys = {
+      { "<localleader>z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+    },
+  },
 }

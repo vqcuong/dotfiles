@@ -62,8 +62,8 @@ keymap.set("n", "]<tab>", "<cmd>tabnext<return>", opts("Next tab"))
 keymap.set("n", "[<tab>", "<cmd>tabprevious<return>", opts("Previous tab"))
 
 -- windows
-keymap.set("n", "<leader>wL", ":vsplit<return>", opts("Split window left"))
-keymap.set("n", "<leader>wK", ":split<return>", opts("Split window above"))
+keymap.set("n", "<leader>wL", ":vsplit<return>", opts("Split window right"))
+keymap.set("n", "<leader>wJ", ":split<return>", opts("Split window below"))
 keymap.set("n", "<leader>wh", "<c-w>h", opts("Left window"))
 keymap.set("n", "<leader>wl", "<c-w>l", opts("Right window"))
 keymap.set("n", "<leader>wk", "<c-w>k", opts("Above window"))
@@ -99,4 +99,4 @@ keymap.set("n", "a", "<nop>")
 keymap.set("n", "gi", "<nop>")
 
 -- open file with default browser
-keymap.set({ "n", "v" }, "<localleader>b", "<cmd>| !open %<cr>", { desc = "Open with browser" })
+keymap.set({ "n", "v" }, "<localleader>b", "<cmd>| !open %<cr>", { desc = "Open with default app" })

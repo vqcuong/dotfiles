@@ -195,9 +195,19 @@ return {
   },
 
   {
-    "folke/zen-mode.nvim",
+    "declancm/maximize.nvim",
+    opts = {
+      default_keymaps = false,
+    },
     keys = {
-      { "<localleader>z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+      {
+        "<localleader>z",
+        function()
+          require("maximize").toggle()
+        end,
+        desc = "Maximize window",
+        mode = { "n", "v" },
+      },
     },
   },
 }
