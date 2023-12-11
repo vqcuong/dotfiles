@@ -39,14 +39,15 @@ return {
           vim.keymap.set(mode, new, func, opts(desc))
         end
 
-        local function del_key(mode, old)
-          vim.keymap.del(mode, old, { buffer = bufnr })
-        end
+        -- local function del_key(mode, old)
+        --   vim.keymap.del(mode, old, { buffer = bufnr })
+        -- end
+        --
+        -- local function replace_key(mode, old, new, func, desc)
+        --   del_key(mode, old)
+        --   add_key(mode, new, func, desc)
+        -- end
 
-        local function replace_key(mode, old, new, func, desc)
-          del_key(mode, old)
-          add_key(mode, new, func, desc)
-        end
         -- custom mappings
         add_key("n", "?", api.tree.toggle_help, "Show helps")
         add_key("n", "<s-left>", api.tree.change_root_to_parent, "Up")
@@ -216,6 +217,24 @@ return {
       local positions = require("hop.hint").HintPosition
       require("hop").setup({ hint_position = positions.END })
     end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    opts = { use_diagnostic_signs = true },
+    keys = {
+      { "<localleader>x", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<localleader>X", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+    },
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    -- stylua: ignore
+    keys = {
+      { "<localleader>t", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { "<localleader>T", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+    },
   },
 
   -- {

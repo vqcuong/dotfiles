@@ -64,11 +64,6 @@ return {
         { "md", "<cmd>MarkdownPreview<cr>", desc = "Markdown preview" }
       }
     end,
-    config = function()
-      local function opts(desc)
-        return { desc = desc, silent = true }
-      end
-    end,
   },
   {
     "roobert/search-replace.nvim",
