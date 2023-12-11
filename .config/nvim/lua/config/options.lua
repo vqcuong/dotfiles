@@ -20,5 +20,6 @@ vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.path:append({ "**" })
 
 vim.opt.undofile = false
-vim.opt.winblend = 30
+-- increase this will impact the which-key background transparent
+vim.opt.winblend = 0
 vim.opt.pumblend = 0

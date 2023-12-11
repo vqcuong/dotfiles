@@ -30,6 +30,7 @@ return {
   "rktjmp/lush.nvim",
   "ibhagwan/fzf-lua",
   "abecodes/tabout.nvim",
+  "mrjones2014/legendary.nvim",
   {
     "aserowy/tmux.nvim",
     opts = {
