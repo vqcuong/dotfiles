@@ -249,4 +249,9 @@ return {
       vim.g.loaded_matchparen = 1
     end,
   },
+
+  {
+    "karb94/neoscroll.nvim",
+    config = true,
+  },
 }

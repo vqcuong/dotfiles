@@ -15,6 +15,7 @@ return {
       end,
     },
   },
+
   {
     "akinsho/bufferline.nvim",
     keys = {
@@ -29,6 +30,7 @@ return {
       },
     },
   },
+
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
@@ -114,6 +116,7 @@ return {
       }
     end,
   },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
@@ -148,6 +151,7 @@ return {
       hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end,
   },
+
   {
     "echasnovski/mini.indentscope",
     opts = {
@@ -175,6 +179,7 @@ return {
       })
     end,
   },
+
   {
     "HiPhish/rainbow-delimiters.nvim",
     config = function()
@@ -200,6 +205,7 @@ return {
       })
     end,
   },
+
   {
     "levouh/tint.nvim",
     config = function()
@@ -219,6 +225,7 @@ return {
       })
     end,
   },
+
   {
     "folke/which-key.nvim",
     opts = function(_, opts)
@@ -226,6 +233,7 @@ return {
       opts.defaults["<leader>sn"] = nil
     end,
   },
+
   {
     "folke/noice.nvim",
     opts = {
@@ -255,5 +263,19 @@ return {
         { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
       }
     end,
+  },
+
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    init = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+    end,
+    config = true,
   },
 }
