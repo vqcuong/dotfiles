@@ -19,46 +19,39 @@ return {
   {
     "nanozuki/tabby.nvim",
     config = function()
-      local theme = {
-        fill = "TabLineFill",
-        -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
-        head = "TabLine",
-        current_tab = "TabLineSel",
-        tab = "TabLine",
-        win = "TabLine",
-        tail = "TabLine",
-      }
       require("tabby.tabline").set(function(line)
         return {
           {
-            { "  ", hl = { fg = "#47ff78" } },
-            { "", hl = { fg = "#00aee3" } },
+            { "   ", hl = { fg = "#47ff78" } },
           },
-          line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-            local bo = vim.bo[win.buf().id]
-            if vim.tbl_contains({ "NvimTree", "neo-tree" }, bo.ft) or vim.tbl_contains({ "nofile" }, bo.bt) then
-              return {}
-            end
-            return {
-              {
-                string.format(" %s", win.file_icon()),
-                hl = { fg = win.is_current() and "#00aee3" or "#999999" },
-              },
-              {
-                string.format(" %s ", win.buf_name()),
-                hl = { fg = win.is_current() and "#fff457" or "#999999" },
-              },
-              { "", hl = { fg = "#00aee3" } },
-            }
-          end),
-          line.spacer(),
           line.tabs().foreach(function(tab)
-            return {
-              { "", hl = { fg = "#00aee3" } },
+            local tab_node = {
+              { "", hl = { fg = tab.is_current() and "#ff557d" or "#999999" } },
               { string.format(" %s ", tab.number()), hl = { fg = tab.is_current() and "#ff457d" or "#999999" } },
             }
+            if not tab.is_current() then
+              return tab_node
+            end
+            local win_nodes = line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+              local bo = vim.bo[win.buf().id]
+              if vim.tbl_contains({ "NvimTree", "neo-tree" }, bo.ft) or vim.tbl_contains({ "nofile" }, bo.bt) then
+                return {}
+              end
+              return {
+                { "", hl = { fg = win.is_current() and "#fff457" or "#999999" } },
+                {
+                  string.format(" %s", win.file_icon()),
+                  hl = { fg = win.is_current() and "#00aee3" or "#999999" },
+                },
+                {
+                  string.format(" %s ", win.buf_name()),
+                  hl = { fg = win.is_current() and "#fff457" or "#999999" },
+                },
+              }
+            end)
+            return { tab_node, win_nodes }
           end),
-          hl = theme.fill,
+          line.spacer(),
         }
       end)
     end,
