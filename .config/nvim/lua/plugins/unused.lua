@@ -16,20 +16,6 @@ return {
   { "neoclide/coc.nvim", build = "npm ci" },
   { "airblade/vim-gitgutter", opts = {} },
   {
-    -- unused due to the conflict trouble with toggleterm
-    "anuvyklack/windows.nvim",
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
-    },
-    init = function()
-      vim.o.winwidth = 10
-      vim.o.winminwidth = 10
-      vim.o.equalalways = false
-    end,
-    config = true,
-  },
-  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     tag = "legacy",
