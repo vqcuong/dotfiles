@@ -238,4 +238,15 @@ return {
       { "<m-.>", "<cmd>NavigatorPrevious<cr>", desc = "Go previous", mode = { "n", "t" } },
     },
   },
+
+  {
+    "utilyre/sentiment.nvim",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
+    init = function()
+      -- `matchparen.vim` needs to be disabled manually in case of lazy loading
+      vim.g.loaded_matchparen = 1
+    end,
+  },
 }

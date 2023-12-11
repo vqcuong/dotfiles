@@ -3,7 +3,7 @@ if true then
 end
 
 return {
-  { "voldikss/vim-floaterm" },
+  "voldikss/vim-floaterm",
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
@@ -29,6 +29,7 @@ return {
   "terrortylor/nvim-comment",
   "rktjmp/lush.nvim",
   "ibhagwan/fzf-lua",
+  "abecodes/tabout.nvim",
   {
     "aserowy/tmux.nvim",
     opts = {

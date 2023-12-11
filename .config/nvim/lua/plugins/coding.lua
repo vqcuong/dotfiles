@@ -1,6 +1,7 @@
 ---@diagnostic disable: missing-fields
 
 return {
+  { "b3nj5m1n/kommentary" },
   {
     "onsails/lspkind.nvim",
     config = function()
