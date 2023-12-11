@@ -16,6 +16,15 @@ return {
   { "neoclide/coc.nvim", build = "npm ci" },
   { "airblade/vim-gitgutter", opts = {} },
   {
+    "folke/twilight.nvim",
+    opts = {
+      dimming = {
+        alpha = 0.5,
+      },
+      context = 20,
+    },
+  },
+  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     tag = "legacy",
