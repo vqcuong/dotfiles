@@ -17,18 +17,51 @@ return {
   },
 
   {
-    "akinsho/bufferline.nvim",
-    keys = {
-      { "<Tab>", "<CMD>BufferLineCycleNext<CR>", desc = "Next tab" },
-      { "<S-Tab>", "<CMD>BufferLineCyclePrev<CR>", desc = "Next tab" },
-    },
-    opts = {
-      options = {
-        mode = "tabs",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-      },
-    },
+    "nanozuki/tabby.nvim",
+    config = function()
+      local theme = {
+        fill = "TabLineFill",
+        -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
+        head = "TabLine",
+        current_tab = "TabLineSel",
+        tab = "TabLine",
+        win = "TabLine",
+        tail = "TabLine",
+      }
+      require("tabby.tabline").set(function(line)
+        return {
+          {
+            { "  ", hl = { fg = "#47ff78" } },
+            { "", hl = { fg = "#00aee3" } },
+          },
+          line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+            local bo = vim.bo[win.buf().id]
+            if vim.tbl_contains({ "NvimTree", "neo-tree" }, bo.ft) or vim.tbl_contains({ "nofile" }, bo.bt) then
+              return {}
+            end
+            return {
+              {
+                string.format(" %s", win.file_icon()),
+                hl = { fg = win.is_current() and "#00aee3" or "#999999" },
+              },
+              {
+                string.format(" %s ", win.buf_name()),
+                hl = { fg = win.is_current() and "#fff457" or "#999999" },
+              },
+              { "", hl = { fg = "#00aee3" } },
+            }
+          end),
+          line.spacer(),
+          line.tabs().foreach(function(tab)
+            return {
+              { "", hl = { fg = "#00aee3" } },
+              { string.format(" %s ", tab.number()), hl = { fg = tab.is_current() and "#ff457d" or "#999999" } },
+            }
+          end),
+          hl = theme.fill,
+        }
+      end)
+    end,
   },
 
   {
@@ -37,7 +70,7 @@ return {
       -- stylua: ignore
       local function os_icon() return "" end
       -- stylua: ignore
-      local function vim_icon() return " " end
+      local function vim_icon() return "" end
       return {
         options = {
           globalstatus = false,
@@ -263,19 +296,5 @@ return {
         { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
       }
     end,
-  },
-
-  {
-    "anuvyklack/windows.nvim",
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
-    },
-    init = function()
-      vim.o.winwidth = 10
-      vim.o.winminwidth = 10
-      vim.o.equalalways = false
-    end,
-    config = true,
   },
 }
