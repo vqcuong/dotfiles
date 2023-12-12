@@ -290,31 +290,4 @@ return {
       }
     end,
   },
-
-  {
-    -- unused due to the conflict trouble with toggleterm
-    "anuvyklack/windows.nvim",
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
-    },
-    init = function()
-      vim.o.winwidth = 8
-      vim.o.winminwidth = 8
-      vim.o.equalalways = false
-    end,
-    opts = {
-      ignore = {
-        buftype = { "nofile", "temrinal" },
-        filetype = {
-          "NvimTree",
-          "neo-tree",
-          "undotree",
-          "gundo",
-          "toggleterm",
-        },
-      },
-    },
-    config = true,
-  },
 }
