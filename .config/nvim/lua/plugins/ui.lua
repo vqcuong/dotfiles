@@ -38,7 +38,7 @@ return {
                 return {}
               end
               return {
-                { "", hl = { fg = win.is_current() and "#fff457" or "#999999" } },
+                { "❯", hl = { fg = win.is_current() and "#fff457" or "#999999" } },
                 {
                   string.format(" %s", win.file_icon()),
                   hl = { fg = win.is_current() and "#00aee3" or "#999999" },
