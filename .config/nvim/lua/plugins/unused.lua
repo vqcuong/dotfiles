@@ -13,6 +13,7 @@ return {
   "ibhagwan/fzf-lua",
   "abecodes/tabout.nvim",
   "mrjones2014/legendary.nvim",
+  "Pocco81/true-zen.nvim",
   { "neoclide/coc.nvim", build = "npm ci" },
   { "airblade/vim-gitgutter", opts = {} },
   {
