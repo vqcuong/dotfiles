@@ -14,6 +14,7 @@ return {
   "abecodes/tabout.nvim",
   "mrjones2014/legendary.nvim",
   "Pocco81/true-zen.nvim",
+  "b3nj5m1n/kommentary",
   { "neoclide/coc.nvim", build = "npm ci" },
   { "airblade/vim-gitgutter", opts = {} },
   {
