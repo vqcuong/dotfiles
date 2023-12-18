@@ -66,6 +66,7 @@
   "persistence.nvim": { "branch": "main", "commit": "ad538bfd5336f1335cdb6fd4e0b0eebfa6e12f32" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "b510fd445b6ee0b621e910e4b3e123e48d6bb436" },
+  "search-replace.nvim": { "branch": "main", "commit": "d92290a02d97f4e9b8cd60d28b56b403432158d5" },
   "sentiment.nvim": { "branch": "main", "commit": "54a6db15b630eccfa98c32a76baf90f21c6f1e40" },
   "stcursorword": { "branch": "main", "commit": "9ca2de4f29baff8ed5231e808aa9a8b85801f157" },
   "tabby.nvim": { "branch": "main", "commit": "f283ca1e8c1827b657d87865e97bfe2199432c90" },

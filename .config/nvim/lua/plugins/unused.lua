@@ -230,4 +230,41 @@ return {
       { "<m-k>", "<cmd>lua require('tmux').resize_bottom()<cr>", desc = "Resize down", mode = { "n", "t" } },
     },
   },
+  {
+    "FabianWirth/search.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    keys = {
+      {
+        "<localleader><space>",
+        "<cmd>lua require('search').open()<cr>",
+        desc = "Telescope multiple space",
+        mode = { "n", "v" },
+      },
+    },
+    config = function()
+      local builtin = require("telescope.builtin")
+      require("search").setup({
+        mappings = { -- optional: configure the mappings for switching tabs (will be set in normal and insert mode(!))
+          next = "<Tab>",
+          prev = "<S-Tab>",
+        },
+        append_tabs = { -- append_tabs will add the provided tabs to the default ones
+          { "Buffers", builtin.buffers },
+          { "Greps", builtin.live_grep },
+          { "Diagnostics", builtin.diagnostics },
+          { "References", builtin.lsp_references },
+          -- stylua: ignore
+          { "Commits", builtin.git_commits, available = function() return vim.fn.isdirectory(".git") == 1 end },
+          { "Helps", builtin.help_tags },
+          { "Highlights", builtin.highlights },
+          { "Colorscheme", builtin.colorscheme },
+        },
+        tabs = {
+          { "Files", builtin.find_files },
+          -- stylua: ignore
+          { "GitFiles", builtin.git_files, function() return vim.fn.isdirectory(".git") == 1 end },
+        },
+      })
+    end,
+  },
 }
