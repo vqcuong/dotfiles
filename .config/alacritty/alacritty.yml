@@ -4,7 +4,7 @@ env:
 window:
   dynamic_padding: true
   decorations: buttonless
-  opacity: 0.85
+  opacity: 0.875
   startup_mode: Maximized
   title: Alacritty
   dynamic_title: true
