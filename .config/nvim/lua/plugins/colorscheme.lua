@@ -40,17 +40,17 @@ return {
           base = "#000000",
           text = "#e3de86",
           rosewater = "#ff9885",
-          flamingo = "#ff85a1",
+          flamingo = "#ff5e83",
           pink = "#fa6bff",
           mauve = "#aaff00",
           red = "#d43939",
-          maroon = "#eba0ac",
+          maroon = "#00fffb",
           peach = "#fa87b5",
           yellow = "#ff8f57",
           green = "#00ff9d",
           teal = "#76f5e8",
           sky = "#82dcff",
-          sapphire = "#00fffb",
+          sapphire = "#4a50ff",
           blue = "#00a2ff",
           lavender = "#ff63b4",
         },
@@ -60,7 +60,7 @@ return {
         mocha = function(_)
           return {
             Comment = { fg = "#2e4e70" },
-            Constant = { fg = "#00fffb", style = { "bold" } },
+            Constant = { fg = "#ff9885", style = { "bold" } },
             Number = { fg = "#0dff00" },
             Boolean = { fg = "#b98aff" },
             Operator = { link = "Function" },
@@ -68,6 +68,11 @@ return {
             Error = { fg = "#d43939", style = { "underline" } },
           }
         end,
+      },
+      integrations = {
+        native_lsp = {
+          enabled = false,
+        },
       },
     },
   },
