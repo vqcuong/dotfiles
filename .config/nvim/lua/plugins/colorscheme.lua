@@ -44,7 +44,7 @@ return {
           pink = "#ff85de",
           mauve = "#9dff00",
           red = "#d43939",
-          maroon = "#ff547f",
+          maroon = "#ff6e92",
           peach = "#73ace6",
           yellow = "#ff795e",
           green = "#00ff80",
@@ -68,7 +68,7 @@ return {
             Error = { fg = "#d43939", style = { "underline" } },
             Identifier = { fg = "#88ff78" },
             -- Conditional = { fg = "#b98aff", style = { "italic" } },
-            -- Repeat = { fg = "#ff547f", style = { "italic" } },
+            -- Repeat = { fg = "#ff6e92", style = { "italic" } },
           }
         end,
       },
