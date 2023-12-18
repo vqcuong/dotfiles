@@ -230,7 +230,7 @@ return {
     opts = {
       highlight = {
         underline = false,
-        bg = "#777777",
+        bg = "#445566",
       },
     },
     config = true,

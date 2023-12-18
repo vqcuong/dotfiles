@@ -12,7 +12,7 @@ return {
       opts.integrations.overseer = true
       opts.integrations.mini = {
         enabled = true,
-        indentscope_color = "blue",
+        indentscope_color = "sky",
       }
     end,
   },
@@ -27,24 +27,45 @@ return {
       },
       transparent_background = true,
       term_colors = false,
+      styles = {
+        keywords = { "bold" },
+        strings = { "italic" },
+        numbers = { "italic" },
+        booleans = { "italic" },
+        types = { "bold" },
+        operators = { "bold" },
+      },
       color_overrides = {
         mocha = {
           base = "#000000",
-          text = "#fcba03",
-          lavender = "#ffa36e",
-          blue = "#69c9f5",
-          rosewater = "#d48b74",
-          red = "#f76a78",
-          peach = "#f22287",
-          mauve = "#d04dff",
-          green = "#75c45c",
+          text = "#e3de86",
+          rosewater = "#ff9885",
+          flamingo = "#ff85a1",
+          pink = "#fa6bff",
+          mauve = "#aaff00",
+          red = "#d43939",
+          maroon = "#eba0ac",
+          peach = "#fa87b5",
+          yellow = "#ff8f57",
+          green = "#00ff9d",
+          teal = "#76f5e8",
+          sky = "#82dcff",
+          sapphire = "#00fffb",
+          blue = "#00a2ff",
+          lavender = "#ff63b4",
         },
       },
       custom_highlights = {},
       highlight_overrides = {
         mocha = function(_)
           return {
-            Comment = { fg = "#7a94bf" },
+            Comment = { fg = "#2e4e70" },
+            Constant = { fg = "#00fffb", style = { "bold" } },
+            Number = { fg = "#0dff00" },
+            Boolean = { fg = "#b98aff" },
+            Operator = { link = "Function" },
+            Delimiter = { fg = "#76f5e8" },
+            Error = { fg = "#d43939", style = { "underline" } },
           }
         end,
       },
