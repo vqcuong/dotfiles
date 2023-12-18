@@ -1,26 +1,6 @@
 return {
   { "stevearc/overseer.nvim", opts = {} },
 
-  -- {
-  --   "numToStr/FTerm.nvim",
-  --   -- stylua: ignore
-  --   keys = {
-  --     { "<localleader>T", function() require("FTerm").toggle() end, desc = "Float terminal toggle", mode = { "n", "t", "v" } },
-  --     { "<esc><esc>", function () require("FTerm").toggle()  end, silent = true, mode = {"t"} }
-  --   },
-  --   opts = {
-  --     border = "single",
-  --     auto_close = true,
-  --     blend = 0,
-  --     dimensions = {
-  --       height = 0.6,
-  --       width = 0.6,
-  --       x = 0.5,
-  --       y = 0.5,
-  --     },
-  --   },
-  -- },
-
   {
     "akinsho/toggleterm.nvim",
     version = "*",
@@ -65,16 +45,45 @@ return {
       }
     end,
   },
+
   {
-    "roobert/search-replace.nvim",
-    keys = {
-      { "sr", "<cmd>SearchReplaceSingleBufferCWord<cr>", desc = "Search and replace" },
-    },
-    opts = {
-      default_replace_single_buffer_options = "g",
-      default_replace_multi_buffer_options = "g",
-    },
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      opts.defaults["<leader>r"] = { name = "+replace" }
+    end,
   },
+
+  {
+    -- has a function allowing to search and replace only in the current buffer
+    -- but anothers seem to be useless or hard to use
+    "roobert/search-replace.nvim",
+    lazy = false,
+    keys = {
+      { "<leader>rr", "<cmd>SearchReplaceSingleBufferCWord<cr>", desc = "Replace text in current buffer" },
+    },
+    config = true,
+  },
+
+  {
+    -- have some functions for searching and replacing in the whole workdir
+    "s1n7ax/nvim-search-and-replace",
+    config = function()
+      require("nvim-search-and-replace").setup({
+        ignore = { "**/node_modules/**", "**/.git/**", "**/.gitignore", "**/.gitmodules", "build/**" },
+        -- save the changes after replace
+        update_changes = false,
+        -- keymap for search and replace
+        replace_keymap = "<leader>rs",
+        -- keymap for search and replace ( this does not care about ignored files )
+        replace_all_keymap = "<leader>rS",
+        -- keymap for search and replace
+        replace_and_save_keymap = "<leader>ru",
+        -- keymap for search and replace ( this does not care about ignored files )
+        replace_all_and_save_keymap = "<leader>rU",
+      })
+    end,
+  },
+
   {
     "kylechui/nvim-surround",
     version = "*",

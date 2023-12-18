@@ -18,6 +18,25 @@ return {
   { "neoclide/coc.nvim", build = "npm ci" },
   { "airblade/vim-gitgutter", opts = {} },
   {
+    "numToStr/FTerm.nvim",
+    -- stylua: ignore
+    keys = {
+      { "<localleader>T", function() require("FTerm").toggle() end, desc = "Float terminal toggle", mode = { "n", "t", "v" } },
+      { "<esc><esc>", function () require("FTerm").toggle()  end, silent = true, mode = {"t"} }
+    },
+    opts = {
+      border = "single",
+      auto_close = true,
+      blend = 0,
+      dimensions = {
+        height = 0.6,
+        width = 0.6,
+        x = 0.5,
+        y = 0.5,
+      },
+    },
+  },
+  {
     -- unused due to the conflict trouble with toggleterm
     "anuvyklack/windows.nvim",
     dependencies = {
