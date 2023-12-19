@@ -230,4 +230,19 @@ return {
       ]])
     end,
   },
+
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    init = function()
+      vim.g.codeium_disable_bindings = 1
+    end,
+    -- stylua: ignore
+    keys = {
+      { "<c-g>", function () return vim.fn['codeium#Accept']() end, expr = true, silent = true, mode = "i" },
+      { "<c-up>", function() return vim.fn['codeium#CycleCompletions'](1) end, expr = true, silent = true, mode = "i" },
+      { "<c-down>", function() return vim.fn['codeium#CycleCompletions'](-1) end, expr = true, silent = true, mode = "i" },
+      { "<c-x>", function() return vim.fn['codeium#Clear']() end, expr = true, silent = true, mode = "i" },
+    },
+  },
 }
