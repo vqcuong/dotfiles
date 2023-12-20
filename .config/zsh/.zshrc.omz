@@ -163,12 +163,21 @@ export FZF_DEFAULT_OPTS=" \
   --color=spinner:#f5e0dc,hl:#ff69a5 \
   --color=fg:#def58c,header:#ff69a5,info:#b638ff,pointer:#f5e0dc \
   --color=marker:#f5e0dc,fg+:#00ff91,prompt:#b638ff,hl+:#ff69a5"
-# additional shell
+# additional zsh site-functions
 [[ -d ${ZDOTDIR-$HOME}/.site-functions ]] && for f in ${ZDOTDIR-$HOME}/.site-functions/*; do
   source $f
 done
 
-# print chill quote on startup
+# source any local config
+# can add any additional paths and envs
+[[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
+if [[ -d $ZDOTDIR/.local ]]; then
+  for f in $ZDOTDIR/.local/*; do
+    source $f
+  done
+fi
+
+# print a chilly quote on startup
 fortune|cowsay|lolcat
 
 # pfetch
