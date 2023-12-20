@@ -134,6 +134,7 @@ mouse_bindings:
 
 key_bindings:
   # tmux bindings
+  - { key: A, mods: Option, chars: "\x01a" } # modify tmux configuration
   - { key: E, mods: Option, chars: "\x01e" } # modify tmux configuration
   - { key: X, mods: Option, chars: "\x01-" } # split pane vertically
   - { key: Q, mods: Option, chars: "\x01_" } # split pane horizontally
