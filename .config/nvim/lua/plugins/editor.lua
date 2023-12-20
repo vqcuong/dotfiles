@@ -252,4 +252,92 @@ return {
       },
     },
   },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = {
+      defaults = {
+        layout_config = {
+          vertical = { width = 0.6, height = 0.6 },
+        },
+      },
+      pickers = {
+        buffers = {
+          theme = "dropdown",
+        },
+        live_grep = {
+          theme = "dropdown",
+        },
+        command_history = {
+          theme = "dropdown",
+        },
+        find_files = {
+          theme = "dropdown",
+        },
+        oldfiles = {
+          theme = "dropdown",
+        },
+        git_files = {
+          theme = "dropdown",
+        },
+        git_commits = {
+          theme = "dropdown",
+        },
+        git_status = {
+          theme = "dropdown",
+        },
+        registers = {
+          theme = "dropdown",
+        },
+        autocommands = {
+          theme = "dropdown",
+        },
+        current_buffer_fuzzy_find = {
+          theme = "dropdown",
+        },
+        commands = {
+          theme = "dropdown",
+        },
+        diagnostics = {
+          theme = "dropdown",
+        },
+        help_tags = {
+          theme = "dropdown",
+        },
+        highlights = {
+          theme = "dropdown",
+        },
+        keymaps = {
+          theme = "dropdown",
+        },
+        grep_string = {
+          theme = "dropdown",
+        },
+        colorscheme = {
+          theme = "dropdown",
+        },
+
+        lsp_document_symbols = {
+          theme = "dropdown",
+        },
+        lsp_dynamic_workspace_symbols = {
+          theme = "dropdown",
+        },
+        lsp_references = {
+          theme = "dropdown",
+        },
+        lsp_definitions = {
+          theme = "cursor",
+        },
+        lsp_type_definitions = {
+          theme = "cursor",
+        },
+      },
+    },
+    keys = {
+      { "<localleader>l", "<cmd>Telescope lsp_references<CR>", desc = "References" },
+      { "<localleader>j", "<cmd>Telescope lsp_definitions<CR>", desc = "Definitions" },
+      { "<localleader>k", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Type Definitions" },
+    },
+  },
 }
