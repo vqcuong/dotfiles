@@ -255,85 +255,30 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    opts = {
-      defaults = {
-        layout_config = {
-          vertical = { width = 0.6, height = 0.6 },
-        },
-      },
-      pickers = {
-        buffers = {
-          theme = "dropdown",
-        },
-        live_grep = {
-          theme = "dropdown",
-        },
-        command_history = {
-          theme = "dropdown",
-        },
-        find_files = {
-          theme = "dropdown",
-        },
-        oldfiles = {
-          theme = "dropdown",
-        },
-        git_files = {
-          theme = "dropdown",
-        },
-        git_commits = {
-          theme = "dropdown",
-        },
-        git_status = {
-          theme = "dropdown",
-        },
-        registers = {
-          theme = "dropdown",
-        },
-        autocommands = {
-          theme = "dropdown",
-        },
-        current_buffer_fuzzy_find = {
-          theme = "dropdown",
-        },
-        commands = {
-          theme = "dropdown",
-        },
-        diagnostics = {
-          theme = "dropdown",
-        },
-        help_tags = {
-          theme = "dropdown",
-        },
-        highlights = {
-          theme = "dropdown",
-        },
-        keymaps = {
-          theme = "dropdown",
-        },
-        grep_string = {
-          theme = "dropdown",
-        },
-        colorscheme = {
-          theme = "dropdown",
-        },
+    opts = function(_, opts)
+      opts.defaults = opts.defaults or {}
+      opts.defaults.layout_config = opts.defaults.layout_config or {}
+      opts.defaults.layout_config.vertical = { width = 0.6, height = 0.6 }
+      opts.defaults.layout_strategy = "vertical"
+      opts.pickers = opts.pickers or {}
 
-        lsp_document_symbols = {
-          theme = "dropdown",
-        },
-        lsp_dynamic_workspace_symbols = {
-          theme = "dropdown",
-        },
-        lsp_references = {
-          theme = "dropdown",
-        },
-        lsp_definitions = {
-          theme = "cursor",
-        },
-        lsp_type_definitions = {
-          theme = "cursor",
-        },
-      },
-    },
+      -- stylua: ignore
+      local dropdown_pickers = {
+        -- "buffers", "live_grep", "find_files", "oldfiles", "git_files", "git_commits", "git_status",
+        -- "current_buffer_fuzzy_find", "diagnostics", "grep_string", "lsp_document_symbols",
+        -- "lsp_dynamic_workspace_symbols", "lsp_references",
+        -- "command_history", "registers", "autocommands", "commands", "help_tags", "highlights",
+        -- "keymaps", "colorscheme", "vim_options",
+      }
+      for _, value in pairs(dropdown_pickers) do
+        opts.pickers[value] = { theme = "dropdown" }
+      end
+
+      local cursor_pickers = { "lsp_definitions", "lsp_type_definitions" }
+      for _, value in pairs(cursor_pickers) do
+        opts.pickers[value] = { theme = "cursor" }
+      end
+    end,
     keys = {
       { "<localleader>l", "<cmd>Telescope lsp_references<CR>", desc = "References" },
       { "<localleader>j", "<cmd>Telescope lsp_definitions<CR>", desc = "Definitions" },
