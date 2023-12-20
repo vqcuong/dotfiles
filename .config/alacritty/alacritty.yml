@@ -133,9 +133,11 @@ mouse_bindings:
   - { mouse: Middle, mode: ~Vi, action: PasteSelection }
 
 key_bindings:
+  # tmux bindings
   - { key: E, mods: Option, chars: "\x01e" } # modify tmux configuration
   - { key: X, mods: Option, chars: "\x01-" } # split pane vertically
   - { key: Q, mods: Option, chars: "\x01_" } # split pane horizontally
+  # disable it because it works already when integrating tmux with vim
   # - { key: Left, mods: Option, chars: "\x01h" } # switch to left pane
   # - { key: Right, mods: Option, chars: "\x01l" } # switch to right pane
   # - { key: Up, mods: Option, chars: "\x01j" } # switch to pane above
@@ -156,6 +158,7 @@ key_bindings:
   - { key: P, mods: Option, chars: "\x01q" } # display pane number for choosing
   - { key: R, mods: Option, chars: "\x01$" } # rename session
   - { key: B, mods: Option, chars: "\x01w" } # show session menu
+  # end tmux bindings
 
   - { key: Paste, action: Paste }
   - { key: Copy, action: Copy }

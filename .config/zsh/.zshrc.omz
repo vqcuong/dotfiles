@@ -3,6 +3,9 @@
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZLE_RPROMPT_INDENT=0
+# disable this to remove the slow motion when pasting text in terminal
+# this feature is attached with oh-my-zsh
+DISABLE_MAGIC_FUNCTIONS=true
 
 # enable autocomplete for homebrew and its apps
 # remember to add this before sourcing oh-my-zsh
@@ -178,7 +181,7 @@ if [[ -d $ZDOTDIR/.local ]]; then
 fi
 
 # print a chilly quote on startup
-fortune|cowsay|lolcat
+# fortune|cowsay|lolcat
 
 # pfetch
 # export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
