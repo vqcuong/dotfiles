@@ -437,7 +437,7 @@ bind -T copy-mode-vi 'm-.' select-pane -l
 # bind -T copy-mode-vi 'm-k' resize-pane -D 1
 
 # start AI asistance
-bind a split-window -h -p 35 $HOME/.local/bin/cw ai
+bind a split-window -h -f -p 35 $HOME/.local/bin/cw ai
 
 
 # end_mycustom
