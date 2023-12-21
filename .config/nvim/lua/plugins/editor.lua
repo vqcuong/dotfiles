@@ -288,20 +288,30 @@ return {
         return status == false or status == nil
       end
 
-      local find_files_no_ignore = function(prompt_bufnr)
+      local toggle_ignore = function(prompt_bufnr)
         local action_state = require("telescope.actions.state")
         local picker = action_state.get_current_picker(prompt_bufnr)
         if picker.prompt_title == "Find Files" then
           local enable = resolve_gstatus(vim.g.telescope_find_files_no_ignore)
           vim.g.telescope_find_files_no_ignore = enable
           local c = { no_ignore = enable, default_text = action_state.get_current_line() }
+          if vim.g.telescope_find_files_with_hidden then
+            c.hidden = true
+          end
           builtin.find_files(c)
         elseif picker.prompt_title == "Live Grep" then
           local live_grep_additional_args = function(_)
             local enable = resolve_gstatus(vim.g.telescope_live_grep_no_ignore)
             vim.g.telescope_live_grep_no_ignore = enable
-              -- stylua: ignore
-              if enable then return {} else return { "--no-ignore" } end
+            -- stylua: ignore
+            local args = {}
+            if enable then
+              table.insert(args, "--no-ignore")
+            end
+            if vim.g.telescope_live_grep_with_hidden then
+              table.insert(args, "--hidden")
+            end
+            return args
           end
           builtin.live_grep({
             additional_args = live_grep_additional_args,
@@ -310,20 +320,30 @@ return {
         end
       end
 
-      local find_files_with_hidden = function(prompt_bufnr)
+      local toggle_hidden = function(prompt_bufnr)
         local action_state = require("telescope.actions.state")
         local picker = action_state.get_current_picker(prompt_bufnr)
         if picker.prompt_title == "Find Files" then
           local enable = resolve_gstatus(vim.g.telescope_find_files_with_hidden)
           vim.g.telescope_find_files_with_hidden = enable
           local c = { hidden = enable, default_text = action_state.get_current_line() }
+          if vim.g.telescope_find_files_no_ignore then
+            c.no_ignore = true
+          end
           builtin.find_files(c)
         elseif picker.prompt_title == "Live Grep" then
           local live_grep_additional_args = function(_)
             local enable = resolve_gstatus(vim.g.telescope_live_grep_with_hidden)
             vim.g.telescope_live_grep_with_hidden = enable
-              -- stylua: ignore
-              if enable then return { "--hidden" } else return {} end
+            -- stylua: ignore
+            local args = {}
+            if enable then
+              vim.list_extend(args, { "--hidden" })
+            end
+            if vim.g.telescope_live_grep_no_ignore then
+              vim.list_extend(args, { "--no-ignore" })
+            end
+            return args
           end
           builtin.live_grep({
             additional_args = live_grep_additional_args,
@@ -355,8 +375,8 @@ return {
       remap_action("<c-l>", actions.preview_scrolling_right, "i", "n")
       remap_action("<c-j>", actions.preview_scrolling_up, "i", "n")
       remap_action("<c-k>", actions.preview_scrolling_down, "i", "n")
-      remap_action("<c-i>", find_files_no_ignore, "i", "n")
-      remap_action("<c-d>", find_files_with_hidden, "i", "n")
+      remap_action("<c-i>", toggle_ignore, "i", "n")
+      remap_action("<c-d>", toggle_hidden, "i", "n")
       remap_action("<c-up>", actions.cycle_history_next, "i", "n")
       remap_action("<c-down>", actions.cycle_history_prev, "i", "n")
       remap_action("<c-space>", actions.which_key, "i", "n")
