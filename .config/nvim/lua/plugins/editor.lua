@@ -281,35 +281,55 @@ return {
           end
         end
       end
-      local lazyvimUtil = require("lazyvim.util")
 
-      local find_files_no_ignore = function()
-        local is_enabled = vim.g.telescope_find_files_no_ignore
-        if is_enabled == false or is_enabled == nil then
-          is_enabled = true
-          vim.g.telescope_find_files_no_ignore = true
-        else
-          is_enabled = false
-          vim.g.telescope_find_files_no_ignore = false
-        end
+      local builtin = require("telescope.builtin")
 
-        local action_state = require("telescope.actions.state")
-        local line = action_state.get_current_line()
-        lazyvimUtil.telescope("find_files", { no_ignore = is_enabled, default_text = line })()
+      local resolve_gstatus = function(status)
+        return status == false or status == nil
       end
-      local find_files_with_hidden = function()
-        local is_enabled = vim.g.telescope_find_files_with_hidden
-        if is_enabled == false or is_enabled == nil then
-          is_enabled = true
-          vim.g.telescope_find_files_with_hidden = true
-        else
-          is_enabled = false
-          vim.g.telescope_find_files_with_hidden = false
-        end
 
+      local find_files_no_ignore = function(prompt_bufnr)
         local action_state = require("telescope.actions.state")
-        local line = action_state.get_current_line()
-        lazyvimUtil.telescope("find_files", { hidden = is_enabled, default_text = line })()
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        if picker.prompt_title == "Find Files" then
+          local enable = resolve_gstatus(vim.g.telescope_find_files_no_ignore)
+          vim.g.telescope_find_files_no_ignore = enable
+          local c = { no_ignore = enable, default_text = action_state.get_current_line() }
+          builtin.find_files(c)
+        elseif picker.prompt_title == "Live Grep" then
+          local live_grep_additional_args = function(_)
+            local enable = resolve_gstatus(vim.g.telescope_live_grep_no_ignore)
+            vim.g.telescope_live_grep_no_ignore = enable
+              -- stylua: ignore
+              if enable then return {} else return { "--no-ignore" } end
+          end
+          builtin.live_grep({
+            additional_args = live_grep_additional_args,
+            default_text = action_state.get_current_line(),
+          })
+        end
+      end
+
+      local find_files_with_hidden = function(prompt_bufnr)
+        local action_state = require("telescope.actions.state")
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        if picker.prompt_title == "Find Files" then
+          local enable = resolve_gstatus(vim.g.telescope_find_files_with_hidden)
+          vim.g.telescope_find_files_with_hidden = enable
+          local c = { hidden = enable, default_text = action_state.get_current_line() }
+          builtin.find_files(c)
+        elseif picker.prompt_title == "Live Grep" then
+          local live_grep_additional_args = function(_)
+            local enable = resolve_gstatus(vim.g.telescope_live_grep_with_hidden)
+            vim.g.telescope_live_grep_with_hidden = enable
+              -- stylua: ignore
+              if enable then return { "--hidden" } else return {} end
+          end
+          builtin.live_grep({
+            additional_args = live_grep_additional_args,
+            default_text = action_state.get_current_line(),
+          })
+        end
       end
 
       remap_action("<c-n>", false, "i", "n")
@@ -365,6 +385,10 @@ return {
       for _, value in pairs(cursor_pickers) do
         opts.pickers[value] = { theme = "cursor" }
       end
+
+      -- opts.pickers.live_grep = opts.pickers.live_grep or {}
+      -- stylua: ignore
+      -- opts.pickers.live_grep.additional_args = function(_) return { "--hidden" } end
     end,
     keys = function()
       local lazyvimUtil = require("lazyvim.util")
@@ -376,6 +400,7 @@ return {
         { "<leader>,", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
         { "<leader>/", function() builtin.live_grep() end, desc = "Grep (workspace)" },
         { "<leader>;", function() builtin.command_history() end, desc = "Command History" },
+        { "<leader>?", function() builtin.help_tags() end, desc = "Help Pages" },
         { "<leader><space>", function() builtin.find_files() end, desc = "Find Files (workspace)" },
         -- files
         { "<leader>fb", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
@@ -396,11 +421,9 @@ return {
         { "<leader>sb", function() builtin.current_buffer_fuzzy_find() end, desc = "Buffer search" },
         { "<leader>sm", function() builtin.marks() end, desc = "Jump to Mark" },
         { "<leader>.", function() builtin.resume() end, desc = "Recent Picker" },
-
-        -- helpers
+        -- helper
         { "<leader>ha", function() builtin.autocommands() end, desc = "Auto Commands" },
         { "<leader>hc", function() builtin.commands() end, desc = "Commands" },
-        { "<leader>hh", function() builtin.help_tags() end, desc = "Help Pages" },
         { "<leader>hl", function() builtin.highlights() end, desc = "Highlight Groups" },
         { "<leader>hk", function() builtin.keymaps() end, desc = "Key Maps" },
         { "<leader>hm", function() builtin.man_pages() end, desc = "Man Pages" },
