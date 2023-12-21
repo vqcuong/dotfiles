@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "floggraph",
     "NeogitStatus",
+    "git",
+    "fugitive",
+    "fugitiveblame",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -83,20 +86,6 @@ vim.cmd([[
   autocmd TermOpen * setlocal signcolumn=no nocursorcolumn nonumber norelativenumber
   augroup END
 ]])
-
--- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
-  pattern = {
-    "git",
-    "fugitive",
-    "fugitiveblame",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-  end,
-})
 
 -- automatically active winbar whenever entering buffer
 vim.api.nvim_create_autocmd("BufEnter", {
