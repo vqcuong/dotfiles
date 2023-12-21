@@ -254,13 +254,100 @@ return {
   },
 
   {
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      opts.defaults["<leader>h"] = { name = "+helper" }
+    end,
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
     opts = function(_, opts)
       opts.defaults = opts.defaults or {}
       opts.defaults.layout_config = opts.defaults.layout_config or {}
       opts.defaults.layout_config.vertical = { width = 0.6, height = 0.6 }
       opts.defaults.layout_strategy = "vertical"
+      -- opts.defaults.mappings = { i = {}, n = {} }
       opts.pickers = opts.pickers or {}
+
+      local actions = require("telescope.actions")
+      local remap_action = function(key, value, ...)
+        local mode = { ... }
+        for _, m in ipairs(mode) do
+          if m == "i" then
+            opts.defaults.mappings.i[key] = value
+          elseif m == "n" then
+            opts.defaults.mappings.n[key] = value
+          end
+        end
+      end
+      local lazyvimUtil = require("lazyvim.util")
+
+      local find_files_no_ignore = function()
+        local is_enabled = vim.g.telescope_find_files_no_ignore
+        if is_enabled == false or is_enabled == nil then
+          is_enabled = true
+          vim.g.telescope_find_files_no_ignore = true
+        else
+          is_enabled = false
+          vim.g.telescope_find_files_no_ignore = false
+        end
+
+        local action_state = require("telescope.actions.state")
+        local line = action_state.get_current_line()
+        lazyvimUtil.telescope("find_files", { no_ignore = is_enabled, default_text = line })()
+      end
+      local find_files_with_hidden = function()
+        local is_enabled = vim.g.telescope_find_files_with_hidden
+        if is_enabled == false or is_enabled == nil then
+          is_enabled = true
+          vim.g.telescope_find_files_with_hidden = true
+        else
+          is_enabled = false
+          vim.g.telescope_find_files_with_hidden = false
+        end
+
+        local action_state = require("telescope.actions.state")
+        local line = action_state.get_current_line()
+        lazyvimUtil.telescope("find_files", { hidden = is_enabled, default_text = line })()
+      end
+
+      remap_action("<c-n>", false, "i", "n")
+      remap_action("<c-p>", false, "i", "n")
+      remap_action("<c-u>", false, "i", "n")
+      remap_action("<c-d>", false, "i", "n")
+      remap_action("<c-f>", false, "i", "n")
+      remap_action("<c-k>", false, "i", "n")
+      remap_action("<m-f>", false, "i", "n")
+      remap_action("<m-k>", false, "i", "n")
+      remap_action("<m-q>", false, "i", "n")
+      remap_action("<c-q>", false, "i", "n")
+      remap_action("<c-b>", false, "i")
+      remap_action("<a-h>", false, "i")
+      remap_action("<a-i>", false, "i")
+      remap_action("<a-t>", false, "i")
+      remap_action("H", false, "n")
+      remap_action("L", false, "n")
+      remap_action("M", false, "n")
+
+      remap_action("<c-t>", actions.select_tab, "i", "n")
+      remap_action("<c-h>", actions.preview_scrolling_left, "i", "n")
+      remap_action("<c-l>", actions.preview_scrolling_right, "i", "n")
+      remap_action("<c-j>", actions.preview_scrolling_up, "i", "n")
+      remap_action("<c-k>", actions.preview_scrolling_down, "i", "n")
+      remap_action("<c-i>", find_files_no_ignore, "i", "n")
+      remap_action("<c-d>", find_files_with_hidden, "i", "n")
+      remap_action("<c-up>", actions.cycle_history_next, "i", "n")
+      remap_action("<c-down>", actions.cycle_history_prev, "i", "n")
+      remap_action("<c-space>", actions.which_key, "i", "n")
+      remap_action("t", actions.select_tab, "n")
+      remap_action("h", actions.preview_scrolling_left, "n")
+      remap_action("l", actions.preview_scrolling_right, "n")
+      remap_action("j", actions.preview_scrolling_up, "n")
+      remap_action("k", actions.preview_scrolling_down, "n")
+      remap_action("x", actions.select_vertical, "n")
+      remap_action("v", actions.select_horizontal, "n")
+      remap_action("q", actions.close, "n")
 
       -- stylua: ignore
       local dropdown_pickers = {
@@ -279,10 +366,59 @@ return {
         opts.pickers[value] = { theme = "cursor" }
       end
     end,
-    keys = {
-      { "<localleader>l", "<cmd>Telescope lsp_references<CR>", desc = "References" },
-      { "<localleader>j", "<cmd>Telescope lsp_definitions<CR>", desc = "Definitions" },
-      { "<localleader>k", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Type Definitions" },
-    },
+    keys = function()
+      local lazyvimUtil = require("lazyvim.util")
+      local lazyvimConfig = require("lazyvim.config")
+      local builtin = require("telescope.builtin")
+      local utils = require("telescope.utils")
+      -- stylua: ignore
+      return {
+        { "<leader>,", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
+        { "<leader>/", function() builtin.live_grep() end, desc = "Grep (workspace)" },
+        { "<leader>;", function() builtin.command_history() end, desc = "Command History" },
+        { "<leader><space>", function() builtin.find_files() end, desc = "Find Files (workspace)" },
+        -- files
+        { "<leader>fb", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
+        { "<leader>fc", function() lazyvimUtil.telescope.config_files() end, desc = "Find Config File" },
+        { "<leader>ff", function() builtin.find_files() end, desc = "Find Files (workspace)" },
+        { "<leader>fF", function() builtin.find_files({ cwd = utils.buffer_dir() }) end, desc = "Find Files (bufferdir)" },
+        { "<leader>fr", function() builtin.oldfiles({ cwd = vim.loop.cwd() }) end, desc = "Recent (workspace)" },
+        { "<leader>fR", function() builtin.oldfiles() end, desc = "Recent" },
+        -- git
+        { "<leader>gc", function() builtin.git_commits() end, desc = "commits" },
+        { "<leader>gs", function() builtin.git_status() end, desc = "status" },
+        -- search
+        { '<leader>s"', function() builtin.registers() end, desc = "Registers" },
+        { "<leader>sd", function() builtin.diagnostics({ bufnr=0 }) end, desc = "Document diagnostics" },
+        { "<leader>sD", function() builtin.diagnostics() end, desc = "Workspace diagnostics" },
+        { "<leader>sg", function() builtin.live_grep() end, desc = "Grep (workspace)" },
+        { "<leader>sG", function() builtin.live_grep({ cwd = utils.buffer_dir() }) end, desc = "Grep (bufferdir)" },
+        { "<leader>sb", function() builtin.current_buffer_fuzzy_find() end, desc = "Buffer search" },
+        { "<leader>sm", function() builtin.marks() end, desc = "Jump to Mark" },
+        { "<leader>.", function() builtin.resume() end, desc = "Recent Picker" },
+
+        -- helpers
+        { "<leader>ha", function() builtin.autocommands() end, desc = "Auto Commands" },
+        { "<leader>hc", function() builtin.commands() end, desc = "Commands" },
+        { "<leader>hh", function() builtin.help_tags() end, desc = "Help Pages" },
+        { "<leader>hl", function() builtin.highlights() end, desc = "Highlight Groups" },
+        { "<leader>hk", function() builtin.keymaps() end, desc = "Key Maps" },
+        { "<leader>hm", function() builtin.man_pages() end, desc = "Man Pages" },
+        { "<leader>ho", function() builtin.vim_options() end, desc = "Options" },
+
+        { "<leader>sw", function() builtin.grep_string({ word_match = "-w" }) end, desc = "Word (workspace)" },
+        { "<leader>sW", function() builtin.grep_string({ cwd = false, word_match = "-w" }) end, desc = "Word (bufferdir)" },
+        { "<leader>sw", function() builtin.grep_string() end, mode = "v", desc = "Selection (workspace)" },
+        { "<leader>sw", function() builtin.grep_string({ cwd = false }) end, mode = "v", desc = "Selection (bufferdir)" },
+        { "<leader>uC", function() builtin.colorscheme({ enable_preview = true }) end, desc = "Colorscheme" },
+        -- stylua: ignore
+        { "<leader>ss", function() builtin.lsp_document_symbols({ symbols = require("lazyvim.config").get_kind_filter() }) end, desc = "Goto Symbol" },
+        -- stylua: ignore
+        { "<leader>sS", function() builtin.lsp_dynamic_workspace_symbols({ symbols = lazyvimConfig.get_kind_filter() }) end, desc = "Goto Symbol (Workspace)" },
+        { "<localleader>l", function() builtin.lsp_references() end, desc = "References" },
+        { "<localleader>j", function() builtin.lsp_definitions() end, desc = "Definitions" },
+        { "<localleader>k", function() builtin.lsp_type_definitions() end, desc = "Type Definitions" },
+      }
+    end,
   },
 }
