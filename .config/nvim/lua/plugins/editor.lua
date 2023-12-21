@@ -335,23 +335,40 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+    priority = 10000,
     opts = function(_, opts)
       opts.defaults = opts.defaults or {}
-      opts.defaults.layout_config = opts.defaults.layout_config or {}
-      opts.defaults.layout_config.vertical = { width = 0.6, height = 0.6 }
-      opts.defaults.layout_strategy = "vertical"
-      -- opts.defaults.mappings = { i = {}, n = {} }
-      opts.pickers = opts.pickers or {}
+      local defaults = {
+        multi_icon = "✅",
+        layout_config = {
+          vertical = {
+            width = 0.5,
+            height = 0.65,
+            prompt_position = "top",
+            preview_cutoff = 40,
+          },
+        },
+        layout_strategy = "vertical",
+        -- mappings = { i = {}, n = {} },
+        path_display = { path_display = { truncate = 3 } },
+        file_ignore_patterns = {
+          ".git",
+          ".vscode",
+          ".idea",
+        },
+      }
+      opts.defaults = vim.tbl_extend("force", opts.defaults, defaults)
+      opts.defaults.mappings = opts.defaults.mappings or {}
+      opts.defaults.mappings.i = opts.defaults.mappings.i or {}
+      opts.defaults.mappings.n = opts.defaults.mappings.n or {}
 
       local actions = require("telescope.actions")
       local remap_action = function(key, value, ...)
         local mode = { ... }
         for _, m in ipairs(mode) do
-          if m == "i" then
-            opts.defaults.mappings.i[key] = value
-          elseif m == "n" then
-            opts.defaults.mappings.n[key] = value
-          end
+          -- stylua: ignore
+          if m == "i" then opts.defaults.mappings.i[key] = value
+          elseif m == "n" then opts.defaults.mappings.n[key] = value end
         end
       end
 
@@ -369,9 +386,9 @@ return {
       remap_action("<a-h>", false, "i")
       remap_action("<a-i>", false, "i")
       remap_action("<a-t>", false, "i")
-      remap_action("H", false, "n")
-      remap_action("L", false, "n")
-      remap_action("M", false, "n")
+      -- remap_action("H", false, "n")
+      -- remap_action("L", false, "n")
+      -- remap_action("M", false, "n")
 
       remap_action("<c-t>", actions.select_tab, "i", "n")
       remap_action("<c-h>", actions.preview_scrolling_left, "i", "n")
@@ -392,7 +409,7 @@ return {
       remap_action("v", actions.select_horizontal, "n")
       remap_action("q", actions.close, "n")
 
-      -- stylua: ignore
+      opts.pickers = opts.pickers or {}
       local dropdown_pickers = {
         -- "buffers", "live_grep", "find_files", "oldfiles", "git_files", "git_commits", "git_status",
         -- "current_buffer_fuzzy_find", "diagnostics", "grep_string", "lsp_document_symbols",
