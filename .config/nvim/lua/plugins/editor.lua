@@ -311,7 +311,7 @@ return {
         { "<leader>fb", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
         { "<leader>fc", function() lazyvimUtil.telescope.config_files() end, desc = "Find Config File" },
         { "<leader>ff", find_files, desc = "Find Files (workspace)" },
-        { "<leader>fF", function() find_files({ cwd = utils.buffer_dir() }) end, desc = "Find Files (bufferdir)" },
+        { "<leader>fF", function() find_files(utils.buffer_dir()) end, desc = "Find Files (bufferdir)" },
         { "<leader>fr", function() builtin.oldfiles({ cwd = vim.loop.cwd() }) end, desc = "Recent (workspace)" },
         { "<leader>fR", function() builtin.oldfiles() end, desc = "Recent" },
         -- git
@@ -322,7 +322,7 @@ return {
         { "<leader>sd", function() builtin.diagnostics({ bufnr=0 }) end, desc = "Document diagnostics" },
         { "<leader>sD", function() builtin.diagnostics() end, desc = "Workspace diagnostics" },
         { "<leader>sg", live_grep, desc = "Grep (workspace)" },
-        { "<leader>sG", function() live_grep({ cwd = utils.buffer_dir() }) end, desc = "Grep (bufferdir)" },
+        { "<leader>sG", function() live_grep(utils.buffer_dir()) end, desc = "Grep (bufferdir)" },
         { "<leader>sb", function() builtin.current_buffer_fuzzy_find() end, desc = "Buffer search" },
         { "<leader>sm", function() builtin.marks() end, desc = "Jump to Mark" },
         { "<leader>sw", lazyvimUtil.telescope("grep_string", { word_match = "-w" }), desc = "Word (workspace)" },
