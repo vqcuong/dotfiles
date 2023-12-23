@@ -393,7 +393,6 @@ return {
         if picker.prompt_title == "Find Files" then
           local enable = resolve_gstatus(vim.g.telescope_find_files_no_ignore)
           vim.g.telescope_find_files_no_ignore = enable
-          vim.notify("No ignore: " .. (enable and "on" or "off"))
           local c = {
             no_ignore = enable,
             hidden = vim.g.telescope_find_files_hidden == true,
