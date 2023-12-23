@@ -497,28 +497,28 @@ return {
       remap_action("k", actions.preview_scrolling_up, "n")
       remap_action("l", actions.preview_scrolling_right, "n")
 
-      -- if lazyvimUtil.has("flash.nvim") then
-      --   local function flash(prompt_bufnr)
-      --     require("flash").jump({
-      --       pattern = "^",
-      --       label = { after = { 0, 0 } },
-      --       search = {
-      --         mode = "search",
-      --         exclude = {
-      --           function(win)
-      --             return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
-      --           end,
-      --         },
-      --       },
-      --       action = function(match)
-      --         local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-      --         picker:set_selection(match.pos[1] - 1)
-      --       end,
-      --     })
-      --   end
-      --   remap_action("<c-s>", flash, "i")
-      --   remap_action("s", flash, "n")
-      -- end
+      if lazyvimUtil.has("flash.nvim") then
+        local function flash(prompt_bufnr)
+          require("flash").jump({
+            pattern = "^",
+            label = { after = { 0, 0 } },
+            search = {
+              mode = "search",
+              exclude = {
+                function(win)
+                  return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+                end,
+              },
+            },
+            action = function(match)
+              local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+              picker:set_selection(match.pos[1] - 1)
+            end,
+          })
+        end
+        remap_action("<c-s>", flash, "i")
+        remap_action("s", flash, "n")
+      end
 
       opts.pickers = opts.pickers or {}
       local dropdown_pickers = {
