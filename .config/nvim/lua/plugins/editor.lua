@@ -266,11 +266,6 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     priority = 10000,
-    dependencies = { "nvim-telescope/telescope-smart-history.nvim" },
-    config = function(_, opts)
-      require("telescope").setup(opts)
-      require("telescope").load_extension("smart_history")
-    end,
     opts = function(_, opts)
       opts.defaults = opts.defaults or {}
       local defaults = {
@@ -284,24 +279,16 @@ return {
           },
         },
         layout_strategy = "vertical",
-        cache_picker = { num_pickers = -1, limit_entries = 3 },
-        -- mappings = { i = {}, n = {} },
+        mappings = { i = {}, n = {} },
         path_display = { path_display = { truncate = 3 } },
         file_ignore_patterns = {
           ".git",
           ".vscode",
           ".idea",
         },
-        history = {
-          path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
-          limit = 20,
-        },
         default_mappings = {},
       }
       opts.defaults = vim.tbl_extend("force", opts.defaults, defaults)
-      -- opts.defaults.mappings = opts.defaults.mappings or {}
-      -- opts.defaults.mappings.i = opts.defaults.mappings.i or {}
-      -- opts.defaults.mappings.n = opts.defaults.mappings.n or {}
 
       local remap_action = function(key, value, ...)
         local mode = { ... }
@@ -387,7 +374,7 @@ return {
       -- remap_action("<a-t>", false, "i")
 
       remap_action("<c-i>", toggle_ignore, "i", "n")
-      remap_action("<c-d>", toggle_hidden, "i", "n")
+      remap_action("<c-h>", toggle_hidden, "i", "n")
       remap_action("<c-c>", actions.close, "i", "n")
       remap_action("<c-t>", actions.select_tab, "i", "n")
       remap_action("<cr>", actions.select_default, "i", "n")
