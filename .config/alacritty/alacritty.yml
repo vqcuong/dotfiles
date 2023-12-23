@@ -140,13 +140,13 @@ key_bindings:
   - { key: Q, mods: Option, chars: "\x01_" } # split pane horizontally
   # disable it because it works already when integrating tmux with vim
   # - { key: Left, mods: Option, chars: "\x01h" } # switch to left pane
+  # - { key: Down, mods: Option, chars: "\x01j" } # switch to pane below
+  # - { key: Up, mods: Option, chars: "\x01k" } # switch to pane above
   # - { key: Right, mods: Option, chars: "\x01l" } # switch to right pane
-  # - { key: Up, mods: Option, chars: "\x01j" } # switch to pane above
-  # - { key: Down, mods: Option, chars: "\x01k" } # switch to pane below
   - { key: H, mods: Option, chars: "\x01H" } # expand pane to the left side
+  - { key: J, mods: Option, chars: "\x01J" } # expand pane to the beneath side
+  - { key: K, mods: Option, chars: "\x01K" } # expand pane to the upper side
   - { key: L, mods: Option, chars: "\x01L" } # expand pane to the right side
-  - { key: J, mods: Option, chars: "\x01J" } # expand pane to the upper side
-  - { key: K, mods: Option, chars: "\x01K" } # expand pane to the beneath side
   - { key: W, mods: Option, chars: "\x01c" } # new window
   - { key: Y, mods: Option, chars: "\x01=" } # goto previous window
   - { key: U, mods: Option, chars: "\x01+" } # goto next window

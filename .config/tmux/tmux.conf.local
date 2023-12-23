@@ -399,15 +399,6 @@ unbind C-l
 #unbind C-l
 
 bind C-a new-window -n "~/.config/alacritty/alacritty.yml" sh -c '${EDITOR:-vim} ~/.config/alacritty/alacritty.yml && tmux display "Updated alacritty config"'
-# swap j and k in selecting pane 
-bind -r j select-pane -U    # select the pane above
-bind -r k select-pane -D    # select the pane below 
-
-bind -r H resize-pane -L 1  # expand pane to the left
-bind -r J resize-pane -U 1  # expand pane upwards
-bind -r K resize-pane -D 1  # expand pane downwards 
-bind -r L resize-pane -R 1  # expand pane to the right 
-
 bind -r = previous-window # select previous window
 bind -r + next-window     # select next window
 
@@ -428,13 +419,13 @@ bind -T copy-mode-vi 'm-down' select-pane -R
 bind -T copy-mode-vi 'm-.' select-pane -l
 
 # bind -n 'm-h' if-shell "$is_vim" 'send-keys m-h' 'resize-pane -L 1'
+# bind -n 'm-j' if-shell "$is_vim" 'send-keys m-j' 'resize-pane -D 1'
+# bind -n 'm-k' if-shell "$is_vim" 'send-keys m-k' 'resize-pane -U 1'
 # bind -n 'm-l' if-shell "$is_vim" 'send-keys m-l' 'resize-pane -R 1'
-# bind -n 'm-j' if-shell "$is_vim" 'send-keys m-j' 'resize-pane -U 1'
-# bind -n 'm-k' if-shell "$is_vim" 'send-keys m-k' 'resize-pane -D 1'
 # bind -T copy-mode-vi 'm-h' resize-pane -L 1
+# bind -T copy-mode-vi 'm-j' resize-pane -D 1
+# bind -T copy-mode-vi 'm-k' resize-pane -U 1
 # bind -T copy-mode-vi 'm-l' resize-pane -R 1
-# bind -T copy-mode-vi 'm-j' resize-pane -U 1
-# bind -T copy-mode-vi 'm-k' resize-pane -D 1
 
 # start AI asistance
 bind a split-window -h -f -p 35 $HOME/.local/bin/cw ai
