@@ -265,187 +265,6 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    priority = 10000,
-    opts = function(_, opts)
-      opts.defaults = opts.defaults or {}
-      local defaults = {
-        multi_icon = "✅",
-        layout_config = {
-          vertical = {
-            width = 0.5,
-            height = 0.65,
-            prompt_position = "top",
-            preview_cutoff = 40,
-          },
-        },
-        layout_strategy = "vertical",
-        mappings = { i = {}, n = {} },
-        path_display = { path_display = { truncate = 3 } },
-        file_ignore_patterns = {
-          ".git",
-          ".vscode",
-          ".idea",
-        },
-        default_mappings = {},
-      }
-      opts.defaults = vim.tbl_extend("force", opts.defaults, defaults)
-
-      local remap_action = function(key, value, ...)
-        local mode = { ... }
-        for _, m in ipairs(mode) do
-          -- stylua: ignore
-          if m == "i" then opts.defaults.mappings.i[key] = value
-          elseif m == "n" then opts.defaults.mappings.n[key] = value end
-        end
-      end
-      local resolve_gstatus = function(status)
-        return status == false or status == nil
-      end
-
-      local builtin = require("telescope.builtin")
-      local actions = require("telescope.actions")
-      local action_state = require("telescope.actions.state")
-
-      local toggle_ignore = function(prompt_bufnr)
-        local picker = action_state.get_current_picker(prompt_bufnr)
-        -- stylua: ignore
-        if picker.prompt_title == "Find Files" then
-          local enable = resolve_gstatus(vim.g.telescope_find_files_no_ignore)
-          vim.g.telescope_find_files_no_ignore = enable
-          local c = { no_ignore = enable, default_text = action_state.get_current_line() }
-          c.hidden = vim.g.telescope_find_files_with_hidden == true
-          if vim.g.telescope_find_files_cwd then c.cwd = vim.g.telescope_find_files_cwd end
-          builtin.find_files(c)
-        elseif picker.prompt_title == "Live Grep" then
-          local live_grep_additional_args = function(_)
-            local enable = resolve_gstatus(vim.g.telescope_live_grep_no_ignore)
-            vim.g.telescope_live_grep_no_ignore = enable
-            local args = {}
-            if enable then table.insert(args, "--no-ignore") end
-            if vim.g.telescope_live_grep_with_hidden then table.insert(args, "--hidden") end
-            return args
-          end
-          local c = { additional_args = live_grep_additional_args, default_text = action_state.get_current_line() }
-          if vim.g.telescope_live_grep_cwd then c.cwd = vim.g.telescope_live_grep_cwd end
-          builtin.live_grep(c)
-        end
-      end
-
-      local toggle_hidden = function(prompt_bufnr)
-        local picker = action_state.get_current_picker(prompt_bufnr)
-        -- stylua: ignore
-        if picker.prompt_title == "Find Files" then
-          local enable = resolve_gstatus(vim.g.telescope_find_files_with_hidden)
-          vim.g.telescope_find_files_with_hidden = enable
-          local c = { hidden = enable, default_text = action_state.get_current_line() }
-          c.no_ignore = vim.g.telescope_find_files_no_ignore == true
-          if vim.g.telescope_find_files_cwd then c.cwd = vim.g.telescope_find_files_cwd end
-          builtin.find_files(c)
-        elseif picker.prompt_title == "Live Grep" then
-          local live_grep_additional_args = function(_)
-            local enable = resolve_gstatus(vim.g.telescope_live_grep_with_hidden)
-            vim.g.telescope_live_grep_with_hidden = enable
-            local args = {}
-            if enable then vim.list_extend(args, { "--hidden" }) end
-            if vim.g.telescope_live_grep_no_ignore then vim.list_extend(args, { "--no-ignore" }) end
-            return args
-          end
-          local c = { additional_args = live_grep_additional_args, default_text = action_state.get_current_line() }
-          if vim.g.telescope_live_grep_cwd then c.cwd = vim.g.telescope_live_grep_cwd end
-          builtin.live_grep(c)
-        end
-      end
-
-      -- remap_action("<c-n>", false, "i", "n")
-      -- remap_action("<c-p>", false, "i", "n")
-      -- remap_action("<c-u>", false, "i", "n")
-      -- remap_action("<c-d>", false, "i", "n")
-      -- remap_action("<c-f>", false, "i", "n")
-      -- remap_action("<c-k>", false, "i", "n")
-      -- remap_action("<tab>", false, "i", "n")
-      -- remap_action("<s-tab>", false, "i", "n")
-      -- remap_action("<m-f>", false, "i", "n")
-      -- remap_action("<m-k>", false, "i", "n")
-      -- remap_action("<m-q>", false, "i", "n")
-      -- remap_action("<c-q>", false, "i", "n")
-      -- remap_action("<c-b>", false, "i")
-      -- remap_action("<a-h>", false, "i")
-      -- remap_action("<a-i>", false, "i")
-      -- remap_action("<a-t>", false, "i")
-
-      remap_action("<c-i>", toggle_ignore, "i", "n")
-      remap_action("<c-h>", toggle_hidden, "i", "n")
-      remap_action("<c-c>", actions.close, "i", "n")
-      remap_action("<c-t>", actions.select_tab, "i", "n")
-      remap_action("<cr>", actions.select_default, "i", "n")
-      remap_action("<c-x>", actions.select_vertical, "i", "n")
-      remap_action("<c-v>", actions.select_horizontal, "i", "n")
-      remap_action("<up>", actions.move_selection_previous, "i", "n")
-      remap_action("<down>", actions.move_selection_next, "i", "n")
-      remap_action("<tab>", actions.toggle_selection + actions.move_selection_next, "i", "n")
-      remap_action("<s-tab>", actions.toggle_selection + actions.move_selection_previous, "i", "n")
-      remap_action("<s-left>", actions.preview_scrolling_left, "i", "n")
-      remap_action("<s-right>", actions.preview_scrolling_right, "i", "n")
-      remap_action("<s-up>", actions.preview_scrolling_up, "i", "n")
-      remap_action("<s-down>", actions.preview_scrolling_down, "i", "n")
-      remap_action("<c-left>", actions.cycle_history_prev, "i", "n")
-      remap_action("<c-right>", actions.cycle_history_next, "i", "n")
-      remap_action("<c-up>", actions.move_to_top, "i", "n")
-      remap_action("<c-down>", actions.move_to_bottom, "i", "n")
-      remap_action("<c-space>", actions.which_key, "i", "n")
-      remap_action("q", actions.close, "n")
-      remap_action("<esc>", actions.close, "n")
-      remap_action("t", actions.select_tab, "n")
-      remap_action("x", actions.select_vertical, "n")
-      remap_action("v", actions.select_horizontal, "n")
-      remap_action("h", actions.preview_scrolling_left, "n")
-      remap_action("j", actions.preview_scrolling_down, "n")
-      remap_action("k", actions.preview_scrolling_up, "n")
-      remap_action("l", actions.preview_scrolling_right, "n")
-
-      if lazyvimUtil.has("flash.nvim") then
-        local function flash(prompt_bufnr)
-          require("flash").jump({
-            pattern = "^",
-            label = { after = { 0, 0 } },
-            search = {
-              mode = "search",
-              exclude = {
-                function(win)
-                  return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
-                end,
-              },
-            },
-            action = function(match)
-              local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-              picker:set_selection(match.pos[1] - 1)
-            end,
-          })
-        end
-        remap_action("<c-s>", flash, "i")
-        remap_action("s", flash, "n")
-      end
-
-      opts.pickers = opts.pickers or {}
-      local dropdown_pickers = {
-        -- "buffers", "live_grep", "find_files", "oldfiles", "git_files", "git_commits", "git_status",
-        -- "current_buffer_fuzzy_find", "diagnostics", "grep_string", "lsp_document_symbols",
-        -- "lsp_dynamic_workspace_symbols", "lsp_references",
-        -- "command_history", "registers", "autocommands", "commands", "help_tags", "highlights",
-        -- "keymaps", "colorscheme", "vim_options",
-      }
-      for _, value in pairs(dropdown_pickers) do
-        opts.pickers[value] = { theme = "dropdown" }
-      end
-
-      local cursor_pickers = { "lsp_definitions", "lsp_type_definitions" }
-      for _, value in pairs(cursor_pickers) do
-        opts.pickers[value] = { theme = "cursor" }
-      end
-
-      -- stylua: ignore
-      -- opts.pickers.live_grep.additional_args = { "--hidden" }
-    end,
     keys = function()
       local builtin = require("telescope.builtin")
       local utils = require("telescope.utils")
@@ -528,6 +347,196 @@ return {
         { "<localleader>j", function() builtin.lsp_definitions() end, desc = "Definitions" },
         { "<localleader>k", function() builtin.lsp_type_definitions() end, desc = "Type Definitions" },
       }
+    end,
+    opts = function(_, opts)
+      opts.defaults = opts.defaults or {}
+      local defaults = {
+        multi_icon = "✅",
+        layout_config = {
+          vertical = {
+            width = 0.5,
+            height = 0.65,
+            prompt_position = "top",
+            preview_cutoff = 40,
+          },
+        },
+        layout_strategy = "vertical",
+        mappings = { i = {}, n = {} },
+        path_display = { path_display = { truncate = 3 } },
+        file_ignore_patterns = {
+          ".git",
+          ".vscode",
+          ".idea",
+        },
+        default_mappings = {},
+      }
+      opts.defaults = vim.tbl_extend("force", opts.defaults, defaults)
+
+      local remap_action = function(key, value, ...)
+        local mode = { ... }
+        for _, m in ipairs(mode) do
+          -- stylua: ignore
+          if m == "i" then opts.defaults.mappings.i[key] = value
+          elseif m == "n" then opts.defaults.mappings.n[key] = value end
+        end
+      end
+      local resolve_gstatus = function(status)
+        return status == false or status == nil
+      end
+
+      local builtin = require("telescope.builtin")
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+
+      local toggle_ignore = function(prompt_bufnr)
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        if picker.prompt_title == "Find Files" then
+          local enable = resolve_gstatus(vim.g.telescope_find_files_no_ignore)
+          vim.g.telescope_find_files_no_ignore = enable
+          local c = { no_ignore = enable, default_text = action_state.get_current_line() }
+          c.hidden = vim.g.telescope_find_files_with_hidden == true
+          if vim.g.telescope_find_files_cwd then
+            c.cwd = vim.g.telescope_find_files_cwd
+          end
+          builtin.find_files(c)
+        elseif picker.prompt_title == "Live Grep" then
+          local live_grep_additional_args = function(_)
+            local enable = resolve_gstatus(vim.g.telescope_live_grep_no_ignore)
+            vim.g.telescope_live_grep_no_ignore = enable
+            local args = {}
+            if enable then
+              table.insert(args, "--no-ignore")
+            end
+            if vim.g.telescope_live_grep_with_hidden then
+              table.insert(args, "--hidden")
+            end
+            return args
+          end
+          local c = { additional_args = live_grep_additional_args, default_text = action_state.get_current_line() }
+          if vim.g.telescope_live_grep_cwd then
+            c.cwd = vim.g.telescope_live_grep_cwd
+          end
+          builtin.live_grep(c)
+        end
+      end
+
+      local toggle_hidden = function(prompt_bufnr)
+        local picker = action_state.get_current_picker(prompt_bufnr)
+        if picker.prompt_title == "Find Files" then
+          local enable = resolve_gstatus(vim.g.telescope_find_files_with_hidden)
+          vim.g.telescope_find_files_with_hidden = enable
+          local c = { hidden = enable, default_text = action_state.get_current_line() }
+          c.no_ignore = vim.g.telescope_find_files_no_ignore == true
+          if vim.g.telescope_find_files_cwd then
+            c.cwd = vim.g.telescope_find_files_cwd
+          end
+          builtin.find_files(c)
+        elseif picker.prompt_title == "Live Grep" then
+          local live_grep_additional_args = function(_)
+            local enable = resolve_gstatus(vim.g.telescope_live_grep_with_hidden)
+            vim.g.telescope_live_grep_with_hidden = enable
+            local args = {}
+            if enable then
+              vim.list_extend(args, { "--hidden" })
+            end
+            if vim.g.telescope_live_grep_no_ignore then
+              vim.list_extend(args, { "--no-ignore" })
+            end
+            return args
+          end
+          local c = { additional_args = live_grep_additional_args, default_text = action_state.get_current_line() }
+          if vim.g.telescope_live_grep_cwd then
+            c.cwd = vim.g.telescope_live_grep_cwd
+          end
+          builtin.live_grep(c)
+        end
+      end
+
+      -- remap_action("<c-n>", false, "i", "n")
+      -- remap_action("<c-p>", false, "i", "n")
+      -- remap_action("<c-u>", false, "i", "n")
+      -- remap_action("<c-d>", false, "i", "n")
+      -- remap_action("<c-f>", false, "i", "n")
+      -- remap_action("<c-k>", false, "i", "n")
+      -- remap_action("<m-f>", false, "i", "n")
+      -- remap_action("<m-k>", false, "i", "n")
+      -- remap_action("<m-q>", false, "i", "n")
+      -- remap_action("<c-q>", false, "i", "n")
+      -- remap_action("<c-b>", false, "i")
+      -- remap_action("<a-h>", false, "i")
+      -- remap_action("<a-i>", false, "i")
+      -- remap_action("<a-t>", false, "i")
+
+      remap_action("<c-c>", actions.close, "i", "n")
+      remap_action("<c-t>", actions.select_tab, "i", "n")
+      remap_action("<cr>", actions.select_default, "i", "n")
+      remap_action("<c-x>", actions.select_vertical, "i", "n")
+      remap_action("<c-v>", actions.select_horizontal, "i", "n")
+      remap_action("<up>", actions.move_selection_previous, "i", "n")
+      remap_action("<down>", actions.move_selection_next, "i", "n")
+      remap_action("<tab>", actions.toggle_selection + actions.move_selection_next, "i", "n")
+      remap_action("<s-tab>", actions.toggle_selection + actions.move_selection_previous, "i", "n")
+      remap_action("<s-left>", actions.preview_scrolling_left, "i", "n")
+      remap_action("<s-right>", actions.preview_scrolling_right, "i", "n")
+      remap_action("<s-up>", actions.preview_scrolling_up, "i", "n")
+      remap_action("<s-down>", actions.preview_scrolling_down, "i", "n")
+      remap_action("<c-left>", actions.cycle_history_prev, "i", "n")
+      remap_action("<c-right>", actions.cycle_history_next, "i", "n")
+      remap_action("<c-up>", actions.move_to_top, "i", "n")
+      remap_action("<c-down>", actions.move_to_bottom, "i", "n")
+      remap_action("<c-space>", actions.which_key, "i", "n")
+      remap_action("<c-f>", toggle_ignore, "i", "n")
+      remap_action("<c-d>", toggle_hidden, "i", "n")
+      remap_action("q", actions.close, "n")
+      remap_action("<esc>", actions.close, "n")
+      remap_action("t", actions.select_tab, "n")
+      remap_action("x", actions.select_vertical, "n")
+      remap_action("v", actions.select_horizontal, "n")
+      remap_action("h", actions.preview_scrolling_left, "n")
+      remap_action("j", actions.preview_scrolling_down, "n")
+      remap_action("k", actions.preview_scrolling_up, "n")
+      remap_action("l", actions.preview_scrolling_right, "n")
+
+      -- if lazyvimUtil.has("flash.nvim") then
+      --   local function flash(prompt_bufnr)
+      --     require("flash").jump({
+      --       pattern = "^",
+      --       label = { after = { 0, 0 } },
+      --       search = {
+      --         mode = "search",
+      --         exclude = {
+      --           function(win)
+      --             return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+      --           end,
+      --         },
+      --       },
+      --       action = function(match)
+      --         local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+      --         picker:set_selection(match.pos[1] - 1)
+      --       end,
+      --     })
+      --   end
+      --   remap_action("<c-s>", flash, "i")
+      --   remap_action("s", flash, "n")
+      -- end
+
+      opts.pickers = opts.pickers or {}
+      local dropdown_pickers = {
+        -- "buffers", "live_grep", "find_files", "oldfiles", "git_files", "git_commits", "git_status",
+        -- "current_buffer_fuzzy_find", "diagnostics", "grep_string", "lsp_document_symbols",
+        -- "lsp_dynamic_workspace_symbols", "lsp_references",
+        -- "command_history", "registers", "autocommands", "commands", "help_tags", "highlights",
+        -- "keymaps", "colorscheme", "vim_options",
+      }
+      for _, value in pairs(dropdown_pickers) do
+        opts.pickers[value] = { theme = "dropdown" }
+      end
+
+      local cursor_pickers = { "lsp_definitions", "lsp_type_definitions" }
+      for _, value in pairs(cursor_pickers) do
+        opts.pickers[value] = { theme = "cursor" }
+      end
+      -- pickers.live_grep.additional_args = { "--hidden" }
     end,
   },
 }
