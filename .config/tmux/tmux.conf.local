@@ -402,7 +402,8 @@ bind C-a new-window -n "~/.config/alacritty/alacritty.yml" sh -c '${EDITOR:-vim}
 # overwrite C-h and C-l for selecting previous and next windows
 bind -r = previous-window # select previous window
 bind -r + next-window     # select next window
-bind -n 'm-/' last-window # select last window
+# this help use Option-slash combination for swicthing between two last windows
+# bind -n 'm-/' last-window # select last window
 
 set -g display-panes-time 2000
 

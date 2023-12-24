@@ -150,6 +150,7 @@ key_bindings:
   - { key: W, mods: Option, chars: "\x01c" } # new window
   - { key: Y, mods: Option, chars: "\x01=" } # goto previous window
   - { key: U, mods: Option, chars: "\x01+" } # goto next window
+  - { key: Slash, mods: Option, chars: "\x01\x09" } # goto last window
   - { key: S, mods: Option, chars: "\x01\x03" } # new session
   - { key: V, mods: Option, chars: "\x01(" } # goto previous session
   - { key: N, mods: Option, chars: "\x01)" } # goto next session
