@@ -387,29 +387,50 @@ bind C-a send-prefix
 unbind '"'
 unbind '%'
 unbind '+'
+unbind Up
+unbind Down
+unbind Left
+unbind Right
 unbind C-h
+unbind C-j
+unbind C-k
 unbind C-l
-#unbind Up
-#unbind Down
-#unbind Left
-#unbind Right
-#unbind C-h
-#unbind C-j
-#unbind C-k
-#unbind C-l
 
-bind C-a new-window -n "~/.config/alacritty/alacritty.yml" sh -c '${EDITOR:-vim} ~/.config/alacritty/alacritty.yml && tmux display "Updated alacritty config"'
 # overwrite C-h and C-l for selecting previous and next windows
-bind -r = previous-window # select previous window
-bind -r + next-window     # select next window
-# this help use Option-slash combination for swicthing between two last windows
-# bind -n 'm-/' last-window # select last window
+# bind -r = previous-window # select previous window
+# bind -r + next-window     # select next window
+
+# modify alacritty configuration
+bind C-a new-window -n "~/.config/alacritty/alacritty.yml" sh -c '${EDITOR:-vim} ~/.config/alacritty/alacritty.yml && tmux display "Updated alacritty config"'
+
+# edit configuration
+bind -n m-e new-window -n "#{TMUX_CONF_LOCAL}" -e "EDITOR=$EDITOR" sh -c 'case "${EDITOR:-vim}" in *vim) ${EDITOR:-vim} -c ":set syntax=tmux" "$TMUX_CONF_LOCAL";; *) "$EDITOR" "$TMUX_CONF_LOCAL";; esac && "$TMUX_PROGRAM" ${TMUX_SOCKET:+-S "$TMUX_SOCKET"} source "$TMUX_CONF" \; display "$TMUX_CONF_LOCAL sourced"'
+bind -n m-x split-window -v # split horizontally
+bind -n m-q split-window -h # split vertically
+bind -n m-h resize-pane -L 2 # resize left
+bind -n m-j resize-pane -D 2 # resize down
+bind -n m-k resize-pane -U 2 # resize up
+bind -n m-l resize-pane -R 2 # resize right
+bind -n m-w new-window # create new window
+bind -n m-y previous-window # goto previous window
+bind -n m-u next-window # goto next window
+bind -n m-/ last-window # goto last window
+bind -n m-s new-session # create new session
+bind -n m-v switch-client -p # goto previous session
+bind -n m-n switch-client -n # goto next session
+bind -n m-z resize-pane -Z # maximize pane
+bind -n m-t clock-mode # toggle clock
+bind -n m-m run "cut -c3- '#{TMUX_CONF}' | sh -s _toggle_mouse" # toggle mouse mode
+bind -n m-p display-panes # display pane indicators
+# bind -n m-r command-prompt "rename-session '%%'" # rename session
+bind -n m-r command-prompt -I "#S" "rename-session '%%'" # rename session
+bind -n m-c choose-tree # show choose tree
+bind -n m-a split-window -h -f -p 35 $HOME/.local/bin/cw ai # start AI assistant
 
 set -g display-panes-time 2000
 
 # vim tmux navigator integration
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-
 bind -n 'm-left' if-shell "$is_vim" 'send-keys m-left' 'select-pane -L'
 bind -n 'm-right' if-shell "$is_vim" 'send-keys m-right' 'select-pane -R'
 bind -n 'm-up' if-shell "$is_vim" 'send-keys m-up' 'select-pane -U'
@@ -420,7 +441,6 @@ bind -T copy-mode-vi 'm-right' select-pane -D
 bind -T copy-mode-vi 'm-up' select-pane -U
 bind -T copy-mode-vi 'm-down' select-pane -R
 bind -T copy-mode-vi 'm-.' select-pane -l
-
 # bind -n 'm-h' if-shell "$is_vim" 'send-keys m-h' 'resize-pane -L 1'
 # bind -n 'm-j' if-shell "$is_vim" 'send-keys m-j' 'resize-pane -D 1'
 # bind -n 'm-k' if-shell "$is_vim" 'send-keys m-k' 'resize-pane -U 1'
@@ -429,10 +449,6 @@ bind -T copy-mode-vi 'm-.' select-pane -l
 # bind -T copy-mode-vi 'm-j' resize-pane -D 1
 # bind -T copy-mode-vi 'm-k' resize-pane -U 1
 # bind -T copy-mode-vi 'm-l' resize-pane -R 1
-
-# start AI asistance
-bind a split-window -h -f -p 35 $HOME/.local/bin/cw ai
-
 
 # end_mycustom
 
