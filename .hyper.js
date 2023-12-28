@@ -2,7 +2,7 @@
 module.exports = {
   config: {
     updateChannel: "stable",
-    fontSize: 20,
+    fontSize: 18.5,
     fontFamily: '"Monofur Nerd Font Propo", monospace',
     fontWeight: "normal",
     fontWeightBold: "bold",
@@ -41,7 +41,8 @@ module.exports = {
       lightCoral: "#ff94bf",
     },
     shell: "/bin/zsh",
-    shellArgs: ["--login"],
+    // shellArgs: ["--login"],
+    shellArgs: ["-l", "-c", "tmux attach || tmux new-session -s cuongok -n hiworld"],
     env: {},
     bell: "SOUND",
     copyOnSelect: true,
@@ -54,6 +55,9 @@ module.exports = {
     disableAutoUpdates: false,
     screenReaderMode: false,
     preserveCWD: true,
+    modifierKeys: {
+      altIsMeta: true,
+    },
     hyperBorder: {
       animate: true,
       borderColors: ["#fc1da7", "#fba506"],
