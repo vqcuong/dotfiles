@@ -1,0 +1,740 @@
+live_config_reload = true
+working_directory = "None"
+
+[colors]
+draw_bold_text_with_bright_colors = false
+transparent_background_colors = true
+
+[colors.bright]
+black = "#666666"
+blue = "#05bcff"
+cyan = "#4affe4"
+green = "#b9ca4a"
+magenta = "#e3469a"
+red = "#d54e53"
+white = "#ffffff"
+yellow = "#ffbc40"
+
+[colors.dim]
+black = "#131415"
+blue = "#556a7d"
+cyan = "#02666e"
+green = "#777c44"
+magenta = "#75617b"
+red = "#864343"
+white = "#b3b3b3"
+yellow = "#9e824c"
+
+[colors.footer_bar]
+background = "#c5c8c6"
+foreground = "#1d1f21"
+
+[colors.line_indicator]
+background = "None"
+foreground = "None"
+
+[colors.normal]
+black = "#1d1f21"
+blue = "#58acf5"
+cyan = "#eb66ff"
+green = "#00d9ff"
+magenta = "#a2ff00"
+red = "#ff003c"
+white = "#fdfdfd"
+yellow = "#ffb98a"
+
+[colors.primary]
+background = "#05070a"
+bright_foreground = "#59ff40"
+dim_foreground = "#00d455"
+foreground = "#9cff59"
+
+[colors.search.focused_match]
+background = "#fefefe"
+foreground = "#945f7d"
+
+[colors.search.matches]
+background = "#945f7d"
+foreground = "#fefefe"
+
+[colors.selection]
+background = "CellForeground"
+text = "CellBackground"
+
+[cursor]
+blink_interval = 750
+blink_timeout = 5
+thickness = 0.15
+unfocused_hollow = true
+vi_mode_style = "None"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 19.5
+
+[font.bold]
+family = "Monofur Nerd Font Propo"
+style = "Bold"
+
+[font.bold_italic]
+family = "Monofur Nerd Font Propo"
+style = "Bold Italic"
+
+[font.italic]
+family = "Monofur Nerd Font Propo"
+style = "Italic"
+
+[font.normal]
+family = "Monofur Nerd Font Propo"
+style = "Regular"
+
+# tmux bindings: disable all because of implementation directly in tmux
+# disable switch pane keys  because it works when integrating tmux with vim
+
+# [[keyboard.bindings]] # switch to left pane
+# chars = "\u0001h"
+# key = "Left"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # switch to beneath pane
+# chars = "\u0001j"
+# key = "Down"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # switch to upper pane
+# chars = "\u0001k"
+# key = "Up"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # switch to right pane
+# chars = "\u0001l"
+# key = "Right"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # expand pane to the left side
+# chars = "\u0001H"
+# key = "H"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # expand pane to the beneath side
+# chars = "\u0001J"
+# key = "J"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # expand pane to the upper side
+# chars = "\u0001K"
+# key = "K"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # expand pane to the right side
+# chars = "\u0001L"
+# key = "L"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # start AI assistant
+# chars = "\u0001a"
+# key = "A"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # modify tmux configuration
+# chars = "\u0001e"
+# key = "E"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # split pane vertically
+# chars = "\u0001-"
+# key = "X"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # split pane horizontally
+# chars = "\u0001_"
+# key = "Q"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # new window
+# chars = "\u0001c"
+# key = "W"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # goto next window
+# chars = "\u0001="
+# key = "V"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # goto previous window
+# chars = "\u0001+"
+# key = "N"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # goto last window
+# chars = "\u0001\t"
+# key = "Slash"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # new session
+# chars = "\u0001\u0003"
+# key = "S"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # goto previous session
+# chars = "\u0001("
+# key = "LBracket"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # goto next session
+# chars = "\u0001)"
+# key = "RBracket"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # goto last session
+# chars = "\u0001\\"
+# key = "Backslash"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # zoom pane (maximize pane)
+# chars = "\u0001z"
+# key = "Z"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # show clock
+# chars = "\u0001t"
+# key = "T"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # toggle mouse mode
+# chars = "\u0001m"
+# key = "M"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # display pane indicators
+# chars = "\u0001q"
+# key = "P"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # rename session
+# chars = "\u0001$"
+# key = "R"
+# mods = "Option"
+#
+# [[keyboard.bindings]] # show choose tree
+# chars = "\u0001w"
+# key = "B"
+# mods = "Option"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mode = "~Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mode = "~Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "Space"
+mode = "Vi|~Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Escape"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "I"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "I"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "C"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "Y"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "E"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "G"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "G"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "B"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "F"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageUp"
+key = "U"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageDown"
+key = "D"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Y"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Y"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Copy"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleNormalSelection"
+key = "V"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleLineSelection"
+key = "V"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ToggleBlockSelection"
+key = "V"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleSemanticSelection"
+key = "V"
+mode = "Vi|~Search"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Open"
+key = "Return"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "CenterAroundViCursor"
+key = "Z"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "K"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "J"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "H"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "L"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "Up"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "Down"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "Left"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "Right"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "First"
+key = "Key0"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "Key4"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "FirstOccupied"
+key = "Key6"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "High"
+key = "H"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Middle"
+key = "M"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Low"
+key = "L"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SemanticLeft"
+key = "B"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SemanticRight"
+key = "W"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SemanticRightEnd"
+key = "E"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "WordLeft"
+key = "B"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "WordRight"
+key = "W"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "WordRightEnd"
+key = "E"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Bracket"
+key = "Key5"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "Slash"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SearchBackward"
+key = "Slash"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SearchNext"
+key = "N"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SearchPrevious"
+key = "N"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SearchConfirm"
+key = "Return"
+mode = "Search|Vi"
+
+[[keyboard.bindings]]
+action = "SearchCancel"
+key = "Escape"
+mode = "Search"
+
+[[keyboard.bindings]]
+action = "SearchCancel"
+key = "C"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchClear"
+key = "U"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchDeleteWord"
+key = "W"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchHistoryPrevious"
+key = "P"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchHistoryNext"
+key = "N"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchHistoryPrevious"
+key = "Up"
+mode = "Search"
+
+[[keyboard.bindings]]
+action = "SearchHistoryNext"
+key = "Down"
+mode = "Search"
+
+[[keyboard.bindings]]
+action = "SearchFocusNext"
+key = "Return"
+mode = "Search|~Vi"
+
+[[keyboard.bindings]]
+action = "SearchFocusPrevious"
+key = "Return"
+mode = "Search|~Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "K"
+mode = "~Vi|~Search"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ClearHistory"
+key = "K"
+mode = "~Vi|~Search"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "NumpadAdd"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "NumpadSubtract"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "C"
+mode = "Vi|~Search"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Hide"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "HideOtherApplications"
+key = "H"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+action = "Minimize"
+key = "M"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Command|Control"
+
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "F"
+mode = "~Search"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "SearchBackward"
+key = "B"
+mode = "~Search"
+mods = "Command"
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "ExpandSelection"
+mouse = "Right"
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mods = "Control"
+mouse = "Right"
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mode = "~Vi"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[shell]
+args = ["--login", "-c", "tmux attach || tmux new-session -s cuongok -n hiworld"]
+program = "/bin/zsh"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.875
+option_as_alt = "OnlyLeft"
+resize_increments = false
+startup_mode = "Maximized"
+title = "Alacritty"
