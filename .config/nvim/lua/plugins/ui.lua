@@ -64,6 +64,14 @@ return {
       local function os_icon() return "" end
       -- stylua: ignore
       local function vim_icon() return "" end
+
+      local function flutter_device()
+        if vim.g.flutter_tools_decorations.device ~= nil then
+          return vim.g.flutter_tools_decorations.device.name
+        end
+        return ""
+      end
+
       return {
         options = {
           globalstatus = false,
@@ -81,6 +89,7 @@ return {
             "git",
             "fugitive",
             "fugitiveblame",
+            "log",
           },
         },
         sections = {
@@ -121,6 +130,7 @@ return {
           lualine_y = {},
           lualine_z = {
             -- "location",
+            flutter_device,
           },
         },
         inactive_sections = {
@@ -287,6 +297,7 @@ return {
         { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
         { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
         { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+        { "<localleader>c", function() require("noice").cmd("dismiss") end, desc = "Clear all notification" },
       }
     end,
   },

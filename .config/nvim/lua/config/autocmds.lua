@@ -49,6 +49,8 @@ vim.api.nvim_create_autocmd("FileType", {
     "git",
     "fugitive",
     "fugitiveblame",
+    "flutterToolsOutline",
+    "log",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -58,7 +60,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
+  group = augroup("close_with_q_diffview"),
   pattern = {
     "DiffviewFiles",
   },
