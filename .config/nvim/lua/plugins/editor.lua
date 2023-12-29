@@ -300,10 +300,23 @@ return {
         end
         builtin.live_grep(c)
       end
+
+      local git_files = function()
+        builtin.git_files({
+          show_untracked = true,
+          git_command = {
+            "git",
+            "ls-files",
+            "--exclude-standard",
+            "--modified",
+          },
+        })
+      end
       -- stylua: ignore
       return {
         { "<leader>,", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
         { "<leader>/", live_grep, desc = "Grep (workspace)" },
+        { "<leader>m", git_files, desc = "Git changes" },
         { "<leader>;", function() builtin.command_history() end, desc = "Command History" },
         { "<leader>?", function() builtin.help_tags() end, desc = "Help Pages" },
         { "<leader><space>", find_files, desc = "Find Files (workspace)" },
@@ -315,6 +328,7 @@ return {
         { "<leader>fr", function() builtin.oldfiles({ cwd = vim.loop.cwd() }) end, desc = "Recent (workspace)" },
         { "<leader>fR", function() builtin.oldfiles() end, desc = "Recent" },
         -- git
+        { "<leader>gf", git_files, desc = "changes" },
         { "<leader>gc", function() builtin.git_commits() end, desc = "commits" },
         { "<leader>gs", function() builtin.git_status() end, desc = "status" },
         -- search
