@@ -148,12 +148,13 @@ key_bindings:
   # - { key: X, mods: Option, chars: "\x01-" } # split pane vertically
   # - { key: Q, mods: Option, chars: "\x01_" } # split pane horizontally
   # - { key: W, mods: Option, chars: "\x01c" } # new window
-  # - { key: Y, mods: Option, chars: "\x01=" } # goto previous window
-  # - { key: U, mods: Option, chars: "\x01+" } # goto next window
+  # - { key: V, mods: Option, chars: "\x01=" } # goto previous window
+  # - { key: N, mods: Option, chars: "\x01+" } # goto next window
   # - { key: Slash, mods: Option, chars: "\x01\x09" } # goto last window
   # - { key: S, mods: Option, chars: "\x01\x03" } # new session
-  # - { key: V, mods: Option, chars: "\x01(" } # goto previous session
-  # - { key: N, mods: Option, chars: "\x01)" } # goto next session
+  # - { key: LBracket, mods: Option, chars: "\x01(" } # goto previous session
+  # - { key: RBracket, mods: Option, chars: "\x01)" } # goto next session
+  # - { key: Backslash, mods: Option, chars: "\x01\x5c" } # goto last session
   # - { key: Z, mods: Option, chars: "\x01z" } # zoom pane (maximize pane)
   # - { key: T, mods: Option, chars: "\x01t" } # show clock
   # - { key: M, mods: Option, chars: "\x01m" } # toggle mouse mode

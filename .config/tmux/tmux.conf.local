@@ -412,12 +412,13 @@ bind -n m-j resize-pane -D 2 # resize down
 bind -n m-k resize-pane -U 2 # resize up
 bind -n m-l resize-pane -R 2 # resize right
 bind -n m-w new-window # create new window
-bind -n m-y previous-window # goto previous window
-bind -n m-u next-window # goto next window
+bind -n m-v previous-window # goto previous window
+bind -n m-n next-window # goto next window
 bind -n m-/ last-window # goto last window
 bind -n m-s new-session # create new session
-bind -n m-v switch-client -p # goto previous session
-bind -n m-n switch-client -n # goto next session
+bind -n m-[ switch-client -p # goto previous session
+bind -n m-] switch-client -n # goto next session
+bind -n "m-\\" switch-client -l # goto last session
 bind -n m-z resize-pane -Z # maximize pane
 bind -n m-t clock-mode # toggle clock
 bind -n m-m run "cut -c3- '#{TMUX_CONF}' | sh -s _toggle_mouse" # toggle mouse mode
