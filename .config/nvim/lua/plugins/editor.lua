@@ -125,7 +125,7 @@ return {
         },
         actions = {
           expand_all = {
-            exclude = { ".git", ".vscode", ".idea" },
+            exclude = { ".git", ".vscode", ".idea", ".github" },
           },
           open_file = {
             window_picker = {
