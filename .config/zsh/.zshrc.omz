@@ -18,6 +18,7 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 export ZSH="$ZDOTDIR/ohmyzsh"
 
 plugins=(
+  aliases
   auto-ls
   aws
   conda-zsh-completion
@@ -27,8 +28,10 @@ plugins=(
   fzf-tab
   git
   git-open
+  golang
   # hacker-quotes
   history
+  httpie
   kubectl
   python
   sudo
