@@ -412,9 +412,9 @@ bind -n m-j resize-pane -D 2 # resize down
 bind -n m-k resize-pane -U 2 # resize up
 bind -n m-l resize-pane -R 2 # resize right
 bind -n m-w new-window # create new window
-bind -n m-v previous-window # goto previous window
-bind -n m-n next-window # goto next window
-bind -n m-/ last-window # goto last window
+bind -n "m-;" previous-window # goto previous window
+bind -n "m-'" next-window # goto next window
+bind -n "m-/" last-window # goto last window
 bind -n m-s new-session # create new session
 bind -n m-[ switch-client -p # goto previous session
 bind -n m-] switch-client -n # goto next session
