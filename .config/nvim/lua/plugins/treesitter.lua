@@ -2,13 +2,10 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      -- autotag = { enable = true },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
-    },
+    opts = function(_, opts)
+      opts.autotag = { enable = true }
+      opts.context_commentstring = { enable = true, enable_autocmd = false }
+    end,
   },
 
   {
