@@ -175,7 +175,6 @@ return {
 
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
     keys = function()
       -- stylua: ignore
       return {
@@ -183,15 +182,10 @@ return {
         { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" }
       }
     end,
-    config = function()
-      require("flash").setup({
-        modes = {
-          char = {
-            keys = { "s", "S" },
-          },
-        },
-      })
-    end,
+    -- config = function()
+    --   -- stylua: ignore
+    --   require("flash").setup({ modes = { char = { keys = { "s", "S" } } } })
+    -- end,
   },
   {
     "phaazon/hop.nvim",
@@ -200,7 +194,7 @@ return {
     keys = {
       { "f", function() require("hop").hint_char1() end, remap = true },
       { "F", function() require("hop").hint_char2() end, remap = true },
-      { "L", function() require("hop").hint_lines_skip_whitespace() end, remap = true },
+      { "A", function() require("hop").hint_lines_skip_whitespace() end, remap = true },
       { "P", function() require("hop").hint_patterns() end, remap = true },
     },
     config = function()

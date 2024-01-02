@@ -89,12 +89,15 @@ vim.cmd([[
   augroup END
 ]])
 
--- automatically active winbar whenever entering buffer
+-- automatically active lspsaga symbol winbar whenever entering buffer
 vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("open_winbar"),
   pattern = "*",
   callback = function()
-    local winbar = require("lspsaga.symbol.winbar")
+    local status, winbar = pcall(require, "lspsaga.symbol.winbar")
+    if not status then
+      return
+    end
     local curbuf = vim.api.nvim_get_current_buf()
     local bo = vim.bo[curbuf]
     local disallow_filetypes = {
