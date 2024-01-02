@@ -36,7 +36,6 @@
 	"editor.suggest.preview": true,
 	"editor.suggestSelection": "first",
 	"editor.tabCompletion": "off",
-	"editor.tabFocusMode": true,
 	"editor.tabSize": 2,
 	"editor.wordWrap": "off",
 	"editor.tokenColorCustomizations": {
