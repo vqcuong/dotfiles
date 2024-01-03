@@ -25,6 +25,10 @@
 		"command": "-workbench.action.togglePanel"
 	},
 	{
+		"key": "ctrl+3",
+		"command": "-workbench.action.openEditorAtIndex3"
+	},
+	{
 		"key": "ctrl+s",
 		"command": "cursorLineStart",
 		"when": "textInputFocus"
@@ -123,7 +127,21 @@
 		"when": "inlineSuggestionVisible && !editorReadonly"
 	},
 	{
-		"key": "ctrl+3",
-		"command": "-workbench.action.openEditorAtIndex3"
-	}
+		"key": "cmd+e",
+		"command": "workbench.action.showAllEditors"
+	},
+	{
+		"key": "alt+cmd+tab",
+		"command": "-workbench.action.showAllEditors"
+	},
+	{
+		"key": "cmd+e",
+		"command": "-editor.action.toggleScreenReaderAccessibilityMode",
+		"when": "accessibilityHelpIsShown"
+	},
+	{
+		"key": "cmd+e",
+		"command": "-actions.findWithSelection"
+	},
 ]
+
