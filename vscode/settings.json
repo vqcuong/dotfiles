@@ -286,6 +286,11 @@
 			"list.hoverBackground": "#0525399f",
 			"list.inactiveSelectionBackground": "#4c053b78",
 			"list.filterMatchBackground": "#4c053b",
+			"menu.background": "#02040b",
+			"menu.border": "#5bc0ff",
+			"menu.foreground": "#0b4b72",
+			"menu.selectionBackground": "#0525399f",
+			"menu.separatorBackground": "#0b4b72",
 			"minimapGutter.addedBackground": "#00ff9d",
 			"minimapGutter.deletedBackground": "#ff0000",
 			"minimapGutter.modifiedBackground": "#ff8000",
@@ -503,6 +508,7 @@
 	"autoHide.autoHideSideBar": false,
 	"autoHide.autoHideAuxiliaryBar": false,
 	"animations.Install-Method": "Apc Customize UI++",
+	"apc.menubar.compact": true,
 	"apc.activityBar": {
 		"size": 40,
 		"itemSize": 45,
@@ -546,3 +552,4 @@
 	// 	"file:///Users/cuongok/.vscode/custom_css/custom.css"
 	// ],
 }
+
