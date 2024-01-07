@@ -183,27 +183,34 @@ if [[ -d $ZDOTDIR/.local ]]; then
   done
 fi
 
-# print a chilly quote on startup
+# chilly quote on startup
 # fortune|cowsay|lolcat
 
+# os info
 # pfetch
-# export POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
-# eval "$(oh-my-posh completion zsh)"
-# eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/marcduiker.omp.json)"
-# eval "$(starship init zsh)"
 
-function _setup_powerlevel10k() {
-  () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-  [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
-  source $1/powerlevel10k.zsh-theme
-}
-_setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"
+if [[ $SHELL != "/bin/zsh" ]]; then
+  # oh-my-posh
+  POSH_THEMES_PATH=$(brew --prefix oh-my-posh)/themes
+  OMP_THEME=marcduiker
+  eval "$(oh-my-posh completion zsh)"
+  eval "$(oh-my-posh init zsh --config $POSH_THEMES_PATH/$OMP_THEME.omp.json)"
+  # starship
+  # eval "$(starship init zsh)"
+else
+  # powerlevel10k
+  function _setup_powerlevel10k() {
+    () { [[ -r $1 ]] && source $1 } "${XDG_CACHE_HOME-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    [[ -d $1 ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $1
+    source $1/powerlevel10k.zsh-theme
+  }
+  _setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"
 
-function _enable_powerlevel10k(){
-  # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-  [[ ! -f ${ZDOTDIR-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR-$HOME}/.p10k.zsh
-  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-  typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='k|kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern|kubeseal|skaffold|kubent|kubecolor|cmctl|sparkctl'
-}
-_enable_powerlevel10k
-
+  function _enable_powerlevel10k(){
+    # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+    [[ ! -f ${ZDOTDIR-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR-$HOME}/.p10k.zsh
+    typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+    typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='k|kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile|flux|fluxctl|stern|kubeseal|skaffold|kubent|kubecolor|cmctl|sparkctl'
+  }
+  _enable_powerlevel10k
+fi
