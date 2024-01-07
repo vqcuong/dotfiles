@@ -52,7 +52,6 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [conda-zsh-completion](https://github.com/conda-incubator/conda-zsh-completion) is a zsh completion for [conda](https://docs.conda.io/en/latest/)
 - [hacker-quotes](https://github.com/oldratlee/hacker-quotes.git) is an [ohmyzsh](https://ohmyz.sh/) plugin for displaying a hacker quote randomly when starting up
 - [git-open](https://github.com/paulirish/git-open) is a tool for opening the repo website in browser
-- [forgit](https://github.com/wfxr/forgit) is an effective zsh plugin for git
 - [fzf-tab](https://github.com/Aloxaf/fzf-tab) is an alternative for zsh's default completion selection menu with fzf
 - [oh-my-matrix](https://github.com/amstrad/oh-my-matrix) is no thing but a zsh plugin just for fun
 - [ssh-connect](https://github.com/gko/ssh-connect) is a simple ssh manager
@@ -92,6 +91,8 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [delta](https://github.com/dandavison/delta.git) is a easier-to-read syntax-highlighting pager for git, diff
 - [gitui](https://github.com/extrawurst/gitui.git) is a terminal-based interactive tool for git
 - [lazygit](https://github.com/jesseduffield/lazygit) is a terminal based git client
+- [forgit](https://github.com/wfxr/forgit) is an interactive git log viewer
+- [tig](https://jonas.github.io/tig/) is a text-mode interface for Git
 
 ### Utilities
 
