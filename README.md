@@ -91,6 +91,7 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy.git) is a tool to make git diffs more human-readable
 - [delta](https://github.com/dandavison/delta.git) is a easier-to-read syntax-highlighting pager for git, diff
 - [gitui](https://github.com/extrawurst/gitui.git) is a terminal-based interactive tool for git
+- [lazygit](https://github.com/jesseduffield/lazygit) is a terminal based git client
 
 ### Utilities
 
@@ -103,6 +104,7 @@ This is my personal configuration for NeoVim, Vim, Alacritty, Hyper and some oth
 - [yq](https://github.com/mikefarah/yq) is a lightweight and portable command-line for processing yaml, json and xml
 - [jq](https://github.com/jqlang/jq) is a lightweight and flexible command-line for processing json
 - [fd](https://github.com/sharkdp/fd) is a program to find entries in your file system
+- [bat](https://github.com/sharkdp/bat) is a cat(1) clone with syntax highlighting and Git integration
 - [btop](https://github.com/aristocratos/btop.git) is a terminal-based system resource monitor
 - [gtop](https://github.com/aksakalli/gtop.git) is a simple system monitoring dashboard on terminal
 - [bottom](https://github.com/ClementTsang/bottom.git) is a customizable cross-platform graphical process/system monitor for the terminal
