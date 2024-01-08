@@ -686,7 +686,7 @@
   "workbench.editor.closeEmptyGroups": true,
   "workbench.editor.focusRecentEditorAfterClose": true,
   "workbench.editor.enablePreviewFromQuickOpen": true,
-  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreview": true,
   "workbench.editor.scrollToSwitchTabs": true,
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editorLargeFileConfirmation": 256,
