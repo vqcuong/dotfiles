@@ -726,8 +726,9 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [shell]
+# program = "/bin/zsh"
+program = "/usr/local/bin/fish"
 args = ["--login", "-c", "tmux attach || tmux new-session -s cuongok -n hiworld"]
-program = "/bin/zsh"
 
 [window]
 decorations = "buttonless"
