@@ -28,7 +28,6 @@ plugins=(
   docker-compose
   forgit
   fzf-tab
-  git
   git-open
   golang
   # hacker-quotes
