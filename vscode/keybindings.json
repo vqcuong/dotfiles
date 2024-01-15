@@ -325,9 +325,9 @@
     "command": "-workbench.action.findInFiles"
   },
   {
-    "key": "tab",
+    "key": "ctrl+]",
     "command": "search.action.focusNextSearchResult",
-    "when": "(hasSearchResult && searchViewletFocus) || activeEditorIsNotPreview"
+    "when": "hasSearchResult || inSearchEditor"
   },
   {
     "key": "f4",
@@ -335,9 +335,9 @@
     "when": "hasSearchResult || inSearchEditor"
   },
   {
-    "key": "shift+tab",
+    "key": "ctrl+[",
     "command": "search.action.focusPreviousSearchResult",
-    "when": "(hasSearchResult && searchViewletFocus) || activeEditorIsNotPreview"
+    "when": "hasSearchResult || inSearchEditor"
   },
   {
     "key": "shift+f4",
