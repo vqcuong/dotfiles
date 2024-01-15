@@ -64,7 +64,7 @@ alias grtu="git remote update"
 # git tag
 alias gts="git tag -s"
 # git local
-alias gad="git add"
+# alias gad="git add"
 alias gaa="git add --all"
 alias gau="git add --update"
 alias gap="git add --patch"
