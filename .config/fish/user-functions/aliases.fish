@@ -22,21 +22,10 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
-# docker
-alias d='docker'
-alias dim='docker images'
-alias dps='docker ps'
-alias dne='docker network'
-alias dvo='docker volume'
-alias drm="docker rm"
-alias drmi="docker rmi"
-
 # docker-compose
 alias dc='docker-compose'
-alias dcps='docker-compose ps'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
-alias dcl='docker-compose logs'
 
 # git
 # alias g="git"

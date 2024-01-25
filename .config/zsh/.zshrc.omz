@@ -34,10 +34,12 @@ plugins=(
   history
   httpie
   kubectl
+  magic-enter
   python
   sudo
   terraform
   fast-syntax-highlighting
+  you-should-use
   zsh-autosuggestions
   # zsh-autocomplete
   zsh-ssh
