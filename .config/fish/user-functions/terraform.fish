@@ -1,0 +1,13 @@
+abbr tf terraform
+abbr tfa 'terraform apply'
+abbr tfc 'terraform console'
+abbr tfd 'terraform destroy'
+abbr tfi 'terraform init'
+abbr tfli 'terraform login'
+abbr tflo 'terraform logout'
+abbr tfo 'terraform output'
+abbr tfp 'terraform plan'
+abbr tfr 'terraform refresh'
+abbr tfs 'terraform state'
+abbr tfv 'terraform validate'
+abbr tfV 'terraform version'
