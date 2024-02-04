@@ -8,6 +8,5 @@ blackjid/plugin-kubectl
 jhillyerd/plugin-git
 lewisacidic/fish-docker
 brewingweasel/fishbang
-mattmc3/magic-enter.fish
 kpbaks/autols.fish
 demartini/plugin-docker-compose
