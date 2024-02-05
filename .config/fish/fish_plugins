@@ -7,6 +7,5 @@ oh-my-fish/plugin-sudope
 blackjid/plugin-kubectl
 jhillyerd/plugin-git
 lewisacidic/fish-docker
-brewingweasel/fishbang
 kpbaks/autols.fish
 demartini/plugin-docker-compose

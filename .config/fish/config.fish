@@ -4,7 +4,6 @@ end
 
 set -U fish_user_paths /usr/local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $fish_user_paths
-set -gx COLORTERM truecolor
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 if test -f $HOME/.config/fish/config.local.fish
