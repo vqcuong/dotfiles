@@ -4,7 +4,7 @@ set nocompatible              " be iMproved, required
 set encoding=UTF-8
 set tabstop=2
 set paste
-
+set rtp+=/opt/homebrew/opt/fzf
 
 filetype plugin indent on    " required
 
