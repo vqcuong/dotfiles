@@ -72,7 +72,9 @@ function _setup_conda
     end
 end
 
-_setup_conda
+if test $TERM_PROGRAM = tmux
+    _setup_conda
+end
 
 # setup pyenv
 function _setup_pyenv
@@ -84,8 +86,9 @@ function _setup_pyenv
         # git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT
     end
 end
-_setup_pyenv
-
+if test $TERM_PROGRAM = tmux
+    _setup_pyenv
+end
 # setup goenv
 function _setup_goenv
     set -g -x GOENV_ROOT $HOME/.apps/goenv
@@ -99,7 +102,9 @@ function _setup_goenv
     goenv init - | source
     fish_add_path -g -a $GOENV_ROOT/shims
 end
-_setup_goenv
+if test $TERM_PROGRAM = tmux
+    _setup_goenv
+end
 
 if test "$TERM_PROGRAM" != WarpTerminal
     starship init fish | source
