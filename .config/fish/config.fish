@@ -72,7 +72,7 @@ function _setup_conda
     end
 end
 
-if test $TERM_PROGRAM = tmux
+if test "$TERM_PROGRAM" = alacritty
     _setup_conda
 end
 
@@ -86,7 +86,8 @@ function _setup_pyenv
         # git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT
     end
 end
-if test $TERM_PROGRAM = tmux
+
+if test "$TERM_PROGRAM" = alacritty
     _setup_pyenv
 end
 # setup goenv
@@ -102,7 +103,7 @@ function _setup_goenv
     goenv init - | source
     fish_add_path -g -a $GOENV_ROOT/shims
 end
-if test $TERM_PROGRAM = tmux
+if test "$TERM_PROGRAM" = alacritty
     _setup_goenv
 end
 
