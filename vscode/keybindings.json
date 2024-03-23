@@ -1,3 +1,4 @@
+// Place your key bindings in this file to override the defaultsauto[]
 [
   {
     "key": "ctrl+1",
@@ -292,7 +293,7 @@
     "when": "textInputFocus"
   },
   {
-    "key": "ctrl+e",
+    "key": "cmd+ctrl+e",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
@@ -302,9 +303,9 @@
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
   {
-    "key": "ctrl+e",
+    "key": "cmd+ctrl+e",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "filesExplorerFocus"
+    "when": "filesExplorerFocus || explorerViewletVisible"
   },
   {
     "key": "ctrl+f",
@@ -312,11 +313,11 @@
     "when": "textInputFocus"
   },
   {
-    "key": "ctrl+f",
+    "key": "cmd+ctrl+s",
     "command": "workbench.action.findInFiles"
   },
   {
-    "key": "ctrl+f",
+    "key": "cmd+ctrl+s",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "searchViewletFocus || searchInputBoxFocus"
   },
@@ -343,5 +344,20 @@
     "key": "shift+f4",
     "command": "-search.action.focusPreviousSearchResult",
     "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "-workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "activeViewlet == 'workbench.view.debug'"
   }
 ]

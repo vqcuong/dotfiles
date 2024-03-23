@@ -291,8 +291,8 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "security.workspace.trust.enabled": false,
-  "workbench.colorTheme": "Dracula At Night",
   "workbench.commandPalette.history": 5,
+  "workbench.colorTheme": "Dracula At Night",
   "workbench.colorCustomizations": {
     "[Transparent Color Theme]": {
       "activityBar.border": "#00000000",
@@ -703,8 +703,7 @@
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.tree.expandMode": "singleClick",
-  "terminal.external.osxExec": "Hyper.app",
-  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.inheritEnv": true,
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "underline",
@@ -713,7 +712,6 @@
   "terminal.integrated.fontFamily": "Monofur Nerd Font Propo",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.drawBoldTextInBrightColors": true,
-  "terminal.integrated.enableBell": true,
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.gpuAcceleration": "auto",
   "terminal.integrated.rightClickBehavior": "nothing",
@@ -721,6 +719,7 @@
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.tabs.showActions": "never",
   "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.enableVisualBell": true,
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1",
     "CW_NEW_SESSION": "1"
@@ -729,8 +728,8 @@
   "window.dialogStyle": "custom",
   "window.nativeFullScreen": false,
   "window.titleBarStyle": "native",
-  "window.zoomLevel": 1.25,
   "window.customTitleBarVisibility": "never",
+  "window.zoomLevel": 1.5,
   "better-comments.highlightPlainText": true,
   "better-comments.multilineComments": true,
   "better-comments.tags": [
@@ -784,6 +783,7 @@
   "explorer.autoReveal": true,
   "explorer.excludeGitIgnore": true,
   "explorer.compactFolders": true,
+  "explorer.confirmDragAndDrop": false,
   "errorLens.statusBarColorsEnabled": true,
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
   "files.associations": {
@@ -795,12 +795,11 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "go.toolsGopath": "/Users/cuongok/.apps/gotools",
   "go.inferGopath": true,
   "go.lintTool": "golangci-lint",
-  "go.logging.level": "verbose",
   "go.lintFlags": ["--fast"],
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
+  // "python.terminal.activateEnvironment": true,
   "[python]": {
     "editor.formatOnType": true,
     "editor.defaultFormatter": "ms-python.autopep8"
@@ -811,6 +810,7 @@
   "dart.debugSdkLibraries": true,
   "autoHide.autoHideSideBar": false,
   "autoHide.autoHideAuxiliaryBar": false,
+  "autoHide.autoHidePanel": false,
   "animations.Install-Method": "Apc Customize UI++",
   // "apc.menubar.compact": true,
   "apc.activityBar": {
@@ -831,9 +831,9 @@
   // set frame to false to hide title bar and trafic light buttons on macos
   // https://github.com/microsoft/vscode/issues/17532
   "apc.electron": {
-    // "transparent": true,
-    // "backgroundColor": "#00000000",
-    // "opacity": 0.85, //disable it because yabai window transparency already replaced
+    "transparent": true,
+    "backgroundColor": "#00000000",
+    "opacity": 0.85, //disable it because yabai window transparency already replaced
     "frame": true,
     "vibrancy": "hud",
     "titleBarStyle": "hiddenInset",
@@ -854,5 +854,11 @@
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "animations.Enabled": true
+  "animations.Enabled": true,
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+  }
 }

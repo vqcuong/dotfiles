@@ -74,6 +74,8 @@ end
 
 if test "$TERM_PROGRAM" = alacritty
     _setup_conda
+else
+    _eval_conda $HOME/.apps/mambaforge
 end
 
 # setup pyenv
@@ -89,7 +91,10 @@ end
 
 if test "$TERM_PROGRAM" = alacritty
     _setup_pyenv
+else if test -d $PYENV_ROOT/bin
+    fish_add_path -g -a $PYENV_ROOT/bin
 end
+
 # setup goenv
 function _setup_goenv
     set -g -x GOENV_ROOT $HOME/.apps/goenv
@@ -105,6 +110,9 @@ function _setup_goenv
 end
 if test "$TERM_PROGRAM" = alacritty
     _setup_goenv
+else if test -d $GOENV_ROOT
+    fish_add_path -g -a $GOENV_ROOT/bin
+    fish_add_path -g -a $GOENV_ROOT/shims
 end
 
 if test "$TERM_PROGRAM" != WarpTerminal
