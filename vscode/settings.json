@@ -19,7 +19,7 @@
   "editor.inlayHints.fontFamily": "Monofur Nerd Font Propo",
   "editor.inlayHints.fontSize": 12,
   "editor.matchBrackets": "always",
-  "editor.minimap.autohide": true,
+  "editor.minimap.enabled": false,
   "editor.minimap.size": "fit",
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.occurrencesHighlight": "multiFile",
@@ -36,7 +36,7 @@
   "editor.suggest.preview": true,
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "off",
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   "editor.detectIndentation": false,
   "editor.wordWrap": "off",
   "editor.tokenColorCustomizations": {
@@ -804,7 +804,7 @@
     "editor.formatOnType": true,
     "editor.defaultFormatter": "ms-python.autopep8"
   },
-  "autopep8.args": ["--indent-size=2"],
+  "autopep8.args": ["--indent-size=4", "--max-line-length=120"],
   "redhat.telemetry.enabled": true,
   "dart.debugExternalPackageLibraries": true,
   "dart.debugSdkLibraries": true,
