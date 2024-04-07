@@ -59,4 +59,4 @@ SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/cuongok/\x2eapps/poetry/bin\x1e/Users/cuongok/\x2elocal/bin\x1e/usr/local/bin\x1e/opt/homebrew/opt/fzf/bin
+SETUVAR fish_user_paths:/Users/cuongok/\x2eapps/poetry/bin\x1e/Users/cuongok/\x2elocal/bin\x1e/usr/local/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/opt/homebrew/Cellar/fzf/0\x2e49\x2e0/bin

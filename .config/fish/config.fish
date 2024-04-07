@@ -7,6 +7,8 @@ set -U fish_user_paths $HOME/.local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.apps/poetry/bin $fish_user_paths
 set -gx XDG_CONFIG_HOME $HOME/.config
 
+fzf_configure_bindings --directory=\cf --processes=\ck --git_log=\cg --git_status=\cs
+
 if test -f $HOME/.config/fish/config.local.fish
     source $HOME/.config/fish/config.local.fish
 end

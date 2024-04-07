@@ -1,5 +1,4 @@
 jorgebucaran/fisher
-patrickf1/fzf.fish
 gazorby/fish-abbreviation-tips
 wfxr/forgit
 jorgebucaran/autopair.fish
@@ -9,3 +8,4 @@ jhillyerd/plugin-git
 lewisacidic/fish-docker
 kpbaks/autols.fish
 demartini/plugin-docker-compose
+patrickf1/fzf.fish
