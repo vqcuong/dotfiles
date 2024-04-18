@@ -401,7 +401,7 @@ unbind C-l
 # bind -r + next-window     # select next window
 
 # modify alacritty configuration
-bind C-a new-window -n "~/.config/alacritty/alacritty.toml" sh -c 'vim "~/.config/alacritty/alacritty.toml" && display "Updated alacritty config"'
+bind C-a new-window -n "/Users/cuongok/.config/alacritty/alacritty.toml" sh -c 'vim "/Users/cuongok/.config/alacritty/alacritty.toml" && display "Updated alacritty config"'
 
 # edit configuration
 bind -n m-e new-window -n "#{TMUX_CONF_LOCAL}" -e "EDITOR=$EDITOR" sh -c 'case "${EDITOR:-vim}" in *vim) ${EDITOR:-vim} -c ":set syntax=tmux" "$TMUX_CONF_LOCAL";; *) "$EDITOR" "$TMUX_CONF_LOCAL";; esac && "$TMUX_PROGRAM" ${TMUX_SOCKET:+-S "$TMUX_SOCKET"} source "$TMUX_CONF" \; display "$TMUX_CONF_LOCAL sourced"'
