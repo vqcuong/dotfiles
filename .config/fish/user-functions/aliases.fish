@@ -15,12 +15,21 @@ function sfw --description "sfw <host> <server_port> [<local_port>]"
     ssh -tL $local_port:localhost:$server_port $host
 end
 
+function copy --description "copy <path-to-file>"
+    set ff $argv[1]
+    if test -z "$ff"
+        set ff /dev/stdin
+    end
+    cat $ff | pbcopy
+end
+
 # exa
 alias ls='exa --icons --color=always --group --time-style=long-iso'
 alias l='ls -laH'
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
+alias lt='ls --tree'
 
 # docker-compose
 alias dc='docker-compose'
@@ -77,8 +86,6 @@ alias dcd='docker-compose down'
 # # git worktree
 # alias gwt="git worktree"
 
-# alias copy='function _copy(){ pbcopy < $1; }; _copy $@'
-alias copy='clipcopy'
 
 # trash files or folders instead of pernamently remove them
 alias rm='trash-put'

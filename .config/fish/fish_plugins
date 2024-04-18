@@ -9,3 +9,5 @@ lewisacidic/fish-docker
 kpbaks/autols.fish
 demartini/plugin-docker-compose
 patrickf1/fzf.fish
+oh-my-fish/plugin-technicolor
+nickeb96/puffer-fish
