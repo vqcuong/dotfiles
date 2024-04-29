@@ -42,11 +42,11 @@ module.exports = {
     },
     // shell: "/bin/zsh",
     shell: "/usr/local/bin/fish",
-    shellArgs: [
-      "-l",
-      "-c",
-      "tmux attach || tmux new-session -s cuongok -n hiworld",
-    ],
+    // shellArgs: [
+    //   "-l",
+    //   "-c",
+    //   "tmux attach || tmux new-session -s cuongok -n hiworld",
+    // ],
     env: {},
     bell: "SOUND",
     copyOnSelect: true,

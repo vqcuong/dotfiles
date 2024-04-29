@@ -125,11 +125,13 @@ else if test -d $GOENV_ROOT
     fish_add_path -g -a $GOENV_ROOT/shims
 end
 
-if test "$TERM_PROGRAM" != WarpTerminal
+if test "$TERM_PROGRAM" = tmux
     starship init fish | source
-else
+else if test "$TERM_PROGRAM" = Hyper
     set POSH_THEMES_PATH $(brew --prefix oh-my-posh)/themes
-    set OMP_THEME catppuccin
+    set OMP_THEME 1_shell
     oh-my-posh completion fish | source
-    oh-my-posh init fish --config $POSH_THEMES_PATH/$OMP_THEME.omp.json | source
+    # oh-my-posh init fish --config $POSH_THEMES_PATH/$OMP_THEME.omp.json | source
+    oh-my-posh init fish --config $HOME/.config/ohmyposh/themes/my_velvet.omp.json | source
+else
 end
