@@ -12,10 +12,10 @@ set -U fish_user_paths /usr/local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $fish_user_paths
 set -U fish_user_paths $HOME/.apps/poetry/bin $fish_user_paths
 set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx sudope_sequence \cw
+set -gx sudope_sequence \cq
 set -gx grc_plugin_ignore_execs cat ls tail
 
-fzf_configure_bindings --directory=\cf --processes=\ck --git_log=\cg --git_status=\cs
+fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cl --git_status=\cg
 
 if test -f $HOME/.config/fish/config.local.fish
     source $HOME/.config/fish/config.local.fish
@@ -134,4 +134,5 @@ else if test "$TERM_PROGRAM" = Hyper
     # oh-my-posh init fish --config $POSH_THEMES_PATH/$OMP_THEME.omp.json | source
     oh-my-posh init fish --config $HOME/.config/ohmyposh/themes/my_velvet.omp.json | source
 else
+    starship init fish | source
 end

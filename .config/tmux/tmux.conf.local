@@ -427,6 +427,8 @@ bind -n m-p display-panes # display pane indicators
 bind -n m-r command-prompt -I "#S" "rename-session '%%'" # rename session
 bind -n m-c choose-tree # show choose tree
 bind -n m-a split-window -h -f -p 35 $HOME/.local/bin/cw ai # start AI assistant
+bind -n c-w confirm-before -p "Kill this window? (y/n)" kill-window # kill window
+bind -n c-s confirm-before -p "Kill current session? (y/n)" kill-session # kill session
 
 set -g display-panes-time 2000
 
