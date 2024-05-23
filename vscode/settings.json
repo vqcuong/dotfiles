@@ -292,6 +292,7 @@
   "files.trimTrailingWhitespace": true,
   "security.workspace.trust.enabled": false,
   "workbench.commandPalette.history": 5,
+  "workbench.iconTheme": "catppuccin-macchiato",
   "workbench.colorTheme": "Dracula At Night",
   "workbench.colorCustomizations": {
     "[Transparent Color Theme]": {
@@ -695,7 +696,6 @@
   "workbench.editor.tabActionCloseVisibility": false,
   "workbench.editorLargeFileConfirmation": 256,
   "workbench.editor.editorActionsLocation": "default",
-  "workbench.iconTheme": "catppuccin-mocha",
   "workbench.list.smoothScrolling": true,
   "workbench.list.openMode": "singleClick",
   "workbench.list.defaultFindMatchType": "contiguous",
@@ -703,6 +703,7 @@
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.tree.expandMode": "singleClick",
+  "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.inheritEnv": true,
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorBlinking": true,
@@ -787,7 +788,8 @@
   "errorLens.statusBarColorsEnabled": true,
   "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
   "files.associations": {
-    ".env*": "dotenv"
+    ".env*": "dotenv",
+    "*.yml": "dockercompose"
   },
   "update.showReleaseNotes": false,
   "update.mode": "manual",
@@ -798,6 +800,17 @@
   "go.inferGopath": true,
   "go.lintTool": "golangci-lint",
   "go.lintFlags": ["--fast"],
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   // "python.terminal.activateEnvironment": true,
   "[python]": {
@@ -838,8 +851,8 @@
     "vibrancy": "hud",
     "titleBarStyle": "hiddenInset",
     "trafficLightPosition": {
-      "x": -10,
-      "y": -10
+      "x": -20,
+      "y": -20
     }
   },
   // this will effect the appearance of the tool bar in Sidebars and Panel
@@ -849,7 +862,7 @@
     ".monaco-workbench .part.sidebar .title-actions .actions-container": "justify-content: space-evenly !important"
   },
   "apc.imports": [
-    "file:///Users/cuongok/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.1/dist/updateHandler.js"
+    "file:///Users/cuongok/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
   ],
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1

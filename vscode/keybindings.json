@@ -293,7 +293,7 @@
     "when": "textInputFocus"
   },
   {
-    "key": "cmd+ctrl+e",
+    "key": "ctrl+e",
     "command": "workbench.view.explorer",
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
@@ -303,9 +303,9 @@
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
   {
-    "key": "cmd+ctrl+e",
+    "key": "ctrl+e",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "filesExplorerFocus || explorerViewletVisible"
+    "when": "explorerViewletVisible || filesExplorerFocus"
   },
   {
     "key": "ctrl+f",
@@ -313,13 +313,13 @@
     "when": "textInputFocus"
   },
   {
-    "key": "cmd+ctrl+s",
+    "key": "ctrl+s",
     "command": "workbench.action.findInFiles"
   },
   {
-    "key": "cmd+ctrl+s",
+    "key": "ctrl+s",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "searchViewletFocus || searchInputBoxFocus"
+    "when": "searchInputBoxFocus || searchViewletFocus"
   },
   {
     "key": "shift+cmd+f",
