@@ -1,3 +1,56 @@
+function _eval_conda
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    set conda_prefix $argv[1]
+    if test -f $conda_prefix/bin/conda
+        eval $conda_prefix/bin/conda "shell.fish" hook | source
+    end
+    # <<< conda initialize <<<
+end
+
+function _setup_conda
+    set conda_prefix $argv[1]
+    if test -z $conda_prefix
+        set conda_prefix $HOME/.apps/mambaforge
+    end
+    if test -d $conda_prefix
+        _eval_conda $conda_prefix
+    end
+    if ! command -v conda &>/dev/null
+        rm -rf $conda_prefix
+        set os_name $(uname -s)
+        set os_arch $(uname -m)
+        set tag_name $(http https://api.github.com/repos/conda-forge/miniforge/releases/latest | jq -r '.tag_name')
+        http -d https://github.com/conda-forge/miniforge/releases/download/$tag_name/Mambaforge-$os_name-$os_arch.sh -o /tmp/mambaforge.sh
+        bash /tmp/mambaforge.sh -b -p $conda_prefix
+        _eval_conda $conda_prefix
+    end
+end
+
+function _setup_goenv
+    set -g -x GOENV_ROOT $HOME/.apps/goenv
+    set -g -x GOENV_GOPATH_PREFIX $HOME/.apps/go
+    set -g -x GOENV_GOMOD_VERSION_ENABLE 1
+    fish_add_path -g -a $GOENV_ROOT/bin
+    if ! command -v goenv &>/dev/null
+        mkdir -p $(dirname $GOENV_ROOT)
+        git clone https://github.com/go-nv/goenv.git $GOENV_ROOT
+    end
+    goenv init - | source
+    fish_add_path -g -a $GOENV_ROOT/shims
+end
+
+function _setup_pyenv
+    set -g -x PYENV_ROOT $HOME/.apps/pyenv
+    fish_add_path -g -a $PYENV_ROOT/bin
+    if ! command -v pyenv &>/dev/null
+        mkdir -p $(dirname $PYENV_ROOT)
+        curl https://pyenv.run | bash
+        # git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT
+    end
+end
+
+
 if status is-interactive
     # if test -d $HOME/.config/fish/user-abbrs
     #     for f in $HOME/.config/fish/user-abbrs/*
@@ -52,78 +105,9 @@ thefuck --alias | source
 zoxide init fish | source
 #orbctl completion fish | source
 
-# setup conda
-function _eval_conda
-    # >>> conda initialize >>>
-    # !! Contents within this block are managed by 'conda init' !!
-    set conda_prefix $argv[1]
-    if test -f $conda_prefix/bin/conda
-        eval $conda_prefix/bin/conda "shell.fish" hook | source
-    end
-    # <<< conda initialize <<<
-end
-
-function _setup_conda
-    set conda_prefix $argv[1]
-    if test -z $conda_prefix
-        set conda_prefix $HOME/.apps/mambaforge
-    end
-    if test -d $conda_prefix
-        _eval_conda $conda_prefix
-    end
-    if ! command -v conda &>/dev/null
-        rm -rf $conda_prefix
-        set os_name $(uname -s)
-        set os_arch $(uname -m)
-        set tag_name $(http https://api.github.com/repos/conda-forge/miniforge/releases/latest | jq -r '.tag_name')
-        http -d https://github.com/conda-forge/miniforge/releases/download/$tag_name/Mambaforge-$os_name-$os_arch.sh -o /tmp/mambaforge.sh
-        bash /tmp/mambaforge.sh -b -p $conda_prefix
-        _eval_conda $conda_prefix
-    end
-end
-
-if test "$TERM_PROGRAM" = alacritty
-    _setup_conda
-else
-    _eval_conda $HOME/.apps/mambaforge
-end
-
-# setup pyenv
-function _setup_pyenv
-    set -g -x PYENV_ROOT $HOME/.apps/pyenv
-    fish_add_path -g -a $PYENV_ROOT/bin
-    if ! command -v pyenv &>/dev/null
-        mkdir -p $(dirname $PYENV_ROOT)
-        curl https://pyenv.run | bash
-        # git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT
-    end
-end
-
-if test "$TERM_PROGRAM" = alacritty
-    _setup_pyenv
-else if test -d $PYENV_ROOT/bin
-    fish_add_path -g -a $PYENV_ROOT/bin
-end
-
-# setup goenv
-function _setup_goenv
-    set -g -x GOENV_ROOT $HOME/.apps/goenv
-    set -g -x GOENV_GOPATH_PREFIX $HOME/.apps/go
-    set -g -x GOENV_GOMOD_VERSION_ENABLE 1
-    fish_add_path -g -a $GOENV_ROOT/bin
-    if ! command -v goenv &>/dev/null
-        mkdir -p $(dirname $GOENV_ROOT)
-        git clone https://github.com/go-nv/goenv.git $GOENV_ROOT
-    end
-    goenv init - | source
-    fish_add_path -g -a $GOENV_ROOT/shims
-end
-if test "$TERM_PROGRAM" = alacritty
-    _setup_goenv
-else if test -d $GOENV_ROOT
-    fish_add_path -g -a $GOENV_ROOT/bin
-    fish_add_path -g -a $GOENV_ROOT/shims
-end
+_setup_conda
+_setup_pyenv
+_setup_goenv
 
 if test "$TERM_PROGRAM" = tmux
     starship init fish | source
