@@ -316,7 +316,7 @@ return {
         { "<leader><space>", find_files, desc = "Find Files (workspace)" },
         -- files
         { "<leader>fb", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
-        { "<leader>fc", function() lazyvimUtil.telescope.config_files() end, desc = "Find Config File" },
+        { "<leader>fc", function() LazyVim.pick.config_files() end, desc = "Find Config File" },
         { "<leader>ff", find_files, desc = "Find Files (workspace)" },
         { "<leader>fF", function() find_files(utils.buffer_dir()) end, desc = "Find Files (bufferdir)" },
         { "<leader>fr", function() builtin.oldfiles({ cwd = vim.loop.cwd() }) end, desc = "Recent (workspace)" },
@@ -333,10 +333,10 @@ return {
         { "<leader>sG", function() live_grep(utils.buffer_dir()) end, desc = "Grep (bufferdir)" },
         { "<leader>sb", function() builtin.current_buffer_fuzzy_find() end, desc = "Buffer search" },
         { "<leader>sm", function() builtin.marks() end, desc = "Jump to Mark" },
-        { "<leader>sw", lazyvimUtil.telescope("grep_string", { word_match = "-w" }), desc = "Word (workspace)" },
-        { "<leader>sw", lazyvimUtil.telescope("grep_string"), mode = "v", desc = "Selection (workspace)" },
-        -- { "<leader>sW", lazyvimUtil.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (bufferdir)" },
-        -- { "<leader>sW", lazyvimUtil.telescope("grep_string", { cwd = false }), mode = "v", desc = "Selection (bufferdir)" },
+        { "<leader>sw", LazyVim.pick("grep_string", { word_match = "-w" }), desc = "Word (workspace)" },
+        { "<leader>sw", LazyVim.pick("grep_string"), mode = "v", desc = "Selection (workspace)" },
+        -- { "<leader>sW", LazyVim.pick("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (bufferdir)" },
+        -- { "<leader>sW", LazyVim.pick("grep_string", { cwd = false }), mode = "v", desc = "Selection (bufferdir)" },
         -- stylua: ignore
         { "<leader>ss", function() builtin.lsp_document_symbols({ symbols = require("lazyvim.config").get_kind_filter() }) end, desc = "Goto Symbol" },
         -- stylua: ignore

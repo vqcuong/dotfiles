@@ -50,7 +50,7 @@ end
 # user configuration
 thefuck --alias | source
 zoxide init fish | source
-orbctl completion fish | source
+#orbctl completion fish | source
 
 # setup conda
 function _eval_conda
