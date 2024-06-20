@@ -1,5 +1,12 @@
 return {
   {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = function(_, opts)
@@ -16,6 +23,7 @@ return {
       }
     end,
   },
+
   {
     "catppuccin/nvim",
     name = "catppuccin",
