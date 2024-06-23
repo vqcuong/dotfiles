@@ -1,3 +1,7 @@
+import = [
+    "~/.config/alacritty/themes/themes/tomorrow_night.toml"
+]
+
 live_config_reload = true
 working_directory = "None"
 
@@ -5,43 +9,43 @@ working_directory = "None"
 draw_bold_text_with_bright_colors = false
 transparent_background_colors = true
 
-[colors.bright]
-black = "#666666"
-blue = "#05bcff"
-cyan = "#4affe4"
-green = "#b9ca4a"
-magenta = "#e3469a"
-red = "#d54e53"
-white = "#ffffff"
-yellow = "#ffbc40"
+# [colors.bright]
+# black = "#666666"
+# blue = "#05bcff"
+# cyan = "#4affe4"
+# green = "#b9ca4a"
+# magenta = "#e3469a"
+# red = "#d54e53"
+# white = "#ffffff"
+# yellow = "#ffbc40"
 
-[colors.dim]
-black = "#131415"
-blue = "#556a7d"
-cyan = "#02666e"
-green = "#777c44"
-magenta = "#75617b"
-red = "#864343"
-white = "#b3b3b3"
-yellow = "#9e824c"
+# [colors.dim]
+# black = "#131415"
+# blue = "#556a7d"
+# cyan = "#02666e"
+# green = "#777c44"
+# magenta = "#75617b"
+# red = "#864343"
+# white = "#b3b3b3"
+# yellow = "#9e824c"
 
-[colors.footer_bar]
-background = "#c5c8c6"
-foreground = "#1d1f21"
+# [colors.footer_bar]
+# background = "#c5c8c6"
+# foreground = "#1d1f21"
 
-[colors.line_indicator]
-background = "None"
-foreground = "None"
+# [colors.line_indicator]
+# background = "None"
+# foreground = "None"
 
-[colors.normal]
-black = "#1d1f21"
-blue = "#58acf5"
-cyan = "#eb66ff"
-green = "#00d9ff"
-magenta = "#a2ff00"
-red = "#ff003c"
-white = "#fdfdfd"
-yellow = "#ffb98a"
+# [colors.normal]
+# black = "#1d1f21"
+# blue = "#58acf5"
+# cyan = "#eb66ff"
+# green = "#00d9ff"
+# magenta = "#a2ff00"
+# red = "#ff003c"
+# white = "#fdfdfd"
+# yellow = "#ffb98a"
 
 [colors.primary]
 background = "#05070a"
@@ -49,17 +53,17 @@ bright_foreground = "#59ff40"
 dim_foreground = "#00d455"
 foreground = "#9cff59"
 
-[colors.search.focused_match]
-background = "#fefefe"
-foreground = "#945f7d"
+# [colors.search.focused_match]
+# background = "#fefefe"
+# foreground = "#945f7d"
 
-[colors.search.matches]
-background = "#945f7d"
-foreground = "#fefefe"
+# [colors.search.matches]
+# background = "#945f7d"
+# foreground = "#fefefe"
 
-[colors.selection]
-background = "CellForeground"
-text = "CellBackground"
+# [colors.selection]
+# background = "CellForeground"
+# text = "CellBackground"
 
 [cursor]
 blink_interval = 750
