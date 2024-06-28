@@ -72,6 +72,14 @@ return {
         return ""
       end
 
+      local function get_schema()
+        local schema = require("yaml-companion").get_buf_schema(0)
+        if schema.result[1].name == "none" then
+          return ""
+        end
+        return schema.result[1].name
+      end
+
       return {
         options = {
           globalstatus = false,
@@ -125,6 +133,7 @@ return {
             },
             "encoding",
             "filetype",
+            -- get_schema,
             "progress",
           },
           lualine_y = {},
