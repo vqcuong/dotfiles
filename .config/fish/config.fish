@@ -110,13 +110,18 @@ _setup_pyenv
 _setup_goenv
 
 if test "$TERM_PROGRAM" = tmux
-    starship init fish | source
+    #starship init fish | source
 else if test "$TERM_PROGRAM" = Hyper
     set POSH_THEMES_PATH $(brew --prefix oh-my-posh)/themes
     set OMP_THEME 1_shell
     oh-my-posh completion fish | source
     # oh-my-posh init fish --config $POSH_THEMES_PATH/$OMP_THEME.omp.json | source
     oh-my-posh init fish --config $HOME/.config/ohmyposh/themes/my_velvet.omp.json | source
+else if test "$TERM" = xterm-kitty
+    set POSH_THEMES_PATH $(brew --prefix oh-my-posh)/themes
+    set OMP_THEME 1_shell
+    oh-my-posh completion fish | source
+    # oh-my-posh init fish --config $POSH_THEMES_PATH/$OMP_THEME.omp.json | source
+    oh-my-posh init fish --config $HOME/.config/ohmyposh/themes/my_velvet.omp.json | source
 else
-    starship init fish | source
 end
