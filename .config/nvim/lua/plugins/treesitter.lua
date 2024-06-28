@@ -1,14 +1,6 @@
 return {
 
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts.autotag = { enable = true }
-      opts.context_commentstring = { enable = true, enable_autocmd = false }
-    end,
-  },
-
-  {
     "Wansmer/treesj",
     keys = {
       {

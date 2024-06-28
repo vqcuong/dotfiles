@@ -1,20 +1,12 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { "dart" })
-    end,
-  },
 
   {
-    "ray-x/go.nvim",
-    dependencies = { "ray-x/guihua.lua" },
-    config = function()
-      require("go").setup()
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
+    "nvim-treesitter/nvim-treesitter",
+    opts = { ensure_installed = { "dart" } },
+    -- opts = function(_, opts)
+    --   opts.ensure_installed = opts.ensure_installed or {}
+    --   vim.list_extend(opts.ensure_installed, { "dart" })
+    -- end,
   },
 
   {
