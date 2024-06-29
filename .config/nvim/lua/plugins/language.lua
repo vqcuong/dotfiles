@@ -2,11 +2,30 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = { ensure_installed = { "dart" } },
-    -- opts = function(_, opts)
-    --   opts.ensure_installed = opts.ensure_installed or {}
-    --   vim.list_extend(opts.ensure_installed, { "dart" })
-    -- end,
+    opts = { ensure_installed = { "dart", "fish", "sql" } },
+  },
+
+  {
+    "mason.nvim",
+    opts = {
+      ensure_installed = { "hadolint", "htmlhint", "shellharden", "dcm" },
+      ui = {
+        width = 0.6,
+        height = 0.6,
+      },
+    },
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = {
+        zsh = { "zsh" },
+        html = { "htmlhint" },
+        fish = { "fish" },
+      },
+    },
   },
 
   {
@@ -47,6 +66,111 @@ return {
         end,
       })
     end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = function(_, opts)
+      opts.formatters_by_ft["sh"] = { "shfmt", "shellharden" }
+      opts.formatters_by_ft["bash"] = { "shfmt", "beautysh", "shellharden" }
+      opts.formatters_by_ft["zsh"] = { "beautysh", "shellharden" }
+      opts.formatters_by_ft["python"] = { "isort", "autopep8" }
+      opts.formatters_by_ft["json"] = { "prettier" }
+      opts.formatters_by_ft["html"] = { "prettier" }
+      opts.formatters_by_ft["css"] = { "prettier" }
+      opts.formatters_by_ft["js"] = { "prettier" }
+      opts.formatters_by_ft["ts"] = { "prettier" }
+      opts.formatters_by_ft["dart"] = { "dcm_format", "dart_format" }
+
+      opts.formatters.autopep8 = {
+        prepend_args = { "--indent-size", "2" },
+      }
+      opts.formatters.beautysh = {
+        prepend_args = { "--indent-size", "2" },
+      }
+      opts.formatters.shfmt = {
+        prepend_args = { "-i", "2" },
+      }
+    end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        fish_lsp = {},
+      },
+    },
+    -- config = function()
+    --   local lspconfig = require("lspconfig")
+    --   lspconfig.yamlls.setup({
+    --     settings = {
+    --       yaml = {
+    --         hover = true,
+    --         schemas = require("schemastore").yaml.schemas({
+    --           extra = {
+    --             {
+    --               name = "kubernetes",
+    --               url = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2-standalone-strict/all.json",
+    --               fileMatch = { "k8s**.{yaml,yml}", "kube*/*.{yaml,yml}", "k8s/*.{yaml,yml}", "abc.yaml" },
+    --               description = "Kubernetes",
+    --             },
+    --             {
+    --               name = "gitlab-ci",
+    --               url = "https://json.schemastore.org/gitlab-ci",
+    --               fileMatch = { "*gitlab-ci*.{yml,yaml}" },
+    --               description = "Gitlab CI",
+    --             },
+    --             {
+    --               name = "github-action",
+    --               url = "http://json.schemastore.org/github-action",
+    --               fileMatch = { ".github/action.{yml,yaml}" },
+    --               description = "Github Action",
+    --             },
+    --             {
+    --               name = "github-workflow",
+    --               url = "https://json.schemastore.org/github-workflow.json",
+    --               fileMatch = { ".github/workflows/*.{yml,yaml}" },
+    --               description = "Github Workflow",
+    --             },
+    --             {
+    --               name = "helm-chart",
+    --               url = "http://json.schemastore.org/chart",
+    --               fileMatch = { "Chart.{yml,yaml}" },
+    --               description = "Helm Chart",
+    --             },
+    --             {
+    --               name = "kustomization",
+    --               url = "http://json.schemastore.org/kustomization",
+    --               fileMatch = { "kustomization.{yml,yaml}" },
+    --               description = "Kustomization",
+    --             },
+    --             {
+    --               name = "docker-compose",
+    --               url = "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json",
+    --               fileMatch = { "*docker-compose*.{yml,yaml}", "compose.yaml", "containers/*.{yaml,yml}" },
+    --               description = "Docker Compose",
+    --             },
+    --           },
+    --         }),
+    --         -- schemas = {
+    --         --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2-standalone-strict/all.json"] = {
+    --         --     "k8s**.{yml,yaml}",
+    --         --     "kube*/*.{yml,yaml}",
+    --         --     "k8s/*.{yml,yaml}",
+    --         --   },
+    --         --   ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+    --         --   ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+    --         --   ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+    --         --   ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+    --         --   ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+    --         --   ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+    --         -- },
+    --       },
+    --     },
+    --   })
+    -- end,
   },
 
   -- {

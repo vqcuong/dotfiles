@@ -23,3 +23,6 @@ vim.opt.undofile = false
 -- increase this will impact the which-key background transparent
 vim.opt.winblend = 0
 vim.opt.pumblend = 0
+
+-- vim.g.lazyvim_python_lsp = "basedpyright"
+-- vim.g.lazyvim_python_ruff = "ruff_lsp"
