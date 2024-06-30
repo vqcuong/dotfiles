@@ -1,6 +1,4 @@
 return {
-  { "stevearc/overseer.nvim", opts = {} },
-
   {
     "akinsho/toggleterm.nvim",
     version = "*",
@@ -199,27 +197,6 @@ return {
   },
 
   {
-    "folke/zen-mode.nvim",
-    opts = {
-      window = {
-        backdrop = 1,
-      },
-      plugins = {
-        twilight = { enabled = false },
-        gitsigns = { enabled = true },
-        tmux = { enabled = true },
-        kitty = { enabled = false, font = "+4" },
-        alacritty = { enabled = true, font = "+4" },
-        wezterm = { enabled = false, font = "+4" },
-      },
-    },
-    keys = {
-      { "<localleader>Z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
-    },
-    config = true,
-  },
-
-  {
     "declancm/maximize.nvim",
     opts = {
       default_keymaps = false,
@@ -233,18 +210,6 @@ return {
         desc = "Maximize window",
         mode = { "n", "v" },
       },
-    },
-  },
-
-  {
-    "numToStr/Navigator.nvim",
-    config = true,
-    keys = {
-      { "<m-left>", "<cmd>NavigatorLeft<cr>", desc = "Go left", mode = { "n", "t" } },
-      { "<m-right>", "<cmd>NavigatorRight<cr>", desc = "Go right", mode = { "n", "t" } },
-      { "<m-up>", "<cmd>NavigatorUp<cr>", desc = "Go up", mode = { "n", "t" } },
-      { "<m-down>", "<cmd>NavigatorDown<cr>", desc = "Go down", mode = { "n", "t" } },
-      { "<m-.>", "<cmd>NavigatorPrevious<cr>", desc = "Go previous", mode = { "n", "t" } },
     },
   },
 

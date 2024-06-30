@@ -15,8 +15,30 @@ return {
   "mrjones2014/legendary.nvim",
   "Pocco81/true-zen.nvim",
   "b3nj5m1n/kommentary",
+  { "stevearc/overseer.nvim", opts = {} },
   { "neoclide/coc.nvim", build = "npm ci" },
   { "airblade/vim-gitgutter", opts = {} },
+  {
+    -- too lag
+    "folke/zen-mode.nvim",
+    opts = {
+      window = {
+        backdrop = 1,
+      },
+      plugins = {
+        twilight = { enabled = false },
+        gitsigns = { enabled = true },
+        tmux = { enabled = true },
+        kitty = { enabled = false, font = "+4" },
+        alacritty = { enabled = true, font = "+4" },
+        wezterm = { enabled = false, font = "+4" },
+      },
+    },
+    keys = {
+      { "<localleader>Z", "<cmd>ZenMode<cr>", silent = true, desc = "Zen mode" },
+    },
+    config = true,
+  },
   {
     "numToStr/FTerm.nvim",
     -- stylua: ignore
@@ -278,5 +300,71 @@ return {
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()',
+  },
+
+  {
+    -- tmux current doesnot work well with this plugin
+    "elijahdanko/ttymux.nvim",
+    -- stylua: ignore
+    keys = {
+      { "<m-left>", function() require("ttymux.window").navigate("h") end },
+      { "<m-down>", function() require("ttymux.window").navigate("j") end },
+      { "<m-up>", function() require("ttymux.window").navigate("k") end },
+      { "<m-right>", function() require("ttymux.window").navigate("l") end },
+      { "<m-.>", function() require("ttymux.window").next_window() end },
+    },
+    config = function()
+      require("ttymux").setup({})
+    end,
+  },
+
+  {
+    -- tmux current doesnot work well with this plugin
+    "aserowy/tmux.nvim",
+    keys = {
+      { "<m-left>", "<cmd>lua require('tmux').move_left()<cr>" },
+      { "<m-down>", "<cmd>lua require('tmux').move_bottom()<cr>" },
+      { "<m-up>", "<cmd>lua require('tmux').move_top()<cr>" },
+      { "<m-right>", "<cmd>lua require('tmux').move_right()<cr>" },
+    },
+    config = function()
+      return require("tmux").setup()
+    end,
+  },
+
+  {
+    -- tmux current doesnot work well with this plugin
+    "alexghergh/nvim-tmux-navigation",
+    config = function()
+      require("nvim-tmux-navigation").setup({
+        disable_when_zoomed = true,
+        keybindings = {
+          left = "<m-left>",
+          down = "<m-down>",
+          up = "<m-up>",
+          right = "<m-right>",
+          last_active = "<m-\\>",
+          next = "<m-.>",
+        },
+      })
+    end,
+  },
+
+  {
+    -- tmux current doesnot work well with this plugin
+    "numToStr/Navigator.nvim",
+    config = function()
+      require("Navigator").setup({
+        mux = "auto",
+        disable_on_zoom = true,
+      })
+    end,
+    keys = {
+      { "<m-left>", "<cmd>NavigatorLeft<cr>", desc = "Go left", mode = { "n", "t" } },
+      { "<m-right>", "<cmd>NavigatorRight<cr>", desc = "Go right", mode = { "n", "t" } },
+      { "<m-up>", "<cmd>NavigatorUp<cr>", desc = "Go up", mode = { "n", "t" } },
+      { "<m-down>", "<cmd>NavigatorDown<cr>", desc = "Go down", mode = { "n", "t" } },
+      { "<m-.>", "<cmd>NavigatorPrevious<cr>", desc = "Go previous", mode = { "n", "t" } },
+    },
   },
 }

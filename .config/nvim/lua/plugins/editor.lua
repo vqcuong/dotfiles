@@ -207,8 +207,8 @@ return {
     "folke/trouble.nvim",
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<localleader>x", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<localleader>X", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+      { "<localleader>x", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+      { "<localleader>X", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
     },
   },
 
@@ -216,8 +216,8 @@ return {
     "folke/todo-comments.nvim",
     -- stylua: ignore
     keys = {
-      { "<localleader>t", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<localleader>T", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<localleader>t", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
+      { "<localleader>T", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
     },
   },
 
@@ -227,7 +227,7 @@ return {
     opts = {
       highlight = {
         underline = false,
-        bg = "#445566",
+        bg = "#44515e",
       },
     },
     config = true,

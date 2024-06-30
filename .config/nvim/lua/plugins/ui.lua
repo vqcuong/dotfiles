@@ -1,22 +1,5 @@
 return {
   {
-    "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#000000",
-      timeout = 2000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.8)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.8)
-      end,
-      on_open = function(win)
-        vim.api.nvim_win_set_config(win, { zindex = 100 })
-      end,
-    },
-  },
-
-  {
     "nanozuki/tabby.nvim",
     config = function()
       require("tabby.tabline").set(function(line)
@@ -169,6 +152,24 @@ return {
         char = "▏",
         tab_char = "▏",
       },
+      scope = { show_start = false, show_end = false },
+      exclude = {
+        filetypes = {
+          "alpha",
+          "dashboard",
+          "fzf",
+          "help",
+          "lazy",
+          "lazyterm",
+          "mason",
+          "neo-tree",
+          "notify",
+          "toggleterm",
+          "Trouble",
+          "trouble",
+          "NvimTree",
+        },
+      },
     },
     config = function(_, opts)
       local ibl = require("ibl")
@@ -201,21 +202,23 @@ return {
     "echasnovski/mini.indentscope",
     opts = {
       symbol = "▏",
+      options = { try_as_border = true },
     },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
-          "help",
           "alpha",
           "dashboard",
-          "neo-tree",
-          "Trouble",
-          "trouble",
+          "fzf",
+          "help",
           "lazy",
+          "lazyterm",
           "mason",
+          "neo-tree",
           "notify",
           "toggleterm",
-          "lazyterm",
+          "Trouble",
+          "trouble",
           "NvimTree",
         },
         callback = function()
@@ -256,14 +259,14 @@ return {
     config = function()
       local tint = require("tint")
       tint.setup({
-        tint = -60,
-        saturation = 1.0,
+        tint = -40,
+        saturation = 0.5,
         transforms = tint.transforms.SATURATE_TINT,
         tin_background_colors = true,
         highlight_ignore_patterns = { "WinSeparator", "Status.*" },
         window_ignore_function = function(winid)
           local bufid = vim.api.nvim_win_get_buf(winid)
-          local buftype = vim.api.nvim_buf_get_option(bufid, "buftype")
+          local buftype = vim.api.nvim_get_option_value("buftype", { buf = bufid })
           local floating = vim.api.nvim_win_get_config(winid).relative ~= ""
           return buftype == "terminal" or floating
         end,
@@ -277,6 +280,27 @@ return {
       opts.defaults["<leader>n"] = { name = "+noice" }
       opts.defaults["<leader>sn"] = nil
     end,
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000",
+      timeout = 2000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.8)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.8)
+      end,
+      on_open = function(win)
+        vim.api.nvim_win_set_config(win, { zindex = 100 })
+      end,
+    },
+    keys = {
+      -- stylua: ignore
+      { "<localleader>c", function() require("notify").dismiss({ silent=true, pending=true }) end, desc = "Clear notification" },
+    },
   },
 
   {
@@ -306,7 +330,6 @@ return {
         { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
         { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
         { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-        { "<localleader>c", function() require("noice").cmd("dismiss") end, desc = "Clear all notification" },
       }
     end,
   },

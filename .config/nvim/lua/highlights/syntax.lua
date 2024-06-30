@@ -13,3 +13,5 @@ api.nvim_set_hl(0, "CurSearch", { bg = "#ffffff", fg = "#ff795e" })
 api.nvim_set_hl(0, "IncSearch", { bg = "#ffffff", fg = "#00a2ff" })
 api.nvim_set_hl(0, "Include", { fg = "#cf3e6d" })
 api.nvim_set_hl(0, "LspInlayHint", { fg = "#9e55f2", bg = "#171717", italic = true })
+
+api.nvim_set_hl(0, "MatchParen", { fg = "#00ff48", bg = "#5e2461", bold = true })
