@@ -80,7 +80,7 @@ shape = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 19.5
+size = 19.4
 
 [font.bold]
 family = "Monofur Nerd Font Propo"
