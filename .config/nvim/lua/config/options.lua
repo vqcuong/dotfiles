@@ -26,3 +26,9 @@ vim.opt.pumblend = 0
 
 -- vim.g.lazyvim_python_lsp = "basedpyright"
 -- vim.g.lazyvim_python_ruff = "ruff_lsp"
+
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+  },
+})
