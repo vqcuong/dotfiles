@@ -1,6 +1,7 @@
 return {
   { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   { "echasnovski/mini.surround", enabled = false },
+  { "echasnovski/mini.icons", enabled = false },
   { "RRethy/vim-illuminate", enabled = false },
   {
     "akinsho/bufferline.nvim",

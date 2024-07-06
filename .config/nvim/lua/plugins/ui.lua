@@ -1,5 +1,21 @@
 return {
   {
+    "danilamihailov/beacon.nvim",
+    config = function()
+      require("beacon").setup({
+        enabled = true, --- (boolean | fun():boolean) check if enabled
+        speed = 3, --- integer speed at wich animation goes
+        width = 50, --- integer width of the beacon window
+        winblend = 60, --- integer starting transparency of beacon window :h winblend
+        fps = 60, --- integer how smooth the animation going to be
+        min_jump = 8, --- integer what is considered a jump. Number of lines
+        cursor_events = { "CursorMoved" }, -- table<string> what events trigger check for cursor moves
+        window_events = { "WinEnter", "FocusGained" }, -- table<string> what events trigger cursor highlight
+        highlight = { bg = "#00ff0d", ctermbg = 15 }, -- vim.api.keyset.highlight table passed to vim.api.nvim_set_hl
+      })
+    end,
+  },
+  {
     "nanozuki/tabby.nvim",
     config = function()
       require("tabby.tabline").set(function(line)
@@ -44,7 +60,7 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function()
       -- stylua: ignore
-      local function os_icon() return "" end
+      -- local function os_icon() return "" end
       -- stylua: ignore
       local function vim_icon() return "" end
 
@@ -55,13 +71,17 @@ return {
         return ""
       end
 
-      local function get_schema()
-        local schema = require("yaml-companion").get_buf_schema(0)
-        if schema.result[1].name == "none" then
-          return ""
-        end
-        return schema.result[1].name
-      end
+      -- local function codeium()
+      --   return LazyVim.lualine.cmp_source("codeium")
+      -- end
+
+      -- local function get_schema()
+      --   local schema = require("yaml-companion").get_buf_schema(0)
+      --   if schema.result[1].name == "none" then
+      --     return ""
+      --   end
+      --   return schema.result[1].name
+      -- end
 
       return {
         options = {
@@ -147,32 +167,7 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      indent = {
-        char = "▏",
-        tab_char = "▏",
-      },
-      scope = { show_start = false, show_end = false },
-      exclude = {
-        filetypes = {
-          "alpha",
-          "dashboard",
-          "fzf",
-          "help",
-          "lazy",
-          "lazyterm",
-          "mason",
-          "neo-tree",
-          "notify",
-          "toggleterm",
-          "Trouble",
-          "trouble",
-          "NvimTree",
-        },
-      },
-    },
-    config = function(_, opts)
-      local ibl = require("ibl")
+    config = function()
       local highlight = {
         "RainbowRed",
         "RainbowYellow",
@@ -181,6 +176,34 @@ return {
         "RainbowGreen",
         "RainbowViolet",
         "RainbowCyan",
+      }
+      local opts = {
+        indent = {
+          char = "▏",
+          tab_char = "▏",
+        },
+        scope = {
+          show_start = false,
+          show_end = false,
+          highlight = highlight,
+        },
+        exclude = {
+          filetypes = {
+            "alpha",
+            "dashboard",
+            "fzf",
+            "help",
+            "lazy",
+            "lazyterm",
+            "mason",
+            "neo-tree",
+            "notify",
+            "toggleterm",
+            "Trouble",
+            "trouble",
+            "NvimTree",
+          },
+        },
       }
       local hooks = require("ibl.hooks")
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
@@ -193,7 +216,7 @@ return {
         vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#21e9ff" })
       end)
       vim.g.rainbow_delimiters = { highlight = highlight }
-      ibl.setup(opts)
+      require("ibl").setup(opts)
       hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end,
   },

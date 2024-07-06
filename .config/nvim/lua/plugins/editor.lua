@@ -217,7 +217,7 @@ return {
     -- stylua: ignore
     keys = {
       { "<localleader>t", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
-      { "<localleader>T", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<localleader>T", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
     },
   },
 

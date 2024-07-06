@@ -32,6 +32,10 @@ return {
 
   {
     "nvimdev/lspsaga.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
     lazy = false,
     opts = {
       symbol_in_winbar = {
@@ -223,6 +227,8 @@ return {
           { name = "emoji" },
         }, {
           { name = "buffer" },
+        }, {
+          { name = "codeium", group_index = 1, priority = 100 },
         }, {}),
         -- window = {
         --   completion = cmp.config.window.bordered({
@@ -236,6 +242,9 @@ return {
           format = lspkind.cmp_format({
             mode = "symbol_text",
             maxwidth = 50,
+            symbol_map = {
+              Codeium = "",
+            },
             before = function(entry, vim_item)
               vim_item.menu = "[" .. vim_item.kind .. "]"
               vim_item.dup = ({
@@ -340,19 +349,4 @@ return {
       ]])
     end,
   },
-
-  -- {
-  --   "Exafunction/codeium.vim",
-  --   event = "BufEnter",
-  --   init = function()
-  --     vim.g.codeium_disable_bindings = 1
-  --   end,
-  --   -- stylua: ignore
-  --   keys = {
-  --     { "<c-g>", function () return vim.fn['codeium#Accept']() end, expr = true, silent = true, mode = "i" },
-  --     { "<c-up>", function() return vim.fn['codeium#CycleCompletions'](1) end, expr = true, silent = true, mode = "i" },
-  --     { "<c-down>", function() return vim.fn['codeium#CycleCompletions'](-1) end, expr = true, silent = true, mode = "i" },
-  --     { "<c-x>", function() return vim.fn['codeium#Clear']() end, expr = true, silent = true, mode = "i" },
-  --   },
-  -- },
 }
