@@ -449,23 +449,43 @@ bind -n m-p display-panes # display pane indicators
 bind -n m-r command-prompt -I "#S" "rename-session '%%'" # rename session
 bind -n m-c choose-tree # show choose tree
 bind -n m-a split-window -h -f -p 35 $HOME/.local/bin/cw ai # start AI assistant
-bind -n c-w confirm-before -p "Kill this window? (y/n)" kill-window # kill window
-bind -n c-s confirm-before -p "Kill current session? (y/n)" kill-session # kill session
+bind x confirm-before -p "Kill this window? (y/n)" kill-window # kill window
+bind q confirm-before -p "Kill current session? (y/n)" kill-session # kill session
 
 set -g display-panes-time 2000
 
 # vim tmux navigator integration
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-bind -n 'm-left' if-shell "$is_vim" 'send-keys m-left' 'select-pane -L'
-bind -n 'm-right' if-shell "$is_vim" 'send-keys m-right' 'select-pane -R'
-bind -n 'm-up' if-shell "$is_vim" 'send-keys m-up' 'select-pane -U'
-bind -n 'm-down' if-shell "$is_vim" 'send-keys m-down' 'select-pane -D'
+# https://github.com/illia-danko/ttymux.nvim
+# is_editor="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim)(diff)?$'"
+# bind -T root 'm-Left' if "$is_editor" "send m-Left" "select-pane -L"
+# bind -T root 'm-Right' if "$is_editor" "send m-Right" "select-pane -R"
+# bind -T root 'm-Down' if "$is_editor" "send m-Down" "select-pane -D"
+# bind -T root 'm-Up' if "$is_editor" "send m-Up" "select-pane -U"
+
+# https://github.com/christoomey/vim-tmux-navigator
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+bind -n 'm-Left' if-shell "$is_vim" 'send-keys m-Left' 'select-pane -L'
+bind -n 'm-Down' if-shell "$is_vim" 'send-keys m-Down' 'select-pane -D'
+bind -n 'm-Up' if-shell "$is_vim" 'send-keys m-Up' 'select-pane -U'
+bind -n 'm-Right' if-shell "$is_vim" 'send-keys m-Right' 'select-pane -R'
 bind -n 'm-.' if-shell "$is_vim" 'send-keys m-.' 'select-pane -l'
-bind -T copy-mode-vi 'm-left' select-pane -L
-bind -T copy-mode-vi 'm-right' select-pane -D
-bind -T copy-mode-vi 'm-up' select-pane -U
-bind -T copy-mode-vi 'm-down' select-pane -R
+bind -T copy-mode-vi 'm-Left' select-pane -L
+bind -T copy-mode-vi 'm-Down' select-pane -D
+bind -T copy-mode-vi 'm-Up' select-pane -U
+bind -T copy-mode-vi 'm-Right' select-pane -R
 bind -T copy-mode-vi 'm-.' select-pane -l
+
+# https://github.com/aserowy/tmux.nvim
+# is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
+# bind-key -n 'm-left' if-shell "$is_vim" 'send-keys m-left' { if -F '#{pane_at_left}' '' 'select-pane -L' }
+# bind-key -n 'm-down' if-shell "$is_vim" 'send-keys m-down' { if -F '#{pane_at_bottom}' '' 'select-pane -D' }
+# bind-key -n 'm-up' if-shell "$is_vim" 'send-keys m-up' { if -F '#{pane_at_top}' '' 'select-pane -U' }
+# bind-key -n 'm-right' if-shell "$is_vim" 'send-keys m-right' { if -F '#{pane_at_right}' '' 'select-pane -R' }
+# bind-key -T copy-mode-vi 'm-left' if -F '#{pane_at_left}' '' 'select-pane -L'
+# bind-key -T copy-mode-vi 'm-down' if -F '#{pane_at_bottom}' '' 'select-pane -D'
+# bind-key -T copy-mode-vi 'm-up' if -F '#{pane_at_top}' '' 'select-pane -U'
+# bind-key -T copy-mode-vi 'm-right' if -F '#{pane_at_right}' '' 'select-pane -R'
 # bind -n 'm-h' if-shell "$is_vim" 'send-keys m-h' 'resize-pane -L 1'
 # bind -n 'm-j' if-shell "$is_vim" 'send-keys m-j' 'resize-pane -D 1'
 # bind -n 'm-k' if-shell "$is_vim" 'send-keys m-k' 'resize-pane -U 1'
