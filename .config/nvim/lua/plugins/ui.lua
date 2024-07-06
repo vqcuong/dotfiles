@@ -4,7 +4,7 @@ return {
     config = function()
       require("beacon").setup({
         enabled = true, --- (boolean | fun():boolean) check if enabled
-        speed = 3, --- integer speed at wich animation goes
+        speed = 2, --- integer speed at wich animation goes
         width = 50, --- integer width of the beacon window
         winblend = 60, --- integer starting transparency of beacon window :h winblend
         fps = 60, --- integer how smooth the animation going to be
