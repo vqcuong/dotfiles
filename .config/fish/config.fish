@@ -10,7 +10,7 @@ end
 
 function _setup_conda
     set conda_prefix $argv[1]
-    if test -z $conda_prefix
+    if test -z "$conda_prefix"
         set conda_prefix $HOME/.apps/mambaforge
     end
     if test -d $conda_prefix
@@ -59,16 +59,14 @@ if status is-interactive
     #         end
     #     end
     # end
+    set -U fish_user_paths /usr/local/bin $fish_user_paths
+    set -U fish_user_paths $HOME/.local/bin $fish_user_paths
+    set -U fish_user_paths $HOME/.apps/poetry/bin $fish_user_paths
+    set -gx XDG_CONFIG_HOME $HOME/.config
+    set -gx sudope_sequence \cq
+    set -gx grc_plugin_ignore_execs cat ls tail
+    fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cy --git_status=\cg
 end
-
-set -U fish_user_paths /usr/local/bin $fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $fish_user_paths
-set -U fish_user_paths $HOME/.apps/poetry/bin $fish_user_paths
-set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx sudope_sequence \cq
-set -gx grc_plugin_ignore_execs cat ls tail
-
-fzf_configure_bindings --directory=\cf --processes=\cp --git_log=\cl --git_status=\cg
 
 if test -f $HOME/.config/fish/config.local.fish
     source $HOME/.config/fish/config.local.fish
