@@ -1,4 +1,16 @@
 return {
+
+  {
+    "folke/twilight.nvim",
+    opts = {
+      dimming = {
+        alpha = 0.5,
+      },
+      context = 20,
+    },
+    keys = { { "<leader>t", "<cmd>Twilight<cr>", desc = "Twilight Mode Toggle" } },
+  },
+
   {
     "danilamihailov/beacon.nvim",
     config = function()
