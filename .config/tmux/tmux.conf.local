@@ -456,11 +456,17 @@ set -g display-panes-time 2000
 
 # vim tmux navigator integration
 # https://github.com/illia-danko/ttymux.nvim
-is_editor="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim)(diff)?$'"
-bind -T root 'm-Left' if "$is_editor" "send m-Left" "select-pane -L"
-bind -T root 'm-Right' if "$is_editor" "send m-Right" "select-pane -R"
-bind -T root 'm-Down' if "$is_editor" "send m-Down" "select-pane -D"
-bind -T root 'm-Up' if "$is_editor" "send m-Up" "select-pane -U"
+is_editor="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim)(diff)?$'"
+bind -T root m-Left if "$is_editor" "send m-Left" "select-pane -L"
+bind -T root m-Right if "$is_editor" "send m-Right" "select-pane -R"
+bind -T root m-Down if "$is_editor" "send m-Down" "select-pane -D"
+bind -T root m-Up if "$is_editor" "send m-Up" "select-pane -U"
+# is_editor="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|nvim)(diff)?$'"
+# bind -T root 'm-Left' if "$is_editor" "send m-Left" "select-pane -L"
+# bind -T root 'm-Right' if "$is_editor" "send m-Right" "select-pane -R"
+# bind -T root 'm-Down' if "$is_editor" "send m-Down" "select-pane -D"
+# bind -T root 'm-Up' if "$is_editor" "send m-Up" "select-pane -U"
 
 # https://github.com/christoomey/vim-tmux-navigator
 # is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'"
@@ -493,6 +499,17 @@ bind -T root 'm-Up' if "$is_editor" "send m-Up" "select-pane -U"
 # bind -T copy-mode-vi 'm-j' resize-pane -D 1
 # bind -T copy-mode-vi 'm-k' resize-pane -U 1
 # bind -T copy-mode-vi 'm-l' resize-pane -R 1
+
+# https://github.com/aserowy/tmux.nvim
+# is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
+# bind-key -n 'm-Left' if-shell "$is_vim" 'send-keys m-Left' 'select-pane -L'
+# bind-key -n 'm-Down' if-shell "$is_vim" 'send-keys m-Right' 'select-pane -D'
+# bind-key -n 'm-Up' if-shell "$is_vim" 'send-keys m-Up' 'select-pane -U'
+# bind-key -n 'm-Right' if-shell "$is_vim" 'send-keys m-Right' 'select-pane -R'
+# bind-key -T copy-mode-vi 'm-Left' select-pane -L
+# bind-key -T copy-mode-vi 'm-Down' select-pane -D
+# bind-key -T copy-mode-vi 'm-Up' select-pane -U
+# bind-key -T copy-mode-vi 'm-Right' select-pane -R
 
 # end_mycustom
 

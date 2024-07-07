@@ -12,6 +12,48 @@ return {
   },
 
   {
+    "elijahdanko/ttymux.nvim",
+    -- stylua: ignore
+    keys = {
+      { "<m-left>", function() require("ttymux.window").navigate("h") end },
+      { "<m-down>", function() require("ttymux.window").navigate("j") end },
+      { "<m-up>", function() require("ttymux.window").navigate("k") end },
+      { "<m-right>", function() require("ttymux.window").navigate("l") end },
+      { "<m-.>", function() require("ttymux.window").next_window() end },
+    },
+    config = function()
+      require("ttymux").setup({
+        default_keymap = false,
+      })
+    end,
+  },
+
+  -- {
+  --   "aserowy/tmux.nvim",
+  --   opts = {
+  --     copy_sync = {
+  --       enable = false,
+  --     },
+  --     navigation = {
+  --       cycle_navigation = true,
+  --       enable_default_keybindings = false,
+  --       persist_zoom = false,
+  --     },
+  --     resize = {
+  --       enable_default_keybindings = false,
+  --       resize_step_x = 1,
+  --       resize_step_y = 1,
+  --     },
+  --   },
+  --   keys = {
+  --     { "<m-left>", "<cmd>lua require('tmux').move_left()<cr>", desc = "Move left", mode = { "n", "t" } },
+  --     { "<m-right>", "<cmd>lua require('tmux').move_right()<cr>", desc = "Move right", mode = { "n", "t" } },
+  --     { "<m-up>", "<cmd>lua require('tmux').move_top()<cr>", desc = "Move up", mode = { "n", "t" } },
+  --     { "<m-down>", "<cmd>lua require('tmux').move_bottom()<cr>", desc = "Move down", mode = { "n", "t" } },
+  --   },
+  -- },
+
+  {
     "danilamihailov/beacon.nvim",
     config = function()
       require("beacon").setup({

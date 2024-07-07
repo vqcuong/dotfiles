@@ -321,20 +321,6 @@ return {
 
   {
     -- tmux current doesnot work well with this plugin
-    "aserowy/tmux.nvim",
-    keys = {
-      { "<m-left>", "<cmd>lua require('tmux').move_left()<cr>" },
-      { "<m-down>", "<cmd>lua require('tmux').move_bottom()<cr>" },
-      { "<m-up>", "<cmd>lua require('tmux').move_top()<cr>" },
-      { "<m-right>", "<cmd>lua require('tmux').move_right()<cr>" },
-    },
-    config = function()
-      return require("tmux").setup()
-    end,
-  },
-
-  {
-    -- tmux current doesnot work well with this plugin
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup({
