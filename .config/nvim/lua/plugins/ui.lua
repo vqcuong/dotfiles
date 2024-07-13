@@ -137,8 +137,12 @@ return {
       --   return schema.result[1].name
       -- end
 
+      local auto_theme_custom = require("lualine.themes.auto")
+      auto_theme_custom.normal.c.bg = "none"
+
       return {
         options = {
+          theme = auto_theme_custom,
           globalstatus = false,
           disabled_filetypes = {
             "notify",
@@ -352,14 +356,6 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      opts.defaults["<leader>n"] = { name = "+noice" }
-      opts.defaults["<leader>sn"] = nil
-    end,
-  },
-
-  {
     "rcarriga/nvim-notify",
     opts = {
       background_colour = "#000000",
@@ -400,14 +396,16 @@ return {
         command_palette = false,
       },
     },
-    keys = function()
+    config = function(_, opts)
+      require("noice").setup(opts)
       -- stylua: ignore
-      return {
-        { "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-        { "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
-        { "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
-        { "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-      }
+      require("which-key").add({
+        { "<leader>n", group = "noice" },
+        {"<leader>nl", "<cmd>lua require('noice').cmd('last')<cr>", desc="Last Message"},
+        {"<leader>nh", "<cmd>lua require('noice').cmd('history')<cr>", desc="History"},
+        {"<leader>na", "<cmd>lua require('noice').cmd('all')<cr>", desc="Show All Message"},
+        {"<leader>nd", "<cmd>lua require('noice').cmd('dismiss')<cr>", desc="Dismiss All Message"},
+      })
     end,
   },
 }

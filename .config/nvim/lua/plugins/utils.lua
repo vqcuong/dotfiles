@@ -45,21 +45,17 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      opts.defaults["<leader>r"] = { name = "+replace" }
-    end,
-  },
-
-  {
     -- has a function allowing to search and replace only in the current buffer
     -- but anothers seem to be useless or hard to use
     "roobert/search-replace.nvim",
     lazy = false,
-    keys = {
-      { "<leader>rr", "<cmd>SearchReplaceSingleBufferCWord<cr>", desc = "Replace text in current buffer" },
-    },
-    config = true,
+    config = function()
+      require("nvim-search-and-replace").setup({})
+      require("which-key").add({
+        { "<leader>r", group = "replace" },
+        { "<leader>rr", "<cmd>SearchReplaceSingleBufferCWord<cr>", desc = "Replace text in current buffer" },
+      })
+    end,
   },
 
   {

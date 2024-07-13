@@ -154,22 +154,17 @@ return {
           },
         },
       })
-    end,
-    keys = {
-      { "<leader>ef", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
-      { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cr>", desc = "Git reload" },
-      { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
-      { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
-      { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
-      { "<localleader>e", "<leader>ef", desc = "Explorer focus", remap = true },
-      { "<localleader><localleader>", "<leader>ee", desc = "Explorer toggle", remap = true },
-    },
-  },
 
-  {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      opts.defaults["<leader>e"] = { name = "+explorer" }
+      require("which-key").add({
+        { "<leader>e", group = "explorer" },
+        { "<leader>ef", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
+        { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cr>", desc = "Git reload" },
+        { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
+        { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
+        { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
+        { "<localleader>e", "<leader>ef", desc = "Explorer focus", remap = true },
+        { "<localleader><localleader>", "<leader>ee", desc = "Explorer toggle", remap = true },
+      })
     end,
   },
 
@@ -251,13 +246,6 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      opts.defaults["<leader>h"] = { name = "+helper" }
-    end,
-  },
-
-  {
     "nvim-telescope/telescope.nvim",
     keys = function()
       local builtin = require("telescope.builtin")
@@ -319,14 +307,14 @@ return {
         { "<leader>fc", function() LazyVim.pick.config_files() end, desc = "Find Config File" },
         { "<leader>ff", find_files, desc = "Find Files (workspace)" },
         { "<leader>fF", function() find_files(utils.buffer_dir()) end, desc = "Find Files (bufferdir)" },
-        { "<leader>fr", function() builtin.oldfiles({ cwd = vim.loop.cwd() }) end, desc = "Recent (workspace)" },
+        { "<leader>fr", function() builtin.oldfiles({ cwd = vim.uv.cwd() }) end, desc = "Recent (workspace)" },
         { "<leader>fR", function() builtin.oldfiles() end, desc = "Recent" },
         -- git
         { "<leader>gf", git_files, desc = "changes" },
         { "<leader>gc", function() builtin.git_commits() end, desc = "commits" },
         { "<leader>gs", function() builtin.git_status() end, desc = "status" },
         -- search
-        { '<leader>s"', function() builtin.registers() end, desc = "Registers" },
+        { '<leader>sa', function() builtin.registers() end, desc = "Registers" },
         { "<leader>sd", function() builtin.diagnostics({ bufnr=0 }) end, desc = "Document diagnostics" },
         { "<leader>sD", function() builtin.diagnostics() end, desc = "Workspace diagnostics" },
         { "<leader>sg", live_grep, desc = "Grep (workspace)" },
@@ -539,6 +527,13 @@ return {
         opts.pickers[value] = { theme = "cursor" }
       end
       -- pickers.live_grep.additional_args = { "--hidden" }
+    end,
+
+    config = function(_, opts)
+      require("telescope").setup(opts)
+      require("which-key").add({
+        { "<leader>h", group = "helper" },
+      })
     end,
   },
 }

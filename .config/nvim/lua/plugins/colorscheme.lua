@@ -2,8 +2,32 @@ return {
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
+    priority = 100,
+    config = function()
+      require("solarized-osaka").setup({
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+        sidebars = { "qf", "help" },
+        hide_inactive_statusline = true,
+        on_highlights = function(hl, _)
+          hl.StatusLine = {}
+          hl.MiniStatuslineFilename = {}
+          hl.MiniStatuslineFileinfo = {}
+        end,
+      })
+    end,
+  },
+
+  {
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
-    opts = {},
+    config = true,
+    opts = {
+      transparent_mode = true,
+    },
   },
 
   {

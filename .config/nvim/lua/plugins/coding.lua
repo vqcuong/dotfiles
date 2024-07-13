@@ -24,13 +24,6 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      opts.defaults["<leader>d"] = { name = "+lspsaga" }
-    end,
-  },
-
-  {
     "nvimdev/lspsaga.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -84,26 +77,30 @@ return {
         sign = false,
       },
     },
-    keys = {
-      { "<leader>d<right>", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next diagnostic" },
-      { "<leader>d<left>", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Previous diagnostic" },
-      { "<leader>dl", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Line diagnostic" },
-      { "<leader>df", "<cmd>Lspsaga finder<cr>", desc = "Finder" },
-      { "<leader>dd", "<cmd>Lspsaga hover_doc<cr>", desc = "Docs" },
-      { "<leader>dD", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto type definition" },
-      { "<leader>dp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
-      { "<leader>dP", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
-      { "<leader>dr", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
-      { "<leader>da", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
-      { "<leader>do", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
-
-      { "<localleader>d", "<cmd>Lspsaga hover_doc<cr>", desc = "Docs" },
-      { "<localleader>D", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto type definition" },
-      { "<localleader>p", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
-      { "<localleader>P", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
-      { "<localleader>o", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
-      { "<localleader>r", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
-    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.add({
+        { "<leader>m", group = "lspsaga" },
+        { "<leader>m<right>", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next diagnostic" },
+        { "<leader>m<left>", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Previous diagnostic" },
+        { "<leader>ml", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Line diagnostic" },
+        { "<leader>mf", "<cmd>Lspsaga finder<cr>", desc = "Finder" },
+        { "<leader>md", "<cmd>Lspsaga hover_doc<cr>", desc = "Docs" },
+        { "<leader>mD", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto type definition" },
+        { "<leader>mp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
+        { "<leader>mP", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
+        { "<leader>mr", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
+        { "<leader>ma", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
+        { "<leader>mo", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
+        { "<localleader>d", "<cmd>Lspsaga hover_doc<cr>", desc = "Docs" },
+        { "<localleader>D", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto type definition" },
+        { "<localleader>p", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
+        { "<localleader>P", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
+        { "<localleader>o", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
+        { "<localleader>r", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
+      })
+      require("lspsaga").setup(opts)
+    end,
   },
 
   {
