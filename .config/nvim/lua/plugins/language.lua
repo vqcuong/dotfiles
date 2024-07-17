@@ -75,7 +75,7 @@ return {
       opts.formatters_by_ft["sh"] = { "shfmt", "shellharden" }
       opts.formatters_by_ft["bash"] = { "shfmt", "beautysh", "shellharden" }
       opts.formatters_by_ft["zsh"] = { "beautysh", "shellharden" }
-      opts.formatters_by_ft["python"] = { "isort", "autopep8" }
+      opts.formatters_by_ft["python"] = { "isort", "black" }
       opts.formatters_by_ft["json"] = { "prettier" }
       opts.formatters_by_ft["html"] = { "prettier" }
       opts.formatters_by_ft["css"] = { "prettier" }
@@ -83,9 +83,9 @@ return {
       opts.formatters_by_ft["ts"] = { "prettier" }
       opts.formatters_by_ft["dart"] = { "dcm_format", "dart_format" }
 
-      opts.formatters.autopep8 = {
-        prepend_args = { "--indent-size", "2" },
-      }
+      -- opts.formatters.autopep8 = {
+      --   prepend_args = { "--indent-size", "2" },
+      -- }
       opts.formatters.beautysh = {
         prepend_args = { "--indent-size", "2" },
       }
