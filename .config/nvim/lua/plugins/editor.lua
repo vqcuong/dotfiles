@@ -90,7 +90,7 @@ return {
         add_key("n", "mv", api.marks.bulk.move, "Move bookmarked")
         add_key("n", "mm", api.marks.toggle, "Toggle bookmark")
 
-        add_key("n", "gg", api.git.reload, "Git reload")
+        add_key("n", "gl", api.git.reload, "Git reload")
 
         -- add_key("n", "F", api.live_filter.clear, "Clean Filter")
         -- add_key("n", "f", api.live_filter.start, "Filter")
