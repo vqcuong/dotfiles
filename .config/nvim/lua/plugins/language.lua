@@ -8,7 +8,7 @@ return {
   {
     "mason.nvim",
     opts = {
-      ensure_installed = { "hadolint", "htmlhint", "shellharden", "dcm" },
+      ensure_installed = { "hadolint", "htmlhint", "dcm" },
       ui = {
         width = 0.6,
         height = 0.6,
@@ -72,9 +72,8 @@ return {
     "stevearc/conform.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.formatters_by_ft["sh"] = { "shfmt", "shellharden" }
-      opts.formatters_by_ft["bash"] = { "shfmt", "beautysh", "shellharden" }
-      opts.formatters_by_ft["zsh"] = { "beautysh", "shellharden" }
+      opts.formatters_by_ft["bash"] = { "shfmt", "beautysh" }
+      opts.formatters_by_ft["zsh"] = { "beautysh" }
       opts.formatters_by_ft["python"] = { "isort", "black" }
       opts.formatters_by_ft["json"] = { "prettier" }
       opts.formatters_by_ft["html"] = { "prettier" }
