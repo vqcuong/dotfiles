@@ -72,6 +72,7 @@ return {
     "stevearc/conform.nvim",
     optional = true,
     opts = function(_, opts)
+      opts.formatters_by_ft["sh"] = { "shfmt", "beautysh" }
       opts.formatters_by_ft["bash"] = { "shfmt", "beautysh" }
       opts.formatters_by_ft["zsh"] = { "beautysh" }
       opts.formatters_by_ft["python"] = { "isort", "black" }
