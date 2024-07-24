@@ -48,8 +48,8 @@ return {
           vsplit = "v",
           split = "h",
           tabe = "t",
-          quit = "q",
-          close = "q",
+          quit = { "q", "<esc>" },
+          close = { "q", "<esc>" },
         },
       },
       finder = {
@@ -58,8 +58,8 @@ return {
           split = "h",
           tabe = "t",
           tabnew = "n",
-          quit = "q",
-          close = "q",
+          quit = { "q", "<esc>" },
+          close = { "q", "<esc>" },
         },
       },
       outline = {
@@ -70,7 +70,7 @@ return {
       },
       rename = {
         keys = {
-          quit = "q",
+          quit = "<esc>",
         },
       },
       lightbulb = {
