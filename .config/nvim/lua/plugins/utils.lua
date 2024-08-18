@@ -1,5 +1,43 @@
 return {
   {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        extra_curl_params = {
+          "-H",
+          "Origin: https://example.com",
+        },
+        openai_params = {
+          model = "gpt-3.5-turbo",
+        },
+        popup_layout = {
+          default = "right",
+          center = {
+            width = "50%",
+            height = "60%",
+          },
+        },
+        popup_window = {
+          border = {
+            highlight = "FloatBorder",
+            style = "rounded",
+            text = {
+              top = " Have a nice day ",
+            },
+          },
+        },
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+
+  {
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = function()
