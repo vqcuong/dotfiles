@@ -109,7 +109,6 @@ plugins=(
   conda-zsh-completion
   copybuffer
   docker-compose
-  direnv
   forgit
   fzf-tab
   git
