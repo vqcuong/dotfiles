@@ -101,6 +101,7 @@ end
 # user configuration
 thefuck --alias | source
 zoxide init fish | source
+direnv hook fish | source
 #orbctl completion fish | source
 
 _setup_conda
