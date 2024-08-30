@@ -38,6 +38,9 @@ keymap.del("t", "<c-l>", {})
 keymap.del("t", "<c-/>", {})
 keymap.del("t", "<c-_>", {})
 
+-- copy current word under cursor to clipboard
+keymap.set({ "n", "v" }, "<c-g>", "viwy", opts("Copy current word under cursor"))
+
 -- avoid x copy the deleted char to clipboard
 keymap.set("n", "x", '"_x')
 
