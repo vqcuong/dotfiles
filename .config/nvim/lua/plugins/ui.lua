@@ -173,7 +173,6 @@ return {
             -- },
           },
           lualine_c = {
-
             "diff",
             {
               "filename",

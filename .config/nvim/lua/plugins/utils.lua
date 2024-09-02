@@ -194,9 +194,7 @@ return {
 
   {
     "declancm/maximize.nvim",
-    opts = {
-      default_keymaps = false,
-    },
+    config = true,
     keys = {
       {
         "<localleader>z",
