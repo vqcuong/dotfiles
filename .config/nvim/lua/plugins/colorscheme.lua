@@ -30,23 +30,23 @@ return {
     },
   },
 
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    opts = function(_, opts)
-      if not opts.integrations then
-        opts.integrations = {}
-      end
-      opts.integrations.hop = true
-      opts.integrations.lsp_saga = true
-      opts.integrations.nvimtree = true
-      opts.integrations.overseer = true
-      opts.integrations.mini = {
-        enabled = true,
-        indentscope_color = "sky",
-      }
-    end,
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   opts = function(_, opts)
+  --     if not opts.integrations then
+  --       opts.integrations = {}
+  --     end
+  --     opts.integrations.hop = true
+  --     opts.integrations.lsp_saga = true
+  --     opts.integrations.nvimtree = true
+  --     opts.integrations.overseer = true
+  --     opts.integrations.mini = {
+  --       enabled = true,
+  --       indentscope_color = "sky",
+  --     }
+  --   end,
+  -- },
 
   {
     "catppuccin/nvim",
@@ -107,6 +107,14 @@ return {
       integrations = {
         native_lsp = {
           enabled = false,
+        },
+        hop = true,
+        lsp_saga = true,
+        nvimtree = true,
+        overseer = true,
+        mini = {
+          enabled = true,
+          indentscope_color = "sky",
         },
       },
     },

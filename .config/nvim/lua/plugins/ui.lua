@@ -53,22 +53,23 @@ return {
   --   },
   -- },
 
-  {
-    "danilamihailov/beacon.nvim",
-    config = function()
-      require("beacon").setup({
-        enabled = true, --- (boolean | fun():boolean) check if enabled
-        speed = 2, --- integer speed at wich animation goes
-        width = 50, --- integer width of the beacon window
-        winblend = 60, --- integer starting transparency of beacon window :h winblend
-        fps = 60, --- integer how smooth the animation going to be
-        min_jump = 8, --- integer what is considered a jump. Number of lines
-        cursor_events = { "CursorMoved" }, -- table<string> what events trigger check for cursor moves
-        window_events = { "WinEnter", "FocusGained" }, -- table<string> what events trigger cursor highlight
-        highlight = { bg = "#00ff0d", ctermbg = 15 }, -- vim.api.keyset.highlight table passed to vim.api.nvim_set_hl
-      })
-    end,
-  },
+  -- {
+  --   "danilamihailov/beacon.nvim",
+  --   config = function()
+  --     require("beacon").setup({
+  --       enabled = true, --- (boolean | fun():boolean) check if enabled
+  --       speed = 1, --- integer speed at wich animation goes
+  --       width = 50, --- integer width of the beacon window
+  --       winblend = 60, --- integer starting transparency of beacon window :h winblend
+  --       fps = 60, --- integer how smooth the animation going to be
+  --       min_jump = 8, --- integer what is considered a jump. Number of lines
+  --       cursor_events = { "CursorMoved" }, -- table<string> what events trigger check for cursor moves
+  --       window_events = { "WinEnter", "FocusGained" }, -- table<string> what events trigger cursor highlight
+  --       highlight = { bg = "#bfff00", ctermbg = 15 }, -- vim.api.keyset.highlight table passed to vim.api.nvim_set_hl
+  --     })
+  --   end,
+  -- },
+
   {
     "nanozuki/tabby.nvim",
     config = function()
@@ -279,35 +280,35 @@ return {
     end,
   },
 
-  {
-    "echasnovski/mini.indentscope",
-    opts = {
-      symbol = "▏",
-      options = { try_as_border = true },
-    },
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "alpha",
-          "dashboard",
-          "fzf",
-          "help",
-          "lazy",
-          "lazyterm",
-          "mason",
-          "neo-tree",
-          "notify",
-          "toggleterm",
-          "Trouble",
-          "trouble",
-          "NvimTree",
-        },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
-  },
+  -- {
+  --   "echasnovski/mini.indentscope",
+  --   opts = {
+  --     symbol = "▏",
+  --     options = { try_as_border = true },
+  --   },
+  --   init = function()
+  --     vim.api.nvim_create_autocmd("FileType", {
+  --       pattern = {
+  --         "alpha",
+  --         "dashboard",
+  --         "fzf",
+  --         "help",
+  --         "lazy",
+  --         "lazyterm",
+  --         "mason",
+  --         "neo-tree",
+  --         "notify",
+  --         "toggleterm",
+  --         "Trouble",
+  --         "trouble",
+  --         "NvimTree",
+  --       },
+  --       callback = function()
+  --         vim.b.miniindentscope_disable = true
+  --       end,
+  --     })
+  --   end,
+  -- },
 
   {
     "HiPhish/rainbow-delimiters.nvim",
@@ -323,13 +324,13 @@ return {
           lua = "rainbow-blocks",
         },
         highlight = {
-          "rainbowdelimiterred",
-          "rainbowdelimiteryellow",
-          "rainbowdelimiterblue",
           "rainbowdelimiterorange",
           "rainbowdelimitergreen",
-          "rainbowdelimiterviolet",
           "RainbowDelimiterCyan",
+          "rainbowdelimiterviolet",
+          "rainbowdelimiteryellow",
+          "rainbowdelimiterred",
+          "rainbowdelimiterblue",
         },
       })
     end,
@@ -341,7 +342,7 @@ return {
       local tint = require("tint")
       tint.setup({
         tint = -40,
-        saturation = 0.5,
+        saturation = 0.6,
         transforms = tint.transforms.SATURATE_TINT,
         tin_background_colors = true,
         highlight_ignore_patterns = { "WinSeparator", "Status.*" },

@@ -20,7 +20,7 @@ return {
             toggleterm.toggle(1, 10, dir, "horizontal", "helloworld")
           end,
           desc = "Terminal toggle",
-          mode = { "n", "v", "t" },
+          mode = { "n", "v", "t", "i" },
         },
       }
     end,

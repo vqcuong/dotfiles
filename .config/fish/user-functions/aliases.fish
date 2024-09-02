@@ -24,7 +24,7 @@ function copy --description "copy <path-to-file>"
 end
 
 # exa
-alias ls='exa --icons --color=always --group --time-style=long-iso'
+alias ls='eza --icons --color=always --group --time-style=long-iso'
 alias l='ls -laH'
 alias la='ls -a'
 alias ll='ls -l'
