@@ -156,14 +156,14 @@ return {
       })
 
       require("which-key").add({
-        { "<leader>e", group = "explorer" },
-        { "<leader>ef", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
-        { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cr>", desc = "Git reload" },
-        { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
-        { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
-        { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
-        { "<localleader>e", "<leader>ef", desc = "Explorer focus", remap = true },
-        { "<localleader><localleader>", "<leader>ee", desc = "Explorer toggle", remap = true },
+        { "<leader>d", group = "File Explorer" },
+        { "<leader>df", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
+        { "<leader>dg", "<cmd>lua require('nvim-tree.api').git.reload()<cr>", desc = "Git reload" },
+        { "<leader>de", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
+        { "<leader>dc", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
+        { "<leader>dx", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
+        { "<localleader>e", "<leader>df", desc = "Explorer focus", remap = true },
+        { "<localleader><localleader>", "<leader>de", desc = "Explorer toggle", remap = true },
       })
     end,
   },
@@ -296,12 +296,6 @@ return {
       end
       -- stylua: ignore
       return {
-        { "<leader>,", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
-        { "<leader>/", live_grep, desc = "Grep (workspace)" },
-        { "<leader>m", git_files, desc = "Git changes" },
-        { "<leader>;", function() builtin.command_history() end, desc = "Command History" },
-        { "<leader>?", function() builtin.help_tags() end, desc = "Help Pages" },
-        { "<leader><space>", find_files, desc = "Find Files (workspace)" },
         -- files
         { "<leader>fb", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
         { "<leader>fc", function() LazyVim.pick.config_files() end, desc = "Find Config File" },
@@ -338,6 +332,13 @@ return {
         { "<leader>hm", function() builtin.man_pages() end, desc = "Man Pages" },
         { "<leader>ho", function() builtin.vim_options() end, desc = "Options" },
         { "<leader>.", function() builtin.resume() end, desc = "Recent Picker" },
+
+        { "<leader>,", function() builtin.buffers({ sort_mru = true, sort_lastused = true }) end, desc = "Buffers" },
+        { "<leader>/", live_grep, desc = "Grep (workspace)" },
+        { "<leader>m", git_files, desc = "Git changes" },
+        { "<leader>;", function() builtin.command_history() end, desc = "Command History" },
+        { "<leader>?", function() builtin.help_tags() end, desc = "Help Pages" },
+        { "<leader><space>", find_files, desc = "Find Files (workspace)" },
 
         { "<localleader>l", function() builtin.lsp_references() end, desc = "References" },
         { "<localleader>j", function() builtin.lsp_definitions() end, desc = "Definitions" },

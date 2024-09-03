@@ -11,22 +11,22 @@ return {
     keys = { { "<leader>t", "<cmd>Twilight<cr>", desc = "Twilight Mode Toggle" } },
   },
 
-  {
-    "elijahdanko/ttymux.nvim",
-    -- stylua: ignore
-    keys = {
-      { "<m-left>", function() require("ttymux.window").navigate("h") end },
-      { "<m-down>", function() require("ttymux.window").navigate("j") end },
-      { "<m-up>", function() require("ttymux.window").navigate("k") end },
-      { "<m-right>", function() require("ttymux.window").navigate("l") end },
-      { "<m-.>", function() require("ttymux.window").next_window() end },
-    },
-    config = function()
-      require("ttymux").setup({
-        default_keymap = false,
-      })
-    end,
-  },
+  -- {
+  --   "elijahdanko/ttymux.nvim",
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<m-left>", function() require("ttymux.window").navigate("h") end },
+  --     { "<m-down>", function() require("ttymux.window").navigate("j") end },
+  --     { "<m-up>", function() require("ttymux.window").navigate("k") end },
+  --     { "<m-right>", function() require("ttymux.window").navigate("l") end },
+  --     { "<m-.>", function() require("ttymux.window").next_window() end },
+  --   },
+  --   config = function()
+  --     require("ttymux").setup({
+  --       default_keymap = false,
+  --     })
+  --   end,
+  -- },
 
   -- {
   --   "aserowy/tmux.nvim",
@@ -225,25 +225,18 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = function() end,
     config = function()
-      local highlight = {
-        "RainbowRed",
-        "RainbowYellow",
-        "RainbowBlue",
-        "RainbowOrange",
-        "RainbowGreen",
-        "RainbowViolet",
-        "RainbowCyan",
-      }
       local opts = {
         indent = {
-          char = "▏",
-          tab_char = "▏",
+          -- char = "▏",
+          -- tab_char = "▏",
+          char = "│",
+          tab_char = "│",
         },
         scope = {
-          show_start = false,
-          show_end = false,
-          highlight = highlight,
+          enabled = false,
         },
         exclude = {
           filetypes = {
@@ -263,51 +256,42 @@ return {
           },
         },
       }
-      local hooks = require("ibl.hooks")
-      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#e35b91" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#face7f" })
-        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#2eb2ff" })
-        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#f09886" })
-        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#12e04c" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#b65fe8" })
-        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#21e9ff" })
-      end)
-      vim.g.rainbow_delimiters = { highlight = highlight }
       require("ibl").setup(opts)
-      hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end,
   },
 
-  -- {
-  --   "echasnovski/mini.indentscope",
-  --   opts = {
-  --     symbol = "▏",
-  --     options = { try_as_border = true },
-  --   },
-  --   init = function()
-  --     vim.api.nvim_create_autocmd("FileType", {
-  --       pattern = {
-  --         "alpha",
-  --         "dashboard",
-  --         "fzf",
-  --         "help",
-  --         "lazy",
-  --         "lazyterm",
-  --         "mason",
-  --         "neo-tree",
-  --         "notify",
-  --         "toggleterm",
-  --         "Trouble",
-  --         "trouble",
-  --         "NvimTree",
-  --       },
-  --       callback = function()
-  --         vim.b.miniindentscope_disable = true
-  --       end,
-  --     })
-  --   end,
-  -- },
+  {
+    "echasnovski/mini.indentscope",
+    version = "*",
+    event = { "LazyFile" },
+    opts = {
+      -- symbol = "▏",
+      symbol = "│",
+      options = { try_as_border = true },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "alpha",
+          "dashboard",
+          "fzf",
+          "help",
+          "lazy",
+          "lazyterm",
+          "mason",
+          "neo-tree",
+          "notify",
+          "toggleterm",
+          "Trouble",
+          "trouble",
+          "NvimTree",
+        },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+  },
 
   {
     "HiPhish/rainbow-delimiters.nvim",

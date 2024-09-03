@@ -1,6 +1,5 @@
-if true then
-  return {}
-end
+-- stylua: ignore
+if true then return {} end
 
 -- return {
 --   "voldikss/vim-floaterm",

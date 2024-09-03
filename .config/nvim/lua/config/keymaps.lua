@@ -39,7 +39,7 @@ keymap.del("t", "<c-/>", {})
 keymap.del("t", "<c-_>", {})
 
 -- copy current word under cursor to clipboard
-keymap.set({ "n", "v" }, "<c-g>", "viwy", opts("Copy current word under cursor"))
+keymap.set({ "n", "v" }, "<localleader>s", "viwy", opts("Copy current word under cursor"))
 
 -- avoid x copy the deleted char to clipboard
 keymap.set("n", "x", '"_x')
@@ -102,5 +102,5 @@ keymap.set("n", "a", "<nop>")
 -- keymap.set("n", "gI", "<nop>")
 keymap.set("n", "gi", "<nop>")
 
--- open file with default browser
-keymap.set({ "n", "v" }, "<localleader>b", "<cmd>| !open %<cr>", { desc = "Open with default app" })
+-- open current buffer with default app (edit/browser)
+keymap.set({ "n", "v" }, "<localleader>a", "<cmd>| !open %<cr>", { desc = "Open Buffer with default app" })
