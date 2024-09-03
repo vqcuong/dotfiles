@@ -208,6 +208,51 @@ return {
   },
 
   {
+    -- unused due to the conflict trouble with toggleterm
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    -- init = function()
+    --   vim.o.winwidth = 8
+    --   vim.o.winminwidth = 8
+    --   vim.o.equalalways = false
+    -- end,
+    -- opts = {
+    --   ignore = {
+    --     buftype = { "nofile", "temrinal" },
+    --     filetype = {
+    --       "NvimTree",
+    --       "neo-tree",
+    --       "undotree",
+    --       "gundo",
+    --       "toggleterm",
+    --     },
+    --   },
+    -- },
+    config = function()
+      vim.o.winwidth = 6
+      vim.o.winminwidth = 5
+      vim.o.equalalways = false
+
+      require("windows").setup({
+        ignore = {
+          buftype = { "nofile", "temrinal" },
+          filetype = {
+            "NvimTree",
+            "neo-tree",
+            "undotree",
+            "gundo",
+            "toggleterm",
+          },
+        },
+      })
+      vim.api.nvim_set_keymap("n", "<localleader>Z", "<cmd>WindowsMaximize<cr>", { noremap = true, silent = true })
+    end,
+  },
+
+  {
     "utilyre/sentiment.nvim",
     version = "*",
     event = "VeryLazy",
