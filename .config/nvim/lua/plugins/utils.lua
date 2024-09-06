@@ -30,6 +30,15 @@ return {
   },
 
   {
+    "folke/todo-comments.nvim",
+    opts = {
+      search = {
+        pattern = [[#( )*(KEYWORDS)\b]],
+      },
+    },
+  },
+
+  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
