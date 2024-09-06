@@ -135,13 +135,16 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # ohmyzsh plugins customization
+
 # forgit
 export FORGIT_NO_ALIASES=true
+
 # zsh-autosuggestions
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=true
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 unset ZSH_AUTOSUGGEST_USE_ASYNC
+
 # fzf-tab
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -150,6 +153,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' popup-min-size 60 8
 zstyle ':fzf-tab:*' popup-pad 1 1
+
 # zsh-autocomplete
 # zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
 # zstyle ':autocomplete:*history*:*' insert-unambiguous yes
@@ -221,7 +225,7 @@ fi
 # fortune|cowsay|lolcat
 
 # os info
-# pfetch
+pfetch
 
 # powerlevel10k
 _setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"
