@@ -120,12 +120,11 @@ plugins=(
   history
   httpie
   kubectl
-  # magic-enter
   python
   sudo
   terraform
   fast-syntax-highlighting
-  # you-should-use
+  you-should-use
   zsh-autosuggestions
   # zsh-autocomplete
   # zsh-abbr
@@ -138,6 +137,10 @@ source $ZSH/oh-my-zsh.sh
 
 # forgit
 export FORGIT_NO_ALIASES=true
+
+# you-should-use
+export YSU_MESSAGE_FORMAT="$(tput setaf 5)💡 %alias => %command$(tput sgr0)"
+export YSU_MESSAGE_POSITION="after"
 
 # zsh-autosuggestions
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -174,7 +177,7 @@ zstyle ':fzf-tab:*' popup-pad 1 1
 # bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
 # bindkey -M menuselect '\r' .accept-line
 
-# customize completion result for vim and nvim
+# # customize completion result for vim and nvim
 # autoload +X -Uz  _files
 # functions[_files_orig]=$functions[_files]
 #
