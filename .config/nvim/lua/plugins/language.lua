@@ -5,8 +5,8 @@ return {
     opts = {
       ensure_installed = {
         "fish",
-        "sql",
-        "dart",
+        -- "sql",
+        -- "dart",
       },
     },
   },
@@ -15,7 +15,7 @@ return {
     "mason.nvim",
     opts = {
       ensure_installed = {
-        "dcm",
+        -- "dcm",
         "hadolint",
       },
       ui = {
@@ -31,7 +31,7 @@ return {
     opts = {
       linters_by_ft = {
         zsh = { "zsh" },
-        html = { "htmlhint" },
+        -- html = { "htmlhint" },
         fish = { "fish" },
       },
     },
@@ -84,12 +84,12 @@ return {
       opts.formatters_by_ft["sh"] = { "shfmt", "beautysh" }
       opts.formatters_by_ft["bash"] = { "shfmt", "beautysh" }
       opts.formatters_by_ft["python"] = { "isort", "black" }
-      opts.formatters_by_ft["json"] = { "prettier" }
-      opts.formatters_by_ft["html"] = { "prettier" }
-      opts.formatters_by_ft["css"] = { "prettier" }
-      opts.formatters_by_ft["js"] = { "prettier" }
-      opts.formatters_by_ft["ts"] = { "prettier" }
-      opts.formatters_by_ft["dart"] = { "dcm_format", "dart_format" }
+      -- opts.formatters_by_ft["json"] = { "prettier" }
+      -- opts.formatters_by_ft["html"] = { "prettier" }
+      -- opts.formatters_by_ft["css"] = { "prettier" }
+      -- opts.formatters_by_ft["js"] = { "prettier" }
+      -- opts.formatters_by_ft["ts"] = { "prettier" }
+      -- opts.formatters_by_ft["dart"] = { "dcm_format", "dart_format" }
 
       -- opts.formatters.autopep8 = {
       --   prepend_args = { "--indent-size", "2" },
