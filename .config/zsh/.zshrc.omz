@@ -102,6 +102,20 @@ eval $(/opt/homebrew/bin/brew shellenv)
 # rm -f $HOMEBREW_PREFIX/share/zsh/site-functions/_brew
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
+
+# additional zsh site-functions
+[[ -d ${ZDOTDIR-$HOME}/.site-functions ]] && for f in ${ZDOTDIR-$HOME}/.site-functions/*; do
+  source $f
+done
+
+# source any local config
+[[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
+if [[ -d $ZDOTDIR/.local ]]; then
+  for f in $ZDOTDIR/.local/*; do
+    source $f
+  done
+fi
+
 export ZSH="$ZDOTDIR/ohmyzsh"
 
 plugins=(
@@ -152,10 +166,13 @@ unset ZSH_AUTOSUGGEST_USE_ASYNC
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' continuous-trigger '/'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 $realpath'
+zstyle ':fzf-tab:complete:z:*' fzf-preview 'ls -1 $realpath'
+zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'if [ -d $realpath ]; then ls -1 $realpath; else less ${(Q)realpath}; fi'
+zstyle ':fzf-tab:complete:vim:*' fzf-preview 'if [ -d $realpath ]; then ls -1 $realpath; else less ${(Q)realpath}; fi'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:*' popup-min-size 60 8
-zstyle ':fzf-tab:*' popup-pad 1 1
+zstyle ':fzf-tab:*' popup-min-size 60 15
+zstyle ':fzf-tab:*' popup-pad 0 0
 
 # zsh-autocomplete
 # zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
@@ -205,30 +222,20 @@ eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 
 # enable fzf
-[ -f ${ZDOTDIR-$HOME}/.fzf.zsh ] && source ${ZDOTDIR-$HOME}/.fzf.zsh
+# [ -f ${ZDOTDIR-$HOME}/.fzf.zsh ] && source ${ZDOTDIR-$HOME}/.fzf.zsh
+source <(fzf --zsh)
+
 export FZF_DEFAULT_OPTS=" \
   --color=spinner:#f5e0dc,hl:#ff69a5 \
   --color=fg:#def58c,header:#ff69a5,info:#b638ff,pointer:#f5e0dc \
   --color=marker:#f5e0dc,fg+:#00ff91,prompt:#b638ff,hl+:#ff69a5"
 
-# additional zsh site-functions
-[[ -d ${ZDOTDIR-$HOME}/.site-functions ]] && for f in ${ZDOTDIR-$HOME}/.site-functions/*; do
-  source $f
-done
 
-# source any local config
-[[ -f $HOME/.zshrc.local ]] && source $HOME/.zshrc.local
-if [[ -d $ZDOTDIR/.local ]]; then
-  for f in $ZDOTDIR/.local/*; do
-    source $f
-  done
-fi
-
-# chilly quote on startup
+# # chilly quote on startup
 # fortune|cowsay|lolcat
 
-# os info
-pfetch
+# # os info
+# pfetch
 
 # powerlevel10k
 _setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"

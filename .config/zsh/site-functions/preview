@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+preview() {
+  if [[ -d "$1" ]]; then
+    eza -1 --color=always $1
+  else
+    head -n 10 "$1"
+  fi
+}
+
