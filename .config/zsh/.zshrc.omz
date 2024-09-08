@@ -216,6 +216,8 @@ eval "$(zoxide init zsh)"
 source $ZSH_CUSTOM/plugins/zsh-autoenv/autoenv.zsh
 export AUTOENV_FILE_ENTER=".env"
 
+# source $HOMEBREW_CELLAR/azure-cli/*/etc/bash_completion.d/az
+
 # enable fzf
 # [ -f ${ZDOTDIR-$HOME}/.fzf.zsh ] && source ${ZDOTDIR-$HOME}/.fzf.zsh
 source <(fzf --zsh)
