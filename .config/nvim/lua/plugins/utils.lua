@@ -265,17 +265,17 @@ return {
       local keymap = {
         -- Use the "sine" easing function
         ["<C-e>"] = function()
-          neoscroll.ctrl_u({ duration = 400 })
+          neoscroll.ctrl_u({ duration = 100 })
         end,
         ["<C-d>"] = function()
-          neoscroll.ctrl_d({ duration = 400 })
+          neoscroll.ctrl_d({ duration = 100 })
         end,
         -- Use the "circular" easing function
         ["<C-b>"] = function()
-          neoscroll.ctrl_b({ duration = 360 })
+          neoscroll.ctrl_b({ duration = 350 })
         end,
         ["<C-f>"] = function()
-          neoscroll.ctrl_f({ duration = 360 })
+          neoscroll.ctrl_f({ duration = 350 })
         end,
         -- When no value is passed the `easing` option supplied in `setup()` is used
         ["<C-y>"] = function()
