@@ -217,10 +217,10 @@ return {
   },
 
   {
-    -- unused due to the conflict trouble with toggleterm
     "anuvyklack/windows.nvim",
     dependencies = {
       "anuvyklack/middleclass",
+      -- unused due to the conflict with toggleterm
       -- "anuvyklack/animation.nvim",
     },
     config = function()
@@ -230,7 +230,7 @@ return {
 
       require("windows").setup({
         autowidth = {
-          enable = false,
+          enable = true,
         },
         ignore = {
           buftype = { "nofile", "temrinal" },
