@@ -112,6 +112,7 @@ export ZSH="$ZDOTDIR/ohmyzsh"
 plugins=(
   aliases
   auto-ls
+  autoenv
   # aws
   conda-zsh-completion
   copybuffer
@@ -139,6 +140,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # ohmyzsh plugins customization
+
+# autoenv
+export AUTOENV_IN_FILE=.env
 
 # forgit
 export FORGIT_NO_ALIASES=true
@@ -211,8 +215,6 @@ _setup_nvm
 
 eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
-source $ZSH_CUSTOM/plugins/zsh-autoenv/autoenv.zsh
-export AUTOENV_FILE_ENTER=".env"
 
 # source $HOMEBREW_CELLAR/azure-cli/*/etc/bash_completion.d/az
 
