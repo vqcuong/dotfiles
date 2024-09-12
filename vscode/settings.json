@@ -699,7 +699,6 @@
   "workbench.list.smoothScrolling": true,
   "workbench.list.openMode": "singleClick",
   "workbench.list.defaultFindMatchType": "contiguous",
-  "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.tree.expandMode": "singleClick",
@@ -862,7 +861,7 @@
     ".monaco-workbench .part.sidebar .title-actions .actions-container": "justify-content: space-evenly !important"
   },
   "apc.imports": [
-    "file:///Users/cuongok/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
+    "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
   ],
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
@@ -873,5 +872,7 @@
   },
   "[sql]": {
     "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
-  }
+  },
+  "terraform.languageServer.enable": false,
+  "workbench.sideBar.location": "right"
 }
