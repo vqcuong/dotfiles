@@ -129,3 +129,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+-- convert json to jsonc filetype
+vim.cmd([[
+  augroup json2jsonc 
+  autocmd! FileType json set filetype=jsonc
+  augroup END
+]])

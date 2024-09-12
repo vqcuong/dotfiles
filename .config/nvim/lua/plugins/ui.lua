@@ -11,22 +11,22 @@ return {
     keys = { { "<leader>t", "<cmd>Twilight<cr>", desc = "Twilight Mode Toggle" } },
   },
 
-  -- {
-  --   "elijahdanko/ttymux.nvim",
-  --   -- stylua: ignore
-  --   keys = {
-  --     { "<m-left>", function() require("ttymux.window").navigate("h") end },
-  --     { "<m-down>", function() require("ttymux.window").navigate("j") end },
-  --     { "<m-up>", function() require("ttymux.window").navigate("k") end },
-  --     { "<m-right>", function() require("ttymux.window").navigate("l") end },
-  --     { "<m-.>", function() require("ttymux.window").next_window() end },
-  --   },
-  --   config = function()
-  --     require("ttymux").setup({
-  --       default_keymap = false,
-  --     })
-  --   end,
-  -- },
+  {
+    "elijahdanko/ttymux.nvim",
+    -- stylua: ignore
+    keys = {
+      { "<m-left>", function() require("ttymux.window").navigate("h") end },
+      { "<m-down>", function() require("ttymux.window").navigate("j") end },
+      { "<m-up>", function() require("ttymux.window").navigate("k") end },
+      { "<m-right>", function() require("ttymux.window").navigate("l") end },
+      { "<m-.>", function() require("ttymux.window").next_window() end },
+    },
+    config = function()
+      require("ttymux").setup({
+        default_keymap = false,
+      })
+    end,
+  },
 
   -- {
   --   "aserowy/tmux.nvim",
