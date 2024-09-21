@@ -114,7 +114,7 @@ plugins=(
   auto-ls
   autoenv
   # aws
-  conda-zsh-completion
+  # conda-zsh-completion
   copybuffer
   docker-compose
   forgit
