@@ -198,6 +198,15 @@ return {
     end,
   },
 
+  -- {
+  --   "nvimdev/indentmini.nvim",
+  --   config = function()
+  --     require("indentmini").setup()
+  --     vim.cmd.highlight("IndentLine guifg=#002c38")
+  --     vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
+  --   end,
+  -- },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
