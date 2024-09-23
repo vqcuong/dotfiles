@@ -103,4 +103,4 @@ keymap.set("n", "a", "<nop>")
 keymap.set("n", "gi", "<nop>")
 
 -- open current buffer with default app (edit/browser)
-keymap.set({ "n", "v" }, "<localleader>a", "<cmd>| !open %<cr>", { desc = "Open Buffer with default app" })
+keymap.set({ "n", "v" }, "<localleader>O", "<cmd>| !open %<cr>", { desc = "Open Buffer with default app" })
