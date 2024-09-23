@@ -274,48 +274,48 @@ return {
     end,
   },
 
-  {
-    "karb94/neoscroll.nvim",
-    config = function()
-      local neoscroll = require("neoscroll")
-      neoscroll.setup({
-        mappings = { -- Keys to be mapped to their corresponding default scrolling animation
-          "<C-d>",
-          "<C-b>",
-          "<C-f>",
-          "<C-e>",
-          "zt",
-          "zz",
-          "zb",
-        },
-      })
-      local keymap = {
-        ["<C-e>"] = function()
-          neoscroll.ctrl_u({ duration = 250 })
-        end,
-        ["<C-d>"] = function()
-          neoscroll.ctrl_d({ duration = 250 })
-        end,
-        -- Use the "circular" easing function
-        ["<C-b>"] = function()
-          neoscroll.ctrl_b({ duration = 450 })
-        end,
-        ["<C-f>"] = function()
-          neoscroll.ctrl_f({ duration = 450 })
-        end,
-        ["<C-y>"] = function()
-          neoscroll.scroll(-0.1, { move_cursor = false, duration = 200 })
-        end,
-        ["<C-u>"] = function()
-          neoscroll.scroll(0.1, { move_cursor = false, duration = 200 })
-        end,
-      }
-      local modes = { "n", "v", "x" }
-      for key, func in pairs(keymap) do
-        vim.keymap.set(modes, key, func)
-      end
-    end,
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   config = function()
+  --     local neoscroll = require("neoscroll")
+  --     neoscroll.setup({
+  --       mappings = { -- Keys to be mapped to their corresponding default scrolling animation
+  --         "<C-d>",
+  --         "<C-b>",
+  --         "<C-f>",
+  --         "<C-e>",
+  --         "zt",
+  --         "zz",
+  --         "zb",
+  --       },
+  --     })
+  --     local keymap = {
+  --       ["<C-e>"] = function()
+  --         neoscroll.ctrl_u({ duration = 250 })
+  --       end,
+  --       ["<C-d>"] = function()
+  --         neoscroll.ctrl_d({ duration = 250 })
+  --       end,
+  --       -- Use the "circular" easing function
+  --       ["<C-b>"] = function()
+  --         neoscroll.ctrl_b({ duration = 450 })
+  --       end,
+  --       ["<C-f>"] = function()
+  --         neoscroll.ctrl_f({ duration = 450 })
+  --       end,
+  --       ["<C-y>"] = function()
+  --         neoscroll.scroll(-0.1, { move_cursor = false, duration = 200 })
+  --       end,
+  --       ["<C-u>"] = function()
+  --         neoscroll.scroll(0.1, { move_cursor = false, duration = 200 })
+  --       end,
+  --     }
+  --     local modes = { "n", "v", "x" }
+  --     for key, func in pairs(keymap) do
+  --       vim.keymap.set(modes, key, func)
+  --     end
+  --   end,
+  -- },
 
   {
     "kevinhwang91/nvim-ufo",
