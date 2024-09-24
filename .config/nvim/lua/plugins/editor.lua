@@ -516,8 +516,15 @@ return {
         -- "buffers", "live_grep", "find_files", "oldfiles", "git_files", "git_commits", "git_status",
         -- "current_buffer_fuzzy_find", "diagnostics", "grep_string", "lsp_document_symbols",
         -- "lsp_dynamic_workspace_symbols", "lsp_references",
-        -- "command_history", "registers", "autocommands", "commands", "help_tags", "highlights",
-        -- "keymaps", "colorscheme", "vim_options",
+        "help_tags",
+        "command_history",
+        "registers",
+        "autocommands",
+        "commands",
+        "highlights",
+        "keymaps",
+        "colorscheme",
+        "vim_options",
       }
       for _, value in pairs(dropdown_pickers) do
         opts.pickers[value] = { theme = "dropdown" }
