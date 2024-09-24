@@ -3,7 +3,7 @@ return {
     "f-person/git-blame.nvim",
     event = "VeryLazy",
     keys = {
-      { "gg", "<cmd>GitBlameToggle<cr>", desc = "Git blame toggle", mode = { "n", "v" } },
+      { "gb", "<cmd>GitBlameToggle<cr>", desc = "Git blame toggle", mode = { "n", "v" } },
     },
     opts = {
       enabled = true,
