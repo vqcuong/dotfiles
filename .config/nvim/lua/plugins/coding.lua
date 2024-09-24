@@ -210,11 +210,11 @@ return {
           completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
         },
         preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
+        -- snippet = {
+        --   expand = function(args)
+        --     luasnip.lsp_expand(args.body)
+        --   end,
+        -- },
         experimental = {
           ghost_text = {
             hl_group = "CmpGhostText",
@@ -257,7 +257,6 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "codeium", group_index = 1, priority = 100 },
-        }, {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
@@ -267,13 +266,16 @@ return {
         }, {
           { name = "lazydev", group_index = 0 },
         }, {}),
-        -- window = {
-        --   completion = cmp.config.window.bordered({
-        --     col_offset = -3,
-        --     side_padding = 0,
-        --   }),
-        --   documentation = cmp.config.window.bordered(),
-        -- },
+        window = {
+          -- completion = cmp.config.window.bordered({
+          --   leading_offset = 0,
+          --   col_offset = -3,
+          --   side_padding = 0,
+          -- }),
+          documentation = cmp.config.window.bordered({
+            col_offset = -3,
+          }),
+        },
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = lspkind.cmp_format({
