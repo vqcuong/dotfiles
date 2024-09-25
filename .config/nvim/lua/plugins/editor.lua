@@ -177,11 +177,8 @@ return {
         { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" }
       }
     end,
-    -- config = function()
-    --   -- stylua: ignore
-    --   require("flash").setup({ modes = { char = { keys = { "s", "S" } } } })
-    -- end,
   },
+
   {
     "phaazon/hop.nvim",
     event = "VeryLazy",
@@ -214,6 +211,11 @@ return {
       { "<localleader>t", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
       { "<localleader>T", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
     },
+    opts = {
+      search = {
+        pattern = [[#( )*(KEYWORDS)\b]],
+      },
+    },
   },
 
   {
@@ -226,23 +228,6 @@ return {
       },
     },
     config = true,
-  },
-
-  {
-    "LukasPietzschmann/telescope-tabs",
-    opts = {},
-    keys = {
-      {
-        "<localleader><tab>",
-        "<cmd>lua require('telescope-tabs').list_tabs()<cr>",
-        desc = "List tabs",
-      },
-      {
-        "<leader>s<tab>",
-        "<cmd>lua require('telescope-tabs').list_tabs()<cr>",
-        desc = "Tabs",
-      },
-    },
   },
 
   {
@@ -542,6 +527,14 @@ return {
       require("which-key").add({
         { "<leader>h", group = "helper" },
       })
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    config = function()
+      require("telescope").load_extension("fzf")
     end,
   },
 }

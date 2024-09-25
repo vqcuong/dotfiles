@@ -18,6 +18,30 @@ if true then return {} end
 --   { "neoclide/coc.nvim", build = "npm ci" },
 --   { "airblade/vim-gitgutter", opts = {} },
 --   {
+--     "nvimdev/indentmini.nvim",
+--     config = function()
+--       require("indentmini").setup()
+--       vim.cmd.highlight("IndentLine guifg=#002c38")
+--       vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
+--     end,
+--   },
+--   {
+--     "LukasPietzschmann/telescope-tabs",
+--     opts = {},
+--     keys = {
+--       {
+--         "<localleader><tab>",
+--         "<cmd>lua require('telescope-tabs').list_tabs()<cr>",
+--         desc = "List tabs",
+--       },
+--       {
+--         "<leader>s<tab>",
+--         "<cmd>lua require('telescope-tabs').list_tabs()<cr>",
+--         desc = "Tabs",
+--       },
+--     },
+--   },
+--   {
 --     -- too lag
 --     "folke/zen-mode.nvim",
 --     opts = {
