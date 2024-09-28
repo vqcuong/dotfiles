@@ -14,7 +14,7 @@ function _setup_miniforge
         set conda_prefix $HOME/.apps/miniforge3
     end
     if test -d $conda_prefix
-        _eval_conda $conda_prefix
+        _eval_miniforge $conda_prefix
     end
     if ! command -v conda &>/dev/null
         rm -rf $conda_prefix
@@ -23,7 +23,7 @@ function _setup_miniforge
         set tag_name $(http https://api.github.com/repos/conda-forge/miniforge/releases/latest | jq -r '.tag_name')
         http -d https://github.com/conda-forge/miniforge/releases/download/$tag_name/Miniforge3-$os_name-$os_arch.sh -o /tmp/miniforge3.sh
         bash /tmp/miniforge3.sh -b -p $conda_prefix
-        _eval_conda $conda_prefix
+        _eval_miniforge $conda_prefix
     end
 end
 
