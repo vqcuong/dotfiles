@@ -1,4 +1,4 @@
-function _eval_conda
+function _eval_miniforge
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     set conda_prefix $argv[1]
@@ -8,10 +8,10 @@ function _eval_conda
     # <<< conda initialize <<<
 end
 
-function _setup_conda
+function _setup_miniforge
     set conda_prefix $argv[1]
     if test -z "$conda_prefix"
-        set conda_prefix $HOME/.apps/mambaforge
+        set conda_prefix $HOME/.apps/miniforge3
     end
     if test -d $conda_prefix
         _eval_conda $conda_prefix
@@ -21,8 +21,8 @@ function _setup_conda
         set os_name $(uname -s)
         set os_arch $(uname -m)
         set tag_name $(http https://api.github.com/repos/conda-forge/miniforge/releases/latest | jq -r '.tag_name')
-        http -d https://github.com/conda-forge/miniforge/releases/download/$tag_name/Mambaforge-$os_name-$os_arch.sh -o /tmp/mambaforge.sh
-        bash /tmp/mambaforge.sh -b -p $conda_prefix
+        http -d https://github.com/conda-forge/miniforge/releases/download/$tag_name/Miniforge3-$os_name-$os_arch.sh -o /tmp/miniforge3.sh
+        bash /tmp/miniforge3.sh -b -p $conda_prefix
         _eval_conda $conda_prefix
     end
 end
@@ -103,7 +103,7 @@ thefuck --alias | source
 zoxide init fish | source
 #orbctl completion fish | source
 
-_setup_conda
+_setup_miniforge
 _setup_pyenv
 _setup_goenv
 
