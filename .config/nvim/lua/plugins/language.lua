@@ -81,8 +81,8 @@ return {
     "stevearc/conform.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.formatters_by_ft["sh"] = { "shfmt", "beautysh" }
-      opts.formatters_by_ft["bash"] = { "shfmt", "beautysh" }
+      opts.formatters_by_ft["sh"] = { "shfmt" }
+      opts.formatters_by_ft["bash"] = { "shfmt" }
       opts.formatters_by_ft["python"] = { "isort", "black" }
       -- opts.formatters_by_ft["json"] = { "prettier" }
       -- opts.formatters_by_ft["html"] = { "prettier" }
@@ -94,9 +94,9 @@ return {
       -- opts.formatters.autopep8 = {
       --   prepend_args = { "--indent-size", "2" },
       -- }
-      opts.formatters.beautysh = {
-        prepend_args = { "--indent-size", "2" },
-      }
+      -- opts.formatters.beautysh = {
+      --   prepend_args = { "--indent-size", "2" },
+      -- }
       opts.formatters.shfmt = {
         prepend_args = { "-i", "2" },
       }
