@@ -869,7 +869,6 @@
   "workbench.list.openMode": "singleClick",
   "workbench.list.smoothScrolling": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.tree.expandMode": "singleClick"
 }
