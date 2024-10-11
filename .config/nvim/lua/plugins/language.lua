@@ -103,37 +103,57 @@ return {
     end,
   },
 
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = {
-  --     servers = {
-  --       fish_lsp = {},
-  --     },
-  --   },
-  --   -- config = function()
-  --   --   local lspconfig = require("lspconfig")
-  --   --   lspconfig.yamlls.setup({
-  --   --     settings = {
-  --   --       yaml = {
-  --   --         hover = true,
-  --   --         schemas = {
-  --   --           ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2-standalone-strict/all.json"] = {
-  --   --             "k8s**.{yml,yaml}",
-  --   --             "kube*/*.{yml,yaml}",
-  --   --             "k8s/*.{yml,yaml}",
-  --   --           },
-  --   --           ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-  --   --           ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
-  --   --           ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
-  --   --           ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-  --   --           ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-  --   --           ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-  --   --         },
-  --   --       },
-  --   --     },
-  --   --   })
-  --   -- end,
-  -- },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        fish_lsp = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              hover = true,
+              schemas = {
+                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2-standalone-strict/all.json"] = {
+                  "k8s**.{yml,yaml}",
+                  "kube*/*.{yml,yaml}",
+                  "k8s/*.{yml,yaml}",
+                },
+                ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+                ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+                ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+                ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+              },
+            },
+          },
+        },
+      },
+    },
+    -- config = function()
+    --   local lspconfig = require("lspconfig")
+    --   lspconfig.yamlls.setup({
+    --     settings = {
+    --       yaml = {
+    --         hover = true,
+    --         schemas = {
+    --           ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.30.2-standalone-strict/all.json"] = {
+    --             "k8s**.{yml,yaml}",
+    --             "kube*/*.{yml,yaml}",
+    --             "k8s/*.{yml,yaml}",
+    --           },
+    --           ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+    --           ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+    --           ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+    --           ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+    --           ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+    --           ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+    --         },
+    --       },
+    --     },
+    --   })
+    -- end,
+  },
 
   -- {
   --   "nvim-lualine/lualine.nvim",
