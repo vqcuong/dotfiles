@@ -78,7 +78,7 @@ function _setup_pyenv() {
 
 
 function _setup_nvm() {
-  export NVM_DIR="$HOME/.nvm"
+  export NVM_DIR="$HOME/.app/.nvm"
   [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
   [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
