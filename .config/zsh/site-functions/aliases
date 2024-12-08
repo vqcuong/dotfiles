@@ -38,7 +38,8 @@ alias n='nvim'
 alias 'n.'='nvim .'
 
 # lolcat wrapping
-lolcat_cmds=(brew cat curl docker docker-compose du fd head kubectl more man pip rg tail)
+# lolcat_cmds=(brew cat curl docker docker-compose du fd head kubectl more man pip rg tail)
+lolcat_cmds=(brew cat curl docker-compose du fd head kubectl more man pip rg tail)
 local args='$@'
 for cmd in "${lolcat_cmds[@]}"; do
   if command -v $cmd &>/dev/null; then
