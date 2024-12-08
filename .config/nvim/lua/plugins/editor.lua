@@ -108,6 +108,11 @@ return {
             enable = false,
           },
         },
+        filters = {
+          dotfiles = false,
+          custom = { "^.git$", "__pycache__" },
+          exclude = { ".gitignore" },
+        },
         renderer = {
           full_name = true,
           root_folder_label = ":~:s?$?",
@@ -125,7 +130,7 @@ return {
         },
         actions = {
           expand_all = {
-            exclude = { ".git", ".vscode", ".idea", ".github" },
+            exclude = { ".git", ".vscode", ".idea", ".github", "__pycache__" },
           },
           open_file = {
             window_picker = {
