@@ -78,21 +78,21 @@ return {
     end,
   },
 
-  {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    tag = "legacy",
-    config = function()
-      require("fidget").setup({
-        text = {
-          spinner = "meter",
-        },
-        window = {
-          blend = 0,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "j-hui/fidget.nvim",
+  --   event = "LspAttach",
+  --   tag = "legacy",
+  --   config = function()
+  --     require("fidget").setup({
+  --       text = {
+  --         spinner = "meter",
+  --       },
+  --       window = {
+  --         blend = 0,
+  --       },
+  --     })
+  --   end,
+  -- },
 
   {
     "kylechui/nvim-surround",
@@ -282,10 +282,10 @@ return {
       })
       local keymap = {
         ["<C-e>"] = function()
-          neoscroll.ctrl_u({ duration = 250 })
+          neoscroll.ctrl_u({ duration = 220 })
         end,
         ["<C-d>"] = function()
-          neoscroll.ctrl_d({ duration = 250 })
+          neoscroll.ctrl_d({ duration = 220 })
         end,
         -- Use the "circular" easing function
         ["<C-b>"] = function()
@@ -295,10 +295,10 @@ return {
           neoscroll.ctrl_f({ duration = 450 })
         end,
         ["<C-y>"] = function()
-          neoscroll.scroll(-0.1, { move_cursor = false, duration = 200 })
+          neoscroll.scroll(-6, { move_cursor = false, duration = 3 })
         end,
         ["<C-u>"] = function()
-          neoscroll.scroll(0.1, { move_cursor = false, duration = 200 })
+          neoscroll.scroll(6, { move_cursor = false, duration = 3 })
         end,
       }
       local modes = { "n", "v", "x" }

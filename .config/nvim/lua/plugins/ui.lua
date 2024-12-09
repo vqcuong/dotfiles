@@ -29,6 +29,7 @@ return {
   },
 
   -- {
+  --   -- error when working with maximize.nvim
   --   "danilamihailov/beacon.nvim",
   --   config = function()
   --     require("beacon").setup({
@@ -38,8 +39,7 @@ return {
   --       winblend = 40,
   --       fps = 80,
   --       min_jump = 6,
-  --       cursor_events = { "CursorMoved" },
-  --       window_events = { "WinEnter" },
+  --       cursor_events = { "CursorMoved" }, window_events = { "WinEnter" },
   --       highlight = { bg = "#bfff00", ctermbg = 200 },
   --     })
   --   end,
@@ -205,10 +205,10 @@ return {
     config = function()
       local opts = {
         indent = {
-          -- char = "▏",
-          -- tab_char = "▏",
-          char = "│",
-          tab_char = "│",
+          char = "▏",
+          tab_char = "▏",
+          -- char = "│",
+          -- tab_char = "│",
         },
         scope = {
           enabled = false,
@@ -224,10 +224,14 @@ return {
             "mason",
             "neo-tree",
             "notify",
+            "NvimTree",
+            "snacks_dashboard",
+            "snacks_notif",
+            "snacks_terminal",
+            "snacks_win",
             "toggleterm",
             "Trouble",
             "trouble",
-            "NvimTree",
           },
         },
       }
@@ -240,8 +244,8 @@ return {
     version = "*",
     event = { "LazyFile" },
     opts = {
-      -- symbol = "▏",
-      symbol = "│",
+      symbol = "▏",
+      -- symbol = "│",
       options = { try_as_border = true },
     },
     init = function()
@@ -256,10 +260,14 @@ return {
           "mason",
           "neo-tree",
           "notify",
+          "NvimTree",
+          "snacks_dashboard",
+          "snacks_notif",
+          "snacks_terminal",
+          "snacks_win",
           "toggleterm",
           "Trouble",
           "trouble",
-          "NvimTree",
         },
         callback = function()
           vim.b.miniindentscope_disable = true
@@ -360,10 +368,10 @@ return {
       -- stylua: ignore
       require("which-key").add({
         { "<leader>n", group = "noice" },
-        {"<leader>nl", "<cmd>lua require('noice').cmd('last')<cr>", desc="Last Message"},
-        {"<leader>nh", "<cmd>lua require('noice').cmd('history')<cr>", desc="History"},
-        {"<leader>na", "<cmd>lua require('noice').cmd('all')<cr>", desc="Show All Message"},
-        {"<leader>nd", "<cmd>lua require('noice').cmd('dismiss')<cr>", desc="Dismiss All Message"},
+        { "<leader>nl", "<cmd>lua require('noice').cmd('last')<cr>", desc="Last Message" },
+        { "<leader>nh", "<cmd>lua require('noice').cmd('history')<cr>", desc="History" },
+        { "<leader>na", "<cmd>lua require('noice').cmd('all')<cr>", desc="Show All Message" },
+        { "<leader>nd", "<cmd>lua require('noice').cmd('dismiss')<cr>", desc="Dismiss All Message" },
       })
     end,
   },
