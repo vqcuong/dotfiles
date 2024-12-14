@@ -9,7 +9,6 @@ if true then return {} end
 --   "stevearc/aerial.nvim",
 --   "terrortylor/nvim-comment",
 --   "rktjmp/lush.nvim",
---   "ibhagwan/fzf-lua",
 --   "abecodes/tabout.nvim",
 --   "mrjones2014/legendary.nvim",
 --   "Pocco81/true-zen.nvim",

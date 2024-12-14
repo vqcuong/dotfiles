@@ -323,25 +323,53 @@ return {
   },
 
   {
-    "rcarriga/nvim-notify",
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    config = true,
     opts = {
-      background_colour = "#000000",
-      timeout = 2000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.8)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.8)
-      end,
-      on_open = function(win)
-        vim.api.nvim_win_set_config(win, { zindex = 100 })
-      end,
-    },
-    keys = {
-      -- stylua: ignore
-      { "<localleader>c", function() require("notify").dismiss({ silent=true, pending=true }) end, desc = "Clear notification" },
+      input = {
+        enabled = function()
+          return vim.bo.filetype == "NvimTree"
+        end,
+      },
+      select = {
+        enabled = function()
+          return vim.bo.filetype == "NvimTree"
+        end,
+      },
     },
   },
+
+  {
+    "snacks.nvim",
+    opts = {
+      notifier = { enabled = false },
+    },
+    keys = function()
+      return {}
+    end,
+  },
+
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   opts = {
+  --     background_colour = "#000000",
+  --     timeout = 2000,
+  --     max_height = function()
+  --       return math.floor(vim.o.lines * 0.8)
+  --     end,
+  --     max_width = function()
+  --       return math.floor(vim.o.columns * 0.8)
+  --     end,
+  --     on_open = function(win)
+  --       vim.api.nvim_win_set_config(win, { zindex = 100 })
+  --     end,
+  --   },
+  --   keys = {
+  --     -- stylua: ignore
+  --     { "<localleader>c", function() require("notify").dismiss({ silent=true, pending=true }) end, desc = "Clear notification" },
+  --   },
+  -- },
 
   {
     "folke/noice.nvim",

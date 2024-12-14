@@ -14,14 +14,14 @@ return {
           desc = "Terminal toggle",
           mode = { "n", "v", "t" },
         },
-        {
-          "<c-t>",
-          function()
-            toggleterm.toggle(1, 10, dir, "horizontal", "helloworld")
-          end,
-          desc = "Terminal toggle",
-          mode = { "n", "v", "t", "i" },
-        },
+        -- {
+        --   "<c-t>",
+        --   function()
+        --     toggleterm.toggle(1, 10, dir, "horizontal", "helloworld")
+        --   end,
+        --   desc = "Terminal toggle",
+        --   mode = { "n", "v", "t", "i" },
+        -- },
       }
     end,
     opts = {
