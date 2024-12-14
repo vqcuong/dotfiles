@@ -244,6 +244,14 @@ return {
     end,
   },
 
+  -- {
+  --   "hedyhli/outline.nvim",
+  --   keys = { { "<localleader><localleader>", "<cmd>Outline<CR>", desc = "Toggle Outline" } },
+  --   config = function()
+  --     require("outline").setup({})
+  --   end,
+  -- },
+
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
