@@ -17,14 +17,6 @@ if true then return {} end
 --   { "neoclide/coc.nvim", build = "npm ci" },
 --   { "airblade/vim-gitgutter", opts = {} },
 --   {
---     "nvimdev/indentmini.nvim",
---     config = function()
---       require("indentmini").setup()
---       vim.cmd.highlight("IndentLine guifg=#002c38")
---       vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
---     end,
---   },
---   {
 --     "LukasPietzschmann/telescope-tabs",
 --     opts = {},
 --     keys = {
@@ -335,5 +327,82 @@ if true then return {} end
 --       { "<c-down>", function() return vim.fn['codeium#CycleCompletions'](-1) end, expr = true, silent = true, mode = "i" },
 --       { "<c-x>", function() return vim.fn['codeium#Clear']() end, expr = true, silent = true, mode = "i" },
 --     },
+--   },
+--   {
+--     "lukas-reineke/indent-blankline.nvim",
+--     main = "ibl",
+--     opts = function() end,
+--     config = function()
+--       local opts = {
+--         indent = {
+--           char = "▏",
+--           tab_char = "▏",
+--           -- char = "│",
+--           -- tab_char = "│",
+--         },
+--         scope = {
+--           enabled = false,
+--         },
+--         exclude = {
+--           filetypes = {
+--             "alpha",
+--             "dashboard",
+--             "fzf",
+--             "help",
+--             "lazy",
+--             "lazyterm",
+--             "mason",
+--             "neo-tree",
+--             "notify",
+--             "NvimTree",
+--             "snacks_dashboard",
+--             "snacks_notif",
+--             "snacks_terminal",
+--             "snacks_win",
+--             "toggleterm",
+--             "Trouble",
+--             "trouble",
+--           },
+--         },
+--       }
+--       require("ibl").setup(opts)
+--     end,
+--   },
+--
+--   {
+--     "echasnovski/mini.indentscope",
+--     version = "*",
+--     event = { "LazyFile" },
+--     opts = {
+--       symbol = "▏",
+--       -- symbol = "│",
+--       options = { try_as_border = true },
+--     },
+--     init = function()
+--       vim.api.nvim_create_autocmd("FileType", {
+--         pattern = {
+--           "alpha",
+--           "dashboard",
+--           "fzf",
+--           "help",
+--           "lazy",
+--           "lazyterm",
+--           "mason",
+--           "neo-tree",
+--           "notify",
+--           "NvimTree",
+--           "snacks_dashboard",
+--           "snacks_notif",
+--           "snacks_terminal",
+--           "snacks_win",
+--           "toggleterm",
+--           "Trouble",
+--           "trouble",
+--         },
+--         callback = function()
+--           vim.b.miniindentscope_disable = true
+--         end,
+--       })
+--     end,
 --   },
 -- }

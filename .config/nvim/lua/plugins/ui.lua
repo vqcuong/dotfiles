@@ -199,84 +199,6 @@ return {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = function() end,
-    config = function()
-      local opts = {
-        indent = {
-          char = "▏",
-          tab_char = "▏",
-          -- char = "│",
-          -- tab_char = "│",
-        },
-        scope = {
-          enabled = false,
-        },
-        exclude = {
-          filetypes = {
-            "alpha",
-            "dashboard",
-            "fzf",
-            "help",
-            "lazy",
-            "lazyterm",
-            "mason",
-            "neo-tree",
-            "notify",
-            "NvimTree",
-            "snacks_dashboard",
-            "snacks_notif",
-            "snacks_terminal",
-            "snacks_win",
-            "toggleterm",
-            "Trouble",
-            "trouble",
-          },
-        },
-      }
-      require("ibl").setup(opts)
-    end,
-  },
-
-  {
-    "echasnovski/mini.indentscope",
-    version = "*",
-    event = { "LazyFile" },
-    opts = {
-      symbol = "▏",
-      -- symbol = "│",
-      options = { try_as_border = true },
-    },
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = {
-          "alpha",
-          "dashboard",
-          "fzf",
-          "help",
-          "lazy",
-          "lazyterm",
-          "mason",
-          "neo-tree",
-          "notify",
-          "NvimTree",
-          "snacks_dashboard",
-          "snacks_notif",
-          "snacks_terminal",
-          "snacks_win",
-          "toggleterm",
-          "Trouble",
-          "trouble",
-        },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
-  },
-
-  {
     "HiPhish/rainbow-delimiters.nvim",
     config = function()
       local rd = require("rainbow-delimiters")
@@ -341,9 +263,19 @@ return {
   },
 
   {
+    "nvimdev/indentmini.nvim",
+    config = function()
+      require("indentmini").setup()
+      vim.cmd.highlight("IndentLine guifg=#002c38")
+      vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
+    end,
+  },
+
+  {
     "snacks.nvim",
     opts = {
       notifier = { enabled = false },
+      indent = { enabled = false },
     },
     keys = function()
       return {}
