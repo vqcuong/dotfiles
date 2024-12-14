@@ -2,6 +2,7 @@
   "extras": [
     "lazyvim.plugins.extras.ai.codeium",
     "lazyvim.plugins.extras.coding.luasnip",
+    "lazyvim.plugins.extras.coding.nvim-cmp",
     "lazyvim.plugins.extras.formatting.black",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.docker",
@@ -23,3 +24,4 @@
   },
   "version": 7
 }
+

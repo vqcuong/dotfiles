@@ -295,10 +295,10 @@ return {
           neoscroll.ctrl_f({ duration = 450 })
         end,
         ["<C-y>"] = function()
-          neoscroll.scroll(-6, { move_cursor = false, duration = 3 })
+          -- neoscroll.scroll(-6, { move_cursor = false, duration = 250 })
         end,
         ["<C-u>"] = function()
-          neoscroll.scroll(6, { move_cursor = false, duration = 3 })
+          -- neoscroll.scroll(6, { move_cursor = false, duration = 250 })
         end,
       }
       local modes = { "n", "v", "x" }

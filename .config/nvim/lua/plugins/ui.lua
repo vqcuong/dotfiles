@@ -274,8 +274,14 @@ return {
   {
     "snacks.nvim",
     opts = {
-      notifier = { enabled = false },
       indent = { enabled = false },
+      input = { enabled = false },
+      notifier = { enabled = false },
+      words = { enabled = false },
+      bigfile = {
+        enabled = true,
+        notify = false,
+      },
     },
     keys = function()
       return {}
