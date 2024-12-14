@@ -17,22 +17,6 @@ if true then return {} end
 --   { "neoclide/coc.nvim", build = "npm ci" },
 --   { "airblade/vim-gitgutter", opts = {} },
 --   {
---     "LukasPietzschmann/telescope-tabs",
---     opts = {},
---     keys = {
---       {
---         "<localleader><tab>",
---         "<cmd>lua require('telescope-tabs').list_tabs()<cr>",
---         desc = "List tabs",
---       },
---       {
---         "<leader>s<tab>",
---         "<cmd>lua require('telescope-tabs').list_tabs()<cr>",
---         desc = "Tabs",
---       },
---     },
---   },
---   {
 --     -- too lag
 --     "folke/zen-mode.nvim",
 --     opts = {
@@ -185,6 +169,17 @@ if true then return {} end
 --     end,
 --   },
 --   {
+--     -- only have some usable commands
+--     "ray-x/go.nvim",
+--     dependencies = { "ray-x/guihua.lua" },
+--     config = function()
+--       require("go").setup()
+--     end,
+--     event = { "CmdlineEnter" },
+--     ft = { "go", "gomod" },
+--     build = ':lua require("go.install").update_all_sync()',
+--   },
+--   {
 --     "aserowy/tmux.nvim",
 --     opts = {
 --       copy_sync = {
@@ -215,55 +210,6 @@ if true then return {} end
 --       { "<m-j>", "<cmd>lua require('tmux').resize_top()<cr>", desc = "Resize up", mode = { "n", "t" } },
 --       { "<m-k>", "<cmd>lua require('tmux').resize_bottom()<cr>", desc = "Resize down", mode = { "n", "t" } },
 --     },
---   },
---   {
---     "FabianWirth/search.nvim",
---     dependencies = { "nvim-telescope/telescope.nvim" },
---     keys = {
---       {
---         "<localleader><space>",
---         "<cmd>lua require('search').open()<cr>",
---         desc = "Telescope multiple space",
---         mode = { "n", "v" },
---       },
---     },
---     config = function()
---       local builtin = require("telescope.builtin")
---       require("search").setup({
---         mappings = { -- optional: configure the mappings for switching tabs (will be set in normal and insert mode(!))
---           next = "<Tab>",
---           prev = "<S-Tab>",
---         },
---         append_tabs = { -- append_tabs will add the provided tabs to the default ones
---           { "Buffers", builtin.buffers },
---           { "Greps", builtin.live_grep },
---           { "Diagnostics", builtin.diagnostics },
---           { "References", builtin.lsp_references },
---           -- stylua: ignore
---           { "Commits", builtin.git_commits, available = function() return vim.fn.isdirectory(".git") == 1 end },
---           { "Helps", builtin.help_tags },
---           { "Highlights", builtin.highlights },
---           { "Colorscheme", builtin.colorscheme },
---         },
---         tabs = {
---           { "Files", builtin.find_files },
---           -- stylua: ignore
---           { "GitFiles", builtin.git_files, function() return vim.fn.isdirectory(".git") == 1 end },
---         },
---       })
---     end,
---   },
---
---   {
---     -- only have some usable commands
---     "ray-x/go.nvim",
---     dependencies = { "ray-x/guihua.lua" },
---     config = function()
---       require("go").setup()
---     end,
---     event = { "CmdlineEnter" },
---     ft = { "go", "gomod" },
---     build = ':lua require("go.install").update_all_sync()',
 --   },
 --   {
 --     "elijahdanko/ttymux.nvim",
@@ -368,7 +314,6 @@ if true then return {} end
 --       require("ibl").setup(opts)
 --     end,
 --   },
---
 --   {
 --     "echasnovski/mini.indentscope",
 --     version = "*",
