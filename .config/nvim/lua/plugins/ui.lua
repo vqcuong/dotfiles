@@ -276,15 +276,43 @@ return {
     opts = {
       indent = { enabled = false },
       input = { enabled = false },
-      notifier = { enabled = false },
-      words = { enabled = false },
+      notifier = { enabled = true },
+      words = { enabled = true },
+      scroll = { enabled = false },
+      statuscolumn = {
+        enabled = true,
+        left = { "fold", "sign" },
+        right = { "git" },
+        folds = {
+          open = true,
+          git_hl = true,
+        },
+        git = {
+          patterns = { "GitSign", "MiniDiffSign" },
+        },
+        refresh = 300,
+      },
       bigfile = {
         enabled = true,
         notify = false,
       },
+      toggle = {
+        enabled = true,
+        notify = false,
+        color = {
+          enabled = "blue",
+          disabled = "yellow",
+        },
+      },
+      zen = {
+        win = { style = "zen" },
+      },
     },
     keys = function()
-      return {}
+      return {
+        -- stylua: ignore
+        { "<localleader>z", function() Snacks.zen.zen() end, desc = "Zen mode" },
+      }
     end,
   },
 

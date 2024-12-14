@@ -213,7 +213,7 @@ return {
     config = true,
     keys = {
       {
-        "<localleader>z",
+        "<localleader>M",
         function()
           require("maximize").toggle()
         end,
@@ -250,7 +250,7 @@ return {
           },
         },
       })
-      vim.api.nvim_set_keymap("n", "<localleader>Z", "<cmd>WindowsMaximize<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<localleader>m", "<cmd>WindowsMaximize<cr>", { noremap = true, silent = true })
     end,
   },
 
@@ -282,17 +282,17 @@ return {
       })
       local keymap = {
         ["<C-e>"] = function()
-          neoscroll.ctrl_u({ duration = 220 })
+          neoscroll.ctrl_u({ duration = 240 })
         end,
         ["<C-d>"] = function()
-          neoscroll.ctrl_d({ duration = 220 })
+          neoscroll.ctrl_d({ duration = 240 })
         end,
         -- Use the "circular" easing function
         ["<C-b>"] = function()
-          neoscroll.ctrl_b({ duration = 450 })
+          neoscroll.ctrl_b({ duration = 400 })
         end,
         ["<C-f>"] = function()
-          neoscroll.ctrl_f({ duration = 450 })
+          neoscroll.ctrl_f({ duration = 400 })
         end,
         ["<C-y>"] = function()
           -- neoscroll.scroll(-6, { move_cursor = false, duration = 250 })

@@ -32,3 +32,5 @@ vim.filetype.add({
     tf = "terraform",
   },
 })
+
+vim.opt.smoothscroll = true

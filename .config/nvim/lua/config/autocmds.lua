@@ -151,3 +151,19 @@ vim.api.nvim_create_autocmd("User", {
     end)
   end,
 })
+
+-- -- display readme file whenever start project
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   group = augroup("readme"),
+--   pattern = "*",
+--   callback = function()
+--     local readme_files = { "README.md", "README.txt", "README.rst", "README" }
+--     for _, file in ipairs(readme_files) do
+--       local file_path = vim.fn.getcwd() .. "/" .. file
+--       if vim.fn.filereadable(file_path) == 1 then
+--         vim.cmd("edit " .. file_path)
+--         break
+--       end
+--     end
+--   end,
+-- })
