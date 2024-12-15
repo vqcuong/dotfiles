@@ -209,7 +209,7 @@ _setup_nvm
 
 # User configuration
 
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 
 # source $HOMEBREW_CELLAR/azure-cli/*/etc/bash_completion.d/az
