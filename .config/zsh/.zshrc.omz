@@ -78,7 +78,7 @@ function _setup_pyenv() {
 
 
 function _setup_nvm() {
-  export NVM_DIR="$HOME/.app/.nvm"
+  export NVM_DIR="$HOME/.apps/nvm"
   # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
   [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
