@@ -11,7 +11,7 @@ module.exports = {
     cursorShape: "UNDERLINE",
     cursorBlink: true,
     foregroundColor: "#00ff55",
-    backgroundColor: "rgba(0,0,0,0.6)",
+    backgroundColor: "rgba(0,0,0,0.8)",
     selectionColor: "#7d8cb3",
     borderColor: "rgba(0,0,0,0.0)",
     // css: `.splitpane_divider { background-color: cyan !important; }`,
