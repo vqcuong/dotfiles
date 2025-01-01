@@ -1,9 +1,48 @@
+[general]
 import = [
     "~/.config/alacritty/themes/themes/solarized_osaka.toml"
 ]
 
 live_config_reload = true
 working_directory = "None"
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+dynamic_padding = true
+decorations = "Buttonless"
+opacity = 0.875
+blur = false
+startup_mode = "Maximized"
+title = "hello world"
+dynamic_title = true
+decorations_theme_variant = "Dark"
+resize_increments = false
+option_as_alt = "OnlyLeft"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+size = 19.4
+
+[font.bold]
+family = "Monofur Nerd Font Propo"
+style = "Bold"
+
+[font.bold_italic]
+family = "Monofur Nerd Font Propo"
+style = "Bold Italic"
+
+[font.italic]
+family = "Monofur Nerd Font Propo"
+style = "Italic"
+
+[font.normal]
+family = "Monofur Nerd Font Propo"
+style = "Regular"
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -65,6 +104,10 @@ foreground = "#9cff59"
 # background = "CellForeground"
 # text = "CellBackground"
 
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
 [cursor]
 blink_interval = 750
 blink_timeout = 5
@@ -76,30 +119,30 @@ vi_mode_style = "None"
 blinking = "On"
 shape = "Block"
 
-[env]
-TERM = "xterm-256color"
+[terminal.shell]
+program = "/bin/zsh"
+# program = "/usr/local/bin/fish"
+args = ["--login", "-c", "tmux attach || tmux new-session -s cuongok -n hiworld"]
 
-[font]
-size = 19.4
+[mouse]
+hide_when_typing = false
 
-[font.bold]
-family = "Monofur Nerd Font Propo"
-style = "Bold"
+[[mouse.bindings]]
+action = "ExpandSelection"
+mouse = "Right"
 
-[font.bold_italic]
-family = "Monofur Nerd Font Propo"
-style = "Bold Italic"
+[[mouse.bindings]]
+action = "PasteSelection"
+mods = "Control"
+mouse = "Right"
 
-[font.italic]
-family = "Monofur Nerd Font Propo"
-style = "Italic"
-
-[font.normal]
-family = "Monofur Nerd Font Propo"
-style = "Regular"
+[[mouse.bindings]]
+action = "PasteSelection"
+mode = "~Vi"
+mouse = "Middle"
 
 # tmux bindings: disable all because of implementation directly in tmux
-# disable switch pane keys  because it works when integrating tmux with vim
+# disable switch pane keys because it works when integrating tmux with vim
 
 # [[keyboard.bindings]] # switch to left pane
 # chars = "\u0001h"
@@ -704,42 +747,5 @@ key = "B"
 mode = "~Search"
 mods = "Command"
 
-[mouse]
-hide_when_typing = false
 
-[[mouse.bindings]]
-action = "ExpandSelection"
-mouse = "Right"
 
-[[mouse.bindings]]
-action = "PasteSelection"
-mods = "Control"
-mouse = "Right"
-
-[[mouse.bindings]]
-action = "PasteSelection"
-mode = "~Vi"
-mouse = "Middle"
-
-[scrolling]
-history = 10000
-multiplier = 3
-
-[selection]
-save_to_clipboard = true
-semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
-
-[shell]
-program = "/bin/zsh"
-# program = "/usr/local/bin/fish"
-args = ["--login", "-c", "tmux attach || tmux new-session -s cuongok -n hiworld"]
-
-[window]
-decorations = "buttonless"
-dynamic_padding = true
-dynamic_title = true
-opacity = 0.875
-option_as_alt = "OnlyLeft"
-resize_increments = false
-startup_mode = "Maximized"
-title = "Alacritty"
