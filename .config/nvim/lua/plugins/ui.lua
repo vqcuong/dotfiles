@@ -1,6 +1,13 @@
 return {
 
   {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = { -- set to setup table
+    },
+  },
+
+  {
     "folke/twilight.nvim",
     opts = {
       dimming = {
