@@ -99,7 +99,7 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
 end
 
 # user configuration
-thefuck --alias | source
+#thefuck --alias | source
 zoxide init fish | source
 #orbctl completion fish | source
 
