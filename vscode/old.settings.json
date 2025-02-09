@@ -1,70 +1,4 @@
 {
-  "accessibility.signals.terminalBell": {
-    "sound": "on"
-  },
-  "animations.Enabled": true,
-  "better-comments.highlightPlainText": true,
-  "better-comments.multilineComments": true,
-  "better-comments.tags": [
-    {
-      "tag": "!",
-      "color": "#FF2D00",
-      "strikethrough": false,
-      "underline": false,
-      "backgroundColor": "transparent",
-      "bold": false,
-      "italic": false
-    },
-    {
-      "tag": "?",
-      "color": "#3498DB",
-      "strikethrough": false,
-      "underline": false,
-      "backgroundColor": "transparent",
-      "bold": false,
-      "italic": false
-    },
-    {
-      "tag": "//",
-      "color": "#474747",
-      "strikethrough": true,
-      "underline": false,
-      "backgroundColor": "transparent",
-      "bold": false,
-      "italic": false
-    },
-    {
-      "tag": "todo",
-      "color": "#FF8C00",
-      "strikethrough": false,
-      "underline": false,
-      "backgroundColor": "transparent",
-      "bold": false,
-      "italic": false
-    },
-    {
-      "tag": "*",
-      "color": "#98C379",
-      "strikethrough": false,
-      "underline": false,
-      "backgroundColor": "transparent",
-      "bold": false,
-      "italic": false
-    }
-  ],
-  "explorer.confirmDelete": false,
-  "explorer.autoReveal": true,
-  "explorer.excludeGitIgnore": true,
-  "explorer.compactFolders": true,
-  "explorer.confirmDragAndDrop": false,
-  "errorLens.statusBarColorsEnabled": true,
-  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
-  "files.associations": {
-    ".env*": "dotenv",
-    "*.yml": "dockercompose"
-  },
-  "update.showReleaseNotes": false,
-  "update.mode": "manual",
   "editor.acceptSuggestionOnCommitCharacter": true,
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.accessibilitySupport": "off",
@@ -768,13 +702,9 @@
   "workbench.list.smoothScrolling": true,
   "workbench.list.openMode": "singleClick",
   "workbench.list.defaultFindMatchType": "contiguous",
-  "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.tree.expandMode": "singleClick",
-  "window.commandCenter": true,
-  "window.dialogStyle": "custom",
-  "window.zoomLevel": 1.4,
   "terminal.integrated.defaultProfile.osx": "fish",
   "terminal.integrated.inheritEnv": true,
   "terminal.integrated.copyOnSelection": true,
@@ -798,9 +728,81 @@
     "CW_NEW_SESSION": "1",
     "Q_NEW_SESSION": "1"
   },
+  "window.commandCenter": true,
+  "window.dialogStyle": "custom",
+  "window.nativeFullScreen": false,
+  "window.titleBarStyle": "native",
+  "window.customTitleBarVisibility": "never",
+  "window.zoomLevel": 1.5,
+  "better-comments.highlightPlainText": true,
+  "better-comments.multilineComments": true,
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+  "explorer.confirmDelete": false,
+  "explorer.autoReveal": true,
+  "explorer.excludeGitIgnore": true,
+  "explorer.compactFolders": true,
+  "explorer.confirmDragAndDrop": false,
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.enabledDiagnosticLevels": ["error", "warning", "info", "hint"],
+  "files.associations": {
+    ".env*": "dotenv",
+    "*.yml": "dockercompose"
+  },
+  "update.showReleaseNotes": false,
+  "update.mode": "manual",
+  "dart.flutterShowEmulators": "always",
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
+  "go.inferGopath": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
   "[dockercompose]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -812,25 +814,69 @@
     },
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "[sql]": {
-    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
-  },
-  "go.inferGopath": true,
-  "go.lintTool": "golangci-lint",
-  "go.lintFlags": ["--fast"],
-  "terraform.languageServer.enable": false,
-  "autopep8.args": ["--indent-size=4", "--max-line-length=120"],
   "python.testing.autoTestDiscoverOnSaveEnabled": false,
   // "python.terminal.activateEnvironment": true,
   "[python]": {
     "editor.formatOnType": true,
     "editor.defaultFormatter": "ms-python.autopep8"
   },
+  "autopep8.args": ["--indent-size=4", "--max-line-length=120"],
   "redhat.telemetry.enabled": true,
+  "dart.debugExternalPackageLibraries": true,
+  "dart.debugSdkLibraries": true,
   "autoHide.autoHideSideBar": false,
   "autoHide.autoHideAuxiliaryBar": false,
   "autoHide.autoHidePanel": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  "animations.Install-Method": "Apc Customize UI++",
+  // "apc.menubar.compact": true,
+  "apc.activityBar": {
+    "size": 40,
+    "itemSize": 45,
+    "itemMargin": 0
+  },
+  "apc.header": {
+    "height": 28,
+    "fontSize": 13
+  },
+  "apc.sidebar.titlebar": {
+    "fontSize": 13,
+    "height": 28
+  },
+  "apc.font.family": "Monofur Nerd Font Propo",
+  "apc.monospace.font.family": "Monofur Nerd Font Propo",
+  // set frame to false to hide title bar and trafic light buttons on macos
+  // https://github.com/microsoft/vscode/issues/17532
+  "apc.electron": {
+    "transparent": true,
+    "backgroundColor": "#00000000",
+    "opacity": 0.85, //disable it because yabai window transparency already replaced
+    "frame": true,
+    "vibrancy": "hud",
+    "titleBarStyle": "hiddenInset",
+    "trafficLightPosition": {
+      "x": -20,
+      "y": -20
+    }
+  },
+  // this will effect the appearance of the tool bar in Sidebars and Panel
+  "apc.stylesheet": {
+    // ".title-label": "display: none !important",
+    ".composite.title": "display: block !important",
+    ".monaco-workbench .part.sidebar .title-actions .actions-container": "justify-content: space-evenly !important"
+  },
+  "apc.imports": [
+    "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
+  ],
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "animations.Enabled": true,
+  "accessibility.signals.terminalBell": {
+    "sound": "on"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+  },
+  "terraform.languageServer.enable": false,
+  "workbench.sideBar.location": "right"
 }
