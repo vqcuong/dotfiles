@@ -1,19 +1,6 @@
 return {
   {
-    "folke/todo-comments.nvim",
-    version = "*",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      highlight = {
-        pattern = [[.*<(KEYWORDS)\s*]],
-      },
-      search = {
-        pattern = [[.*<(KEYWORDS)\s*]],
-      },
-    },
-  },
-
-  {
+    -- a terminal for nvim
     "akinsho/toggleterm.nvim",
     version = "*",
     keys = function()
@@ -44,6 +31,7 @@ return {
   },
 
   {
+    -- markdown preview on browser
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
@@ -93,6 +81,7 @@ return {
   },
 
   -- {
+  --   -- an extensible UI for notifications and LSP progress messages
   --   "j-hui/fidget.nvim",
   --   event = "LspAttach",
   --   tag = "legacy",
@@ -109,6 +98,7 @@ return {
   -- },
 
   {
+    -- adding surround pairs for current word
     "kylechui/nvim-surround",
     version = "*",
     event = "VeryLazy",
@@ -116,6 +106,7 @@ return {
   },
 
   {
+    -- customizable windown picker writing by me
     "vqcuong/window-picker.nvim",
     name = "window-picker",
     event = "VeryLazy",
@@ -223,11 +214,13 @@ return {
   },
 
   {
+    -- rick cursor movement animation
     "sphamba/smear-cursor.nvim",
     opts = {},
   },
 
   {
+    -- maximize a window
     "declancm/maximize.nvim",
     config = true,
     keys = {
@@ -243,6 +236,7 @@ return {
   },
 
   {
+    -- automatically expand active window and more ...
     "anuvyklack/windows.nvim",
     dependencies = {
       "anuvyklack/middleclass",
@@ -274,6 +268,7 @@ return {
   },
 
   {
+    -- recognize the nearest pair with the current line
     "utilyre/sentiment.nvim",
     version = "*",
     event = "VeryLazy",
@@ -285,6 +280,7 @@ return {
   },
 
   {
+    -- for scrolling smoothly
     "karb94/neoscroll.nvim",
     config = function()
       local neoscroll = require("neoscroll")
@@ -328,6 +324,7 @@ return {
   },
 
   {
+    -- beautiful folding code
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     lazy = false,

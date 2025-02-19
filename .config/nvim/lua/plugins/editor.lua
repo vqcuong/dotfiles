@@ -3,6 +3,7 @@ local lazyvimConfig = require("lazyvim.config")
 
 return {
   {
+    -- an explorer extension
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
@@ -173,6 +174,7 @@ return {
   },
 
   {
+    -- quickly jump to any place in the file
     "folke/flash.nvim",
     keys = function()
       -- stylua: ignore
@@ -184,6 +186,7 @@ return {
   },
 
   {
+    -- quickly jump to any place in the file
     "phaazon/hop.nvim",
     event = "VeryLazy",
     -- stylua: ignore
@@ -200,6 +203,7 @@ return {
   },
 
   {
+    -- diagnose the issues
     "folke/trouble.nvim",
     opts = { use_diagnostic_signs = true },
     keys = {
@@ -209,20 +213,26 @@ return {
   },
 
   {
+    -- highlight the comment and quickly jump to it by pre-configured keywords
     "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
     -- stylua: ignore
     keys = {
       { "<localleader>t", "<cmd>Trouble todo toggle<cr>", desc = "Todo (Trouble)" },
       { "<localleader>T", "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
     },
     opts = {
+      highlight = {
+        pattern = [[.*<(KEYWORDS)\s*]],
+      },
       search = {
-        pattern = [[#( )*(KEYWORDS)\b]],
+        pattern = [[.*<(KEYWORDS)\s*]],
       },
     },
   },
 
   {
+    -- highlight the same words in a file
     "sontungexpt/stcursorword",
     event = "VeryLazy",
     opts = {
@@ -235,6 +245,7 @@ return {
   },
 
   {
+    -- quickly search text, tab, ... in the current buffer or the whole project
     "ibhagwan/fzf-lua",
     init = function()
       vim.ui.select = nil
@@ -314,6 +325,7 @@ return {
   },
 
   {
+    -- configurable auto-suggestion and auto-completion
     "hrsh7th/nvim-cmp",
     lazy = false,
     dependencies = {

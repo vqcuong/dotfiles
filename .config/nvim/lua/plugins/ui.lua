@@ -8,6 +8,7 @@ return {
   },
 
   {
+    -- toggle colorizing text focusing to the cursor
     "folke/twilight.nvim",
     opts = {
       dimming = {
@@ -19,6 +20,7 @@ return {
   },
 
   {
+    -- integrate with tmux direction keys
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup({
@@ -53,6 +55,7 @@ return {
   -- },
 
   {
+    -- a configurable decorator for tab bar
     "nanozuki/tabby.nvim",
     config = function()
       require("tabby.tabline").set(function(line)
@@ -232,6 +235,7 @@ return {
   },
 
   {
+    -- automatically dim unactive windows
     "levouh/tint.nvim",
     config = function()
       local tint = require("tint")
@@ -259,37 +263,22 @@ return {
   --   end,
   -- },
 
-  {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    config = true,
-    opts = {
-      input = {
-        enabled = function()
-          return vim.bo.filetype == "NvimTree"
-        end,
-      },
-      select = {
-        enabled = function()
-          return vim.bo.filetype == "NvimTree"
-        end,
-      },
-    },
-  },
+  -- {
+  --   "nvimdev/indentmini.nvim",
+  --   init = function()
+  --     vim.cmd.highlight("IndentLine guifg=#002c38")
+  --     vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
+  --   end,
+  --   config = function()
+  --     require("indentmini").setup()
+  --   end,
+  -- },
 
   {
-    "nvimdev/indentmini.nvim",
-    config = function()
-      require("indentmini").setup()
-      vim.cmd.highlight("IndentLine guifg=#002c38")
-      vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
-    end,
-  },
-
-  {
+    -- rich ui features for nvim: indent, input, notifier, scroll, ...
     "snacks.nvim",
     opts = {
-      indent = { enabled = false },
+      indent = { enabled = true },
       input = { enabled = false },
       notifier = { enabled = true },
       words = { enabled = true },
@@ -353,6 +342,7 @@ return {
   -- },
 
   {
+    -- gui decorator for some popup and input in nvim
     "folke/noice.nvim",
     opts = {
       cmdline = {

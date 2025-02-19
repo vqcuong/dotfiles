@@ -2,6 +2,7 @@
 
 return {
   {
+    -- toggle rewriting a code scope in a single line
     "Wansmer/treesj",
     keys = {
       {
@@ -24,6 +25,7 @@ return {
   },
 
   {
+    -- a complete code navigation and outline
     "nvimdev/lspsaga.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -104,6 +106,7 @@ return {
   },
 
   {
+    -- a decorating code symbols
     "onsails/lspkind.nvim",
     config = function()
       require("lspkind").init({
@@ -141,6 +144,7 @@ return {
   },
 
   {
+    -- snippet engine
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     build = "make install_jsregexp",
