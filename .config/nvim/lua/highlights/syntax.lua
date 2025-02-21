@@ -18,3 +18,4 @@ api.nvim_set_hl(0, "Pmenu", {})
 api.nvim_set_hl(0, "PmenuSbar", {})
 
 api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#57b6d9" })
+-- api.nvim_set_hl(0, "SnacksDim", { fg = "#4f5656" })

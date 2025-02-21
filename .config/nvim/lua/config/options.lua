@@ -7,6 +7,7 @@ vim.opt.guicursor = "i-ci:block-blinkwait300-blinkon200-blinkoff150"
 
 -- disable deprecated ts-context-commentstring module
 vim.g.skip_ts_context_commentstring_module = true
+-- vim.g.snacks_dim = false
 
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"

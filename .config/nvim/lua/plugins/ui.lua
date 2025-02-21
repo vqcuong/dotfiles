@@ -263,25 +263,25 @@ return {
   --   end,
   -- },
 
-  -- {
-  --   "nvimdev/indentmini.nvim",
-  --   init = function()
-  --     vim.cmd.highlight("IndentLine guifg=#002c38")
-  --     vim.cmd.highlight("IndentLineCurrent guifg=#57b6d9")
-  --   end,
-  --   config = function()
-  --     require("indentmini").setup()
-  --   end,
-  -- },
-
   {
     -- rich ui features for nvim: indent, input, notifier, scroll, ...
     "snacks.nvim",
     opts = {
+      bigfile = {
+        enabled = true,
+        notify = false,
+      },
+      explorer = { enabled = false },
       indent = { enabled = true },
-      input = { enabled = false },
-      notifier = { enabled = true },
-      words = { enabled = true },
+      input = { enabled = true },
+      notifier = {
+        timeout = 1000,
+        enabled = true,
+        width = { min = 20, max = 0.3 },
+        height = { min = 1, max = 0.4 },
+        refresh = 200,
+      },
+      quickfile = {},
       scroll = { enabled = false },
       statuscolumn = {
         enabled = true,
@@ -296,50 +296,40 @@ return {
         },
         refresh = 300,
       },
-      bigfile = {
-        enabled = true,
-        notify = false,
-      },
-      toggle = {
-        enabled = true,
-        notify = false,
-        color = {
-          enabled = "blue",
-          disabled = "yellow",
+      words = { enabled = true },
+      styles = {
+        input = {
+          relative = "cursor",
+          row = 1,
+          col = 4,
+          width = 25,
+          b = {
+            completion = false,
+          },
         },
-      },
-      zen = {
-        win = { style = "zen" },
       },
     },
     keys = function()
+      -- stylua: ignore
       return {
-        -- stylua: ignore
-        { "<localleader>z", function() Snacks.zen.zen() end, desc = "Zen mode" },
+        { "<localleader>Z", function() Snacks.zen.zen() end, desc = "Snacks: zen mode" },
+        { "<localleader>z", function() Snacks.zen.zoom() end, desc = "Snacks: zen mode" },
+        { "<localleader>g", function() Snacks.gitbrowse() end, desc = "Snacks: open git browse" },
+
+        -- the explorer is hard to use
+        -- { "<localleader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+        -- the dim feature in snacks seems to be unstable when using with keybindings
+        -- { "<localleader>a", function()
+        --   vim.g.snacks_dim = not vim.g.snacks_dim
+        --   if vim.g.snacks_dim == true then
+        --     Snacks.dim.enable()
+        --   else
+        --     Snacks.dim.disable()
+        --   end
+        -- end, desc = "Snack Dim Toggle" },
       }
     end,
   },
-
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   opts = {
-  --     background_colour = "#000000",
-  --     timeout = 2000,
-  --     max_height = function()
-  --       return math.floor(vim.o.lines * 0.8)
-  --     end,
-  --     max_width = function()
-  --       return math.floor(vim.o.columns * 0.8)
-  --     end,
-  --     on_open = function(win)
-  --       vim.api.nvim_win_set_config(win, { zindex = 100 })
-  --     end,
-  --   },
-  --   keys = {
-  --     -- stylua: ignore
-  --     { "<localleader>c", function() require("notify").dismiss({ silent=true, pending=true }) end, desc = "Clear notification" },
-  --   },
-  -- },
 
   {
     -- gui decorator for some popup and input in nvim

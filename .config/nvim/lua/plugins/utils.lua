@@ -220,22 +220,6 @@ return {
   },
 
   {
-    -- maximize a window
-    "declancm/maximize.nvim",
-    config = true,
-    keys = {
-      {
-        "<localleader>M",
-        function()
-          require("maximize").toggle()
-        end,
-        desc = "Maximize window",
-        mode = { "n", "v" },
-      },
-    },
-  },
-
-  {
     -- automatically expand active window and more ...
     "anuvyklack/windows.nvim",
     dependencies = {

@@ -306,4 +306,23 @@ return {
   --     })
   --   end,
   -- },
+  --
+  -- {
+  --   -- read only repository
+  --   "stevearc/dressing.nvim",
+  --   event = "VeryLazy",
+  --   config = true,
+  --   opts = {
+  --     input = {
+  --       enabled = function()
+  --         return vim.bo.filetype == "NvimTree"
+  --       end,
+  --     },
+  --     select = {
+  --       enabled = function()
+  --         return vim.bo.filetype == "NvimTree"
+  --       end,
+  --     },
+  --   },
+  -- },
 }

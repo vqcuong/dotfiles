@@ -17,7 +17,6 @@ if true then return {} end
 --   { "neoclide/coc.nvim", build = "npm ci" },
 --   { "airblade/vim-gitgutter", opts = {} },
 --   {
---   {
 --     "numToStr/FTerm.nvim",
 --     -- stylua: ignore
 --     keys = {
@@ -329,5 +328,51 @@ if true then return {} end
 --         end,
 --       })
 --     end,
+--   },
+--   {
+--     "rcarriga/nvim-notify",
+--     opts = {
+--       background_colour = "#000000",
+--       timeout = 2000,
+--       max_height = function()
+--         return math.floor(vim.o.lines * 0.8)
+--       end,
+--       max_width = function()
+--         return math.floor(vim.o.columns * 0.8)
+--       end,
+--       on_open = function(win)
+--         vim.api.nvim_win_set_config(win, { zindex = 100 })
+--       end,
+--     },
+--     keys = {
+--       -- stylua: ignore
+--       { "<localleader>c", function() require("notify").dismiss({ silent=true, pending=true }) end, desc = "Clear notification" },
+--     },
+--   },
+--   {
+--     -- toggle colorizing text focusing to the cursor
+--     "folke/twilight.nvim",
+--     opts = {
+--       dimming = {
+--         alpha = 0.5,
+--       },
+--       context = 20,
+--     },
+--     keys = { { "<leader>t", "<cmd>Twilight<cr>", desc = "Twilight Mode Toggle" } },
+--   },
+--   {
+--     -- maximize a window, deprecated because using builtin snacks zen.zoom
+--     "declancm/maximize.nvim",
+--     config = true,
+--     keys = {
+--       {
+--         "<localleader>M",
+--         function()
+--           require("maximize").toggle()
+--         end,
+--         desc = "Maximize window",
+--         mode = { "n", "v" },
+--       },
+--     },
 --   },
 -- }
