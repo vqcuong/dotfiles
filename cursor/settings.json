@@ -48,7 +48,7 @@
     "height": 28
   },
   "apc.imports": [
-    "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
+    "file://${userHome}/.cursor/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
   ],
   "apc.monospace.font.family": "Monofur Nerd Font Propo",
   "apc.sidebar.titlebar": {
