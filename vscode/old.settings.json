@@ -865,7 +865,7 @@
     ".monaco-workbench .part.sidebar .title-actions .actions-container": "justify-content: space-evenly !important"
   },
   "apc.imports": [
-    "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
+    "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
   ],
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
