@@ -111,7 +111,7 @@ plugins=(
   auto-ls
   autoenv
   # aws
-  # conda-zsh-completion
+  conda-zsh-completion
   copybuffer
   docker-compose
   forgit
@@ -166,41 +166,7 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' popup-min-size 60 15
 zstyle ':fzf-tab:*' popup-pad 0 0
 
-# zsh-autocomplete
-# zstyle ':fzf-tab:autocomplete:*complete*:*' insert-unambiguous yes
-# zstyle ':autocomplete:*history*:*' insert-unambiguous yes
-# zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
-# () {
-#   local -a prefix=( '\e'{\[,O} )
-#   local -a up=( ${^prefix}A ) down=( ${^prefix}B )
-#   local key=
-#   for key in $up[@]; do
-#     bindkey "$key" .autosuggest-orig-1-up-line-or-search
-#   done
-#   for key in $down[@]; do
-#     bindkey "$key" down-history
-#   done
-# }
-# bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-# bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-# bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
-# bindkey -M menuselect '\r' .accept-line
 
-# # customize completion result for vim and nvim
-# autoload +X -Uz  _files
-# functions[_files_orig]=$functions[_files]
-#
-# _files() {
-#   if zstyle -t ":completion:$curcontext" use-fd; then
-#     local files=($(fd --hidden --follow --type=f -d=1))
-#     compadd -a -f files
-#   else
-#     _files_orig
-#   fi
-# }
-#
-# zstyle ':completion:*:vim:*' use-fd true
-# zstyle ':completion:*:nvim:*' use-fd true
 
 _setup_miniforge
 _setup_pyenv

@@ -23,10 +23,10 @@ alias gd='forgit::diff'
 alias ga='forgit::add'
 
 # docker-compose
-alias dc='docker-compose'
-alias dcu='docker-compose up -d'
-alias dcd='docker-compose down'
-alias dcl='docker-compose logs -f'
+alias dc='docker compose'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dcl='docker compose logs -f'
 
 # trash files or folders instead of pernamently remove them
 alias rm='trash-put'
