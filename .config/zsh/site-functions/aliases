@@ -37,4 +37,12 @@ alias nv='nvim'
 alias n='nvim'
 alias 'n.'='nvim .'
 
-
+alias tf='tofu'
+alias tfi='tofu init'
+alias tfv='tofu validate'
+alias tfp='tofu plan'
+alias tfa='tofu apply'
+alias tfaa='tofu apply -auto-approve'
+alias tfd='tofu destroy'
+alias tfda='tofu destroy -auto-approve'
+alias tfo='tofu output'
