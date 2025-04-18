@@ -125,7 +125,7 @@ plugins=(
   kubectl
   python
   sudo
-  terraform
+  # terraform
   fast-syntax-highlighting
   you-should-use
   zsh-autosuggestions
