@@ -123,3 +123,8 @@ else if test "$TERM" = xterm-kitty
     oh-my-posh init fish --config $HOME/.config/ohmyposh/themes/my_velvet.omp.json | source
 else
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/cuongok/.lmstudio/bin
+# End of LM Studio CLI section
+
