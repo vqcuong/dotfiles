@@ -1,4 +1,292 @@
 return {
+  {
+    -- a complete code navigation and outline
+    "nvimdev/lspsaga.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false,
+    opts = {
+      symbol_in_winbar = {
+        enable = true,
+        folder_level = 2,
+        color_mode = false,
+      },
+      code_action = {
+        enable = true,
+      },
+      diagnostic = {
+        show_code_action = true,
+      },
+      definition = {
+        keys = {
+          edit = "e",
+          vsplit = "v",
+          split = "h",
+          tabe = "t",
+          quit = { "q", "<esc>" },
+          close = { "q", "<esc>" },
+        },
+      },
+      finder = {
+        keys = {
+          vsplit = "v",
+          split = "h",
+          tabe = "t",
+          tabnew = "n",
+          quit = { "q", "<esc>" },
+          close = { "q", "<esc>" },
+        },
+      },
+      outline = {
+        close_after_jump = true,
+        keys = {
+          jump = "e",
+        },
+      },
+      rename = {
+        keys = {
+          quit = "<esc>",
+        },
+      },
+      lightbulb = {
+        sign = false,
+      },
+    },
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.add({
+        { "<leader>m", group = "lspsaga" },
+        { "<leader>m<right>", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next diagnostic" },
+        { "<leader>m<left>", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Previous diagnostic" },
+        { "<leader>ml", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Line diagnostic" },
+        { "<leader>mf", "<cmd>Lspsaga finder<cr>", desc = "Finder" },
+        { "<leader>md", "<cmd>Lspsaga hover_doc<cr>", desc = "Docs" },
+        { "<leader>mD", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto type definition" },
+        { "<leader>mp", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
+        { "<leader>mP", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
+        { "<leader>mr", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
+        { "<leader>ma", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
+        { "<leader>mo", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
+        { "<localleader>d", "<cmd>Lspsaga hover_doc<cr>", desc = "Docs" },
+        { "<localleader>D", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Goto type definition" },
+        { "<localleader>p", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
+        { "<localleader>P", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
+        { "<localleader>o", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
+        { "<localleader>r", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
+      })
+      require("lspsaga").setup(opts)
+    end,
+  },
+
+  {
+    -- a decorating code symbols
+    "onsails/lspkind.nvim",
+    config = function()
+      require("lspkind").init({
+        mode = "symbol",
+        preset = "codicons",
+        symbol_map = {
+          Text = "󰉿",
+          Method = "󰆧",
+          Function = "󰊕",
+          Constructor = "",
+          Field = "󰜢",
+          Variable = "",
+          Class = "󰠱",
+          Interface = "",
+          Module = "",
+          Property = "󰜢",
+          Unit = "󰑭",
+          Value = "󰎠",
+          Enum = "",
+          Keyword = "󰌋",
+          Snippet = "",
+          Color = "󰏘",
+          File = "󰈙",
+          Reference = "󰈇",
+          Folder = "󰉋",
+          EnumMember = "",
+          Constant = "󰏿",
+          Struct = "󰙅",
+          Event = "",
+          Operator = "󰆕",
+          TypeParameter = "",
+        },
+      })
+    end,
+  },
+  {
+    -- an explorer extension
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    init = function()
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+    end,
+    config = function()
+      local tree = require("nvim-tree")
+
+      local function my_on_attach(bufnr)
+        local api = require("nvim-tree.api")
+
+        local function opts(desc)
+          return { desc = desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        end
+
+        -- default mappings
+        -- api.config.mappings.default_on_attach(bufnr)
+
+        local function add_key(mode, new, func, desc)
+          vim.keymap.set(mode, new, func, opts(desc))
+        end
+
+        -- local function del_key(mode, old)
+        --   vim.keymap.del(mode, old, { buffer = bufnr })
+        -- end
+        --
+        -- local function replace_key(mode, old, new, func, desc)
+        --   del_key(mode, old)
+        --   add_key(mode, new, func, desc)
+        -- end
+
+        -- custom mappings
+        add_key("n", "?", api.tree.toggle_help, "Show helps")
+        add_key("n", "<s-left>", api.tree.change_root_to_parent, "Up")
+        add_key("n", "<s-right>", api.tree.change_root_to_node, "Cd")
+        add_key("n", "gm", api.tree.toggle_git_clean_filter, "Toggle git modified")
+        add_key("n", "gi", api.tree.toggle_gitignore_filter, "Toggle git ignored")
+        add_key("n", "e", api.tree.expand_all, "Expand all")
+        add_key("n", "w", api.tree.collapse_all, "Collapse all")
+        add_key("n", "q", api.tree.close, "Quit")
+        add_key("n", "R", api.tree.reload, "Refresh")
+        add_key("n", "S", api.tree.search_node, "Search")
+        add_key("n", "H", api.tree.toggle_hidden_filter, "Toggle hidden")
+        add_key("n", "B", api.tree.toggle_no_buffer_filter, "Toggle buffers")
+        add_key("n", "U", api.tree.toggle_custom_filter, "Toggle custom filter")
+
+        add_key("n", "<cr>", api.node.open.edit, "Open")
+        add_key("n", "<tab>", api.node.open.preview, "Preview")
+        add_key("n", "<right>", api.node.open.preview, "Preview")
+        add_key("n", "<left>", api.node.navigate.parent, "Goto parent")
+        add_key("n", "<bs>", api.node.navigate.parent_close, "Close Dir")
+        add_key("n", "i", api.node.show_info_popup, "Show info")
+        add_key("n", "o", api.node.open.replace_tree_buffer, "Open in place")
+        add_key("n", "t", api.node.open.tab, "Open in new tab")
+        add_key("n", "v", api.node.open.vertical, "Open vertically")
+        add_key("n", "h", api.node.open.horizontal, "Open horizontally")
+        add_key("n", "<", api.node.navigate.sibling.prev, "Prev sibling")
+        add_key("n", ">", api.node.navigate.sibling.next, "Next sibling")
+        add_key("n", "[c", api.node.navigate.git.prev, "Prev git")
+        add_key("n", "]c", api.node.navigate.git.next, "Next git")
+        add_key("n", "[e", api.node.navigate.diagnostics.prev, "Prev diagnostic")
+        add_key("n", "]e", api.node.navigate.diagnostics.next, "Next diagnostic")
+        add_key("n", "k", api.node.navigate.sibling.first, "First sibling")
+        add_key("n", "j", api.node.navigate.sibling.last, "Last sibling")
+        add_key("n", "O", api.node.run.system, "Open with vscode")
+        add_key("n", ".", api.node.run.cmd, "Run command")
+
+        add_key("n", "n", api.fs.create, "New")
+        add_key("n", "c", api.fs.copy.node, "Copy")
+        add_key("n", "gp", api.fs.copy.absolute_path, "Copy absolute path")
+        add_key("n", "gr", api.fs.copy.relative_path, "Copy relative path")
+        add_key("n", "gf", api.fs.copy.filename, "Copy file name")
+        add_key("n", "r", api.fs.rename, "Rename")
+        add_key("n", "b", api.fs.rename_basename, "Rename base")
+        add_key("n", "x", api.fs.cut, "Cut")
+        add_key("n", "p", api.fs.paste, "Paste")
+        add_key("n", "D", api.fs.remove, "Delete")
+        add_key("n", "T", api.fs.trash, "Trash")
+        add_key("n", "X", api.fs.clear_clipboard, "Clear clipboard")
+
+        add_key("n", "md", api.marks.bulk.delete, "Delete bookmarked")
+        add_key("n", "mt", api.marks.bulk.trash, "Trash bookmarked")
+        add_key("n", "mv", api.marks.bulk.move, "Move bookmarked")
+        add_key("n", "mm", api.marks.toggle, "Toggle bookmark")
+
+        add_key("n", "gl", api.git.reload, "Git reload")
+
+        -- add_key("n", "F", api.live_filter.clear, "Clean Filter")
+        -- add_key("n", "f", api.live_filter.start, "Filter")
+      end
+      tree.setup({
+        on_attach = my_on_attach,
+        view = {
+          signcolumn = "no",
+          width = {
+            min = 20,
+            max = 30,
+            padding = 0,
+          },
+          float = {
+            enable = false,
+          },
+        },
+        filters = {
+          dotfiles = false,
+          custom = { "^.git$", "__pycache__" },
+          exclude = { ".gitignore" },
+        },
+        renderer = {
+          full_name = true,
+          root_folder_label = ":~:s?$?",
+          highlight_opened_files = "icon",
+          highlight_modified = "name",
+          indent_markers = {
+            enable = true,
+          },
+        },
+        update_focused_file = {
+          enable = true,
+        },
+        system_open = {
+          cmd = "code",
+        },
+        actions = {
+          expand_all = {
+            exclude = { ".git", ".vscode", ".idea", ".github", "__pycache__" },
+          },
+          open_file = {
+            window_picker = {
+              enable = true,
+              -- picker = window_picker,
+              chars = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890",
+              exclude = {
+                filetype = {
+                  "notify",
+                  "NvimTree",
+                  "neo-tree",
+                  "neo-tree-popup",
+                  "packer",
+                  "qf",
+                  "diff",
+                  "fugitive",
+                  "fugitiveblame",
+                },
+                buftype = {
+                  "nofile",
+                  "terminal",
+                  "help",
+                },
+              },
+            },
+          },
+        },
+      })
+
+      require("which-key").add({
+        { "<leader>e", group = "File Explorer" },
+        { "<leader>ef", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
+        { "<leader>eg", "<cmd>lua require('nvim-tree.api').git.reload()<cr>", desc = "Git reload" },
+        { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle" },
+        { "<leader>ec", "<cmd>NvimTreeClipboard<cr>", desc = "Show clipboard" },
+        { "<leader>ex", "<cmd>lua require('nvim-tree.api').fs.clear_clipboard()<cr>", desc = "Clear clipboard" },
+        { "<localleader>e", "<leader>ee", desc = "Explorer Toggle", remap = true },
+      })
+    end,
+  },
 
   {
     "catgoose/nvim-colorizer.lua",
