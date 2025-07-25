@@ -93,7 +93,6 @@ return {
   --       hop = true,
   --       lsp_saga = true,
   --       nvimtree = true,
-  --       overseer = true,
   --       mini = {
   --         enabled = true,
   --         indentscope_color = "sky",

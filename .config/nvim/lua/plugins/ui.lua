@@ -37,23 +37,6 @@ return {
     end,
   },
 
-  -- {
-  --   -- error when working with maximize.nvim
-  --   "danilamihailov/beacon.nvim",
-  --   config = function()
-  --     require("beacon").setup({
-  --       enabled = true,
-  --       speed = 2,
-  --       width = 30,
-  --       winblend = 40,
-  --       fps = 80,
-  --       min_jump = 6,
-  --       cursor_events = { "CursorMoved" }, window_events = { "WinEnter" },
-  --       highlight = { bg = "#bfff00", ctermbg = 200 },
-  --     })
-  --   end,
-  -- },
-
   {
     -- a configurable decorator for tab bar
     "nanozuki/tabby.nvim",
@@ -134,7 +117,6 @@ return {
             "notify",
             "NvimTree",
             "toggleterm",
-            "OverseerList",
             "sagaoutline",
             "NeogitStatus",
             "DiffviewFiles",

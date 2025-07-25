@@ -191,8 +191,8 @@ return {
     event = "VeryLazy",
     -- stylua: ignore
     keys = {
-      { "f", function() require("hop").hint_char1() end, remap = true },
-      { "F", function() require("hop").hint_char2() end, remap = true },
+      -- { "f", function() require("hop").hint_char1() end, remap = true },
+      -- { "F", function() require("hop").hint_char2() end, remap = true },
       { "A", function() require("hop").hint_lines_skip_whitespace() end, remap = true },
       { "P", function() require("hop").hint_patterns() end, remap = true },
     },
