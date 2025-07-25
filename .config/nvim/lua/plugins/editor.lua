@@ -298,7 +298,7 @@ return {
           { name = "luasnip" },
           { name = "path" },
           { name = "emoji" },
-          -- { name = "copilot" },
+          { name = "copilot" },
           { name = "codeium" },
         }, {
           { name = "buffer" },
@@ -321,7 +321,7 @@ return {
             mode = "symbol_text",
             maxwidth = 50,
             symbol_map = {
-              -- Copilot = " ",
+              Copilot = " ",
               Codeium = "",
             },
             before = function(entry, vim_item)
@@ -400,29 +400,29 @@ return {
         },
       })
 
-      cmp.setup.cmdline(":", {
-        completion = { autocomplete = false },
-        mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
-        sources = {
-          { name = "path" },
-          { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
-        },
-        formatting = {
-          fields = { "abbr", "kind" },
-          format = lspkind.cmp_format({
-            mode = "symbol_text",
-            maxwidth = 50,
-            before = function(_, vim_item)
-              if vim_item.kind == "Variable" then
-                vim_item.kind = ""
-                return vim_item
-              end
-              vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
-              return vim_item
-            end,
-          }),
-        },
-      })
+      -- cmp.setup.cmdline(":", {
+      --   completion = { autocomplete = false },
+      --   mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
+      --   sources = {
+      --     { name = "path" },
+      --     { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
+      --   },
+      --   formatting = {
+      --     fields = { "abbr", "kind" },
+      --     format = lspkind.cmp_format({
+      --       mode = "symbol_text",
+      --       maxwidth = 50,
+      --       before = function(_, vim_item)
+      --         if vim_item.kind == "Variable" then
+      --           vim_item.kind = ""
+      --           return vim_item
+      --         end
+      --         vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
+      --         return vim_item
+      --       end,
+      --     }),
+      --   },
+      -- })
 
       vim.cmd([[
         highlight! default link CmpItemKind CmpItemMenuDefault
