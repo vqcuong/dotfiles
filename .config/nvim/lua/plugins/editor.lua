@@ -202,31 +202,6 @@ return {
     init = function()
       vim.opt.pumheight = 20
     end,
-    keys = {
-      {
-        "<tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-        end,
-        expr = true,
-        silent = true,
-        mode = "i",
-      },
-      {
-        "<tab>",
-        function()
-          require("luasnip").jump(1)
-        end,
-        mode = "s",
-      },
-      {
-        "<s-tab>",
-        function()
-          require("luasnip").jump(-1)
-        end,
-        mode = { "i", "s" },
-      },
-    },
     -- stylua: ignore
     opts = function() return {} end,
     config = function()
@@ -236,14 +211,8 @@ return {
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")
 
-      local has_words_before = function()
-        unpack = unpack or table.unpack
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
       cmp.setup({
-        auto_brackets = { "python" },
+        auto_brackets = {},
         completion = {
           completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
         },
@@ -253,20 +222,18 @@ return {
         --     luasnip.lsp_expand(args.body)
         --   end,
         -- },
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText",
-          },
-        },
+
         mapping = cmp.mapping.preset.insert({
-          ["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<c-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<c-f>"] = cmp.mapping.scroll_docs(4),
-          ["<c-space>"] = cmp.mapping.complete(),
-          ["<c-e>"] = cmp.mapping.close(),
-          ["<cr>"] = LazyVim.cmp.confirm({ select = auto_select }),
-          ["<c-cr>"] = function(fallback)
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<CR>"] = LazyVim.cmp.confirm({ select = auto_select }),
+          ["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
+          ["<C-e>"] = cmp.mapping.close(),
+          ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<C-CR>"] = function(fallback)
             cmp.abort()
             fallback()
           end,
@@ -293,18 +260,20 @@ return {
             end
           end, { "i", "s" }),
         }),
-        sources = cmp.config.sources({}, {
+        sources = cmp.config.sources({
+          {
+            name = "copilot",
+            group_index = 1,
+            priority = 100,
+          },
+          { name = "lazydev" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
           { name = "emoji" },
-          { name = "copilot" },
-          { name = "codeium" },
         }, {
           { name = "buffer" },
-        }, {
-          { name = "lazydev", group_index = 0 },
-        }, {}),
+        }),
         window = {
           -- completion = cmp.config.window.bordered({
           --   leading_offset = 0,
@@ -316,29 +285,55 @@ return {
           }),
         },
         formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = lspkind.cmp_format({
-            mode = "symbol_text",
-            maxwidth = 50,
-            symbol_map = {
-              Copilot = " ",
-              Codeium = "",
-            },
-            before = function(entry, vim_item)
-              vim_item.menu = "[" .. vim_item.kind .. "]"
-              vim_item.dup = ({
-                nvim_lsp = 0,
-                path = 0,
-              })[entry.source.name] or 0
-              vim_item.kind = lspkind.symbolic(vim_item.kind) or vim_item.kind
-              return vim_item
-            end,
-          }),
+          format = function(entry, item)
+            local icons = LazyVim.config.icons.kinds
+            if icons[item.kind] then
+              item.kind = icons[item.kind] .. item.kind
+            end
+
+            local widths = {
+              abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
+              menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
+            }
+
+            for key, width in pairs(widths) do
+              if item[key] and vim.fn.strdisplaywidth(item[key]) > width then
+                item[key] = vim.fn.strcharpart(item[key], 0, width - 1) .. "…"
+              end
+            end
+
+            return item
+          end,
+        },
+        -- formatting = {
+        --   fields = { "kind", "abbr", "menu" },
+        --   format = lspkind.cmp_format({
+        --     mode = "symbol_text",
+        --     maxwidth = 50,
+        --     symbol_map = {
+        --       Copilot = "",
+        --       Codeium = "",
+        --     },
+        --     before = function(entry, vim_item)
+        --       vim_item.menu = "[" .. vim_item.kind .. "]"
+        --       vim_item.dup = ({
+        --         nvim_lsp = 0,
+        --         path = 0,
+        --       })[entry.source.name] or 0
+        --       vim_item.kind = lspkind.symbolic(vim_item.kind) or vim_item.kind
+        --       return vim_item
+        --     end,
+        --   }),
+        -- },
+        experimental = {
+          ghost_text = vim.g.ai_cmp and {
+            hl_group = "CmpGhostText",
+          } or false,
         },
         sorting = defaults.sorting,
       })
 
-      local cmdline_mapping = {
+      local cmdline_mapping_search_help = {
         ["<Up>"] = cmp.mapping({
           c = function(fallback)
             if cmp.visible() then
@@ -372,15 +367,64 @@ return {
               return cmp.select_prev_item()
             else
               cmp.complete()
-              cmp.select_next_item()
+              cmp.select_prev_item()
               return
             end
           end,
         }),
       }
 
+      local cmdline_mapping = {
+        ["<Up>"] = cmp.mapping({
+          c = function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              cmp.complete()
+              cmp.select_prev_item()
+            end
+            fallback()
+          end,
+        }),
+        ["<Down>"] = cmp.mapping({
+          c = function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              cmp.complete()
+              cmp.select_next_item()
+            end
+            fallback()
+          end,
+        }),
+        ["<Tab>"] = cmp.mapping({
+          c = function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              cmp.complete()
+              cmp.select_next_item()
+              return
+            end
+            fallback()
+          end,
+        }),
+        ["<S-Tab>"] = cmp.mapping({
+          c = function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              cmp.complete()
+              cmp.select_prev_item()
+              return
+            end
+            fallback()
+          end,
+        }),
+      }
+
       cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
+        mapping = cmp.mapping.preset.cmdline(cmdline_mapping_search_help),
         sources = { { name = "buffer" } },
         formatting = {
           fields = { "abbr", "kind" },
@@ -400,29 +444,29 @@ return {
         },
       })
 
-      -- cmp.setup.cmdline(":", {
-      --   completion = { autocomplete = false },
-      --   mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
-      --   sources = {
-      --     { name = "path" },
-      --     { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
-      --   },
-      --   formatting = {
-      --     fields = { "abbr", "kind" },
-      --     format = lspkind.cmp_format({
-      --       mode = "symbol_text",
-      --       maxwidth = 50,
-      --       before = function(_, vim_item)
-      --         if vim_item.kind == "Variable" then
-      --           vim_item.kind = ""
-      --           return vim_item
-      --         end
-      --         vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
-      --         return vim_item
-      --       end,
-      --     }),
-      --   },
-      -- })
+      cmp.setup.cmdline(":", {
+        -- completion = { autocomplete = false },
+        mapping = cmp.mapping.preset.cmdline(cmdline_mapping),
+        sources = {
+          { name = "path" },
+          { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
+        },
+        formatting = {
+          fields = { "abbr", "kind" },
+          format = lspkind.cmp_format({
+            mode = "symbol_text",
+            maxwidth = 50,
+            before = function(_, vim_item)
+              if vim_item.kind == "Variable" then
+                vim_item.kind = ""
+                return vim_item
+              end
+              vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
+              return vim_item
+            end,
+          }),
+        },
+      })
 
       vim.cmd([[
         highlight! default link CmpItemKind CmpItemMenuDefault
