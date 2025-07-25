@@ -117,6 +117,7 @@ return {
       })
     end,
   },
+
   {
     -- an explorer extension
     "nvim-tree/nvim-tree.lua",

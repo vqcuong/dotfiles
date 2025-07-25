@@ -213,11 +213,11 @@ return {
     end,
   },
 
-  {
-    -- rick cursor movement animation
-    "sphamba/smear-cursor.nvim",
-    opts = {},
-  },
+  -- {
+  --   -- rick cursor movement animation
+  --   "sphamba/smear-cursor.nvim",
+  --   opts = {},
+  -- },
 
   {
     -- automatically expand active window and more ...
