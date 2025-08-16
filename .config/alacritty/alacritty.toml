@@ -12,7 +12,7 @@ TERM = "xterm-256color"
 [window]
 dynamic_padding = true
 decorations = "Buttonless"
-opacity = 0.875
+opacity = 0.85
 blur = false
 startup_mode = "Maximized"
 title = "hello world"
@@ -26,7 +26,7 @@ history = 10000
 multiplier = 3
 
 [font]
-size = 19.4
+size = 20
 
 [font.bold]
 family = "Monofur Nerd Font Propo"
