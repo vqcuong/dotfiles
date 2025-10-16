@@ -162,10 +162,10 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 $realpath'
 zstyle ':fzf-tab:complete:z:*' fzf-preview 'ls -1 $realpath'
 zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'if [ -d $realpath ]; then ls -1 $realpath; else less ${(Q)realpath}; fi'
 zstyle ':fzf-tab:complete:vim:*' fzf-preview 'if [ -d $realpath ]; then ls -1 $realpath; else less ${(Q)realpath}; fi'
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:*' popup-min-size 60 15
-zstyle ':fzf-tab:*' popup-pad 0 0
-
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# zstyle ':fzf-tab:*' popup-min-size 60 15
+# zstyle ':fzf-tab:*' popup-pad 0 0
+#
 
 
 _setup_miniforge
