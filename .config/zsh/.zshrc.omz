@@ -109,11 +109,13 @@ export ZSH="$ZDOTDIR/ohmyzsh"
 plugins=(
   aliases
   auto-ls
-  autoenv
+  # alias-finder
+  # autoenv
   # aws
   # conda-zsh-completion
   copybuffer
   docker-compose
+  dotenv
   forgit
   fzf-tab
   git
@@ -165,7 +167,12 @@ zstyle ':fzf-tab:complete:vim:*' fzf-preview 'if [ -d $realpath ]; then ls -1 $r
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # zstyle ':fzf-tab:*' popup-min-size 60 15
 # zstyle ':fzf-tab:*' popup-pad 0 0
-#
+
+# # alias-finder
+# zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
+# zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
+# zstyle ':omz:plugins:alias-finder' exact yes # disabled by default
+# zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 
 
 _setup_miniforge
