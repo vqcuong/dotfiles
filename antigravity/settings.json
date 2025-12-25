@@ -824,7 +824,6 @@
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.tree.expandMode": "singleClick",
-  "window.commandCenter": true,
   "window.dialogStyle": "custom",
   "window.zoomLevel": 1.4,
   "terminal.integrated.defaultProfile.osx": "zsh",
@@ -885,10 +884,16 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "chat.mcp.discovery.enabled": true,
-  "chat.mcp.enabled": true,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": true,
+    "antigravity": true,
+    "cursor-global": true,
+    "cursor-workspace": true
+  },
   "chat.agent.enabled": true,
-  "docker.extension.enableComposeLanguageServer": true,
+  "docker.extension.enableComposeLanguageServer": false,
   "extensions.ignoreRecommendations": true,
-  "claudeCode.preferredLocation": "panel"
+  "chat.mcp.access": "all",
+  "antigravity.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
+  "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery"
 }

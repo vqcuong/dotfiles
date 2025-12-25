@@ -219,12 +219,15 @@ _setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"
 _enable_powerlevel10k
 
 # pnpm
-export PNPM_HOME="/Users/cuongok/Library/pnpm"
+export PNPM_HOME="${HOME}/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
+# Added by Antigravity
+export PATH="${HOME}/.antigravity/antigravity/bin:$PATH"
+
 # bun completions
-[ -s "/Users/cuongok/.bun/_bun" ] && source "/Users/cuongok/.bun/_bun"
+[ -s "${HOME}/.bun/_bun" ] && source "${HOME}/.bun/_bun"
