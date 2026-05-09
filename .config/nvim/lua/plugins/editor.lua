@@ -49,7 +49,7 @@ return {
 
   {
     -- quickly jump to any place in the file
-    "phaazon/hop.nvim",
+    "smoka7/hop.nvim",
     event = "VeryLazy",
     -- stylua: ignore
     keys = {

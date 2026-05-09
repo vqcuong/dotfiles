@@ -1,7 +1,7 @@
 local enabled = {
   "Wansmer/treesj",
 
-  "phaazon/hop.nvim",
+  "smoka7/hop.nvim",
   "kylechui/nvim-surround",
   "iamcco/markdown-preview.nvim",
 }
