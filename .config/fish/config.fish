@@ -128,3 +128,5 @@ end
 set -gx PATH $PATH /Users/cuongok/.lmstudio/bin
 # End of LM Studio CLI section
 
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)

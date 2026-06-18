@@ -224,3 +224,5 @@ esac
 # powerlevel10k
 _setup_powerlevel10k "${ZDOTDIR-$HOME}/.powerlevel10k"
 _enable_powerlevel10k
+
+. "$HOME/.cargo/env"
