@@ -74,10 +74,29 @@ return {
         { "<localleader>p", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
         { "<localleader>P", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
         { "<localleader>o", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
-        { "<localleader>r", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
+        -- { "<localleader>r", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
       })
       require("lspsaga").setup(opts)
     end,
+  },
+
+  {
+    -- remap lazyvim builtin rename to <localleader>r
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            {
+              "<localleader>r",
+              vim.lsp.buf.rename,
+              desc = "Rename",
+              has = "rename",
+            },
+          },
+        },
+      },
+    },
   },
 
   {
