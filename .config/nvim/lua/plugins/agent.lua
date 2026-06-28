@@ -4,7 +4,7 @@ return {
     dependencies = { "folke/snacks.nvim" },
     config = true,
     opts = {
-      -- Server Configuration
+      -- Server configuration
       port_range = { min = 10000, max = 65535 },
       auto_start = true,
       log_level = "info", -- "trace", "debug", "info", "warn", "error"
@@ -14,7 +14,7 @@ return {
       track_selection = true,
       visual_demotion_delay_ms = 50,
 
-      -- Terminal Configuration
+      -- Terminal configuration
       terminal = {
         split_side = "right", -- "left" or "right"
         split_width_percentage = 0.30,
@@ -40,12 +40,6 @@ return {
         { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
         { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
         { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-        {
-          "<leader>as",
-          "<cmd>ClaudeCodeTreeAdd<cr>",
-          desc = "Add file",
-          ft = { "NvimTree", "neo-tree", "oil" },
-        },
         -- Diff management
         { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
         { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
