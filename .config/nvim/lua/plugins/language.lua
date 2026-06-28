@@ -14,10 +14,6 @@ return {
   {
     "mason.nvim",
     opts = {
-      ensure_installed = {
-        -- "dcm",
-        "hadolint",
-      },
       ui = {
         width = 0.6,
         height = 0.6,

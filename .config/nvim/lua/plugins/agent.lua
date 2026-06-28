@@ -3,27 +3,6 @@ return {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     config = true,
-    keys = {
-      { "<leader>a", nil, desc = "AI/Claude Code" },
-      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      {
-        "<leader>as",
-        "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
-        ft = { "NvimTree", "neo-tree", "oil" },
-      },
-      -- Diff management
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-
-      { "<localleader>c", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-    },
     opts = {
       -- Server Configuration
       port_range = { min = 10000, max = 65535 },
@@ -51,23 +30,29 @@ return {
         open_in_current_tab = true,
       },
     },
-    -- keys = function()
-    --   require("which-key").add({
-    --     { "<leader>a", group = "AI/Claude Code" },
-    --     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-    --     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-    --     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-    --     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-    --     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-    --     { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-    --     { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-    --     -- Diff management
-    --     { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-    --     { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-    --
-    --     { "<localleader>c", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-    --   })
-    -- end,
+    keys = function()
+      require("which-key").add({
+        { "<leader>a", group = "AI/Claude Code" },
+        { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+        { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+        { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+        { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+        { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+        { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+        { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+        {
+          "<leader>as",
+          "<cmd>ClaudeCodeTreeAdd<cr>",
+          desc = "Add file",
+          ft = { "NvimTree", "neo-tree", "oil" },
+        },
+        -- Diff management
+        { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+        { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+
+        { "<localleader>c", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      })
+    end,
   },
 
   -- {
@@ -81,9 +66,11 @@ return {
   --         split_ratio = 0.35,
   --         position = "float",
   --         float = {
-  --           width = "40%",
+  --           width = "30%",
   --           height = "100%",
-  --           col = "60%",
+  --           col = "100%",
+  --           relative = "cursor",
+  --           border = "none",
   --         },
   --       },
   --       refresh = {
@@ -104,5 +91,12 @@ return {
   --       },
   --     })
   --   end,
+  --   keys = {
+  --     { "<leader>a", nil, desc = "AI/Claude Code" },
+  --     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+  --     { "<leader>ar", "<cmd>ClaudeCodeResume<cr>", desc = "Resume Claude" },
+  --     { "<leader>aC", "<cmd>ClaudeCodeContinue<cr>", desc = "Continue Claude" },
+  --     { "<localleader>c", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+  --   },
   -- },
 }

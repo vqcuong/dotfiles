@@ -536,7 +536,7 @@ return {
 
   {
     -- rich ui features for nvim: indent, input, notifier, scroll, ...
-    "snacks.nvim",
+    "folke/snacks.nvim",
     opts = {
       bigfile = {
         enabled = true,
